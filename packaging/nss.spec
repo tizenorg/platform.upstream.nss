@@ -1,12 +1,17 @@
 %global nss_softokn_fips_version 3.12.4
 
 Name:           nss
+BuildRequires:  gcc-c++
+BuildRequires:  nspr-devel
+BuildRequires:  pkg-config
+BuildRequires:  sqlite3-devel
+BuildRequires:  zlib-devel
 Version:        3.13.6
 Release:        0
-License:        MPL-1.1 or GPL-2.0+ or LGPL-2.1+
 Summary:        Network Security Services
-Url:            http://www.mozilla.org/projects/security/pki/nss/
+License:        MPL-1.1 or GPL-2.0+ or LGPL-2.1+
 Group:          System/Libraries
+Url:            http://www.mozilla.org/projects/security/pki/nss/
 # cvs -d :pserver:anonymous@cvs-mirror.mozilla.org:/cvsroot co -r <RTM_TAG> NSS
 Source:         nss-%{version}.tar.bz2
 Source1:        nss.pc.in
@@ -23,17 +28,12 @@ Patch3:         char.patch
 Patch4:         nss-no-rpath.patch
 Patch5:         renegotiate-transitional.patch
 Patch6:         malloc.patch
-BuildRequires:  gcc-c++
-BuildRequires:  nspr-devel
-BuildRequires:  pkg-config
-BuildRequires:  sqlite3-devel
-BuildRequires:  zlib-devel
-Requires:       nss-certs
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 %define nspr_ver %(rpm -q --queryformat '%{VERSION}' nspr)
 Requires(pre):  nspr >= %nspr_ver
 Requires(pre):  libfreebl3 >= %{nss_softokn_fips_version}
 Requires(pre):  libsoftokn3 >= %{nss_softokn_fips_version}
+Requires:       nss-certs
+BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 %define nssdbdir %{_sysconfdir}/pki/nssdb
 %define run_testsuite 0
 
@@ -44,13 +44,14 @@ applications. Applications built with NSS can support SSL v2 and v3,
 TLS, PKCS #5, PKCS #7, PKCS #11, PKCS #12, S/MIME, X.509 v3
 certificates, and other security standards.
 
+
 %package devel
 Summary:        Network (Netscape) Security Services development files
 Group:          Development/Libraries/Other
 Requires:       libfreebl3
 Requires:       libsoftokn3
 Requires:       nspr-devel
-Requires:       nss = %{version}
+Requires:       nss = %{version}-%{release}
 
 %description devel
 Network Security Services (NSS) is a set of libraries designed to
@@ -58,6 +59,7 @@ support cross-platform development of security-enabled server
 applications. Applications built with NSS can support SSL v2 and v3,
 TLS, PKCS #5, PKCS #7, PKCS #11, PKCS #12, S/MIME, X.509 v3
 certificates, and other security standards.
+
 
 %package tools
 Summary:        Tools for developing, debugging, and managing applications that use NSS
@@ -67,6 +69,7 @@ Requires(pre):  nss >= %{version}
 %description tools
 The NSS Security Tools allow developers to test, debug, and manage
 applications that use NSS.
+
 
 %package sysinit
 Summary:        System NSS Initialization
@@ -79,6 +82,7 @@ Default Operation System module that manages applications loading
 NSS globally on the system. This module loads the system defined
 PKCS #11 modules for NSS and chains with other NSS modules to load
 any system or user configured modules.
+
 
 %package -n libfreebl3
 Summary:        Freebl library for the Network Security Services
@@ -93,10 +97,11 @@ certificates, and other security standards.
 
 This package installs the freebl library from NSS.
 
+
 %package -n libsoftokn3
 Summary:        Network Security Services Softoken Module
 Group:          System/Libraries
-Requires:       libfreebl3 = %{version}
+Requires:       libfreebl3 = %{version}-%{release}
 
 %description -n libsoftokn3
 Network Security Services (NSS) is a set of libraries designed to
@@ -107,6 +112,7 @@ certificates, and other security standards.
 
 Network Security Services Softoken Cryptographic Module
 
+
 %package certs
 Summary:        CA certificates for NSS
 Group:          Productivity/Networking/Security
@@ -114,6 +120,7 @@ Group:          Productivity/Networking/Security
 %description certs
 This package contains the integrated CA root certificates from the
 Mozilla project.
+
 
 %prep
 %setup -n nss-%{version} -q
@@ -135,7 +142,7 @@ cd mozilla/security/nss
 export FREEBL_NO_DEPEND=1
 export NSPR_INCLUDE_DIR=`nspr-config --includedir`
 export NSPR_LIB_DIR=`nspr-config --libdir`
-export OPT_FLAGS="%{optflags} -fno-strict-aliasing"
+export OPT_FLAGS="$RPM_OPT_FLAGS -fno-strict-aliasing"
 export LIBDIR=%{_libdir}
 %ifarch x86_64 s390x ppc64 ia64
 export USE_64=1
@@ -159,16 +166,16 @@ fi
 %endif
 
 %install
-mkdir -p %{buildroot}%{_libdir}
-mkdir -p %{buildroot}%{_libexecdir}/nss
-mkdir -p %{buildroot}%{_includedir}/nss3
-mkdir -p %{buildroot}%{_bindir}
-mkdir -p %{buildroot}%{_sbindir}
-mkdir -p %{buildroot}/%{_lib}
-mkdir -p %{buildroot}%{nssdbdir}
+mkdir -p $RPM_BUILD_ROOT%{_libdir}
+mkdir -p $RPM_BUILD_ROOT%{_libexecdir}/nss
+mkdir -p $RPM_BUILD_ROOT%{_includedir}/nss3
+mkdir -p $RPM_BUILD_ROOT%{_bindir}
+mkdir -p $RPM_BUILD_ROOT%{_sbindir}
+mkdir -p $RPM_BUILD_ROOT/%{_lib}
+mkdir -p $RPM_BUILD_ROOT%{nssdbdir}
 pushd mozilla/dist/Linux*
 # copy headers
-cp -rL ../public/nss/*.h %{buildroot}%{_includedir}/nss3
+cp -rL ../public/nss/*.h $RPM_BUILD_ROOT%{_includedir}/nss3
 # copy dynamic libs
 cp -L  lib/libnss3.so \
        lib/libnssdbm3.so \
@@ -180,15 +187,15 @@ cp -L  lib/libnss3.so \
        lib/libsoftokn3.so \
        lib/libsoftokn3.chk \
        lib/libssl3.so \
-       %{buildroot}%{_libdir}
+       $RPM_BUILD_ROOT%{_libdir}
 cp -L  lib/libfreebl3.so \
        lib/libfreebl3.chk \
-       %{buildroot}/%{_lib}
+       $RPM_BUILD_ROOT/%{_lib}
 # copy static libs
 cp -L  lib/libcrmf.a \
        lib/libnssb.a \
        lib/libnssckfw.a \
-       %{buildroot}%{_libdir}
+       $RPM_BUILD_ROOT%{_libdir}
 # copy tools
 cp -L  bin/certutil \
        bin/cmsutil \
@@ -198,7 +205,7 @@ cp -L  bin/certutil \
        bin/signtool \
        bin/signver \
        bin/ssltap \
-       %{buildroot}%{_bindir}
+       $RPM_BUILD_ROOT%{_bindir}
 # copy unsupported tools
 cp -L  bin/atob \
        bin/btoa \
@@ -212,13 +219,13 @@ cp -L  bin/atob \
        bin/tstclnt \
        bin/vfyserv \
        bin/vfychain \
-       %{buildroot}%{_libexecdir}/nss
+       $RPM_BUILD_ROOT%{_libexecdir}/nss
 # prepare pkgconfig file
-mkdir -p %{buildroot}%{_libdir}/pkgconfig/
+mkdir -p $RPM_BUILD_ROOT%{_libdir}/pkgconfig/
 sed "s:%%LIBDIR%%:%{_libdir}:g
 s:%%VERSION%%:%{version}:g
 s:%%NSPR_VERSION%%:%{nspr_ver}:g" \
-  %{SOURCE1} > %{buildroot}%{_libdir}/pkgconfig/nss.pc
+  %{SOURCE1} > $RPM_BUILD_ROOT%{_libdir}/pkgconfig/nss.pc
 # prepare nss-config file
 popd
 NSS_VMAJOR=`cat mozilla/security/nss/lib/nss/nss.h | grep "#define.*NSS_VMAJOR" | awk '{print $3}'`
@@ -231,31 +238,31 @@ cat %{SOURCE3} | sed -e "s,@libdir@,%{_libdir},g" \
                      -e "s,@MOD_MAJOR_VERSION@,$NSS_VMAJOR,g" \
                      -e "s,@MOD_MINOR_VERSION@,$NSS_VMINOR,g" \
                      -e "s,@MOD_PATCH_VERSION@,$NSS_VPATCH,g" \
-                     > %{buildroot}/%{_bindir}/nss-config
-chmod 755 %{buildroot}/%{_bindir}/nss-config
+                     > $RPM_BUILD_ROOT/%{_bindir}/nss-config
+chmod 755 $RPM_BUILD_ROOT/%{_bindir}/nss-config
 # setup-nsssysinfo.sh
-install -m 744 %{SOURCE6} %{buildroot}%{_sbindir}/
+install -m 744 %{SOURCE6} $RPM_BUILD_ROOT%{_sbindir}/
 # create empty NSS database
-#LD_LIBRARY_PATH=%{buildroot}/%{_lib}:%{buildroot}%{_libdir} %{buildroot}%{_bindir}/modutil -force -dbdir "sql:%{buildroot}%{nssdbdir}" -create
-#LD_LIBRARY_PATH=%{buildroot}/%{_lib}:%{buildroot}%{_libdir} %{buildroot}%{_bindir}/certutil -N -d "sql:%{buildroot}%{nssdbdir}" -f /dev/null 2>&1 > /dev/null
-#chmod 644 "%{buildroot}%{nssdbdir}"/*
+#LD_LIBRARY_PATH=$RPM_BUILD_ROOT/%{_lib}:$RPM_BUILD_ROOT%{_libdir} $RPM_BUILD_ROOT%{_bindir}/modutil -force -dbdir "sql:$RPM_BUILD_ROOT%{nssdbdir}" -create
+#LD_LIBRARY_PATH=$RPM_BUILD_ROOT/%{_lib}:$RPM_BUILD_ROOT%{_libdir} $RPM_BUILD_ROOT%{_bindir}/certutil -N -d "sql:$RPM_BUILD_ROOT%{nssdbdir}" -f /dev/null 2>&1 > /dev/null
+#chmod 644 "$RPM_BUILD_ROOT%{nssdbdir}"/*
 #sed "s:%{buildroot}::g
 #s/^library=$/library=libnsssysinit.so/
 #/^NSS/s/\(Flags=internal\)\(,[^m]\)/\1,moduleDBOnly\2/" \
-#  %{buildroot}%{nssdbdir}/pkcs11.txt > %{buildroot}%{nssdbdir}/pkcs11.txt.sed
-#  mv %{buildroot}%{nssdbdir}/pkcs11.txt{.sed,}
+#  $RPM_BUILD_ROOT%{nssdbdir}/pkcs11.txt > $RPM_BUILD_ROOT%{nssdbdir}/pkcs11.txt.sed
+#  mv $RPM_BUILD_ROOT%{nssdbdir}/pkcs11.txt{.sed,}
 # copy empty NSS database
-install -m 644 %{SOURCE7} %{buildroot}%{nssdbdir}
-install -m 644 %{SOURCE8} %{buildroot}%{nssdbdir}
-install -m 644 %{SOURCE9} %{buildroot}%{nssdbdir}
+install -m 644 %{SOURCE7} $RPM_BUILD_ROOT%{nssdbdir}
+install -m 644 %{SOURCE8} $RPM_BUILD_ROOT%{nssdbdir}
+install -m 644 %{SOURCE9} $RPM_BUILD_ROOT%{nssdbdir}
 # create shlib sigs after extracting debuginfo
 %define __spec_install_post \
   %{?__debug_package:%{__debug_install_post}} \
   %{__arch_install_post} \
   %{__os_install_post} \
-  LD_LIBRARY_PATH=%{buildroot}/%{_lib}:%{buildroot}%{_libdir} %{buildroot}%{_libexecdir}/nss/shlibsign -i %{buildroot}%{_libdir}/libsoftokn3.so \
-  LD_LIBRARY_PATH=%{buildroot}/%{_lib}:%{buildroot}%{_libdir} %{buildroot}%{_libexecdir}/nss/shlibsign -i %{buildroot}%{_libdir}/libnssdbm3.so \
-  LD_LIBRARY_PATH=%{buildroot}/%{_lib}:%{buildroot}%{_libdir} %{buildroot}%{_libexecdir}/nss/shlibsign -i %{buildroot}/%{_lib}/libfreebl3.so \
+  LD_LIBRARY_PATH=$RPM_BUILD_ROOT/%{_lib}:$RPM_BUILD_ROOT%{_libdir} $RPM_BUILD_ROOT%{_libexecdir}/nss/shlibsign -i $RPM_BUILD_ROOT%{_libdir}/libsoftokn3.so \
+  LD_LIBRARY_PATH=$RPM_BUILD_ROOT/%{_lib}:$RPM_BUILD_ROOT%{_libdir} $RPM_BUILD_ROOT%{_libexecdir}/nss/shlibsign -i $RPM_BUILD_ROOT%{_libdir}/libnssdbm3.so \
+  LD_LIBRARY_PATH=$RPM_BUILD_ROOT/%{_lib}:$RPM_BUILD_ROOT%{_libdir} $RPM_BUILD_ROOT%{_libexecdir}/nss/shlibsign -i $RPM_BUILD_ROOT/%{_lib}/libfreebl3.so \
 %{nil}
 
 %post -p /sbin/ldconfig
@@ -281,6 +288,9 @@ if [ $1 = 0 ]; then
 fi
 
 %postun sysinit -p /sbin/ldconfig
+
+%clean
+rm -rf $RPM_BUILD_ROOT
 
 %files
 %defattr(-, root, root)
