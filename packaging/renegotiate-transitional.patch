@@ -1,0 +1,22 @@
+Index: security/nss/lib/ssl/sslsock.c
+===================================================================
+RCS file: /cvsroot/mozilla/security/nss/lib/ssl/sslsock.c,v
+retrieving revision 1.75
+diff -u -p -6 -r1.75 sslsock.c
+--- security/nss/lib/ssl/sslsock.c	22 Oct 2011 16:45:40 -0000	1.75
++++ security/nss/lib/ssl/sslsock.c	24 Oct 2011 12:52:25 -0000
+@@ -178,13 +178,13 @@ static sslOptions ssl_defaults = {
+     PR_TRUE,	/* detectRollBack     */
+     PR_FALSE,   /* noStepDown         */
+     PR_FALSE,   /* bypassPKCS11       */
+     PR_FALSE,   /* noLocks            */
+     PR_FALSE,   /* enableSessionTickets */
+     PR_FALSE,   /* enableDeflate      */
+-    2,          /* enableRenegotiation (default: requires extension) */
++    3,          /* enableRenegotiation (default: transitional) */
+     PR_FALSE,   /* requireSafeNegotiation */
+     PR_FALSE,   /* enableFalseStart   */
+     PR_TRUE     /* cbcRandomIV        */
+ };
+ 
+ sslSessionIDLookupFunc  ssl_sid_lookup;
