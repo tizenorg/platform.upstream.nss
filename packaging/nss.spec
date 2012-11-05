@@ -106,7 +106,6 @@ certificates, and other security standards.
 
 Network Security Services Softoken Cryptographic Module
 
-
 %package certs
 Summary:        CA certificates for NSS
 Group:          Security/Certificate Management
