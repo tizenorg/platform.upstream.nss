@@ -221,7 +221,7 @@ Pk11Install_File_Generate(Pk11Install_File* _this,
 					goto loser;
 				}
 				_this->permissions = (int) strtol(subval->string, &endp, 8);
-				if(*endp != '\0') {
+				if(*endp != '\0' || subval->string[0] == '\0') {
 					errStr = PR_smprintf(errString[BOGUS_FILE_PERMISSIONS],
                                     _this->jarPath);
 					goto loser;
