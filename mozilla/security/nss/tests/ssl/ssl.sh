@@ -1003,6 +1003,7 @@ ssl_run_tests()
 
 ################################# main #################################
 
+unset MALLOC_CHECK_
 ssl_init
 ssl_run_tests
 ssl_cleanup
