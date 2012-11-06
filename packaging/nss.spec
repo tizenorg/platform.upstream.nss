@@ -22,12 +22,6 @@ Source6:        setup-nsssysinit.sh
 Source7:        cert9.db
 Source8:        key4.db
 Source9:        pkcs11.txt
-Patch1:         nss-opt.patch
-Patch2:         system-nspr.patch
-Patch3:         char.patch
-Patch4:         nss-no-rpath.patch
-Patch5:         renegotiate-transitional.patch
-Patch6:         malloc.patch
 %define nspr_ver %(rpm -q --queryformat '%{VERSION}' nspr)
 Requires(pre):  nspr >= %nspr_ver
 Requires(pre):  libfreebl3 >= %{nss_softokn_fips_version}
@@ -125,12 +119,6 @@ Mozilla project.
 %prep
 %setup -n nss-%{version} -q
 cd mozilla
-%patch1
-%patch2
-%patch3
-%patch4
-%patch5
-%patch6
 
 %build
 modified="$(sed -n '/^----/n;s/ - .*$//;p;q' "%{_sourcedir}/%{name}.changes")"
