@@ -78,7 +78,7 @@ include $(CORE_DEPTH)/coreconf/rules.mk
 # (7) Execute "local" rules. (OPTIONAL).                              #
 #######################################################################
 
-nss_build_all: build_coreconf build_nspr build_dbm all
+nss_build_all: build_coreconf build_dbm all
 
 nss_clean_all: clobber_coreconf clobber_nspr clobber_dbm clobber
 
