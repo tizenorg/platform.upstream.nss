@@ -132,7 +132,7 @@ export NSPR_INCLUDE_DIR=`nspr-config --includedir`
 export NSPR_LIB_DIR=`nspr-config --libdir`
 export OPT_FLAGS="$RPM_OPT_FLAGS -fno-strict-aliasing"
 export LIBDIR=%{_libdir}
-%ifarch x86_64 s390x ppc64 ia64
+%ifarch x86_64 
 export USE_64=1
 %endif
 export NSS_USE_SYSTEM_SQLITE=1
@@ -159,7 +159,6 @@ mkdir -p $RPM_BUILD_ROOT%{_libexecdir}/nss
 mkdir -p $RPM_BUILD_ROOT%{_includedir}/nss3
 mkdir -p $RPM_BUILD_ROOT%{_bindir}
 mkdir -p $RPM_BUILD_ROOT%{_sbindir}
-mkdir -p $RPM_BUILD_ROOT/%{_lib}
 mkdir -p $RPM_BUILD_ROOT%{nssdbdir}
 pushd mozilla/dist/Linux*
 # copy headers
@@ -178,7 +177,7 @@ cp -L  lib/libnss3.so \
        $RPM_BUILD_ROOT%{_libdir}
 cp -L  lib/libfreebl3.so \
        lib/libfreebl3.chk \
-       $RPM_BUILD_ROOT/%{_lib}
+       $RPM_BUILD_ROOT/%{_libdir}
 # copy static libs
 cp -L  lib/libcrmf.a \
        lib/libnssb.a \
@@ -250,7 +249,7 @@ install -m 644 %{SOURCE9} $RPM_BUILD_ROOT%{nssdbdir}
   %{__os_install_post} \
   LD_LIBRARY_PATH=$RPM_BUILD_ROOT/%{_lib}:$RPM_BUILD_ROOT%{_libdir} $RPM_BUILD_ROOT%{_libexecdir}/nss/shlibsign -i $RPM_BUILD_ROOT%{_libdir}/libsoftokn3.so \
   LD_LIBRARY_PATH=$RPM_BUILD_ROOT/%{_lib}:$RPM_BUILD_ROOT%{_libdir} $RPM_BUILD_ROOT%{_libexecdir}/nss/shlibsign -i $RPM_BUILD_ROOT%{_libdir}/libnssdbm3.so \
-  LD_LIBRARY_PATH=$RPM_BUILD_ROOT/%{_lib}:$RPM_BUILD_ROOT%{_libdir} $RPM_BUILD_ROOT%{_libexecdir}/nss/shlibsign -i $RPM_BUILD_ROOT/%{_lib}/libfreebl3.so \
+  LD_LIBRARY_PATH=$RPM_BUILD_ROOT/%{_lib}:$RPM_BUILD_ROOT%{_libdir} $RPM_BUILD_ROOT%{_libexecdir}/nss/shlibsign -i $RPM_BUILD_ROOT/%{_libdir}/libfreebl3.so \
 %{nil}
 
 %post -p /sbin/ldconfig
@@ -311,8 +310,8 @@ rm -rf $RPM_BUILD_ROOT
 
 %files -n libfreebl3
 %defattr(-, root, root)
-/%{_lib}/libfreebl3.so
-/%{_lib}/libfreebl3.chk
+%{_libdir}/libfreebl3.so
+%{_libdir}/libfreebl3.chk
 
 %files -n libsoftokn3
 %defattr(-, root, root)
