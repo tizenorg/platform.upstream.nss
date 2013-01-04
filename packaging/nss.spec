@@ -4,8 +4,8 @@ Name:           nss
 BuildRequires:  gcc-c++
 BuildRequires:  nspr-devel
 BuildRequires:  pkg-config
-BuildRequires:  sqlite3-devel
 BuildRequires:  zlib-devel
+BuildRequires:  pkgconfig(sqlite3)
 Version:        3.13.6
 Release:        0
 Summary:        Network Security Services
