@@ -120,10 +120,10 @@ Mozilla project.
 cd mozilla
 
 %build
-modified="$(sed -n '/^----/n;s/ - .*$//;p;q' "%{_sourcedir}/%{name}.changes")"
-DATE="\"$(date -d "${modified}" "+%%b %%e %%Y")\""
-TIME="\"$(date -d "${modified}" "+%%R")\""
-find . -name '*.[ch]' -print -exec sed -i "s/__DATE__/${DATE}/g;s/__TIME__/${TIME}/g" {} +
+#modified="$(sed -n '/^----/n;s/ - .*$//;p;q' "%{_sourcedir}/%{name}.changes")"
+#DATE="\"$(date -d "${modified}" "+%%b %%e %%Y")\""
+#TIME="\"$(date -d "${modified}" "+%%R")\""
+#find . -name '*.[ch]' -print -exec sed -i "s/__DATE__/${DATE}/g;s/__TIME__/${TIME}/g" {} +
 
 cd mozilla/security/nss
 export FREEBL_NO_DEPEND=1
