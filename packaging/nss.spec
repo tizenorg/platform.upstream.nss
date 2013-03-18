@@ -10,7 +10,7 @@ Version:        3.13.6
 Release:        0
 Summary:        Network Security Services
 License:        MPL-1.1 or GPL-2.0+ or LGPL-2.1+
-Group:          System/Libraries
+Group:          Security/Crypto Libraries
 Url:            http://www.mozilla.org/projects/security/pki/nss/
 # cvs -d :pserver:anonymous@cvs-mirror.mozilla.org:/cvsroot co -r <RTM_TAG> NSS
 Source:         nss-%{version}.tar.bz2
@@ -27,7 +27,6 @@ Requires(pre):  nspr >= %nspr_ver
 Requires(pre):  libfreebl3 >= %{nss_softokn_fips_version}
 Requires(pre):  libsoftokn3 >= %{nss_softokn_fips_version}
 Requires:       nss-certs
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 %define nssdbdir %{_sysconfdir}/pki/nssdb
 %define run_testsuite 0
 
@@ -41,7 +40,7 @@ certificates, and other security standards.
 
 %package devel
 Summary:        Network (Netscape) Security Services development files
-Group:          Development/Libraries/Other
+Group:          Development/Libraries
 Requires:       libfreebl3
 Requires:       libsoftokn3
 Requires:       nspr-devel
@@ -57,7 +56,7 @@ certificates, and other security standards.
 
 %package tools
 Summary:        Tools for developing, debugging, and managing applications that use NSS
-Group:          System/Management
+Group:          Security/Crypto Libraries
 Requires(pre):  nss >= %{version}
 
 %description tools
@@ -109,7 +108,7 @@ Network Security Services Softoken Cryptographic Module
 
 %package certs
 Summary:        CA certificates for NSS
-Group:          Productivity/Networking/Security
+Group:          Security/Crypto Libraries
 
 %description certs
 This package contains the integrated CA root certificates from the
