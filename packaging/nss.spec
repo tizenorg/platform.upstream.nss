@@ -79,7 +79,7 @@ any system or user configured modules.
 
 %package -n libfreebl3
 Summary:        Freebl library for the Network Security Services
-Group:          System/Libraries
+Group:          Security/Crypto Libraries
 
 %description -n libfreebl3
 Network Security Services (NSS) is a set of libraries designed to
@@ -93,7 +93,7 @@ This package installs the freebl library from NSS.
 
 %package -n libsoftokn3
 Summary:        Network Security Services Softoken Module
-Group:          System/Libraries
+Group:          Security/Network
 Requires:       libfreebl3 = %{version}-%{release}
 
 %description -n libsoftokn3
@@ -108,7 +108,7 @@ Network Security Services Softoken Cryptographic Module
 
 %package certs
 Summary:        CA certificates for NSS
-Group:          Security/Crypto Libraries
+Group:          Security/Certificate Management
 
 %description certs
 This package contains the integrated CA root certificates from the
