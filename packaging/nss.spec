@@ -22,6 +22,7 @@ Source6:        setup-nsssysinit.sh
 Source7:        cert9.db
 Source8:        key4.db
 Source9:        pkcs11.txt
+Source1001: 	nss.manifest
 %define nspr_ver %(rpm -q --queryformat '%{VERSION}' nspr)
 Requires(pre):  nspr >= %nspr_ver
 Requires(pre):  libfreebl3 >= %{nss_softokn_fips_version}
@@ -117,6 +118,7 @@ Mozilla project.
 
 %prep
 %setup -n nss-%{version} -q
+cp %{SOURCE1001} .
 cd mozilla
 
 %build
@@ -279,6 +281,7 @@ fi
 rm -rf $RPM_BUILD_ROOT
 
 %files
+%manifest %{name}.manifest
 %defattr(-, root, root)
 %{_libdir}/libnss3.so
 %{_libdir}/libnssutil3.so
@@ -286,6 +289,7 @@ rm -rf $RPM_BUILD_ROOT
 %{_libdir}/libssl3.so
 
 %files devel
+%manifest %{name}.manifest
 %defattr(644, root, root, 755)
 %{_includedir}/nss3/
 %{_libdir}/*.a
@@ -293,6 +297,7 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{_bindir}/nss-config
 
 %files tools
+%manifest %{name}.manifest
 %defattr(-, root, root)
 %{_bindir}/*
 %exclude %{_sbindir}/setup-nsssysinit.sh
@@ -300,6 +305,7 @@ rm -rf $RPM_BUILD_ROOT
 %exclude %{_bindir}/nss-config
 
 %files sysinit
+%manifest %{name}.manifest
 %defattr(-, root, root)
 %dir %{_sysconfdir}/pki
 %dir %{_sysconfdir}/pki/nssdb
@@ -308,11 +314,13 @@ rm -rf $RPM_BUILD_ROOT
 %{_sbindir}/setup-nsssysinit.sh
 
 %files -n libfreebl3
+%manifest %{name}.manifest
 %defattr(-, root, root)
 %{_libdir}/libfreebl3.so
 %{_libdir}/libfreebl3.chk
 
 %files -n libsoftokn3
+%manifest %{name}.manifest
 %defattr(-, root, root)
 %{_libdir}/libsoftokn3.so
 %{_libdir}/libsoftokn3.chk
@@ -320,6 +328,7 @@ rm -rf $RPM_BUILD_ROOT
 %{_libdir}/libnssdbm3.chk
 
 %files certs
+%manifest %{name}.manifest
 %defattr(-, root, root)
 %{_libdir}/libnssckbi.so
 
