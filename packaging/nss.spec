@@ -6,7 +6,7 @@ BuildRequires:  nspr-devel
 BuildRequires:  pkg-config
 BuildRequires:  zlib-devel
 BuildRequires:  pkgconfig(sqlite3)
-Version:        3.13.6
+Version:        3.15.1
 Release:        0
 Summary:        Network Security Services
 License:        MPL-1.1 or GPL-2.0+ or LGPL-2.1+
@@ -119,7 +119,6 @@ Mozilla project.
 %prep
 %setup -n nss-%{version} -q
 cp %{SOURCE1001} .
-cd mozilla
 
 %build
 #modified="$(sed -n '/^----/n;s/ - .*$//;p;q' "%{_sourcedir}/%{name}.changes")"
@@ -127,7 +126,7 @@ cd mozilla
 #TIME="\"$(date -d "${modified}" "+%%R")\""
 #find . -name '*.[ch]' -print -exec sed -i "s/__DATE__/${DATE}/g;s/__TIME__/${TIME}/g" {} +
 
-cd mozilla/security/nss
+cd nss
 export FREEBL_NO_DEPEND=1
 export NSPR_INCLUDE_DIR=`nspr-config --includedir`
 export NSPR_LIB_DIR=`nspr-config --libdir`
@@ -161,7 +160,7 @@ mkdir -p $RPM_BUILD_ROOT%{_includedir}/nss3
 mkdir -p $RPM_BUILD_ROOT%{_bindir}
 mkdir -p $RPM_BUILD_ROOT%{_sbindir}
 mkdir -p $RPM_BUILD_ROOT%{nssdbdir}
-pushd mozilla/dist/Linux*
+pushd dist/Linux*
 # copy headers
 cp -rL ../public/nss/*.h $RPM_BUILD_ROOT%{_includedir}/nss3
 # copy dynamic libs
@@ -216,9 +215,9 @@ s:%%NSPR_VERSION%%:%{nspr_ver}:g" \
   %{SOURCE1} > $RPM_BUILD_ROOT%{_libdir}/pkgconfig/nss.pc
 # prepare nss-config file
 popd
-NSS_VMAJOR=`cat mozilla/security/nss/lib/nss/nss.h | grep "#define.*NSS_VMAJOR" | awk '{print $3}'`
-NSS_VMINOR=`cat mozilla/security/nss/lib/nss/nss.h | grep "#define.*NSS_VMINOR" | awk '{print $3}'`
-NSS_VPATCH=`cat mozilla/security/nss/lib/nss/nss.h | grep "#define.*NSS_VPATCH" | awk '{print $3}'`
+NSS_VMAJOR=`cat nss/lib/nss/nss.h | grep "#define.*NSS_VMAJOR" | awk '{print $3}'`
+NSS_VMINOR=`cat nss/lib/nss/nss.h | grep "#define.*NSS_VMINOR" | awk '{print $3}'`
+NSS_VPATCH=`cat nss/lib/nss/nss.h | grep "#define.*NSS_VPATCH" | awk '{print $3}'`
 cat %{SOURCE3} | sed -e "s,@libdir@,%{_libdir},g" \
                      -e "s,@prefix@,%{_prefix},g" \
                      -e "s,@exec_prefix@,%{_prefix},g" \
