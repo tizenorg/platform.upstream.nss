@@ -6,7 +6,7 @@ BuildRequires:  nspr-devel
 BuildRequires:  pkg-config
 BuildRequires:  zlib-devel
 BuildRequires:  pkgconfig(sqlite3)
-Version:        3.15.3.1
+Version:        3.15.4
 Release:        0
 Summary:        Network Security Services
 License:        MPL-1.1 or GPL-2.0+ or LGPL-2.1+
