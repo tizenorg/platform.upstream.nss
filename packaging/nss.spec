@@ -132,7 +132,7 @@ export NSPR_INCLUDE_DIR=`nspr-config --includedir`
 export NSPR_LIB_DIR=`nspr-config --libdir`
 export OPT_FLAGS="$RPM_OPT_FLAGS -fno-strict-aliasing"
 export LIBDIR=%{_libdir}
-%ifarch x86_64
+%ifarch x86_64 aarch64
 export USE_64=1
 %endif
 export NSS_USE_SYSTEM_SQLITE=1
