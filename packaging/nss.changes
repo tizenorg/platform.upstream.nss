@@ -1,3 +1,6 @@
+* Fri Aug 01 2014 John L. Whiteman <john.l.whiteman@intel.com> upstream/3.16.3-29-g98b20df
+- Updating to 3.16.3.  Bug fixes and updated/deleted certificates
+
 * Mon Mar 18 2013 Anas Nashif <anas.nashif@intel.com> submit/trunk/20130318.201029@e2cd6e4
 - Fixed package groups again
 

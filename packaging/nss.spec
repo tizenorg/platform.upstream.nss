@@ -6,7 +6,7 @@ BuildRequires:  nspr-devel
 BuildRequires:  pkg-config
 BuildRequires:  zlib-devel
 BuildRequires:  pkgconfig(sqlite3)
-Version:        3.15.4
+Version:        3.16.3
 Release:        0
 Summary:        Network Security Services
 License:        MPL-1.1 or GPL-2.0+ or LGPL-2.1+
@@ -126,7 +126,7 @@ cp %{SOURCE1001} .
 #TIME="\"$(date -d "${modified}" "+%%R")\""
 #find . -name '*.[ch]' -print -exec sed -i "s/__DATE__/${DATE}/g;s/__TIME__/${TIME}/g" {} +
 
-cd nss
+#cd nss
 export FREEBL_NO_DEPEND=1
 export NSPR_INCLUDE_DIR=`nspr-config --includedir`
 export NSPR_LIB_DIR=`nspr-config --libdir`
@@ -160,7 +160,8 @@ mkdir -p $RPM_BUILD_ROOT%{_includedir}/nss3
 mkdir -p $RPM_BUILD_ROOT%{_bindir}
 mkdir -p $RPM_BUILD_ROOT%{_sbindir}
 mkdir -p $RPM_BUILD_ROOT%{nssdbdir}
-pushd dist/Linux*
+#pushd dist/Linux*
+pushd ../dist/Linux*
 # copy headers
 cp -rL ../public/nss/*.h $RPM_BUILD_ROOT%{_includedir}/nss3
 # copy dynamic libs
