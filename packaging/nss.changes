@@ -1,3 +1,6 @@
+* Thu Aug 21 2014 John L. Whiteman <john.l.whiteman@intel.com> upstream/3.17-30-gb554083
+- Updated to 3.17 for bug fixes and optimizations
+
 * Fri Aug 01 2014 John L. Whiteman <john.l.whiteman@intel.com> upstream/3.16.3-29-g98b20df
 - Updating to 3.16.3.  Bug fixes and updated/deleted certificates
 
