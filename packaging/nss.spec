@@ -6,7 +6,7 @@ BuildRequires:  nspr-devel
 BuildRequires:  pkg-config
 BuildRequires:  zlib-devel
 BuildRequires:  pkgconfig(sqlite3)
-Version:        3.16.3
+Version:        3.17
 Release:        0
 Summary:        Network Security Services
 License:        MPL-1.1 or GPL-2.0+ or LGPL-2.1+
@@ -160,7 +160,6 @@ mkdir -p $RPM_BUILD_ROOT%{_includedir}/nss3
 mkdir -p $RPM_BUILD_ROOT%{_bindir}
 mkdir -p $RPM_BUILD_ROOT%{_sbindir}
 mkdir -p $RPM_BUILD_ROOT%{nssdbdir}
-#pushd dist/Linux*
 pushd ../dist/Linux*
 # copy headers
 cp -rL ../public/nss/*.h $RPM_BUILD_ROOT%{_includedir}/nss3
