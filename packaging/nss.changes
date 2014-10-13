@@ -1,3 +1,6 @@
+* Mon Oct 13 2014 John L. Whiteman <john.l.whiteman@intel.com> upstream/3.17.2-32-g5e07874
+- Update to 3.17.2.  Fixes for 3.17.1 regressions
+
 * Mon Sep 29 2014 John L. Whiteman <john.l.whiteman@intel.com> upstream/3.17.1-31-gd7db8bc
 - Update to 3.17.1.  Fix for CVE-2014-156
 
