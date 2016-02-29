@@ -9,7 +9,7 @@ BuildRequires:  pkgconfig(sqlite3)
 Version:        3.17.2
 Release:        0
 Summary:        Network Security Services
-License:        MPL-2.0 or GPL-2.0+ or LGPL-2.1+
+License:        MPL-2.0 or GPL-2.0+ or LGPL-2.1+ and Zlib
 Group:          Security/Crypto Libraries
 Url:            http://www.mozilla.org/projects/security/pki/nss/
 # cvs -d :pserver:anonymous@cvs-mirror.mozilla.org:/cvsroot co -r <RTM_TAG> NSS
@@ -57,6 +57,7 @@ certificates, and other security standards.
 
 %package tools
 Summary:        Tools for developing, debugging, and managing applications that use NSS
+License:        MPL-2.0 and BSD-2.0 and Apache-2.0
 Group:          Security/Crypto Libraries
 Requires(pre):  nss >= %{version}
 
@@ -282,6 +283,8 @@ rm -rf $RPM_BUILD_ROOT
 %files
 %manifest %{name}.manifest
 %defattr(-, root, root)
+%license COPYING
+%license LICENSE.Zlib
 %{_libdir}/libnss3.so
 %{_libdir}/libnssutil3.so
 %{_libdir}/libsmime3.so
@@ -298,6 +301,9 @@ rm -rf $RPM_BUILD_ROOT
 %files tools
 %manifest %{name}.manifest
 %defattr(-, root, root)
+%license COPYING
+%license LICENSE.BSD-2.0
+%license LICENSE.Apache-2.0
 %{_bindir}/*
 %exclude %{_sbindir}/setup-nsssysinit.sh
 %{_libexecdir}/nss/
