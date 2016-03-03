@@ -9,7 +9,7 @@ BuildRequires:  pkgconfig(sqlite3)
 Version:        3.17.2
 Release:        0
 Summary:        Network Security Services
-License:        MPL-2.0 or GPL-2.0+ or LGPL-2.1+ and Zlib
+License:        MPL-2.0 and Zlib
 Group:          Security/Crypto Libraries
 Url:            http://www.mozilla.org/projects/security/pki/nss/
 # cvs -d :pserver:anonymous@cvs-mirror.mozilla.org:/cvsroot co -r <RTM_TAG> NSS
