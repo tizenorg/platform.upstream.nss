@@ -134,7 +134,7 @@ export CFLAGS+=" -fvisibility=hidden"
 export FREEBL_NO_DEPEND=1
 export NSPR_INCLUDE_DIR=`nspr-config --includedir`
 export NSPR_LIB_DIR=`nspr-config --libdir`
-export OPT_FLAGS="$RPM_OPT_FLAGS -fno-strict-aliasing"
+export OPT_FLAGS="$RPM_OPT_FLAGS -fno-strict-aliasing -fvisibility=hidden"
 export LIBDIR=%{_libdir}
 %ifarch x86_64 aarch64
 export USE_64=1
