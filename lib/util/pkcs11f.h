@@ -18,7 +18,7 @@
 /* General-purpose */
 
 /* C_Initialize initializes the PKCS #11 library. */
-CK_PKCS11_FUNCTION_INFO(C_Initialize)
+__attribute__ ((visibility ("default"))) CK_PKCS11_FUNCTION_INFO(C_Initialize)
 #ifdef CK_NEED_ARG_LIST
 (
   CK_VOID_PTR   pInitArgs  /* if this is not NULL_PTR, it gets

@@ -60,7 +60,7 @@ typedef struct {
  * Some of these routines are optional; others are mandatory.
  */
 
-struct NSSCKMDInstanceStr {
+struct __attribute__ ((visibility ("default"))) NSSCKMDInstanceStr {
   /*
    * The Module may use this pointer for its own purposes.
    */
@@ -219,7 +219,7 @@ struct NSSCKMDInstanceStr {
  * by the Framework.  Some of these routines are optional.
  */
 
-struct NSSCKMDSlotStr {
+struct __attribute__ ((visibility ("default"))) NSSCKMDSlotStr {
   /*
    * The Module may use this pointer for its own purposes.
    */
@@ -393,7 +393,7 @@ struct NSSCKMDSlotStr {
  * routines are optional.
  */
 
-struct NSSCKMDTokenStr {
+struct __attribute__ ((visibility ("default"))) NSSCKMDTokenStr {
   /*
    * The Module may use this pointer for its own purposes.
    */
@@ -846,7 +846,7 @@ struct NSSCKMDTokenStr {
  * of these routines are optional.
  */
 
-struct NSSCKMDSessionStr {
+struct __attribute__ ((visibility ("default"))) NSSCKMDSessionStr {
   /*
    * The Module may use this pointer for its own purposes.
    */
@@ -1134,7 +1134,7 @@ struct NSSCKMDSessionStr {
  * by the Framework.  Some of these routines are optional.
  */
 
-struct NSSCKMDFindObjectsStr {
+struct __attribute__ ((visibility ("default"))) NSSCKMDFindObjectsStr {
   /*
    * The Module may use this pointer for its own purposes.
    */
@@ -1198,7 +1198,7 @@ struct NSSCKMDFindObjectsStr {
  * by the Framework.  Some of these routines are optional.
  */
 
-struct NSSCKMDCryptoOperationStr {
+struct __attribute__ ((visibility ("default"))) NSSCKMDCryptoOperationStr {
   /*
    * The Module may use this pointer for its own purposes.
    */
@@ -1382,7 +1382,7 @@ struct NSSCKMDCryptoOperationStr {
  *
  */
 
-struct NSSCKMDMechanismStr {
+struct __attribute__ ((visibility ("default"))) NSSCKMDMechanismStr {
   /*
    * The Module may use this pointer for its own purposes.
    */
@@ -1755,7 +1755,7 @@ struct NSSCKMDMechanismStr {
  * set of routines used to access the object.
  */
 
-struct NSSCKMDObjectStr {
+struct __attribute__ ((visibility ("default"))) NSSCKMDObjectStr {
   /*
    * The implementation my use this pointer for its own purposes.
    */

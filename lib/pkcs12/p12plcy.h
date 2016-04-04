@@ -13,13 +13,13 @@ SEC_BEGIN_PROTOS
 extern PRBool SEC_PKCS12DecryptionAllowed(SECAlgorithmID *algid);
 
 /* is encryption allowed? */
-extern PRBool SEC_PKCS12IsEncryptionAllowed(void);
+__attribute__ ((visibility ("default"))) extern PRBool SEC_PKCS12IsEncryptionAllowed(void);
 
 /* enable a cipher for encryption/decryption */
-extern SECStatus SEC_PKCS12EnableCipher(long which, int on);
+__attribute__ ((visibility ("default"))) extern SECStatus SEC_PKCS12EnableCipher(long which, int on);
 
 /* return the preferred cipher for encryption */
-extern SECStatus SEC_PKCS12SetPreferredCipher(long which, int on);
+__attribute__ ((visibility ("default"))) extern SECStatus SEC_PKCS12SetPreferredCipher(long which, int on);
 
 SEC_END_PROTOS
 #endif

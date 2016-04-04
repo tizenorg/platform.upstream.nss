@@ -184,7 +184,7 @@ nss_ckcapi_DestroyInternalObject
   ckcapiInternalObject *io
 );
 
-NSS_EXTERN CK_RV
+__attribute__ ((visibility ("default"))) NSS_EXTERN CK_RV
 nss_ckcapi_FetchKeyContainer
 (
   ckcapiInternalObject *iKey,

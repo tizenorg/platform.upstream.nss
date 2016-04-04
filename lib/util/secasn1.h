@@ -29,33 +29,33 @@ SEC_BEGIN_PROTOS
 ** Decoding.
 */
 
-extern SEC_ASN1DecoderContext *SEC_ASN1DecoderStart(PLArenaPool *pool,
+__attribute__ ((visibility ("default"))) extern SEC_ASN1DecoderContext *SEC_ASN1DecoderStart(PLArenaPool *pool,
 						    void *dest,
 						    const SEC_ASN1Template *t);
 
 /* XXX char or unsigned char? */
-extern SECStatus SEC_ASN1DecoderUpdate(SEC_ASN1DecoderContext *cx,
+__attribute__ ((visibility ("default"))) extern SECStatus SEC_ASN1DecoderUpdate(SEC_ASN1DecoderContext *cx,
 				       const char *buf,
 				       unsigned long len);
 
-extern SECStatus SEC_ASN1DecoderFinish(SEC_ASN1DecoderContext *cx);
+__attribute__ ((visibility ("default"))) extern SECStatus SEC_ASN1DecoderFinish(SEC_ASN1DecoderContext *cx);
 
 /* Higher level code detected an error, abort the rest of the processing */
-extern void SEC_ASN1DecoderAbort(SEC_ASN1DecoderContext *cx, int error);
+__attribute__ ((visibility ("default"))) extern void SEC_ASN1DecoderAbort(SEC_ASN1DecoderContext *cx, int error);
 
-extern void SEC_ASN1DecoderSetFilterProc(SEC_ASN1DecoderContext *cx,
+__attribute__ ((visibility ("default"))) extern void SEC_ASN1DecoderSetFilterProc(SEC_ASN1DecoderContext *cx,
 					 SEC_ASN1WriteProc fn,
 					 void *arg, PRBool no_store);
 
-extern void SEC_ASN1DecoderClearFilterProc(SEC_ASN1DecoderContext *cx);
+__attribute__ ((visibility ("default"))) extern void SEC_ASN1DecoderClearFilterProc(SEC_ASN1DecoderContext *cx);
 
-extern void SEC_ASN1DecoderSetNotifyProc(SEC_ASN1DecoderContext *cx,
+__attribute__ ((visibility ("default"))) extern void SEC_ASN1DecoderSetNotifyProc(SEC_ASN1DecoderContext *cx,
 					 SEC_ASN1NotifyProc fn,
 					 void *arg);
 
-extern void SEC_ASN1DecoderClearNotifyProc(SEC_ASN1DecoderContext *cx);
+__attribute__ ((visibility ("default"))) extern void SEC_ASN1DecoderClearNotifyProc(SEC_ASN1DecoderContext *cx);
 
-extern SECStatus SEC_ASN1Decode(PLArenaPool *pool, void *dest,
+__attribute__ ((visibility ("default"))) extern SECStatus SEC_ASN1Decode(PLArenaPool *pool, void *dest,
 				const SEC_ASN1Template *t,
 				const char *buf, long len);
 
@@ -66,11 +66,11 @@ extern SECStatus SEC_ASN1Decode(PLArenaPool *pool, void *dest,
    allocated (from POINTER, SET OF, SEQUENCE OF) the decoder sets the type
    field to siBuffer. */
 
-extern SECStatus SEC_ASN1DecodeItem(PLArenaPool *pool, void *dest,
+__attribute__ ((visibility ("default"))) extern SECStatus SEC_ASN1DecodeItem(PLArenaPool *pool, void *dest,
 				    const SEC_ASN1Template *t,
 				    const SECItem *src);
 
-extern SECStatus SEC_QuickDERDecodeItem(PLArenaPool* arena, void* dest,
+__attribute__ ((visibility ("default"))) extern SECStatus SEC_QuickDERDecodeItem(PLArenaPool* arena, void* dest,
                      const SEC_ASN1Template* templateEntry,
                      const SECItem* src);
 
@@ -78,40 +78,40 @@ extern SECStatus SEC_QuickDERDecodeItem(PLArenaPool* arena, void* dest,
 ** Encoding.
 */
 
-extern SEC_ASN1EncoderContext *SEC_ASN1EncoderStart(const void *src,
+__attribute__ ((visibility ("default"))) extern SEC_ASN1EncoderContext *SEC_ASN1EncoderStart(const void *src,
 						    const SEC_ASN1Template *t,
 						    SEC_ASN1WriteProc fn,
 						    void *output_arg);
 
 /* XXX char or unsigned char? */
-extern SECStatus SEC_ASN1EncoderUpdate(SEC_ASN1EncoderContext *cx,
+__attribute__ ((visibility ("default"))) extern SECStatus SEC_ASN1EncoderUpdate(SEC_ASN1EncoderContext *cx,
 				       const char *buf,
 				       unsigned long len);
 
-extern void SEC_ASN1EncoderFinish(SEC_ASN1EncoderContext *cx);
+__attribute__ ((visibility ("default"))) extern void SEC_ASN1EncoderFinish(SEC_ASN1EncoderContext *cx);
 
 /* Higher level code detected an error, abort the rest of the processing */
-extern void SEC_ASN1EncoderAbort(SEC_ASN1EncoderContext *cx, int error);
+__attribute__ ((visibility ("default"))) extern void SEC_ASN1EncoderAbort(SEC_ASN1EncoderContext *cx, int error);
 
-extern void SEC_ASN1EncoderSetNotifyProc(SEC_ASN1EncoderContext *cx,
+__attribute__ ((visibility ("default"))) extern void SEC_ASN1EncoderSetNotifyProc(SEC_ASN1EncoderContext *cx,
 					 SEC_ASN1NotifyProc fn,
 					 void *arg);
 
-extern void SEC_ASN1EncoderClearNotifyProc(SEC_ASN1EncoderContext *cx);
+__attribute__ ((visibility ("default"))) extern void SEC_ASN1EncoderClearNotifyProc(SEC_ASN1EncoderContext *cx);
 
-extern void SEC_ASN1EncoderSetStreaming(SEC_ASN1EncoderContext *cx);
+__attribute__ ((visibility ("default"))) extern void SEC_ASN1EncoderSetStreaming(SEC_ASN1EncoderContext *cx);
 
-extern void SEC_ASN1EncoderClearStreaming(SEC_ASN1EncoderContext *cx);
+__attribute__ ((visibility ("default"))) extern void SEC_ASN1EncoderClearStreaming(SEC_ASN1EncoderContext *cx);
 
-extern void sec_ASN1EncoderSetDER(SEC_ASN1EncoderContext *cx);
+__attribute__ ((visibility ("default"))) extern void sec_ASN1EncoderSetDER(SEC_ASN1EncoderContext *cx);
 
-extern void sec_ASN1EncoderClearDER(SEC_ASN1EncoderContext *cx);
+__attribute__ ((visibility ("default"))) extern void sec_ASN1EncoderClearDER(SEC_ASN1EncoderContext *cx);
 
-extern void SEC_ASN1EncoderSetTakeFromBuf(SEC_ASN1EncoderContext *cx);
+__attribute__ ((visibility ("default"))) extern void SEC_ASN1EncoderSetTakeFromBuf(SEC_ASN1EncoderContext *cx);
 
-extern void SEC_ASN1EncoderClearTakeFromBuf(SEC_ASN1EncoderContext *cx);
+__attribute__ ((visibility ("default"))) extern void SEC_ASN1EncoderClearTakeFromBuf(SEC_ASN1EncoderContext *cx);
 
-extern SECStatus SEC_ASN1Encode(const void *src, const SEC_ASN1Template *t,
+__attribute__ ((visibility ("default"))) extern SECStatus SEC_ASN1Encode(const void *src, const SEC_ASN1Template *t,
 				SEC_ASN1WriteProc output_proc,
 				void *output_arg);
 
@@ -121,17 +121,17 @@ extern SECStatus SEC_ASN1Encode(const void *src, const SEC_ASN1Template *t,
  * not NULL, the caller should free the data buffer pointed to by dest with a
  * SECITEM_FreeItem(dest, PR_FALSE) or PORT_Free(dest->data) call.
  */
-extern SECItem * SEC_ASN1EncodeItem(PLArenaPool *pool, SECItem *dest,
+__attribute__ ((visibility ("default"))) extern SECItem * SEC_ASN1EncodeItem(PLArenaPool *pool, SECItem *dest,
 				    const void *src, const SEC_ASN1Template *t);
 
-extern SECItem * SEC_ASN1EncodeInteger(PLArenaPool *pool,
+__attribute__ ((visibility ("default"))) extern SECItem * SEC_ASN1EncodeInteger(PLArenaPool *pool,
 				       SECItem *dest, long value);
 
-extern SECItem * SEC_ASN1EncodeUnsignedInteger(PLArenaPool *pool,
+__attribute__ ((visibility ("default"))) extern SECItem * SEC_ASN1EncodeUnsignedInteger(PLArenaPool *pool,
 					       SECItem *dest,
 					       unsigned long value);
 
-extern SECStatus SEC_ASN1DecodeInteger(SECItem *src,
+__attribute__ ((visibility ("default"))) extern SECStatus SEC_ASN1DecodeInteger(SECItem *src,
 				       unsigned long *value);
 
 /*
@@ -142,11 +142,11 @@ extern SECStatus SEC_ASN1DecodeInteger(SECItem *src,
  * We have a length that needs to be encoded; how many bytes will the
  * encoding take?
  */
-extern int SEC_ASN1LengthLength (unsigned long len);
+__attribute__ ((visibility ("default"))) extern int SEC_ASN1LengthLength (unsigned long len);
 
 /* encode the length and return the number of bytes we encoded. Buffer
  * must be pre allocated  */
-extern int SEC_ASN1EncodeLength(unsigned char *buf,int value);
+__attribute__ ((visibility ("default"))) extern int SEC_ASN1EncodeLength(unsigned char *buf,int value);
 
 /*
  * Find the appropriate subtemplate for the given template.
@@ -159,14 +159,14 @@ extern int SEC_ASN1EncodeLength(unsigned char *buf,int value);
  * "encoding", when true, means that we are in the process of encoding
  *	(as opposed to in the process of decoding)
  */
-extern const SEC_ASN1Template *
+__attribute__ ((visibility ("default"))) extern const SEC_ASN1Template *
 SEC_ASN1GetSubtemplate (const SEC_ASN1Template *inTemplate, void *thing,
 			PRBool encoding);
 
 /* whether the template is for a primitive type or a choice of
  * primitive types
  */
-extern PRBool SEC_ASN1IsTemplateSimple(const SEC_ASN1Template *theTemplate);
+__attribute__ ((visibility ("default"))) extern PRBool SEC_ASN1IsTemplateSimple(const SEC_ASN1Template *theTemplate);
 
 /************************************************************************/
 
@@ -181,112 +181,112 @@ extern PRBool SEC_ASN1IsTemplateSimple(const SEC_ASN1Template *theTemplate);
  * ones in the appropriate place.
  */
 
-extern const SEC_ASN1Template SEC_AnyTemplate[];
-extern const SEC_ASN1Template SEC_BitStringTemplate[];
-extern const SEC_ASN1Template SEC_BMPStringTemplate[];
-extern const SEC_ASN1Template SEC_BooleanTemplate[];
-extern const SEC_ASN1Template SEC_EnumeratedTemplate[];
-extern const SEC_ASN1Template SEC_GeneralizedTimeTemplate[];
-extern const SEC_ASN1Template SEC_IA5StringTemplate[];
-extern const SEC_ASN1Template SEC_IntegerTemplate[];
-extern const SEC_ASN1Template SEC_NullTemplate[];
-extern const SEC_ASN1Template SEC_ObjectIDTemplate[];
-extern const SEC_ASN1Template SEC_OctetStringTemplate[];
-extern const SEC_ASN1Template SEC_PrintableStringTemplate[];
-extern const SEC_ASN1Template SEC_T61StringTemplate[];
-extern const SEC_ASN1Template SEC_UniversalStringTemplate[];
-extern const SEC_ASN1Template SEC_UTCTimeTemplate[];
-extern const SEC_ASN1Template SEC_UTF8StringTemplate[];
-extern const SEC_ASN1Template SEC_VisibleStringTemplate[];
+__attribute__ ((visibility ("default"))) extern const SEC_ASN1Template SEC_AnyTemplate[];
+__attribute__ ((visibility ("default"))) extern const SEC_ASN1Template SEC_BitStringTemplate[];
+__attribute__ ((visibility ("default"))) extern const SEC_ASN1Template SEC_BMPStringTemplate[];
+__attribute__ ((visibility ("default"))) extern const SEC_ASN1Template SEC_BooleanTemplate[];
+__attribute__ ((visibility ("default"))) extern const SEC_ASN1Template SEC_EnumeratedTemplate[];
+__attribute__ ((visibility ("default"))) extern const SEC_ASN1Template SEC_GeneralizedTimeTemplate[];
+__attribute__ ((visibility ("default"))) extern const SEC_ASN1Template SEC_IA5StringTemplate[];
+__attribute__ ((visibility ("default"))) extern const SEC_ASN1Template SEC_IntegerTemplate[];
+__attribute__ ((visibility ("default"))) extern const SEC_ASN1Template SEC_NullTemplate[];
+__attribute__ ((visibility ("default"))) extern const SEC_ASN1Template SEC_ObjectIDTemplate[];
+__attribute__ ((visibility ("default"))) extern const SEC_ASN1Template SEC_OctetStringTemplate[];
+__attribute__ ((visibility ("default"))) extern const SEC_ASN1Template SEC_PrintableStringTemplate[];
+__attribute__ ((visibility ("default"))) extern const SEC_ASN1Template SEC_T61StringTemplate[];
+__attribute__ ((visibility ("default"))) extern const SEC_ASN1Template SEC_UniversalStringTemplate[];
+__attribute__ ((visibility ("default"))) extern const SEC_ASN1Template SEC_UTCTimeTemplate[];
+__attribute__ ((visibility ("default"))) extern const SEC_ASN1Template SEC_UTF8StringTemplate[];
+__attribute__ ((visibility ("default"))) extern const SEC_ASN1Template SEC_VisibleStringTemplate[];
 
-extern const SEC_ASN1Template SEC_PointerToAnyTemplate[];
-extern const SEC_ASN1Template SEC_PointerToBitStringTemplate[];
-extern const SEC_ASN1Template SEC_PointerToBMPStringTemplate[];
-extern const SEC_ASN1Template SEC_PointerToBooleanTemplate[];
-extern const SEC_ASN1Template SEC_PointerToEnumeratedTemplate[];
-extern const SEC_ASN1Template SEC_PointerToGeneralizedTimeTemplate[];
-extern const SEC_ASN1Template SEC_PointerToIA5StringTemplate[];
-extern const SEC_ASN1Template SEC_PointerToIntegerTemplate[];
-extern const SEC_ASN1Template SEC_PointerToNullTemplate[];
-extern const SEC_ASN1Template SEC_PointerToObjectIDTemplate[];
-extern const SEC_ASN1Template SEC_PointerToOctetStringTemplate[];
-extern const SEC_ASN1Template SEC_PointerToPrintableStringTemplate[];
-extern const SEC_ASN1Template SEC_PointerToT61StringTemplate[];
-extern const SEC_ASN1Template SEC_PointerToUniversalStringTemplate[];
-extern const SEC_ASN1Template SEC_PointerToUTCTimeTemplate[];
-extern const SEC_ASN1Template SEC_PointerToUTF8StringTemplate[];
-extern const SEC_ASN1Template SEC_PointerToVisibleStringTemplate[];
+__attribute__ ((visibility ("default"))) extern const SEC_ASN1Template SEC_PointerToAnyTemplate[];
+__attribute__ ((visibility ("default"))) extern const SEC_ASN1Template SEC_PointerToBitStringTemplate[];
+__attribute__ ((visibility ("default"))) extern const SEC_ASN1Template SEC_PointerToBMPStringTemplate[];
+__attribute__ ((visibility ("default"))) extern const SEC_ASN1Template SEC_PointerToBooleanTemplate[];
+__attribute__ ((visibility ("default"))) extern const SEC_ASN1Template SEC_PointerToEnumeratedTemplate[];
+__attribute__ ((visibility ("default"))) extern const SEC_ASN1Template SEC_PointerToGeneralizedTimeTemplate[];
+__attribute__ ((visibility ("default"))) extern const SEC_ASN1Template SEC_PointerToIA5StringTemplate[];
+__attribute__ ((visibility ("default"))) extern const SEC_ASN1Template SEC_PointerToIntegerTemplate[];
+__attribute__ ((visibility ("default"))) extern const SEC_ASN1Template SEC_PointerToNullTemplate[];
+__attribute__ ((visibility ("default"))) extern const SEC_ASN1Template SEC_PointerToObjectIDTemplate[];
+__attribute__ ((visibility ("default"))) extern const SEC_ASN1Template SEC_PointerToOctetStringTemplate[];
+__attribute__ ((visibility ("default"))) extern const SEC_ASN1Template SEC_PointerToPrintableStringTemplate[];
+__attribute__ ((visibility ("default"))) extern const SEC_ASN1Template SEC_PointerToT61StringTemplate[];
+__attribute__ ((visibility ("default"))) extern const SEC_ASN1Template SEC_PointerToUniversalStringTemplate[];
+__attribute__ ((visibility ("default"))) extern const SEC_ASN1Template SEC_PointerToUTCTimeTemplate[];
+__attribute__ ((visibility ("default"))) extern const SEC_ASN1Template SEC_PointerToUTF8StringTemplate[];
+__attribute__ ((visibility ("default"))) extern const SEC_ASN1Template SEC_PointerToVisibleStringTemplate[];
 
-extern const SEC_ASN1Template SEC_SequenceOfAnyTemplate[];
-extern const SEC_ASN1Template SEC_SequenceOfBitStringTemplate[];
-extern const SEC_ASN1Template SEC_SequenceOfBMPStringTemplate[];
-extern const SEC_ASN1Template SEC_SequenceOfBooleanTemplate[];
-extern const SEC_ASN1Template SEC_SequenceOfEnumeratedTemplate[];
-extern const SEC_ASN1Template SEC_SequenceOfGeneralizedTimeTemplate[];
-extern const SEC_ASN1Template SEC_SequenceOfIA5StringTemplate[];
-extern const SEC_ASN1Template SEC_SequenceOfIntegerTemplate[];
-extern const SEC_ASN1Template SEC_SequenceOfNullTemplate[];
-extern const SEC_ASN1Template SEC_SequenceOfObjectIDTemplate[];
-extern const SEC_ASN1Template SEC_SequenceOfOctetStringTemplate[];
-extern const SEC_ASN1Template SEC_SequenceOfPrintableStringTemplate[];
-extern const SEC_ASN1Template SEC_SequenceOfT61StringTemplate[];
-extern const SEC_ASN1Template SEC_SequenceOfUniversalStringTemplate[];
-extern const SEC_ASN1Template SEC_SequenceOfUTCTimeTemplate[];
-extern const SEC_ASN1Template SEC_SequenceOfUTF8StringTemplate[];
-extern const SEC_ASN1Template SEC_SequenceOfVisibleStringTemplate[];
+__attribute__ ((visibility ("default"))) extern const SEC_ASN1Template SEC_SequenceOfAnyTemplate[];
+__attribute__ ((visibility ("default"))) extern const SEC_ASN1Template SEC_SequenceOfBitStringTemplate[];
+__attribute__ ((visibility ("default"))) extern const SEC_ASN1Template SEC_SequenceOfBMPStringTemplate[];
+__attribute__ ((visibility ("default"))) extern const SEC_ASN1Template SEC_SequenceOfBooleanTemplate[];
+__attribute__ ((visibility ("default"))) extern const SEC_ASN1Template SEC_SequenceOfEnumeratedTemplate[];
+__attribute__ ((visibility ("default"))) extern const SEC_ASN1Template SEC_SequenceOfGeneralizedTimeTemplate[];
+__attribute__ ((visibility ("default"))) extern const SEC_ASN1Template SEC_SequenceOfIA5StringTemplate[];
+__attribute__ ((visibility ("default"))) extern const SEC_ASN1Template SEC_SequenceOfIntegerTemplate[];
+__attribute__ ((visibility ("default"))) extern const SEC_ASN1Template SEC_SequenceOfNullTemplate[];
+__attribute__ ((visibility ("default"))) extern const SEC_ASN1Template SEC_SequenceOfObjectIDTemplate[];
+__attribute__ ((visibility ("default"))) extern const SEC_ASN1Template SEC_SequenceOfOctetStringTemplate[];
+__attribute__ ((visibility ("default"))) extern const SEC_ASN1Template SEC_SequenceOfPrintableStringTemplate[];
+__attribute__ ((visibility ("default"))) extern const SEC_ASN1Template SEC_SequenceOfT61StringTemplate[];
+__attribute__ ((visibility ("default"))) extern const SEC_ASN1Template SEC_SequenceOfUniversalStringTemplate[];
+__attribute__ ((visibility ("default"))) extern const SEC_ASN1Template SEC_SequenceOfUTCTimeTemplate[];
+__attribute__ ((visibility ("default"))) extern const SEC_ASN1Template SEC_SequenceOfUTF8StringTemplate[];
+__attribute__ ((visibility ("default"))) extern const SEC_ASN1Template SEC_SequenceOfVisibleStringTemplate[];
 
-extern const SEC_ASN1Template SEC_SetOfAnyTemplate[];
-extern const SEC_ASN1Template SEC_SetOfBitStringTemplate[];
-extern const SEC_ASN1Template SEC_SetOfBMPStringTemplate[];
-extern const SEC_ASN1Template SEC_SetOfBooleanTemplate[];
-extern const SEC_ASN1Template SEC_SetOfEnumeratedTemplate[];
-extern const SEC_ASN1Template SEC_SetOfGeneralizedTimeTemplate[];
-extern const SEC_ASN1Template SEC_SetOfIA5StringTemplate[];
-extern const SEC_ASN1Template SEC_SetOfIntegerTemplate[];
-extern const SEC_ASN1Template SEC_SetOfNullTemplate[];
-extern const SEC_ASN1Template SEC_SetOfObjectIDTemplate[];
-extern const SEC_ASN1Template SEC_SetOfOctetStringTemplate[];
-extern const SEC_ASN1Template SEC_SetOfPrintableStringTemplate[];
-extern const SEC_ASN1Template SEC_SetOfT61StringTemplate[];
-extern const SEC_ASN1Template SEC_SetOfUniversalStringTemplate[];
-extern const SEC_ASN1Template SEC_SetOfUTCTimeTemplate[];
-extern const SEC_ASN1Template SEC_SetOfUTF8StringTemplate[];
-extern const SEC_ASN1Template SEC_SetOfVisibleStringTemplate[];
+__attribute__ ((visibility ("default"))) extern const SEC_ASN1Template SEC_SetOfAnyTemplate[];
+__attribute__ ((visibility ("default"))) extern const SEC_ASN1Template SEC_SetOfBitStringTemplate[];
+__attribute__ ((visibility ("default"))) extern const SEC_ASN1Template SEC_SetOfBMPStringTemplate[];
+__attribute__ ((visibility ("default"))) extern const SEC_ASN1Template SEC_SetOfBooleanTemplate[];
+__attribute__ ((visibility ("default"))) extern const SEC_ASN1Template SEC_SetOfEnumeratedTemplate[];
+__attribute__ ((visibility ("default"))) extern const SEC_ASN1Template SEC_SetOfGeneralizedTimeTemplate[];
+__attribute__ ((visibility ("default"))) extern const SEC_ASN1Template SEC_SetOfIA5StringTemplate[];
+__attribute__ ((visibility ("default"))) extern const SEC_ASN1Template SEC_SetOfIntegerTemplate[];
+__attribute__ ((visibility ("default"))) extern const SEC_ASN1Template SEC_SetOfNullTemplate[];
+__attribute__ ((visibility ("default"))) extern const SEC_ASN1Template SEC_SetOfObjectIDTemplate[];
+__attribute__ ((visibility ("default"))) extern const SEC_ASN1Template SEC_SetOfOctetStringTemplate[];
+__attribute__ ((visibility ("default"))) extern const SEC_ASN1Template SEC_SetOfPrintableStringTemplate[];
+__attribute__ ((visibility ("default"))) extern const SEC_ASN1Template SEC_SetOfT61StringTemplate[];
+__attribute__ ((visibility ("default"))) extern const SEC_ASN1Template SEC_SetOfUniversalStringTemplate[];
+__attribute__ ((visibility ("default"))) extern const SEC_ASN1Template SEC_SetOfUTCTimeTemplate[];
+__attribute__ ((visibility ("default"))) extern const SEC_ASN1Template SEC_SetOfUTF8StringTemplate[];
+__attribute__ ((visibility ("default"))) extern const SEC_ASN1Template SEC_SetOfVisibleStringTemplate[];
 
 /*
  * Template for skipping a subitem; this only makes sense when decoding.
  */
-extern const SEC_ASN1Template SEC_SkipTemplate[];
+__attribute__ ((visibility ("default"))) extern const SEC_ASN1Template SEC_SkipTemplate[];
 
 /* These functions simply return the address of the above-declared templates.
 ** This is necessary for Windows DLLs.  Sigh.
 */
-SEC_ASN1_CHOOSER_DECLARE(SEC_AnyTemplate)
-SEC_ASN1_CHOOSER_DECLARE(SEC_BMPStringTemplate)
-SEC_ASN1_CHOOSER_DECLARE(SEC_BooleanTemplate)
-SEC_ASN1_CHOOSER_DECLARE(SEC_BitStringTemplate)
-SEC_ASN1_CHOOSER_DECLARE(SEC_GeneralizedTimeTemplate)
-SEC_ASN1_CHOOSER_DECLARE(SEC_IA5StringTemplate)
-SEC_ASN1_CHOOSER_DECLARE(SEC_IntegerTemplate)
-SEC_ASN1_CHOOSER_DECLARE(SEC_NullTemplate)
-SEC_ASN1_CHOOSER_DECLARE(SEC_ObjectIDTemplate)
-SEC_ASN1_CHOOSER_DECLARE(SEC_OctetStringTemplate)
-SEC_ASN1_CHOOSER_DECLARE(SEC_UTCTimeTemplate)
-SEC_ASN1_CHOOSER_DECLARE(SEC_UTF8StringTemplate)
+__attribute__ ((visibility ("default"))) SEC_ASN1_CHOOSER_DECLARE(SEC_AnyTemplate)
+__attribute__ ((visibility ("default"))) SEC_ASN1_CHOOSER_DECLARE(SEC_BMPStringTemplate)
+__attribute__ ((visibility ("default"))) SEC_ASN1_CHOOSER_DECLARE(SEC_BooleanTemplate)
+__attribute__ ((visibility ("default"))) SEC_ASN1_CHOOSER_DECLARE(SEC_BitStringTemplate)
+__attribute__ ((visibility ("default"))) SEC_ASN1_CHOOSER_DECLARE(SEC_GeneralizedTimeTemplate)
+__attribute__ ((visibility ("default"))) SEC_ASN1_CHOOSER_DECLARE(SEC_IA5StringTemplate)
+__attribute__ ((visibility ("default"))) SEC_ASN1_CHOOSER_DECLARE(SEC_IntegerTemplate)
+__attribute__ ((visibility ("default"))) SEC_ASN1_CHOOSER_DECLARE(SEC_NullTemplate)
+__attribute__ ((visibility ("default"))) SEC_ASN1_CHOOSER_DECLARE(SEC_ObjectIDTemplate)
+__attribute__ ((visibility ("default"))) SEC_ASN1_CHOOSER_DECLARE(SEC_OctetStringTemplate)
+__attribute__ ((visibility ("default"))) SEC_ASN1_CHOOSER_DECLARE(SEC_UTCTimeTemplate)
+__attribute__ ((visibility ("default"))) SEC_ASN1_CHOOSER_DECLARE(SEC_UTF8StringTemplate)
 
-SEC_ASN1_CHOOSER_DECLARE(SEC_PointerToAnyTemplate)
-SEC_ASN1_CHOOSER_DECLARE(SEC_PointerToOctetStringTemplate)
+__attribute__ ((visibility ("default"))) SEC_ASN1_CHOOSER_DECLARE(SEC_PointerToAnyTemplate)
+__attribute__ ((visibility ("default"))) SEC_ASN1_CHOOSER_DECLARE(SEC_PointerToOctetStringTemplate)
 
-SEC_ASN1_CHOOSER_DECLARE(SEC_SetOfAnyTemplate)
+__attribute__ ((visibility ("default"))) SEC_ASN1_CHOOSER_DECLARE(SEC_SetOfAnyTemplate)
 
-SEC_ASN1_CHOOSER_DECLARE(SEC_EnumeratedTemplate)
-SEC_ASN1_CHOOSER_DECLARE(SEC_PointerToEnumeratedTemplate)
-SEC_ASN1_CHOOSER_DECLARE(SEC_SequenceOfAnyTemplate)
-SEC_ASN1_CHOOSER_DECLARE(SEC_SequenceOfObjectIDTemplate)
-SEC_ASN1_CHOOSER_DECLARE(SEC_SkipTemplate)
-SEC_ASN1_CHOOSER_DECLARE(SEC_UniversalStringTemplate)
-SEC_ASN1_CHOOSER_DECLARE(SEC_PrintableStringTemplate)
-SEC_ASN1_CHOOSER_DECLARE(SEC_T61StringTemplate)
-SEC_ASN1_CHOOSER_DECLARE(SEC_PointerToGeneralizedTimeTemplate)
+__attribute__ ((visibility ("default"))) SEC_ASN1_CHOOSER_DECLARE(SEC_EnumeratedTemplate)
+__attribute__ ((visibility ("default"))) SEC_ASN1_CHOOSER_DECLARE(SEC_PointerToEnumeratedTemplate)
+__attribute__ ((visibility ("default"))) SEC_ASN1_CHOOSER_DECLARE(SEC_SequenceOfAnyTemplate)
+__attribute__ ((visibility ("default"))) SEC_ASN1_CHOOSER_DECLARE(SEC_SequenceOfObjectIDTemplate)
+__attribute__ ((visibility ("default"))) SEC_ASN1_CHOOSER_DECLARE(SEC_SkipTemplate)
+__attribute__ ((visibility ("default"))) SEC_ASN1_CHOOSER_DECLARE(SEC_UniversalStringTemplate)
+__attribute__ ((visibility ("default"))) SEC_ASN1_CHOOSER_DECLARE(SEC_PrintableStringTemplate)
+__attribute__ ((visibility ("default"))) SEC_ASN1_CHOOSER_DECLARE(SEC_T61StringTemplate)
+__attribute__ ((visibility ("default"))) SEC_ASN1_CHOOSER_DECLARE(SEC_PointerToGeneralizedTimeTemplate)
 SEC_END_PROTOS
 #endif /* _SECASN1_H_ */

@@ -31,9 +31,9 @@ SEC_BEGIN_PROTOS
 /*
  * Returns a const string of the UTIL library version.
  */
-extern const char *NSSUTIL_GetVersion(void);
+__attribute__ ((visibility ("default"))) extern const char *NSSUTIL_GetVersion(void);
 
-extern SECStatus
+__attribute__ ((visibility ("default"))) extern SECStatus
 NSS_InitializePRErrorTable(void);
 
 SEC_END_PROTOS

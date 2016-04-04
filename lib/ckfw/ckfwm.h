@@ -62,7 +62,7 @@ nssCKFWHash_Destroy
  * nssCKFWHash_Add
  *
  */
-NSS_EXTERN CK_RV
+__attribute__ ((visibility ("default"))) NSS_EXTERN CK_RV
 nssCKFWHash_Add
 (
   nssCKFWHash *hash,

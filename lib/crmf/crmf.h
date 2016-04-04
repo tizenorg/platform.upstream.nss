@@ -57,7 +57,7 @@ extern SECStatus
  *    SECSuccess if encoding was successful.  Any other return value 
  *    indicates an error occurred during encoding.
  */
-extern SECStatus CRMF_EncodeCertRequest (CRMFCertRequest           *inCertReq,
+__attribute__ ((visibility ("default"))) extern SECStatus CRMF_EncodeCertRequest (CRMFCertRequest           *inCertReq,
 					 CRMFEncoderOutputCallback  fn,
 					 void                      *arg);
 /*
@@ -91,7 +91,7 @@ extern SECStatus CRMF_EncodeCertRequest (CRMFCertRequest           *inCertReq,
  * Any other return value indicates an error occurred while encoding the
  * certificate request messages.
  */
-extern SECStatus 
+__attribute__ ((visibility ("default"))) extern SECStatus 
        CRMF_EncodeCertReqMessages(CRMFCertReqMsg           **inCertReqMsgs,
 				  CRMFEncoderOutputCallback  fn,
 				  void                      *arg);
@@ -116,7 +116,7 @@ extern SECStatus
  *    CRMF_DestroyCertReqMsg after the Certificate Request
  *    Message is no longer necessary.
  */
-extern CRMFCertReqMsg* CRMF_CreateCertReqMsg(void);
+__attribute__ ((visibility ("default"))) extern CRMFCertReqMsg* CRMF_CreateCertReqMsg(void);
 
 /*
  * FUNCTION: CRMF_DestroyCertReqMsg
@@ -134,7 +134,7 @@ extern CRMFCertReqMsg* CRMF_CreateCertReqMsg(void);
  *    with inCertReqMsg.
  *    
  */
-extern SECStatus CRMF_DestroyCertReqMsg(CRMFCertReqMsg *inCertReqMsg);
+__attribute__ ((visibility ("default"))) extern SECStatus CRMF_DestroyCertReqMsg(CRMFCertReqMsg *inCertReqMsg);
 
 /*
  * FUNCTION: CRMF_CertReqMsgSetCertRequest
@@ -157,7 +157,7 @@ extern SECStatus CRMF_DestroyCertReqMsg(CRMFCertReqMsg *inCertReqMsg);
  *    Any other return value indicates a failure to copy the Certificate
  *    Request and make it a part of the Certificate Request Message.
  */
-extern SECStatus CRMF_CertReqMsgSetCertRequest(CRMFCertReqMsg  *inCertReqMsg, 
+__attribute__ ((visibility ("default"))) extern SECStatus CRMF_CertReqMsgSetCertRequest(CRMFCertReqMsg  *inCertReqMsg, 
 					       CRMFCertRequest *inCertReq);
 
 /*
@@ -176,7 +176,7 @@ extern SECStatus CRMF_CertReqMsgSetCertRequest(CRMFCertReqMsg  *inCertReqMsg,
  *    A pointer to the new Certificate Request.  A NULL return value
  *    indicates an error in creating the Certificate Request.
  */
-extern CRMFCertRequest *CRMF_CreateCertRequest (PRUint32 inRequestID);
+__attribute__ ((visibility ("default"))) extern CRMFCertRequest *CRMF_CreateCertRequest (PRUint32 inRequestID);
 
 /*
  * FUNCTION: CRMF_DestroyCertRequest
@@ -190,7 +190,7 @@ extern CRMFCertRequest *CRMF_CreateCertRequest (PRUint32 inRequestID);
  *    Any other return value indicates an error while trying to free the 
  *    memory.
  */
-extern SECStatus CRMF_DestroyCertRequest (CRMFCertRequest *inCertReq);
+__attribute__ ((visibility ("default"))) extern SECStatus CRMF_DestroyCertRequest (CRMFCertRequest *inCertReq);
 
 /*
  * FUNCTION: CRMF_CreateCertExtension
@@ -218,7 +218,7 @@ extern SECStatus CRMF_DestroyCertRequest (CRMFCertRequest *inCertReq);
  * A pointer to a newly created CertExtension.  A return value of NULL
  * indicates the id passed in was an invalid certificate extension.
  */
-extern CRMFCertExtension *CRMF_CreateCertExtension(SECOidTag      id, 
+__attribute__ ((visibility ("default"))) extern CRMFCertExtension *CRMF_CreateCertExtension(SECOidTag      id, 
 						   PRBool         isCritical,
 						   SECItem       *data);
 
@@ -235,7 +235,7 @@ extern CRMFCertExtension *CRMF_CreateCertExtension(SECOidTag      id,
  * was successful.  Any other error indicates an error while freeing the 
  * memory.
  */
-extern SECStatus CRMF_DestroyCertExtension(CRMFCertExtension *inExtension);
+__attribute__ ((visibility ("default"))) extern SECStatus CRMF_DestroyCertExtension(CRMFCertExtension *inExtension);
 
 /* 
  * FUNCTION: CRMF_CertRequestSetTemplateField
@@ -314,7 +314,7 @@ extern SECStatus CRMF_DestroyCertExtension(CRMFCertExtension *inExtension);
  *    to the template.
  *                                                
  */
-extern SECStatus
+__attribute__ ((visibility ("default"))) extern SECStatus
   CRMF_CertRequestSetTemplateField(CRMFCertRequest       *inCertReq, 
 				   CRMFCertTemplateField  inTemplateField,
 				   void                  *data);
@@ -336,7 +336,7 @@ extern SECStatus
  * is already present in the certificate request.  If the field is not present
  * the function returns PR_FALSE.
  */
-extern PRBool
+__attribute__ ((visibility ("default"))) extern PRBool
   CRMF_CertRequestIsFieldPresent(CRMFCertRequest       *inCertReq,
 				 CRMFCertTemplateField  inTemplateField);
 
@@ -362,7 +362,7 @@ extern PRBool
  * exists in the certificate request.  If a control of type inControlType
  * does not exist, the function will return PR_FALSE.
  */
-extern PRBool
+__attribute__ ((visibility ("default"))) extern PRBool
   CRMF_CertRequestIsControlPresent(CRMFCertRequest *inCertReq,
 				   CRMFControlType  inControlType);
 				   
@@ -386,7 +386,7 @@ extern PRBool
  *    control.
  *
  */
-extern SECStatus CRMF_CertRequestSetRegTokenControl(CRMFCertRequest *inCertReq,
+__attribute__ ((visibility ("default"))) extern SECStatus CRMF_CertRequestSetRegTokenControl(CRMFCertRequest *inCertReq,
 						    SECItem         *value);
 
 /*
@@ -407,7 +407,7 @@ extern SECStatus CRMF_CertRequestSetRegTokenControl(CRMFCertRequest *inCertReq,
  *    Any other return value indicates an unsuccessful attempt to add the
  *    control.
  */
-extern SECStatus 
+__attribute__ ((visibility ("default"))) extern SECStatus 
        CRMF_CertRequestSetAuthenticatorControl (CRMFCertRequest *inCertReq,
 						SECItem         *value);
 
@@ -429,7 +429,7 @@ extern SECStatus
  *    A pointer to a CRMFEncyptedKey.  A NULL return value indicates an erro
  *    during the creation of the encrypted key.
  */
-extern CRMFEncryptedKey* 
+__attribute__ ((visibility ("default"))) extern CRMFEncryptedKey* 
        CRMF_CreateEncryptedKeyWithEncryptedValue(SECKEYPrivateKey *inPrivKey,
 						 CERTCertificate  *inCACert);
 
@@ -444,7 +444,7 @@ extern CRMFEncryptedKey*
  *    SECSuccess if freeing the memory was successful.  Any other return
  *    value indicates an error while freeig the memroy.
  */
-extern SECStatus CRMF_DestroyEncryptedKey(CRMFEncryptedKey *inEncrKey);
+__attribute__ ((visibility ("default"))) extern SECStatus CRMF_DestroyEncryptedKey(CRMFEncryptedKey *inEncrKey);
 						
 /*
  * FUNCTION: CRMF_CreatePKIArchiveOptions
@@ -470,7 +470,7 @@ extern SECStatus CRMF_DestroyEncryptedKey(CRMFEncryptedKey *inEncrKey);
  *    Request.  A NULL pointer indicates an error occurred while creating
  *    the CRMFPKIArchiveOptions Structure.
  */
-extern CRMFPKIArchiveOptions*
+__attribute__ ((visibility ("default"))) extern CRMFPKIArchiveOptions*
        CRMF_CreatePKIArchiveOptions(CRMFPKIArchiveOptionsType  inType,
 				    void                      *data);
 /*
@@ -484,7 +484,7 @@ extern CRMFPKIArchiveOptions*
  *    SECSuccess if successful in freeing the memory used by 'inArchOpt'
  *    Any other return value indicates an error while freeing the memory.
  */
-extern SECStatus 
+__attribute__ ((visibility ("default"))) extern SECStatus 
        CRMF_DestroyPKIArchiveOptions(CRMFPKIArchiveOptions *inArchOpt);
 
 /*
@@ -503,7 +503,7 @@ extern SECStatus
  *    request.  Any other return value indicates an error when trying to add
  *    the Archive Options  to the Certificate Request.
  */
-extern SECStatus 
+__attribute__ ((visibility ("default"))) extern SECStatus 
        CRMF_CertRequestSetPKIArchiveOptions(CRMFCertRequest       *inCertReq,
 					    CRMFPKIArchiveOptions *inOptions);
 
@@ -522,7 +522,7 @@ extern SECStatus
  *    crmft.h for the definition of CRMFPOPChoice for the possible return
  *    values.
  */
-extern CRMFPOPChoice CRMF_CertReqMsgGetPOPType(CRMFCertReqMsg *inCertReqMsg);
+__attribute__ ((visibility ("default"))) extern CRMFPOPChoice CRMF_CertReqMsgGetPOPType(CRMFCertReqMsg *inCertReqMsg);
 
 /*
  * FUNCTION: CRMF_CertReqMsgSetRAVerifiedPOP
@@ -538,7 +538,7 @@ extern CRMFPOPChoice CRMF_CertReqMsgGetPOPType(CRMFCertReqMsg *inCertReqMsg);
  *    Any other message indicates an error while trying to add RAVerified
  *    as the Proof of Possession.
  */
-extern SECStatus CRMF_CertReqMsgSetRAVerifiedPOP(CRMFCertReqMsg *inCertReqMsg);
+__attribute__ ((visibility ("default"))) extern SECStatus CRMF_CertReqMsgSetRAVerifiedPOP(CRMFCertReqMsg *inCertReqMsg);
 
 /*
  * FUNCTION: CRMF_CertReqMsgSetSignaturePOP
@@ -593,7 +593,7 @@ extern SECStatus CRMF_CertReqMsgSetRAVerifiedPOP(CRMFCertReqMsg *inCertReqMsg);
  *    Any other return value indicates an error in trying to add
  *    the Signature Proof Of Possession.
  */
-extern SECStatus 
+__attribute__ ((visibility ("default"))) extern SECStatus 
        CRMF_CertReqMsgSetSignaturePOP(CRMFCertReqMsg   *inCertReqMsg,
 				      SECKEYPrivateKey *inPrivKey,
 				      SECKEYPublicKey  *inPubKey,
@@ -651,7 +651,7 @@ extern SECStatus
  *    SECSuccess if adding KeyEnciphermentPOP was successful.  Any other return
  *    value indicates an error in adding KeyEnciphermentPOP.
  */
-extern SECStatus 
+__attribute__ ((visibility ("default"))) extern SECStatus 
       CRMF_CertReqMsgSetKeyEnciphermentPOP(CRMFCertReqMsg        *inCertReqMsg,
 					   CRMFPOPOPrivKeyChoice  inKeyChoice,
 					   CRMFSubseqMessOptions  subseqMess,
@@ -700,7 +700,7 @@ extern SECStatus
  *
  * crmfDHMAC            This option is not supported.
  */
-extern SECStatus 
+__attribute__ ((visibility ("default"))) extern SECStatus 
        CRMF_CertReqMsgSetKeyAgreementPOP(CRMFCertReqMsg        *inCertReqMsg,
 					 CRMFPOPOPrivKeyChoice  inKeyChoice,
 					 CRMFSubseqMessOptions  subseqMess,
@@ -723,7 +723,7 @@ extern SECStatus
  *    A pointer to the Certificate Request Message structure.  A NULL return
  *    value indicates the library was unable to parse the DER.
  */
-extern CRMFCertReqMsg* CRMF_CreateCertReqMsgFromDER(const char *buf, long len);
+__attribute__ ((visibility ("default"))) extern CRMFCertReqMsg* CRMF_CreateCertReqMsgFromDER(const char *buf, long len);
 
 /*
  * FUNCTION: CRMF_CreateCertReqMessagesFromDER
@@ -744,7 +744,7 @@ extern CRMFCertReqMsg* CRMF_CreateCertReqMsgFromDER(const char *buf, long len);
  *    A pointer to the Certificate Request Messages structure.  A NULL return
  *    value indicates the library was unable to parse the DER.
  */ 
-extern CRMFCertReqMessages*
+__attribute__ ((visibility ("default"))) extern CRMFCertReqMessages*
        CRMF_CreateCertReqMessagesFromDER(const char *buf, long len);
 
 /*
@@ -756,7 +756,7 @@ extern CRMFCertReqMessages*
  *    SECSuccess if freeing the memory was done successfully.  Any other
  *    return value indicates an error in freeing up memory.
  */ 
-extern SECStatus 
+__attribute__ ((visibility ("default"))) extern SECStatus 
        CRMF_DestroyCertReqMessages(CRMFCertReqMessages *inCertReqMsgs);
 
 /*
@@ -768,7 +768,7 @@ extern SECStatus
  *    The number of messages contained in the in the Request Messages 
  *    strucure.
  */
-extern int 
+__attribute__ ((visibility ("default"))) extern int 
        CRMF_CertReqMessagesGetNumMessages(CRMFCertReqMessages *inCertReqMsgs);
 
 /*
@@ -790,7 +790,7 @@ extern int
  * Any other return value indicates an invalid index or error while copying
  * the single request message.
  */
-extern CRMFCertReqMsg*
+__attribute__ ((visibility ("default"))) extern CRMFCertReqMsg*
        CRMF_CertReqMessagesGetCertReqMsgAtIndex(CRMFCertReqMessages *inReqMsgs,
 						int                  index);
 
@@ -809,7 +809,7 @@ extern CRMFCertReqMsg*
  *    function.
  *    
  */
-extern SECStatus CRMF_CertReqMsgGetID(CRMFCertReqMsg *inCertReqMsg, 
+__attribute__ ((visibility ("default"))) extern SECStatus CRMF_CertReqMsgGetID(CRMFCertReqMsg *inCertReqMsg, 
 				      long           *destID);
 
 /*
@@ -833,7 +833,7 @@ extern SECStatus CRMF_CertReqMsgGetID(CRMFCertReqMsg *inCertReqMsg,
  *          as part of 'inCertReq'
  *        
  */
-extern PRBool CRMF_DoesRequestHaveField(CRMFCertRequest       *inCertReq,
+__attribute__ ((visibility ("default"))) extern PRBool CRMF_DoesRequestHaveField(CRMFCertRequest       *inCertReq,
 					CRMFCertTemplateField  inField);
 
 /*
@@ -852,7 +852,7 @@ extern PRBool CRMF_DoesRequestHaveField(CRMFCertRequest       *inCertReq,
  *    A NULL return value indicates an error occurred while copying the 
  *   certificate request.
  */
-extern CRMFCertRequest *
+__attribute__ ((visibility ("default"))) extern CRMFCertRequest *
        CRMF_CertReqMsgGetCertRequest(CRMFCertReqMsg *inCertReqMsg);
 
 /*
@@ -870,7 +870,7 @@ extern CRMFCertRequest *
  *    SECFailure indicates that version field was not present as part of
  *    of the certificate template.
  */
-extern SECStatus 
+__attribute__ ((visibility ("default"))) extern SECStatus 
        CRMF_CertRequestGetCertTemplateVersion(CRMFCertRequest *inCertReq, 
 					      long            *version);
 
@@ -889,7 +889,7 @@ extern SECStatus
  * If no serial number is present, then the function returns SECFailure and
  * the value at *serialNumber is un-changed.
  */
-extern SECStatus 
+__attribute__ ((visibility ("default"))) extern SECStatus 
        CRMF_CertRequestGetCertTemplateSerialNumber(CRMFCertRequest *inCertReq, 
 						   long         *serialNumber);
 
@@ -908,7 +908,7 @@ extern SECStatus
  * If no signingAlg is present, then the function returns SECFailure and
  * the value at *destAlg is un-changed
  */
-extern SECStatus 
+__attribute__ ((visibility ("default"))) extern SECStatus 
        CRMF_CertRequestGetCertTemplateSigningAlg(CRMFCertRequest *inCertReq,
 						 SECAlgorithmID  *destAlg);
 /*
@@ -925,7 +925,7 @@ extern SECStatus
  * If there is no issuer present, the function returns SECFailure and the
  * value at *destIssuer is unchanged.
  */
-extern SECStatus 
+__attribute__ ((visibility ("default"))) extern SECStatus 
        CRMF_CertRequestGetCertTemplateIssuer(CRMFCertRequest *inCertReq,
 					     CERTName        *destIssuer);
 
@@ -948,7 +948,7 @@ extern SECStatus
  * If there is no OptionalValidity field, the function will return SECFailure
  * and the values at *destValidity will be un-changed.
  */
-extern SECStatus 
+__attribute__ ((visibility ("default"))) extern SECStatus 
        CRMF_CertRequestGetCertTemplateValidity(CRMFCertRequest *inCertReq,
 					       CRMFGetValidity *destValidity);
 /*
@@ -969,7 +969,7 @@ extern SECStatus
  * SECSuccess if freeing the memory was successful.  Any other return value
  * indicates an error while freeing the memory.
  */
-extern SECStatus 
+__attribute__ ((visibility ("default"))) extern SECStatus 
        CRMF_DestroyGetValidity(CRMFGetValidity *inValidity);
 
 /*
@@ -987,7 +987,7 @@ extern SECStatus
  * If there is no subject, the function returns SECFailure and the values at
  * *destSubject is unchanged.
  */
-extern SECStatus 
+__attribute__ ((visibility ("default"))) extern SECStatus 
        CRMF_CertRequestGetCertTemplateSubject (CRMFCertRequest *inCertReq,
 					       CERTName        *destSubject);
 
@@ -1006,7 +1006,7 @@ extern SECStatus
  * If there is no publicKey, the function returns SECFailure and the value
  * at *destPublicKey is un-changed.
  */
-extern SECStatus 
+__attribute__ ((visibility ("default"))) extern SECStatus 
        CRMF_CertRequestGetCertTemplatePublicKey(CRMFCertRequest *inCertReq,
 				      CERTSubjectPublicKeyInfo *destPublicKey);
 
@@ -1031,7 +1031,7 @@ extern SECStatus
  * If there is no issuerUID, the function returns SECFailure and the value
  * *destIssuerUID is unchanged.
  */
-extern SECStatus 
+__attribute__ ((visibility ("default"))) extern SECStatus 
        CRMF_CertRequestGetCertTemplateIssuerUID(CRMFCertRequest *inCertReq,
 						SECItem        *destIssuerUID);
 
@@ -1055,7 +1055,7 @@ extern SECStatus
  * If there is no issuerUID, the function returns SECSuccess and the value
  * *destIssuerUID is unchanged.
  */
-extern SECStatus CRMF_GetCertTemplateSubjectUID(CRMFCertRequest *inCertReq,
+__attribute__ ((visibility ("default"))) extern SECStatus CRMF_GetCertTemplateSubjectUID(CRMFCertRequest *inCertReq,
 						SECItem       *destSubjectUID);
 
 /*
@@ -1066,7 +1066,7 @@ extern SECStatus CRMF_GetCertTemplateSubjectUID(CRMFCertRequest *inCertReq,
  * RETURN:
  *    Returns the number of extensions contained by the Cert Request.
  */
-extern int CRMF_CertRequestGetNumberOfExtensions(CRMFCertRequest *inCertReq);
+__attribute__ ((visibility ("default"))) extern int CRMF_CertRequestGetNumberOfExtensions(CRMFCertRequest *inCertReq);
 
 /*
  * FUNCTION: CRMF_CertRequestGetExtensionAtIndex
@@ -1087,7 +1087,7 @@ extern int CRMF_CertRequestGetNumberOfExtensions(CRMFCertRequest *inCertReq);
  *    return value indicates an invalid index or an error while copying 
  *    the extension.
  */
-extern CRMFCertExtension *
+__attribute__ ((visibility ("default"))) extern CRMFCertExtension *
        CRMF_CertRequestGetExtensionAtIndex(CRMFCertRequest *inCertReq,
 					   int              index);
 /*
@@ -1099,7 +1099,7 @@ extern CRMFCertExtension *
  * RETURN:
  *    Returns the SECOidTag associated with the cert extension passed in.
  */
-extern SECOidTag CRMF_CertExtensionGetOidTag(CRMFCertExtension *inExtension);
+__attribute__ ((visibility ("default"))) extern SECOidTag CRMF_CertExtensionGetOidTag(CRMFCertExtension *inExtension);
 
 /*
  * FUNCTION: CRMF_CertExtensionGetIsCritical
@@ -1111,7 +1111,7 @@ extern SECOidTag CRMF_CertExtensionGetOidTag(CRMFCertExtension *inExtension);
  * PR_TRUE if the extension is critical.
  * PR_FALSE if the extension is not critical.
  */
-extern PRBool CRMF_CertExtensionGetIsCritical(CRMFCertExtension *inExt);
+__attribute__ ((visibility ("default"))) extern PRBool CRMF_CertExtensionGetIsCritical(CRMFCertExtension *inExt);
              
 /*
  * FUNCTION: CRMF_CertExtensionGetValue
@@ -1127,7 +1127,7 @@ extern PRBool CRMF_CertExtensionGetIsCritical(CRMFCertExtension *inExt);
  * A pointer to an item containig the value for the certificate extension.
  * A NULL return value indicates an error in copying the information.
  */
-extern SECItem*  CRMF_CertExtensionGetValue(CRMFCertExtension *inExtension);
+__attribute__ ((visibility ("default"))) extern SECItem*  CRMF_CertExtensionGetValue(CRMFCertExtension *inExtension);
 
 /*
  * FUNCTION: CRMF_CertReqMsgGetPOPOSigningKey
@@ -1147,7 +1147,7 @@ extern SECItem*  CRMF_CertExtensionGetValue(CRMFCertExtension *inExtension);
  * If the CertReqMsg does have a pop, then the CertReqMsg's 
  * POPOSigningKey will be placed at *destKey.
  */
-extern SECStatus 
+__attribute__ ((visibility ("default"))) extern SECStatus 
        CRMF_CertReqMsgGetPOPOSigningKey(CRMFCertReqMsg      *inCertReqMsg,
 					CRMFPOPOSigningKey **destKey);
 
@@ -1161,7 +1161,7 @@ extern SECStatus
  * SECSuccess if freeing the memory was successful.  Any other return value
  * indicates an error while freeing memory.
  */
-extern SECStatus CRMF_DestroyPOPOSigningKey (CRMFPOPOSigningKey *inKey);
+__attribute__ ((visibility ("default"))) extern SECStatus CRMF_DestroyPOPOSigningKey (CRMFPOPOSigningKey *inKey);
 
 /*
  * FUNCTION: CRMF_POPOSigningKeyGetAlgID
@@ -1173,7 +1173,7 @@ extern SECStatus CRMF_DestroyPOPOSigningKey (CRMFPOPOSigningKey *inKey);
  * call SECOID_DestroyAlgorithmID(destID, PR_TRUE) when done using the
  * return value.
  */
-extern SECAlgorithmID* 
+__attribute__ ((visibility ("default"))) extern SECAlgorithmID* 
        CRMF_POPOSigningKeyGetAlgID(CRMFPOPOSigningKey *inSignKey);
 
 /*
@@ -1188,7 +1188,7 @@ extern SECAlgorithmID*
  * to the total number of bytes allocatd.  User must call 
  * SECITEM_FreeItem(retVal,PR_TRUE) when done using the return value.
  */
-extern SECItem* CRMF_POPOSigningKeyGetSignature(CRMFPOPOSigningKey *inSignKey);
+__attribute__ ((visibility ("default"))) extern SECItem* CRMF_POPOSigningKeyGetSignature(CRMFPOPOSigningKey *inSignKey);
 
 /*
  * FUNCTION: CRMF_POPOSigningKeyGetInput
@@ -1208,7 +1208,7 @@ extern SECItem* CRMF_POPOSigningKeyGetSignature(CRMFPOPOSigningKey *inSignKey);
  * If the optional field is part of the POPOSingingKey, the function will
  * return a copy of the der encoded poposkInput.
  */
-extern SECItem* CRMF_POPOSigningKeyGetInput(CRMFPOPOSigningKey *inSignKey);
+__attribute__ ((visibility ("default"))) extern SECItem* CRMF_POPOSigningKeyGetInput(CRMFPOPOSigningKey *inSignKey);
 
 /*
  * FUNCTION: CRMF_CertReqMsgGetPOPKeyEncipherment
@@ -1231,7 +1231,7 @@ extern SECItem* CRMF_POPOSigningKeyGetInput(CRMFPOPOSigningKey *inSignKey);
  * function returns SECSuccess and places the POPOPrivKey representing the
  * Key Encipherment Proof Of Possessin at *destKey.
  */
-extern SECStatus 
+__attribute__ ((visibility ("default"))) extern SECStatus 
        CRMF_CertReqMsgGetPOPKeyEncipherment(CRMFCertReqMsg   *inCertReqMsg,
 					    CRMFPOPOPrivKey **destKey);
 
@@ -1256,7 +1256,7 @@ extern SECStatus
  * If the CertReqMsg did not use Key Agreement for Proof Of Possession, the
  * function return SECFailure and the value at *destKey is unchanged.
  */
-extern SECStatus 
+__attribute__ ((visibility ("default"))) extern SECStatus 
        CRMF_CertReqMsgGetPOPKeyAgreement(CRMFCertReqMsg   *inCertReqMsg,
 					 CRMFPOPOPrivKey **destKey);
 
@@ -1274,7 +1274,7 @@ extern SECStatus
  * Any other return value indicates an error in freeing the 
  * memory.
  */
-extern SECStatus CRMF_DestroyPOPOPrivKey(CRMFPOPOPrivKey *inPrivKey);
+__attribute__ ((visibility ("default"))) extern SECStatus CRMF_DestroyPOPOPrivKey(CRMFPOPOPrivKey *inPrivKey);
 
 /* 
  * FUNCTION: CRMF_POPOPrivKeyGetChoice
@@ -1286,7 +1286,7 @@ extern SECStatus CRMF_DestroyPOPOPrivKey(CRMFPOPOPrivKey *inPrivKey);
  * the definition of CRMFPOPOPrivKeyChoice in crmft.h for the possible return
  * values.
  */
-extern CRMFPOPOPrivKeyChoice CRMF_POPOPrivKeyGetChoice(CRMFPOPOPrivKey *inKey);
+__attribute__ ((visibility ("default"))) extern CRMFPOPOPrivKeyChoice CRMF_POPOPrivKeyGetChoice(CRMFPOPOPrivKey *inKey);
 
 /*
  * FUNCTION: CRMF_POPOPrivKeyGetThisMessage
@@ -1307,7 +1307,7 @@ extern CRMFPOPOPrivKeyChoice CRMF_POPOPrivKeyGetChoice(CRMFPOPOPrivKey *inKey);
  * at *destString. BIT STRING representation means the len field is the
  * number of valid bits as opposed to the total number of bytes.
  */
-extern SECStatus CRMF_POPOPrivKeyGetThisMessage(CRMFPOPOPrivKey  *inKey,
+__attribute__ ((visibility ("default"))) extern SECStatus CRMF_POPOPrivKeyGetThisMessage(CRMFPOPOPrivKey  *inKey,
 						SECItem          *destString);
 
 /*
@@ -1328,7 +1328,7 @@ extern SECStatus CRMF_POPOPrivKeyGetThisMessage(CRMFPOPOPrivKey  *inKey,
  * If the POPOPrivKey did not use the subsequenMessage option, the function
  * returns SECFailure and the value at *destOpt is un-changed.
  */
-extern SECStatus CRMF_POPOPrivKeyGetSubseqMess(CRMFPOPOPrivKey       *inKey,
+__attribute__ ((visibility ("default"))) extern SECStatus CRMF_POPOPrivKeyGetSubseqMess(CRMFPOPOPrivKey       *inKey,
 					       CRMFSubseqMessOptions *destOpt);
 
 /*
@@ -1354,7 +1354,7 @@ extern SECStatus CRMF_POPOPrivKeyGetSubseqMess(CRMFPOPOPrivKey       *inKey,
  * SECFailure and the value at *destMAC is unchanged.
  * 
  */
-extern SECStatus CRMF_POPOPrivKeyGetDHMAC(CRMFPOPOPrivKey *inKey,
+__attribute__ ((visibility ("default"))) extern SECStatus CRMF_POPOPrivKeyGetDHMAC(CRMFPOPOPrivKey *inKey,
 					  SECItem         *destMAC);
 
 /*
@@ -1365,7 +1365,7 @@ extern SECStatus CRMF_POPOPrivKeyGetDHMAC(CRMFPOPOPrivKey *inKey,
  * RETURN:
  * Returns the number of Controls registered with this CertRequest.
  */
-extern int CRMF_CertRequestGetNumControls (CRMFCertRequest *inCertReq);
+__attribute__ ((visibility ("default"))) extern int CRMF_CertRequestGetNumControls (CRMFCertRequest *inCertReq);
 
 /*
  * FUNCTION: CRMF_CertRequestGetControlAtIndex
@@ -1384,7 +1384,7 @@ extern int CRMF_CertRequestGetNumControls (CRMFCertRequest *inCertReq);
  * longer needed.  A return value of NULL indicates an error while copying
  * the control or that the index was invalid.
  */
-extern CRMFControl* 
+__attribute__ ((visibility ("default"))) extern CRMFControl* 
        CRMF_CertRequestGetControlAtIndex(CRMFCertRequest *inCertReq, 
 					 int              index);
 
@@ -1400,7 +1400,7 @@ extern CRMFControl*
  * SECSuccess if freeing the memory was successful.  Any other return
  * value indicates an error while freeing the memory.
  */
-extern SECStatus CRMF_DestroyControl(CRMFControl *inControl);
+__attribute__ ((visibility ("default"))) extern SECStatus CRMF_DestroyControl(CRMFControl *inControl);
 
 /*
  * FUNCTION: CRMF_ControlGetControlType
@@ -1415,7 +1415,7 @@ extern SECStatus CRMF_DestroyControl(CRMFControl *inControl);
  * Look in crmft.h at the definition of the enumerated type CRMFControlType
  * for the possible return values.
  */
-extern CRMFControlType CRMF_ControlGetControlType(CRMFControl *inControl);
+__attribute__ ((visibility ("default"))) extern CRMFControlType CRMF_ControlGetControlType(CRMFControl *inControl);
 
 /*
  * FUNCTION: CRMF_ControlGetRegTokenControlValue
@@ -1435,7 +1435,7 @@ extern CRMFControlType CRMF_ControlGetControlType(CRMFControl *inControl);
  * formatted the strings when adding it or the message decoded was properly 
  * formatted.  The library will just give back the bytes it was given.)
  */
-extern SECItem* CRMF_ControlGetRegTokenControlValue(CRMFControl *inControl);
+__attribute__ ((visibility ("default"))) extern SECItem* CRMF_ControlGetRegTokenControlValue(CRMFControl *inControl);
 
 /*
  * FUNCTION: CRMF_ControlGetAuthenticatorControlValue
@@ -1455,7 +1455,7 @@ extern SECItem* CRMF_ControlGetRegTokenControlValue(CRMFControl *inControl);
  * formatted the strings when adding it or the message decoded was properly 
  * formatted.  The library will just give back the bytes it was given.)
  */
-extern SECItem* CRMF_ControlGetAuthicatorControlValue(CRMFControl *inControl);
+__attribute__ ((visibility ("default"))) extern SECItem* CRMF_ControlGetAuthicatorControlValue(CRMFControl *inControl);
 
 /*
  * FUNCTION: CRMF_ControlGetPKIArchiveOptions
@@ -1471,7 +1471,7 @@ extern SECItem* CRMF_ControlGetAuthicatorControlValue(CRMFControl *inControl);
  * value of NULL indicates the Control was not a PKIArchiveOptions 
  * Control.
  */
-extern CRMFPKIArchiveOptions* 
+__attribute__ ((visibility ("default"))) extern CRMFPKIArchiveOptions* 
        CRMF_ControlGetPKIArchiveOptions(CRMFControl *inControl);
   
 /*
@@ -1487,7 +1487,7 @@ extern CRMFPKIArchiveOptions*
  * the PKIArchiveOptions.  Any other return value indicates an error while
  * freeing the PKIArchiveOptions.
  */
-extern SECStatus 
+__attribute__ ((visibility ("default"))) extern SECStatus 
        CRMF_DestroyPKIArchiveOptions(CRMFPKIArchiveOptions *inOptions);
 
 /*
@@ -1499,7 +1499,7 @@ extern SECStatus
  * Returns the choice used for the PKIArchiveOptions.  Look at the definition
  * of CRMFPKIArchiveOptionsType in crmft.h for possible return values.
  */
-extern CRMFPKIArchiveOptionsType
+__attribute__ ((visibility ("default"))) extern CRMFPKIArchiveOptionsType
        CRMF_PKIArchiveOptionsGetOptionType(CRMFPKIArchiveOptions *inOptions);
 
 /*
@@ -1517,7 +1517,7 @@ extern CRMFPKIArchiveOptionsType
  * A return value of NULL indicates that encryptedPrivKey was not used as
  * the choice for this PKIArchiveOptions.
  */
-extern CRMFEncryptedKey*
+__attribute__ ((visibility ("default"))) extern CRMFEncryptedKey*
       CRMF_PKIArchiveOptionsGetEncryptedPrivKey(CRMFPKIArchiveOptions *inOpts);
 
 /*
@@ -1534,7 +1534,7 @@ extern CRMFEncryptedKey*
  * crmft.h at the definition of CRMFEncryptedKeyChoice for possible return
  * values.
  */
-extern CRMFEncryptedKeyChoice 
+__attribute__ ((visibility ("default"))) extern CRMFEncryptedKeyChoice 
        CRMF_EncryptedKeyGetChoice(CRMFEncryptedKey *inEncrKey);
 
 
@@ -1552,7 +1552,7 @@ extern CRMFEncryptedKeyChoice
  * A pointer to a copy of the EncryptedValue contained as a member of
  * the EncryptedKey.
  */
-extern CRMFEncryptedValue* 
+__attribute__ ((visibility ("default"))) extern CRMFEncryptedValue* 
        CRMF_EncryptedKeyGetEncryptedValue(CRMFEncryptedKey *inKey);
 
 /*
@@ -1569,7 +1569,7 @@ extern CRMFEncryptedValue*
  * is successful. Any other return value indicates an error while freeing the
  * memory.
  */
-extern SECStatus CRMF_DestroyEncryptedValue(CRMFEncryptedValue *inEncrValue);
+__attribute__ ((visibility ("default"))) extern SECStatus CRMF_DestroyEncryptedValue(CRMFEncryptedValue *inEncrValue);
 
 /*
  * FUNCTION: CRMF_EncryptedValueGetEncValue
@@ -1586,7 +1586,7 @@ extern SECStatus CRMF_DestroyEncryptedValue(CRMFEncryptedValue *inEncrValue);
  * as opposed to the allocated number of bytes.
  * ANULL return value indicates an error in copying the encValue field.
  */
-extern SECItem* CRMF_EncryptedValueGetEncValue(CRMFEncryptedValue *inEncValue);
+__attribute__ ((visibility ("default"))) extern SECItem* CRMF_EncryptedValueGetEncValue(CRMFEncryptedValue *inEncValue);
 
 /*
  * FUNCTION: CRMF_EncryptedValueGetIntendedAlg
@@ -1603,7 +1603,7 @@ extern SECItem* CRMF_EncryptedValueGetEncValue(CRMFEncryptedValue *inEncValue);
  * A Copy of the intendedAlg field.  A NULL return value indicates the
  * optional field was not present in the structure.
  */
-extern SECAlgorithmID* 
+__attribute__ ((visibility ("default"))) extern SECAlgorithmID* 
        CRMF_EncryptedValueGetIntendedAlg(CRMFEncryptedValue  *inEncValue);
 
 
@@ -1622,7 +1622,7 @@ extern SECAlgorithmID*
  * A Copy of the symmAlg field.  A NULL return value indicates the
  * optional field was not present in the structure.
  */
-extern SECAlgorithmID* 
+__attribute__ ((visibility ("default"))) extern SECAlgorithmID* 
        CRMF_EncryptedValueGetSymmAlg(CRMFEncryptedValue  *inEncValue);
 
 
@@ -1641,7 +1641,7 @@ extern SECAlgorithmID*
  * A Copy of the keyAlg field.  A NULL return value indicates the
  * optional field was not present in the structure.
  */
-extern SECAlgorithmID* 
+__attribute__ ((visibility ("default"))) extern SECAlgorithmID* 
        CRMF_EncryptedValueGetKeyAlg(CRMFEncryptedValue *inEncValue);
 
 /*
@@ -1662,7 +1662,7 @@ extern SECAlgorithmID*
  * value indicates the optional valueHint field is not present in the
  * EncryptedValue.
  */
-extern SECItem* 
+__attribute__ ((visibility ("default"))) extern SECItem* 
        CRMF_EncryptedValueGetValueHint(CRMFEncryptedValue  *inEncValue);
 
 /*
@@ -1687,7 +1687,7 @@ extern SECItem*
  * value of NULL means the optional encSymmKey field was not present in
  * the EncryptedValue structure.
  */
-extern SECItem* 
+__attribute__ ((visibility ("default"))) extern SECItem* 
        CRMF_EncryptedValueGetEncSymmKey(CRMFEncryptedValue *inEncValue);
 
 /*
@@ -1708,7 +1708,7 @@ extern SECItem*
  * The SECItem returned is in BIT STRING format (ie, the len field indicates
  * number of valid bits as opposed to allocated number of bytes.)
  */
-extern SECItem* 
+__attribute__ ((visibility ("default"))) extern SECItem* 
    CRMF_PKIArchiveOptionsGetKeyGenParameters(CRMFPKIArchiveOptions *inOptions);
 
 /*
@@ -1728,7 +1728,7 @@ extern SECItem*
  * If the PKIArchiveOptions does not use the archiveRemGenPrivKey field, the
  * function returns SECFailure and the value at *destValue is unchanged.
  */
-extern SECStatus 
+__attribute__ ((visibility ("default"))) extern SECStatus 
     CRMF_PKIArchiveOptionsGetArchiveRemGenPrivKey(CRMFPKIArchiveOptions *inOpt,
 						  PRBool             *destVal);
 
@@ -1736,13 +1736,13 @@ extern SECStatus
 /*
  * A quick helper function to get the best wrap mechanism.
  */
-extern CK_MECHANISM_TYPE CRMF_GetBestWrapPadMechanism(PK11SlotInfo *slot); 
+__attribute__ ((visibility ("default"))) extern CK_MECHANISM_TYPE CRMF_GetBestWrapPadMechanism(PK11SlotInfo *slot); 
 
 /*
  * A helper function to get a randomly generated IV from a mechanism 
  * type.
  */
-extern SECItem* CRMF_GetIVFromMechanism(CK_MECHANISM_TYPE mechType);
+__attribute__ ((visibility ("default"))) extern SECItem* CRMF_GetIVFromMechanism(CK_MECHANISM_TYPE mechType);
  
 SEC_END_PROTOS
 #endif /*_CRMF_H_*/

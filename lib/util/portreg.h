@@ -73,10 +73,10 @@ SEC_BEGIN_PROTOS
 
 extern int PORT_RegExpValid(const char *exp);
 
-extern int PORT_RegExpSearch(const char *str, const char *exp);
+__attribute__ ((visibility ("default"))) extern int PORT_RegExpSearch(const char *str, const char *exp);
 
 /* same as above but uses case insensitive search */
-extern int PORT_RegExpCaseSearch(const char *str, const char *exp);
+__attribute__ ((visibility ("default"))) extern int PORT_RegExpCaseSearch(const char *str, const char *exp);
 
 SEC_END_PROTOS
 

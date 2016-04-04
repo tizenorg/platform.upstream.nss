@@ -31,30 +31,30 @@ sec_pkcs5CreateAlgorithmID(SECOidTag algorithm, SECOidTag cipherAlgorithm,
  * If an error occurs or the algorithm id is not a PBE algrithm,
  * NULL is returned.  Otherwise, the iv is returned in a secitem.
  */
-SECItem *
+__attribute__ ((visibility ("default"))) SECItem *
 SEC_PKCS5GetIV(SECAlgorithmID *algid, SECItem *pwitem, PRBool faulty3DES);
 
-SECOidTag SEC_PKCS5GetCryptoAlgorithm(SECAlgorithmID *algid);
-PRBool SEC_PKCS5IsAlgorithmPBEAlg(SECAlgorithmID *algid);
-PRBool SEC_PKCS5IsAlgorithmPBEAlgTag(SECOidTag algTag);
-SECOidTag SEC_PKCS5GetPBEAlgorithm(SECOidTag algTag, int keyLen);
-int SEC_PKCS5GetKeyLength(SECAlgorithmID *algid);
+__attribute__ ((visibility ("default"))) SECOidTag SEC_PKCS5GetCryptoAlgorithm(SECAlgorithmID *algid);
+__attribute__ ((visibility ("default"))) PRBool SEC_PKCS5IsAlgorithmPBEAlg(SECAlgorithmID *algid);
+__attribute__ ((visibility ("default"))) PRBool SEC_PKCS5IsAlgorithmPBEAlgTag(SECOidTag algTag);
+__attribute__ ((visibility ("default"))) SECOidTag SEC_PKCS5GetPBEAlgorithm(SECOidTag algTag, int keyLen);
+__attribute__ ((visibility ("default"))) int SEC_PKCS5GetKeyLength(SECAlgorithmID *algid);
 
 /**********************************************************************
  * Deprecated PBE functions.  Use the PBE functions in pk11func.h
  * instead.
  **********************************************************************/
 
-PBEBitGenContext *
+__attribute__ ((visibility ("default"))) PBEBitGenContext *
 PBE_CreateContext(SECOidTag hashAlgorithm, PBEBitGenID bitGenPurpose,
         SECItem *pwitem, SECItem *salt, unsigned int bitsNeeded,
         unsigned int iterations);
 
-void
+__attribute__ ((visibility ("default"))) void
 PBE_DestroyContext(PBEBitGenContext *context);
 
 
-SECItem *
+__attribute__ ((visibility ("default"))) SECItem *
 PBE_GenerateBits(PBEBitGenContext *context);
 
 SEC_END_PROTOS

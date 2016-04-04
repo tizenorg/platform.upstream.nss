@@ -26,7 +26,7 @@ extern void SECKEY_DestroySubjectPublicKeyInfo(CERTSubjectPublicKeyInfo *spki);
 ** Copy subject-public-key-info "src" to "dst". "dst" is filled in
 ** appropriately (memory is allocated for each of the sub objects).
 */
-extern SECStatus SECKEY_CopySubjectPublicKeyInfo(PLArenaPool *arena,
+__attribute__ ((visibility ("default"))) extern SECStatus SECKEY_CopySubjectPublicKeyInfo(PLArenaPool *arena,
 					     CERTSubjectPublicKeyInfo *dst,
 					     CERTSubjectPublicKeyInfo *src);
 
@@ -34,69 +34,69 @@ extern SECStatus SECKEY_CopySubjectPublicKeyInfo(PLArenaPool *arena,
 ** Update the PQG parameters for a cert's public key.
 ** Only done for DSA certs
 */
-extern SECStatus
+__attribute__ ((visibility ("default"))) extern SECStatus
 SECKEY_UpdateCertPQG(CERTCertificate * subjectCert);
 
 
 /*
 ** Return the strength of the public key in bytes
 */
-extern unsigned SECKEY_PublicKeyStrength(const SECKEYPublicKey *pubk);
+__attribute__ ((visibility ("default"))) extern unsigned SECKEY_PublicKeyStrength(const SECKEYPublicKey *pubk);
 
 /*
 ** Return the strength of the public key in bits
 */
-extern unsigned SECKEY_PublicKeyStrengthInBits(const SECKEYPublicKey *pubk);
+__attribute__ ((visibility ("default"))) extern unsigned SECKEY_PublicKeyStrengthInBits(const SECKEYPublicKey *pubk);
 
 /*
 ** Return the length of the signature in bytes
 */
-extern unsigned SECKEY_SignatureLen(const SECKEYPublicKey *pubk);
+__attribute__ ((visibility ("default"))) extern unsigned SECKEY_SignatureLen(const SECKEYPublicKey *pubk);
 
 /*
 ** Make a copy of the private key "privKey"
 */
-extern SECKEYPrivateKey *SECKEY_CopyPrivateKey(const SECKEYPrivateKey *privKey);
+__attribute__ ((visibility ("default"))) extern SECKEYPrivateKey *SECKEY_CopyPrivateKey(const SECKEYPrivateKey *privKey);
 
 /*
 ** Make a copy of the public key "pubKey"
 */
-extern SECKEYPublicKey *SECKEY_CopyPublicKey(const SECKEYPublicKey *pubKey);
+__attribute__ ((visibility ("default"))) extern SECKEYPublicKey *SECKEY_CopyPublicKey(const SECKEYPublicKey *pubKey);
 
 /*
 ** Convert a private key "privateKey" into a public key
 */
-extern SECKEYPublicKey *SECKEY_ConvertToPublicKey(SECKEYPrivateKey *privateKey);
+__attribute__ ((visibility ("default"))) extern SECKEYPublicKey *SECKEY_ConvertToPublicKey(SECKEYPrivateKey *privateKey);
 
 /*
  * create a new RSA key pair. The private Key is returned...
  */
-SECKEYPrivateKey *SECKEY_CreateRSAPrivateKey(int keySizeInBits,
+__attribute__ ((visibility ("default"))) SECKEYPrivateKey *SECKEY_CreateRSAPrivateKey(int keySizeInBits,
 					   SECKEYPublicKey **pubk, void *cx);
 	
 /*
  * create a new DH key pair. The private Key is returned...
  */
-SECKEYPrivateKey *SECKEY_CreateDHPrivateKey(SECKEYDHParams *param,
+__attribute__ ((visibility ("default"))) SECKEYPrivateKey *SECKEY_CreateDHPrivateKey(SECKEYDHParams *param,
 					   SECKEYPublicKey **pubk, void *cx);
 
 /*
  * create a new EC key pair. The private Key is returned...
  */
-SECKEYPrivateKey *SECKEY_CreateECPrivateKey(SECKEYECParams *param,
+__attribute__ ((visibility ("default"))) SECKEYPrivateKey *SECKEY_CreateECPrivateKey(SECKEYECParams *param,
                                            SECKEYPublicKey **pubk, void *cx);
 
 /*
 ** Create a subject-public-key-info based on a public key.
 */
-extern CERTSubjectPublicKeyInfo *
+__attribute__ ((visibility ("default"))) extern CERTSubjectPublicKeyInfo *
 SECKEY_CreateSubjectPublicKeyInfo(const SECKEYPublicKey *k);
 
 /*
 ** Convert a base64 ascii encoded DER public key and challenge to spki,
 ** and verify the signature and challenge data are correct
 */
-extern CERTSubjectPublicKeyInfo *
+__attribute__ ((visibility ("default"))) extern CERTSubjectPublicKeyInfo *
 SECKEY_ConvertAndDecodePublicKeyAndChallenge(char *pkacstr, char *challenge,
 								void *cx);
 
@@ -104,42 +104,42 @@ SECKEY_ConvertAndDecodePublicKeyAndChallenge(char *pkacstr, char *challenge,
 ** Encode a  CERTSubjectPublicKeyInfo structure. into a
 ** DER encoded subject public key info. 
 */
-SECItem *
+__attribute__ ((visibility ("default"))) SECItem *
 SECKEY_EncodeDERSubjectPublicKeyInfo(const SECKEYPublicKey *pubk);
 
 /*
 ** Decode a DER encoded subject public key info into a
 ** CERTSubjectPublicKeyInfo structure.
 */
-extern CERTSubjectPublicKeyInfo *
+__attribute__ ((visibility ("default"))) extern CERTSubjectPublicKeyInfo *
 SECKEY_DecodeDERSubjectPublicKeyInfo(const SECItem *spkider);
 
 /*
 ** Convert a base64 ascii encoded DER subject public key info to our
 ** internal format.
 */
-extern CERTSubjectPublicKeyInfo *
+__attribute__ ((visibility ("default"))) extern CERTSubjectPublicKeyInfo *
 SECKEY_ConvertAndDecodeSubjectPublicKeyInfo(const char *spkistr);
 
 /*
  * extract the public key from a subject Public Key info structure.
  * (used by JSS).
  */
-extern SECKEYPublicKey *
+__attribute__ ((visibility ("default"))) extern SECKEYPublicKey *
 SECKEY_ExtractPublicKey(const CERTSubjectPublicKeyInfo *);
 
 /*
 ** Destroy a private key object.
 **	"key" the object
 */
-extern void SECKEY_DestroyPrivateKey(SECKEYPrivateKey *key);
+__attribute__ ((visibility ("default"))) extern void SECKEY_DestroyPrivateKey(SECKEYPrivateKey *key);
 
 
 /*
 ** Destroy a public key object.
 **	"key" the object
 */
-extern void SECKEY_DestroyPublicKey(SECKEYPublicKey *key);
+__attribute__ ((visibility ("default"))) extern void SECKEY_DestroyPublicKey(SECKEYPublicKey *key);
 
 /* Destroy and zero out a private key info structure.  for now this
  * function zero's out memory allocated in an arena for the key 
@@ -149,7 +149,7 @@ extern void SECKEY_DestroyPublicKey(SECKEYPublicKey *key);
  * not call this function with freeit = PR_FALSE.  The function should 
  * destroy the arena.  
  */
-extern void
+__attribute__ ((visibility ("default"))) extern void
 SECKEY_DestroyPrivateKeyInfo(SECKEYPrivateKeyInfo *pvk, PRBool freeit);
 
 /* Destroy and zero out an encrypted private key info.
@@ -158,7 +158,7 @@ SECKEY_DestroyPrivateKeyInfo(SECKEYPrivateKeyInfo *pvk, PRBool freeit);
  * not call this function with freeit = PR_FALSE.  The function should 
  * destroy the arena.  
  */
-extern void
+__attribute__ ((visibility ("default"))) extern void
 SECKEY_DestroyEncryptedPrivateKeyInfo(SECKEYEncryptedPrivateKeyInfo *epki,
 				      PRBool freeit);
 
@@ -170,12 +170,12 @@ SECKEY_DestroyEncryptedPrivateKeyInfo(SECKEYEncryptedPrivateKeyInfo *epki,
  * if either from or to is NULL or an error occurs, SECFailure is 
  * returned.  otherwise, SECSuccess is returned.
  */
-extern SECStatus
+__attribute__ ((visibility ("default"))) extern SECStatus
 SECKEY_CopyPrivateKeyInfo(PLArenaPool *poolp,
 			  SECKEYPrivateKeyInfo *to,
 			  const SECKEYPrivateKeyInfo *from);
 
-extern SECStatus
+__attribute__ ((visibility ("default"))) extern SECStatus
 SECKEY_CacheStaticFlags(SECKEYPrivateKey* key);
 
 /* Copy encrypted private key info structure.  
@@ -186,33 +186,33 @@ SECKEY_CacheStaticFlags(SECKEYPrivateKey* key);
  * if either from or to is NULL or an error occurs, SECFailure is 
  * returned.  otherwise, SECSuccess is returned.
  */
-extern SECStatus
+__attribute__ ((visibility ("default"))) extern SECStatus
 SECKEY_CopyEncryptedPrivateKeyInfo(PLArenaPool *poolp,
 				   SECKEYEncryptedPrivateKeyInfo *to,
 				   const SECKEYEncryptedPrivateKeyInfo *from);
 /*
  * Accessor functions for key type of public and private keys.
  */
-KeyType SECKEY_GetPrivateKeyType(const SECKEYPrivateKey *privKey);
-KeyType SECKEY_GetPublicKeyType(const SECKEYPublicKey *pubKey);
+__attribute__ ((visibility ("default"))) KeyType SECKEY_GetPrivateKeyType(const SECKEYPrivateKey *privKey);
+__attribute__ ((visibility ("default"))) KeyType SECKEY_GetPublicKeyType(const SECKEYPublicKey *pubKey);
 
 /*
  * Creates a PublicKey from its DER encoding.
  * Currently only supports RSA, DSA, and DH keys.
  */
-SECKEYPublicKey*
+__attribute__ ((visibility ("default"))) SECKEYPublicKey*
 SECKEY_ImportDERPublicKey(const SECItem *derKey, CK_KEY_TYPE type);
 
-SECKEYPrivateKeyList*
+__attribute__ ((visibility ("default"))) SECKEYPrivateKeyList*
 SECKEY_NewPrivateKeyList(void);
 
-void
+__attribute__ ((visibility ("default"))) void
 SECKEY_DestroyPrivateKeyList(SECKEYPrivateKeyList *keys);
 
-void
+__attribute__ ((visibility ("default"))) void
 SECKEY_RemovePrivateKeyListNode(SECKEYPrivateKeyListNode *node);
 
-SECStatus
+__attribute__ ((visibility ("default"))) SECStatus
 SECKEY_AddPrivateKeyToListTail( SECKEYPrivateKeyList *list,
                                 SECKEYPrivateKey *key);
 
@@ -220,16 +220,16 @@ SECKEY_AddPrivateKeyToListTail( SECKEYPrivateKeyList *list,
 #define PRIVKEY_LIST_NEXT(n) ((SECKEYPrivateKeyListNode *)n->links.next)
 #define PRIVKEY_LIST_END(n,l) (((void *)n) == ((void *)&l->list))
 
-SECKEYPublicKeyList*
+__attribute__ ((visibility ("default"))) SECKEYPublicKeyList*
 SECKEY_NewPublicKeyList(void);
 
-void
+__attribute__ ((visibility ("default"))) void
 SECKEY_DestroyPublicKeyList(SECKEYPublicKeyList *keys);
 
-void
+__attribute__ ((visibility ("default"))) void
 SECKEY_RemovePublicKeyListNode(SECKEYPublicKeyListNode *node);
 
-SECStatus
+__attribute__ ((visibility ("default"))) SECStatus
 SECKEY_AddPublicKeyToListTail( SECKEYPublicKeyList *list,
                                 SECKEYPublicKey *key);
 
@@ -244,7 +244,7 @@ SECKEY_AddPublicKeyToListTail( SECKEYPublicKeyList *list,
  *
  * Return 0 on failure (unknown EC domain parameters).
  */
-extern int SECKEY_ECParamsToKeySize(const SECItem *params);
+__attribute__ ((visibility ("default"))) extern int SECKEY_ECParamsToKeySize(const SECItem *params);
 
 /*
  * Length in bits of the EC base point order, usually denoted n.  This
@@ -253,7 +253,7 @@ extern int SECKEY_ECParamsToKeySize(const SECItem *params);
  *
  * Return 0 on failure (unknown EC domain parameters).
  */
-extern int SECKEY_ECParamsToBasePointOrderLen(const SECItem *params);
+__attribute__ ((visibility ("default"))) extern int SECKEY_ECParamsToBasePointOrderLen(const SECItem *params);
 
 SEC_END_PROTOS
 

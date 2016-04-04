@@ -20,7 +20,7 @@ PK11SDR_Encrypt(SECItem *keyid, SECItem *data, SECItem *result, void *cx);
  * PK11SDR_Decrypt - decrypt data previously encrypted with PK11SDR_Encrypt
  * result should be freed with SECItem_ZfreeItem
  */
-SECStatus
+__attribute__ ((visibility ("default"))) SECStatus
 PK11SDR_Decrypt(SECItem *data, SECItem *result, void *cx);
 
 SEC_END_PROTOS

@@ -42,25 +42,25 @@ NSS_CMSDecoder_Start(PLArenaPool *poolp,
 /*
  * NSS_CMSDecoder_Update - feed DER-encoded data to decoder
  */
-extern SECStatus
+__attribute__ ((visibility ("default"))) extern SECStatus
 NSS_CMSDecoder_Update(NSSCMSDecoderContext *p7dcx, const char *buf, unsigned long len);
 
 /*
  * NSS_CMSDecoder_Cancel - cancel a decoding process
  */
-extern void
+__attribute__ ((visibility ("default"))) extern void
 NSS_CMSDecoder_Cancel(NSSCMSDecoderContext *p7dcx);
 
 /*
  * NSS_CMSDecoder_Finish - mark the end of inner content and finish decoding
  */
-extern NSSCMSMessage *
+__attribute__ ((visibility ("default"))) extern NSSCMSMessage *
 NSS_CMSDecoder_Finish(NSSCMSDecoderContext *p7dcx);
 
 /*
  * NSS_CMSMessage_CreateFromDER - decode a CMS message from DER encoded data
  */
-extern NSSCMSMessage *
+__attribute__ ((visibility ("default"))) extern NSSCMSMessage *
 NSS_CMSMessage_CreateFromDER(SECItem *DERmessage,
 		    NSSCMSContentCallback cb, void *cb_arg,
 		    PK11PasswordFunc pwfn, void *pwfn_arg,
@@ -82,7 +82,7 @@ NSS_CMSMessage_CreateFromDER(SECItem *DERmessage,
  * "decrypt_key_cb", "decrypt_key_cb_arg" - callback function for getting bulk key for encryptedData
  * "detached_digestalgs", "detached_digests" - digests from detached content
  */
-extern NSSCMSEncoderContext *
+__attribute__ ((visibility ("default"))) extern NSSCMSEncoderContext *
 NSS_CMSEncoder_Start(NSSCMSMessage *cmsg,
 			NSSCMSContentCallback outputfn, void *outputarg,
 			SECItem *dest, PLArenaPool *destpoolp,
@@ -97,13 +97,13 @@ NSS_CMSEncoder_Start(NSSCMSMessage *cmsg,
  * "data" - content data
  * "len" - length of content data
  */
-extern SECStatus
+__attribute__ ((visibility ("default"))) extern SECStatus
 NSS_CMSEncoder_Update(NSSCMSEncoderContext *p7ecx, const char *data, unsigned long len);
 
 /*
  * NSS_CMSEncoder_Cancel - stop all encoding
  */
-extern SECStatus
+__attribute__ ((visibility ("default"))) extern SECStatus
 NSS_CMSEncoder_Cancel(NSSCMSEncoderContext *p7ecx);
 
 /*
@@ -111,7 +111,7 @@ NSS_CMSEncoder_Cancel(NSSCMSEncoderContext *p7ecx);
  *
  * we need to walk down the chain of encoders and the finish them from the innermost out
  */
-extern SECStatus
+__attribute__ ((visibility ("default"))) extern SECStatus
 NSS_CMSEncoder_Finish(NSSCMSEncoderContext *p7ecx);
 
 /************************************************************************
@@ -123,7 +123,7 @@ NSS_CMSEncoder_Finish(NSSCMSEncoderContext *p7ecx);
  *
  * "poolp" - arena to allocate memory from, or NULL if new arena should be created
  */
-extern NSSCMSMessage *
+__attribute__ ((visibility ("default"))) extern NSSCMSMessage *
 NSS_CMSMessage_Create(PLArenaPool *poolp);
 
 /*
@@ -136,7 +136,7 @@ NSS_CMSMessage_Create(PLArenaPool *poolp);
  *
  * used internally.
  */
-extern void
+__attribute__ ((visibility ("default"))) extern void
 NSS_CMSMessage_SetEncodingParams(NSSCMSMessage *cmsg,
 			PK11PasswordFunc pwfn, void *pwfn_arg,
 			NSSCMSGetDecryptKeyCallback decrypt_key_cb, void *decrypt_key_cb_arg,
@@ -145,7 +145,7 @@ NSS_CMSMessage_SetEncodingParams(NSSCMSMessage *cmsg,
 /*
  * NSS_CMSMessage_Destroy - destroy a CMS message and all of its sub-pieces.
  */
-extern void
+__attribute__ ((visibility ("default"))) extern void
 NSS_CMSMessage_Destroy(NSSCMSMessage *cmsg);
 
 /*
@@ -154,19 +154,19 @@ NSS_CMSMessage_Destroy(NSSCMSMessage *cmsg);
  * The copy may be virtual or may be real -- either way, the result needs
  * to be passed to NSS_CMSMessage_Destroy later (as does the original).
  */
-extern NSSCMSMessage *
+__attribute__ ((visibility ("default"))) extern NSSCMSMessage *
 NSS_CMSMessage_Copy(NSSCMSMessage *cmsg);
 
 /*
  * NSS_CMSMessage_GetArena - return a pointer to the message's arena pool
  */
-extern PLArenaPool *
+__attribute__ ((visibility ("default"))) extern PLArenaPool *
 NSS_CMSMessage_GetArena(NSSCMSMessage *cmsg);
 
 /*
  * NSS_CMSMessage_GetContentInfo - return a pointer to the top level contentInfo
  */
-extern NSSCMSContentInfo *
+__attribute__ ((visibility ("default"))) extern NSSCMSContentInfo *
 NSS_CMSMessage_GetContentInfo(NSSCMSMessage *cmsg);
 
 /*
@@ -174,7 +174,7 @@ NSS_CMSMessage_GetContentInfo(NSSCMSMessage *cmsg);
  * In the case of those types which are encrypted, this returns the *plain* content.
  * In case of nested contentInfos, this descends and retrieves the innermost content.
  */
-extern SECItem *
+__attribute__ ((visibility ("default"))) extern SECItem *
 NSS_CMSMessage_GetContent(NSSCMSMessage *cmsg);
 
 /*
@@ -182,7 +182,7 @@ NSS_CMSMessage_GetContent(NSSCMSMessage *cmsg);
  *
  * CMS data content objects do not count.
  */
-extern int
+__attribute__ ((visibility ("default"))) extern int
 NSS_CMSMessage_ContentLevelCount(NSSCMSMessage *cmsg);
 
 /*
@@ -190,19 +190,19 @@ NSS_CMSMessage_ContentLevelCount(NSSCMSMessage *cmsg);
  *
  * CMS data content objects do not count.
  */
-extern NSSCMSContentInfo *
+__attribute__ ((visibility ("default"))) extern NSSCMSContentInfo *
 NSS_CMSMessage_ContentLevel(NSSCMSMessage *cmsg, int n);
 
 /*
  * NSS_CMSMessage_ContainsCertsOrCrls - see if message contains certs along the way
  */
-extern PRBool
+__attribute__ ((visibility ("default"))) extern PRBool
 NSS_CMSMessage_ContainsCertsOrCrls(NSSCMSMessage *cmsg);
 
 /*
  * NSS_CMSMessage_IsEncrypted - see if message contains a encrypted submessage
  */
-extern PRBool
+__attribute__ ((visibility ("default"))) extern PRBool
 NSS_CMSMessage_IsEncrypted(NSSCMSMessage *cmsg);
 
 /*
@@ -215,7 +215,7 @@ NSS_CMSMessage_IsEncrypted(NSSCMSMessage *cmsg);
  * Note that the content itself can be empty (detached content was sent
  * another way); it is the presence of the signature that matters.
  */
-extern PRBool
+__attribute__ ((visibility ("default"))) extern PRBool
 NSS_CMSMessage_IsSigned(NSSCMSMessage *cmsg);
 
 /*
@@ -224,7 +224,7 @@ NSS_CMSMessage_IsSigned(NSSCMSMessage *cmsg);
  * returns PR_TRUE is innermost content length is < minLen
  * XXX need the encrypted content length (why?)
  */
-extern PRBool
+__attribute__ ((visibility ("default"))) extern PRBool
 NSS_CMSMessage_IsContentEmpty(NSSCMSMessage *cmsg, unsigned int minLen);
 
 /************************************************************************
@@ -234,45 +234,45 @@ NSS_CMSMessage_IsContentEmpty(NSSCMSMessage *cmsg, unsigned int minLen);
 /*
  * NSS_CMSContentInfo_Destroy - destroy a CMS contentInfo and all of its sub-pieces.
  */
-extern void
+__attribute__ ((visibility ("default"))) extern void
 NSS_CMSContentInfo_Destroy(NSSCMSContentInfo *cinfo);
 
 /*
  * NSS_CMSContentInfo_GetChildContentInfo - get content's contentInfo (if it exists)
  */
-extern NSSCMSContentInfo *
+__attribute__ ((visibility ("default"))) extern NSSCMSContentInfo *
 NSS_CMSContentInfo_GetChildContentInfo(NSSCMSContentInfo *cinfo);
 
 /*
  * NSS_CMSContentInfo_SetContent - set cinfo's content type & content to CMS object
  */
-extern SECStatus
+__attribute__ ((visibility ("default"))) extern SECStatus
 NSS_CMSContentInfo_SetContent(NSSCMSMessage *cmsg, NSSCMSContentInfo *cinfo, SECOidTag type, void *ptr);
 
 /*
  * NSS_CMSContentInfo_SetContent_XXXX - typesafe wrappers for NSS_CMSContentInfo_SetType
  *   set cinfo's content type & content to CMS object
  */
-extern SECStatus
+__attribute__ ((visibility ("default"))) extern SECStatus
 NSS_CMSContentInfo_SetContent_Data(NSSCMSMessage *cmsg, NSSCMSContentInfo *cinfo, SECItem *data, PRBool detached);
 
-extern SECStatus
+__attribute__ ((visibility ("default"))) extern SECStatus
 NSS_CMSContentInfo_SetContent_SignedData(NSSCMSMessage *cmsg, NSSCMSContentInfo *cinfo, NSSCMSSignedData *sigd);
 
-extern SECStatus
+__attribute__ ((visibility ("default"))) extern SECStatus
 NSS_CMSContentInfo_SetContent_EnvelopedData(NSSCMSMessage *cmsg, NSSCMSContentInfo *cinfo, NSSCMSEnvelopedData *envd);
 
-extern SECStatus
+__attribute__ ((visibility ("default"))) extern SECStatus
 NSS_CMSContentInfo_SetContent_DigestedData(NSSCMSMessage *cmsg, NSSCMSContentInfo *cinfo, NSSCMSDigestedData *digd);
 
-extern SECStatus
+__attribute__ ((visibility ("default"))) extern SECStatus
 NSS_CMSContentInfo_SetContent_EncryptedData(NSSCMSMessage *cmsg, NSSCMSContentInfo *cinfo, NSSCMSEncryptedData *encd);
 
 /*
  * turn off streaming for this content type.
  * This could fail with SEC_ERROR_NO_MEMORY in memory constrained conditions.
  */
-extern SECStatus
+__attribute__ ((visibility ("default"))) extern SECStatus
 NSS_CMSContentInfo_SetDontStream(NSSCMSContentInfo *cinfo, PRBool dontStream);
 
 
@@ -281,7 +281,7 @@ NSS_CMSContentInfo_SetDontStream(NSSCMSContentInfo *cinfo, PRBool dontStream);
  *
  * needs to be casted...
  */
-extern void *
+__attribute__ ((visibility ("default"))) extern void *
 NSS_CMSContentInfo_GetContent(NSSCMSContentInfo *cinfo);
 
 /* 
@@ -289,47 +289,47 @@ NSS_CMSContentInfo_GetContent(NSSCMSContentInfo *cinfo);
  *
  * this is typically only called by NSS_CMSMessage_GetContent()
  */
-extern SECItem *
+__attribute__ ((visibility ("default"))) extern SECItem *
 NSS_CMSContentInfo_GetInnerContent(NSSCMSContentInfo *cinfo);
 
 /*
  * NSS_CMSContentInfo_GetContentType{Tag,OID} - find out (saving pointer to lookup result
  * for future reference) and return the inner content type.
  */
-extern SECOidTag
+__attribute__ ((visibility ("default"))) extern SECOidTag
 NSS_CMSContentInfo_GetContentTypeTag(NSSCMSContentInfo *cinfo);
 
-extern SECItem *
+__attribute__ ((visibility ("default"))) extern SECItem *
 NSS_CMSContentInfo_GetContentTypeOID(NSSCMSContentInfo *cinfo);
 
 /*
  * NSS_CMSContentInfo_GetContentEncAlgTag - find out (saving pointer to lookup result
  * for future reference) and return the content encryption algorithm tag.
  */
-extern SECOidTag
+__attribute__ ((visibility ("default"))) extern SECOidTag
 NSS_CMSContentInfo_GetContentEncAlgTag(NSSCMSContentInfo *cinfo);
 
 /*
  * NSS_CMSContentInfo_GetContentEncAlg - find out and return the content encryption algorithm tag.
  */
-extern SECAlgorithmID *
+__attribute__ ((visibility ("default"))) extern SECAlgorithmID *
 NSS_CMSContentInfo_GetContentEncAlg(NSSCMSContentInfo *cinfo);
 
-extern SECStatus
+__attribute__ ((visibility ("default"))) extern SECStatus
 NSS_CMSContentInfo_SetContentEncAlg(PLArenaPool *poolp, NSSCMSContentInfo *cinfo,
 				    SECOidTag bulkalgtag, SECItem *parameters, int keysize);
 
-extern SECStatus
+__attribute__ ((visibility ("default"))) extern SECStatus
 NSS_CMSContentInfo_SetContentEncAlgID(PLArenaPool *poolp, NSSCMSContentInfo *cinfo,
 				    SECAlgorithmID *algid, int keysize);
 
-extern void
+__attribute__ ((visibility ("default"))) extern void
 NSS_CMSContentInfo_SetBulkKey(NSSCMSContentInfo *cinfo, PK11SymKey *bulkkey);
 
-extern PK11SymKey *
+__attribute__ ((visibility ("default"))) extern PK11SymKey *
 NSS_CMSContentInfo_GetBulkKey(NSSCMSContentInfo *cinfo);
 
-extern int
+__attribute__ ((visibility ("default"))) extern int
 NSS_CMSContentInfo_GetBulkKeySize(NSSCMSContentInfo *cinfo);
 
 /************************************************************************
@@ -343,14 +343,14 @@ NSS_CMSContentInfo_GetBulkKeySize(NSSCMSContentInfo *cinfo);
  * in lexigraphically ascending order for a SET OF); if reordering is necessary it
  * will be done in place (in objs).
  */
-extern SECStatus
+__attribute__ ((visibility ("default"))) extern SECStatus
 NSS_CMSArray_SortByDER(void **objs, const SEC_ASN1Template *objtemplate, void **objs2);
 
 /*
  * NSS_CMSUtil_DERCompare - for use with NSS_CMSArray_Sort to
  *  sort arrays of SECItems containing DER
  */
-extern int
+__attribute__ ((visibility ("default"))) extern int
 NSS_CMSUtil_DERCompare(void *a, void *b);
 
 /*
@@ -364,7 +364,7 @@ NSS_CMSUtil_DERCompare(void *a, void *b);
  *  An integer containing the index of the algorithm in the array or -1 if 
  *  algorithm was not found.
  */
-extern int
+__attribute__ ((visibility ("default"))) extern int
 NSS_CMSAlgArray_GetIndexByAlgID(SECAlgorithmID **algorithmArray, SECAlgorithmID *algid);
 
 /*
@@ -378,32 +378,32 @@ NSS_CMSAlgArray_GetIndexByAlgID(SECAlgorithmID **algorithmArray, SECAlgorithmID 
  *  An integer containing the index of the algorithm in the array or -1 if 
  *  algorithm was not found.
  */
-extern int
+__attribute__ ((visibility ("default"))) extern int
 NSS_CMSAlgArray_GetIndexByAlgTag(SECAlgorithmID **algorithmArray, SECOidTag algtag);
 
-extern const SECHashObject *
+__attribute__ ((visibility ("default"))) extern const SECHashObject *
 NSS_CMSUtil_GetHashObjByAlgID(SECAlgorithmID *algid);
 
-extern const SEC_ASN1Template *
+__attribute__ ((visibility ("default"))) extern const SEC_ASN1Template *
 NSS_CMSUtil_GetTemplateByTypeTag(SECOidTag type);
 
-extern size_t
+__attribute__ ((visibility ("default"))) extern size_t
 NSS_CMSUtil_GetSizeByTypeTag(SECOidTag type);
 
-extern NSSCMSContentInfo *
+__attribute__ ((visibility ("default"))) extern NSSCMSContentInfo *
 NSS_CMSContent_GetContentInfo(void *msg, SECOidTag type);
 
-extern const char *
+__attribute__ ((visibility ("default"))) extern const char *
 NSS_CMSUtil_VerificationStatusToString(NSSCMSVerificationStatus vs);
 
 /************************************************************************
  * cmssigdata.c - CMS signedData methods
  ************************************************************************/
 
-extern NSSCMSSignedData *
+__attribute__ ((visibility ("default"))) extern NSSCMSSignedData *
 NSS_CMSSignedData_Create(NSSCMSMessage *cmsg);
 
-extern void
+__attribute__ ((visibility ("default"))) extern void
 NSS_CMSSignedData_Destroy(NSSCMSSignedData *sigd);
 
 /*
@@ -417,10 +417,10 @@ NSS_CMSSignedData_Destroy(NSSCMSSignedData *sigd);
  *         If we happen to have a pre-set list of algorithms (and digest values!), we
  *         check if we have all the signerinfos' algorithms. If not, this is an error.
  */
-extern SECStatus
+__attribute__ ((visibility ("default"))) extern SECStatus
 NSS_CMSSignedData_Encode_BeforeStart(NSSCMSSignedData *sigd);
 
-extern SECStatus
+__attribute__ ((visibility ("default"))) extern SECStatus
 NSS_CMSSignedData_Encode_BeforeData(NSSCMSSignedData *sigd);
 
 /*
@@ -433,64 +433,64 @@ NSS_CMSSignedData_Encode_BeforeData(NSSCMSSignedData *sigd);
  * Please note that nothing is done to the Certificates and CRLs in the message - this
  * is entirely the responsibility of our callers.
  */
-extern SECStatus
+__attribute__ ((visibility ("default"))) extern SECStatus
 NSS_CMSSignedData_Encode_AfterData(NSSCMSSignedData *sigd);
 
-extern SECStatus
+__attribute__ ((visibility ("default"))) extern SECStatus
 NSS_CMSSignedData_Decode_BeforeData(NSSCMSSignedData *sigd);
 
 /*
  * NSS_CMSSignedData_Decode_AfterData - do all the necessary things to a SignedData
  *     after all the encapsulated data was passed through the decoder.
  */
-extern SECStatus
+__attribute__ ((visibility ("default"))) extern SECStatus
 NSS_CMSSignedData_Decode_AfterData(NSSCMSSignedData *sigd);
 
 /*
  * NSS_CMSSignedData_Decode_AfterEnd - do all the necessary things to a SignedData
  *     after all decoding is finished.
  */
-extern SECStatus
+__attribute__ ((visibility ("default"))) extern SECStatus
 NSS_CMSSignedData_Decode_AfterEnd(NSSCMSSignedData *sigd);
 
 /* 
  * NSS_CMSSignedData_GetSignerInfos - retrieve the SignedData's signer list
  */
-extern NSSCMSSignerInfo **
+__attribute__ ((visibility ("default"))) extern NSSCMSSignerInfo **
 NSS_CMSSignedData_GetSignerInfos(NSSCMSSignedData *sigd);
 
-extern int
+__attribute__ ((visibility ("default"))) extern int
 NSS_CMSSignedData_SignerInfoCount(NSSCMSSignedData *sigd);
 
-extern NSSCMSSignerInfo *
+__attribute__ ((visibility ("default"))) extern NSSCMSSignerInfo *
 NSS_CMSSignedData_GetSignerInfo(NSSCMSSignedData *sigd, int i);
 
 /* 
  * NSS_CMSSignedData_GetDigestAlgs - retrieve the SignedData's digest algorithm list
  */
-extern SECAlgorithmID **
+__attribute__ ((visibility ("default"))) extern SECAlgorithmID **
 NSS_CMSSignedData_GetDigestAlgs(NSSCMSSignedData *sigd);
 
 /*
  * NSS_CMSSignedData_GetContentInfo - return pointer to this signedData's contentinfo
  */
-extern NSSCMSContentInfo *
+__attribute__ ((visibility ("default"))) extern NSSCMSContentInfo *
 NSS_CMSSignedData_GetContentInfo(NSSCMSSignedData *sigd);
 
 /* 
  * NSS_CMSSignedData_GetCertificateList - retrieve the SignedData's certificate list
  */
-extern SECItem **
+__attribute__ ((visibility ("default"))) extern SECItem **
 NSS_CMSSignedData_GetCertificateList(NSSCMSSignedData *sigd);
 
-extern SECStatus
+__attribute__ ((visibility ("default"))) extern SECStatus
 NSS_CMSSignedData_ImportCerts(NSSCMSSignedData *sigd, CERTCertDBHandle *certdb,
 				SECCertUsage certusage, PRBool keepcerts);
 
 /*
  * NSS_CMSSignedData_HasDigests - see if we have digests in place
  */
-extern PRBool
+__attribute__ ((visibility ("default"))) extern PRBool
 NSS_CMSSignedData_HasDigests(NSSCMSSignedData *sigd);
 
 /*
@@ -502,54 +502,54 @@ NSS_CMSSignedData_HasDigests(NSSCMSSignedData *sigd);
  * The verification checks if the signing cert is valid and has a trusted chain
  * for the purpose specified by "certusage".
  */
-extern SECStatus
+__attribute__ ((visibility ("default"))) extern SECStatus
 NSS_CMSSignedData_VerifySignerInfo(NSSCMSSignedData *sigd, int i, CERTCertDBHandle *certdb,
 				    SECCertUsage certusage);
 
 /*
  * NSS_CMSSignedData_VerifyCertsOnly - verify the certs in a certs-only message
 */
-extern SECStatus
+__attribute__ ((visibility ("default"))) extern SECStatus
 NSS_CMSSignedData_VerifyCertsOnly(NSSCMSSignedData *sigd, 
                                   CERTCertDBHandle *certdb, 
                                   SECCertUsage usage);
 
-extern SECStatus
+__attribute__ ((visibility ("default"))) extern SECStatus
 NSS_CMSSignedData_AddCertList(NSSCMSSignedData *sigd, CERTCertificateList *certlist);
 
 /*
  * NSS_CMSSignedData_AddCertChain - add cert and its entire chain to the set of certs 
  */
-extern SECStatus
+__attribute__ ((visibility ("default"))) extern SECStatus
 NSS_CMSSignedData_AddCertChain(NSSCMSSignedData *sigd, CERTCertificate *cert);
 
-extern SECStatus
+__attribute__ ((visibility ("default"))) extern SECStatus
 NSS_CMSSignedData_AddCertificate(NSSCMSSignedData *sigd, CERTCertificate *cert);
 
-extern PRBool
+__attribute__ ((visibility ("default"))) extern PRBool
 NSS_CMSSignedData_ContainsCertsOrCrls(NSSCMSSignedData *sigd);
 
-extern SECStatus
+__attribute__ ((visibility ("default"))) extern SECStatus
 NSS_CMSSignedData_AddSignerInfo(NSSCMSSignedData *sigd,
 				NSSCMSSignerInfo *signerinfo);
 
-extern SECStatus
+__attribute__ ((visibility ("default"))) extern SECStatus
 NSS_CMSSignedData_SetDigests(NSSCMSSignedData *sigd,
 				SECAlgorithmID **digestalgs,
 				SECItem **digests);
 
-extern SECStatus
+__attribute__ ((visibility ("default"))) extern SECStatus
 NSS_CMSSignedData_SetDigestValue(NSSCMSSignedData *sigd,
 				SECOidTag digestalgtag,
 				SECItem *digestdata);
 
-extern SECStatus
+__attribute__ ((visibility ("default"))) extern SECStatus
 NSS_CMSSignedData_AddDigest(PLArenaPool *poolp,
 				NSSCMSSignedData *sigd,
 				SECOidTag digestalgtag,
 				SECItem *digest);
 
-extern SECItem *
+__attribute__ ((visibility ("default"))) extern SECItem *
 NSS_CMSSignedData_GetDigestValue(NSSCMSSignedData *sigd, SECOidTag digestalgtag);
 
 /*
@@ -562,32 +562,32 @@ NSS_CMSSignedData_GetDigestValue(NSSCMSSignedData *sigd, SECOidTag digestalgtag)
  *
  * An error results in a return value of NULL and an error set.
  */
-extern NSSCMSSignedData *
+__attribute__ ((visibility ("default"))) extern NSSCMSSignedData *
 NSS_CMSSignedData_CreateCertsOnly(NSSCMSMessage *cmsg, CERTCertificate *cert, PRBool include_chain);
 
 /************************************************************************
  * cmssiginfo.c - signerinfo methods
  ************************************************************************/
 
-extern NSSCMSSignerInfo *
+__attribute__ ((visibility ("default"))) extern NSSCMSSignerInfo *
 NSS_CMSSignerInfo_Create(NSSCMSMessage *cmsg, CERTCertificate *cert, SECOidTag digestalgtag);
-extern NSSCMSSignerInfo *
+__attribute__ ((visibility ("default"))) extern NSSCMSSignerInfo *
 NSS_CMSSignerInfo_CreateWithSubjKeyID(NSSCMSMessage *cmsg, SECItem *subjKeyID, SECKEYPublicKey *pubKey, SECKEYPrivateKey *signingKey, SECOidTag digestalgtag);
 
 /*
  * NSS_CMSSignerInfo_Destroy - destroy a SignerInfo data structure
  */
-extern void
+__attribute__ ((visibility ("default"))) extern void
 NSS_CMSSignerInfo_Destroy(NSSCMSSignerInfo *si);
 
 /*
  * NSS_CMSSignerInfo_Sign - sign something
  *
  */
-extern SECStatus
+__attribute__ ((visibility ("default"))) extern SECStatus
 NSS_CMSSignerInfo_Sign(NSSCMSSignerInfo *signerinfo, SECItem *digest, SECItem *contentType);
 
-extern SECStatus
+__attribute__ ((visibility ("default"))) extern SECStatus
 NSS_CMSSignerInfo_VerifyCertificate(NSSCMSSignerInfo *signerinfo, CERTCertDBHandle *certdb,
 			    SECCertUsage certusage);
 
@@ -597,22 +597,22 @@ NSS_CMSSignerInfo_VerifyCertificate(NSSCMSSignerInfo *signerinfo, CERTCertDBHand
  * Just verifies the signature. The assumption is that verification of the certificate
  * is done already.
  */
-extern SECStatus
+__attribute__ ((visibility ("default"))) extern SECStatus
 NSS_CMSSignerInfo_Verify(NSSCMSSignerInfo *signerinfo, SECItem *digest, SECItem *contentType);
 
-extern NSSCMSVerificationStatus
+__attribute__ ((visibility ("default"))) extern NSSCMSVerificationStatus
 NSS_CMSSignerInfo_GetVerificationStatus(NSSCMSSignerInfo *signerinfo);
 
-extern SECOidData *
+__attribute__ ((visibility ("default"))) extern SECOidData *
 NSS_CMSSignerInfo_GetDigestAlg(NSSCMSSignerInfo *signerinfo);
 
-extern SECOidTag
+__attribute__ ((visibility ("default"))) extern SECOidTag
 NSS_CMSSignerInfo_GetDigestAlgTag(NSSCMSSignerInfo *signerinfo);
 
-extern int
+__attribute__ ((visibility ("default"))) extern int
 NSS_CMSSignerInfo_GetVersion(NSSCMSSignerInfo *signerinfo);
 
-extern CERTCertificateList *
+__attribute__ ((visibility ("default"))) extern CERTCertificateList *
 NSS_CMSSignerInfo_GetCertList(NSSCMSSignerInfo *signerinfo);
 
 /*
@@ -624,7 +624,7 @@ NSS_CMSSignerInfo_GetCertList(NSSCMSSignerInfo *signerinfo);
  * Returns a pointer to XXXX (what?)
  * A return value of NULL is an error.
  */
-extern SECStatus
+__attribute__ ((visibility ("default"))) extern SECStatus
 NSS_CMSSignerInfo_GetSigningTime(NSSCMSSignerInfo *sinfo, PRTime *stime);
 
 /*
@@ -632,7 +632,7 @@ NSS_CMSSignerInfo_GetSigningTime(NSSCMSSignerInfo *sinfo, PRTime *stime);
  *
  * the certs in the enclosing SignedData must have been imported already
  */
-extern CERTCertificate *
+__attribute__ ((visibility ("default"))) extern CERTCertificate *
 NSS_CMSSignerInfo_GetSigningCertificate(NSSCMSSignerInfo *signerinfo, CERTCertDBHandle *certdb);
 
 /*
@@ -643,7 +643,7 @@ NSS_CMSSignerInfo_GetSigningCertificate(NSSCMSSignerInfo *signerinfo, CERTCertDB
  * Returns a pointer to allocated memory, which must be freed with PORT_Free.
  * A return value of NULL is an error.
  */
-extern char *
+__attribute__ ((visibility ("default"))) extern char *
 NSS_CMSSignerInfo_GetSignerCommonName(NSSCMSSignerInfo *sinfo);
 
 /*
@@ -654,21 +654,21 @@ NSS_CMSSignerInfo_GetSignerCommonName(NSSCMSSignerInfo *sinfo);
  * Returns a pointer to allocated memory, which must be freed.
  * A return value of NULL is an error.
  */
-extern char *
+__attribute__ ((visibility ("default"))) extern char *
 NSS_CMSSignerInfo_GetSignerEmailAddress(NSSCMSSignerInfo *sinfo);
 
 /*
  * NSS_CMSSignerInfo_AddAuthAttr - add an attribute to the
  * authenticated (i.e. signed) attributes of "signerinfo". 
  */
-extern SECStatus
+__attribute__ ((visibility ("default"))) extern SECStatus
 NSS_CMSSignerInfo_AddAuthAttr(NSSCMSSignerInfo *signerinfo, NSSCMSAttribute *attr);
 
 /*
  * NSS_CMSSignerInfo_AddUnauthAttr - add an attribute to the
  * unauthenticated attributes of "signerinfo". 
  */
-extern SECStatus
+__attribute__ ((visibility ("default"))) extern SECStatus
 NSS_CMSSignerInfo_AddUnauthAttr(NSSCMSSignerInfo *signerinfo, NSSCMSAttribute *attr);
 
 /* 
@@ -684,7 +684,7 @@ NSS_CMSSignerInfo_AddUnauthAttr(NSSCMSSignerInfo *signerinfo, NSSCMSAttribute *a
  * but it will not actually get signed until the entire item is
  * processed for encoding.  Is this (expected to be small) delay okay?
  */
-extern SECStatus
+__attribute__ ((visibility ("default"))) extern SECStatus
 NSS_CMSSignerInfo_AddSigningTime(NSSCMSSignerInfo *signerinfo, PRTime t);
 
 /*
@@ -694,7 +694,7 @@ NSS_CMSSignerInfo_AddSigningTime(NSSCMSSignerInfo *signerinfo, PRTime t);
  * This is expected to be included in outgoing signed
  * messages for email (S/MIME).
  */
-extern SECStatus
+__attribute__ ((visibility ("default"))) extern SECStatus
 NSS_CMSSignerInfo_AddSMIMECaps(NSSCMSSignerInfo *signerinfo);
 
 /*
@@ -703,7 +703,7 @@ NSS_CMSSignerInfo_AddSMIMECaps(NSSCMSSignerInfo *signerinfo);
  *
  * This is expected to be included in outgoing signed messages for email (S/MIME).
  */
-SECStatus
+__attribute__ ((visibility ("default"))) SECStatus
 NSS_CMSSignerInfo_AddSMIMEEncKeyPrefs(NSSCMSSignerInfo *signerinfo, CERTCertificate *cert, CERTCertDBHandle *certdb);
 
 /*
@@ -713,13 +713,13 @@ NSS_CMSSignerInfo_AddSMIMEEncKeyPrefs(NSSCMSSignerInfo *signerinfo, CERTCertific
  * This is expected to be included in outgoing signed messages for email (S/MIME),
  * if compatibility with Microsoft mail clients is wanted.
  */
-SECStatus
+__attribute__ ((visibility ("default"))) SECStatus
 NSS_CMSSignerInfo_AddMSSMIMEEncKeyPrefs(NSSCMSSignerInfo *signerinfo, CERTCertificate *cert, CERTCertDBHandle *certdb);
 
 /* 
  * NSS_CMSSignerInfo_AddCounterSignature - countersign a signerinfo
  */
-extern SECStatus
+__attribute__ ((visibility ("default"))) extern SECStatus
 NSS_CMSSignerInfo_AddCounterSignature(NSSCMSSignerInfo *signerinfo,
 				    SECOidTag digestalg, CERTCertificate signingcert);
 
@@ -727,13 +727,13 @@ NSS_CMSSignerInfo_AddCounterSignature(NSSCMSSignerInfo *signerinfo,
  * XXXX the following needs to be done in the S/MIME layer code
  * after signature of a signerinfo is verified
  */
-extern SECStatus
+__attribute__ ((visibility ("default"))) extern SECStatus
 NSS_SMIMESignerInfo_SaveSMIMEProfile(NSSCMSSignerInfo *signerinfo);
 
 /*
  * NSS_CMSSignerInfo_IncludeCerts - set cert chain inclusion mode for this signer
  */
-extern SECStatus
+__attribute__ ((visibility ("default"))) extern SECStatus
 NSS_CMSSignerInfo_IncludeCerts(NSSCMSSignerInfo *signerinfo, NSSCMSCertChainMode cm, SECCertUsage usage);
 
 /************************************************************************
@@ -743,19 +743,19 @@ NSS_CMSSignerInfo_IncludeCerts(NSSCMSSignerInfo *signerinfo, NSSCMSCertChainMode
 /*
  * NSS_CMSEnvelopedData_Create - create an enveloped data message
  */
-extern NSSCMSEnvelopedData *
+__attribute__ ((visibility ("default"))) extern NSSCMSEnvelopedData *
 NSS_CMSEnvelopedData_Create(NSSCMSMessage *cmsg, SECOidTag algorithm, int keysize);
 
 /*
  * NSS_CMSEnvelopedData_Destroy - destroy an enveloped data message
  */
-extern void
+__attribute__ ((visibility ("default"))) extern void
 NSS_CMSEnvelopedData_Destroy(NSSCMSEnvelopedData *edp);
 
 /*
  * NSS_CMSEnvelopedData_GetContentInfo - return pointer to this envelopedData's contentinfo
  */
-extern NSSCMSContentInfo *
+__attribute__ ((visibility ("default"))) extern NSSCMSContentInfo *
 NSS_CMSEnvelopedData_GetContentInfo(NSSCMSEnvelopedData *envd);
 
 /*
@@ -763,7 +763,7 @@ NSS_CMSEnvelopedData_GetContentInfo(NSSCMSEnvelopedData *envd);
  *
  * rip must be created on the same pool as edp - this is not enforced, though.
  */
-extern SECStatus
+__attribute__ ((visibility ("default"))) extern SECStatus
 NSS_CMSEnvelopedData_AddRecipient(NSSCMSEnvelopedData *edp, NSSCMSRecipientInfo *rip);
 
 /*
@@ -778,38 +778,38 @@ NSS_CMSEnvelopedData_AddRecipient(NSSCMSEnvelopedData *edp, NSSCMSRecipientInfo 
  * using the proper algorithm for every certificiate.
  * it will finally set the bulk algorithm and key so that the encode step can find it.
  */
-extern SECStatus
+__attribute__ ((visibility ("default"))) extern SECStatus
 NSS_CMSEnvelopedData_Encode_BeforeStart(NSSCMSEnvelopedData *envd);
 
 /*
  * NSS_CMSEnvelopedData_Encode_BeforeData - set up encryption
  */
-extern SECStatus
+__attribute__ ((visibility ("default"))) extern SECStatus
 NSS_CMSEnvelopedData_Encode_BeforeData(NSSCMSEnvelopedData *envd);
 
 /*
  * NSS_CMSEnvelopedData_Encode_AfterData - finalize this envelopedData for encoding
  */
-extern SECStatus
+__attribute__ ((visibility ("default"))) extern SECStatus
 NSS_CMSEnvelopedData_Encode_AfterData(NSSCMSEnvelopedData *envd);
 
 /*
  * NSS_CMSEnvelopedData_Decode_BeforeData - find our recipientinfo, 
  * derive bulk key & set up our contentinfo
  */
-extern SECStatus
+__attribute__ ((visibility ("default"))) extern SECStatus
 NSS_CMSEnvelopedData_Decode_BeforeData(NSSCMSEnvelopedData *envd);
 
 /*
  * NSS_CMSEnvelopedData_Decode_AfterData - finish decrypting this envelopedData's content
  */
-extern SECStatus
+__attribute__ ((visibility ("default"))) extern SECStatus
 NSS_CMSEnvelopedData_Decode_AfterData(NSSCMSEnvelopedData *envd);
 
 /*
  * NSS_CMSEnvelopedData_Decode_AfterEnd - finish decoding this envelopedData
  */
-extern SECStatus
+__attribute__ ((visibility ("default"))) extern SECStatus
 NSS_CMSEnvelopedData_Decode_AfterEnd(NSSCMSEnvelopedData *envd);
 
 
@@ -823,15 +823,15 @@ NSS_CMSEnvelopedData_Decode_AfterEnd(NSSCMSEnvelopedData *envd);
  * we currently do not create KeyAgreement recipientinfos with multiple recipientEncryptedKeys
  * the certificate is supposed to have been verified by the caller
  */
-extern NSSCMSRecipientInfo *
+__attribute__ ((visibility ("default"))) extern NSSCMSRecipientInfo *
 NSS_CMSRecipientInfo_Create(NSSCMSMessage *cmsg, CERTCertificate *cert);
 
-extern NSSCMSRecipientInfo *
+__attribute__ ((visibility ("default"))) extern NSSCMSRecipientInfo *
 NSS_CMSRecipientInfo_CreateWithSubjKeyID(NSSCMSMessage   *cmsg, 
                                          SECItem         *subjKeyID,
                                          SECKEYPublicKey *pubKey);
 
-extern NSSCMSRecipientInfo *
+__attribute__ ((visibility ("default"))) extern NSSCMSRecipientInfo *
 NSS_CMSRecipientInfo_CreateWithSubjKeyIDFromCert(NSSCMSMessage *cmsg, 
                                                  CERTCertificate *cert);
 
@@ -840,7 +840,7 @@ NSS_CMSRecipientInfo_CreateWithSubjKeyIDFromCert(NSSCMSMessage *cmsg,
  * applications which want to encode their own CMS structures and
  * key exchange types.
  */
-extern NSSCMSRecipientInfo *
+__attribute__ ((visibility ("default"))) extern NSSCMSRecipientInfo *
 NSS_CMSRecipientInfo_CreateNew(void* pwfn_arg);
 
 /*
@@ -848,10 +848,10 @@ NSS_CMSRecipientInfo_CreateNew(void* pwfn_arg);
  * decoded DER data for applications which want to encode their own CMS 
  * structures and key exchange types.
  */
-extern NSSCMSRecipientInfo *
+__attribute__ ((visibility ("default"))) extern NSSCMSRecipientInfo *
 NSS_CMSRecipientInfo_CreateFromDER(SECItem* input, void* pwfn_arg);
 
-extern void
+__attribute__ ((visibility ("default"))) extern void
 NSS_CMSRecipientInfo_Destroy(NSSCMSRecipientInfo *ri);
 
 /*
@@ -861,29 +861,29 @@ NSS_CMSRecipientInfo_Destroy(NSSCMSRecipientInfo *ri);
  * retcert and retkey are NULL. Caller inherits ownership of the cert and key
  * he requested (and is responsible to free them).
  */
-SECStatus NSS_CMSRecipientInfo_GetCertAndKey(NSSCMSRecipientInfo *ri,
+__attribute__ ((visibility ("default"))) SECStatus NSS_CMSRecipientInfo_GetCertAndKey(NSSCMSRecipientInfo *ri,
    CERTCertificate** retcert, SECKEYPrivateKey** retkey);
 
-extern int
+__attribute__ ((visibility ("default"))) extern int
 NSS_CMSRecipientInfo_GetVersion(NSSCMSRecipientInfo *ri);
 
-extern SECItem *
+__attribute__ ((visibility ("default"))) extern SECItem *
 NSS_CMSRecipientInfo_GetEncryptedKey(NSSCMSRecipientInfo *ri, int subIndex);
 
 /*
  * NSS_CMSRecipientInfo_Encode - encode an NSS_CMSRecipientInfo as ASN.1
  */
-SECStatus NSS_CMSRecipientInfo_Encode(PLArenaPool* poolp,
+__attribute__ ((visibility ("default"))) SECStatus NSS_CMSRecipientInfo_Encode(PLArenaPool* poolp,
                                       const NSSCMSRecipientInfo *src,
                                       SECItem* returned);
 
-extern SECOidTag
+__attribute__ ((visibility ("default"))) extern SECOidTag
 NSS_CMSRecipientInfo_GetKeyEncryptionAlgorithmTag(NSSCMSRecipientInfo *ri);
 
-extern SECStatus
+__attribute__ ((visibility ("default"))) extern SECStatus
 NSS_CMSRecipientInfo_WrapBulkKey(NSSCMSRecipientInfo *ri, PK11SymKey *bulkkey, SECOidTag bulkalgtag);
 
-extern PK11SymKey *
+__attribute__ ((visibility ("default"))) extern PK11SymKey *
 NSS_CMSRecipientInfo_UnwrapBulkKey(NSSCMSRecipientInfo *ri, int subIndex,
 		CERTCertificate *cert, SECKEYPrivateKey *privkey, SECOidTag bulkalgtag);
 
@@ -899,19 +899,19 @@ NSS_CMSRecipientInfo_UnwrapBulkKey(NSSCMSRecipientInfo *ri, int subIndex,
  * An error results in a return value of NULL and an error set.
  * (Retrieve specific errors via PORT_GetError()/XP_GetError().)
  */
-extern NSSCMSEncryptedData *
+__attribute__ ((visibility ("default"))) extern NSSCMSEncryptedData *
 NSS_CMSEncryptedData_Create(NSSCMSMessage *cmsg, SECOidTag algorithm, int keysize);
 
 /*
  * NSS_CMSEncryptedData_Destroy - destroy an encryptedData object
  */
-extern void
+__attribute__ ((visibility ("default"))) extern void
 NSS_CMSEncryptedData_Destroy(NSSCMSEncryptedData *encd);
 
 /*
  * NSS_CMSEncryptedData_GetContentInfo - return pointer to encryptedData object's contentInfo
  */
-extern NSSCMSContentInfo *
+__attribute__ ((visibility ("default"))) extern NSSCMSContentInfo *
 NSS_CMSEncryptedData_GetContentInfo(NSSCMSEncryptedData *encd);
 
 /*
@@ -922,37 +922,37 @@ NSS_CMSEncryptedData_GetContentInfo(NSSCMSEncryptedData *encd);
  *  - set the correct version value.
  *  - get the encryption key
  */
-extern SECStatus
+__attribute__ ((visibility ("default"))) extern SECStatus
 NSS_CMSEncryptedData_Encode_BeforeStart(NSSCMSEncryptedData *encd);
 
 /*
  * NSS_CMSEncryptedData_Encode_BeforeData - set up encryption
  */
-extern SECStatus
+__attribute__ ((visibility ("default"))) extern SECStatus
 NSS_CMSEncryptedData_Encode_BeforeData(NSSCMSEncryptedData *encd);
 
 /*
  * NSS_CMSEncryptedData_Encode_AfterData - finalize this encryptedData for encoding
  */
-extern SECStatus
+__attribute__ ((visibility ("default"))) extern SECStatus
 NSS_CMSEncryptedData_Encode_AfterData(NSSCMSEncryptedData *encd);
 
 /*
  * NSS_CMSEncryptedData_Decode_BeforeData - find bulk key & set up decryption
  */
-extern SECStatus
+__attribute__ ((visibility ("default"))) extern SECStatus
 NSS_CMSEncryptedData_Decode_BeforeData(NSSCMSEncryptedData *encd);
 
 /*
  * NSS_CMSEncryptedData_Decode_AfterData - finish decrypting this encryptedData's content
  */
-extern SECStatus
+__attribute__ ((visibility ("default"))) extern SECStatus
 NSS_CMSEncryptedData_Decode_AfterData(NSSCMSEncryptedData *encd);
 
 /*
  * NSS_CMSEncryptedData_Decode_AfterEnd - finish decoding this encryptedData
  */
-extern SECStatus
+__attribute__ ((visibility ("default"))) extern SECStatus
 NSS_CMSEncryptedData_Decode_AfterEnd(NSSCMSEncryptedData *encd);
 
 /************************************************************************
@@ -966,19 +966,19 @@ NSS_CMSEncryptedData_Decode_AfterEnd(NSSCMSEncryptedData *encd);
  * contentInfo must be filled by the user
  * digest will be calculated while encoding
  */
-extern NSSCMSDigestedData *
+__attribute__ ((visibility ("default"))) extern NSSCMSDigestedData *
 NSS_CMSDigestedData_Create(NSSCMSMessage *cmsg, SECAlgorithmID *digestalg);
 
 /*
  * NSS_CMSDigestedData_Destroy - destroy a digestedData object
  */
-extern void
+__attribute__ ((visibility ("default"))) extern void
 NSS_CMSDigestedData_Destroy(NSSCMSDigestedData *digd);
 
 /*
  * NSS_CMSDigestedData_GetContentInfo - return pointer to digestedData object's contentInfo
  */
-extern NSSCMSContentInfo *
+__attribute__ ((visibility ("default"))) extern NSSCMSContentInfo *
 NSS_CMSDigestedData_GetContentInfo(NSSCMSDigestedData *digd);
 
 /*
@@ -988,7 +988,7 @@ NSS_CMSDigestedData_GetContentInfo(NSSCMSDigestedData *digd);
  * In particular:
  *  - set the right version number. The contentInfo's content type must be set up already.
  */
-extern SECStatus
+__attribute__ ((visibility ("default"))) extern SECStatus
 NSS_CMSDigestedData_Encode_BeforeStart(NSSCMSDigestedData *digd);
 
 /*
@@ -998,7 +998,7 @@ NSS_CMSDigestedData_Encode_BeforeStart(NSSCMSDigestedData *digd);
  * In detail:
  *  - set up the digests if necessary
  */
-extern SECStatus
+__attribute__ ((visibility ("default"))) extern SECStatus
 NSS_CMSDigestedData_Encode_BeforeData(NSSCMSDigestedData *digd);
 
 /*
@@ -1008,7 +1008,7 @@ NSS_CMSDigestedData_Encode_BeforeData(NSSCMSDigestedData *digd);
  * In detail:
  *  - finish the digests
  */
-extern SECStatus
+__attribute__ ((visibility ("default"))) extern SECStatus
 NSS_CMSDigestedData_Encode_AfterData(NSSCMSDigestedData *digd);
 
 /*
@@ -1018,7 +1018,7 @@ NSS_CMSDigestedData_Encode_AfterData(NSSCMSDigestedData *digd);
  * In detail:
  *  - set up the digests if necessary
  */
-extern SECStatus
+__attribute__ ((visibility ("default"))) extern SECStatus
 NSS_CMSDigestedData_Decode_BeforeData(NSSCMSDigestedData *digd);
 
 /*
@@ -1028,7 +1028,7 @@ NSS_CMSDigestedData_Decode_BeforeData(NSSCMSDigestedData *digd);
  * In detail:
  *  - finish the digests
  */
-extern SECStatus
+__attribute__ ((visibility ("default"))) extern SECStatus
 NSS_CMSDigestedData_Decode_AfterData(NSSCMSDigestedData *digd);
 
 /*
@@ -1037,7 +1037,7 @@ NSS_CMSDigestedData_Decode_AfterData(NSSCMSDigestedData *digd);
  * In detail:
  *  - check the digests for equality
  */
-extern SECStatus
+__attribute__ ((visibility ("default"))) extern SECStatus
 NSS_CMSDigestedData_Decode_AfterEnd(NSSCMSDigestedData *digd);
 
 /************************************************************************
@@ -1048,33 +1048,33 @@ NSS_CMSDigestedData_Decode_AfterEnd(NSSCMSDigestedData *digd);
  * NSS_CMSDigestContext_StartMultiple - start digest calculation using all the
  *  digest algorithms in "digestalgs" in parallel.
  */
-extern NSSCMSDigestContext *
+__attribute__ ((visibility ("default"))) extern NSSCMSDigestContext *
 NSS_CMSDigestContext_StartMultiple(SECAlgorithmID **digestalgs);
 
 /*
  * NSS_CMSDigestContext_StartSingle - same as NSS_CMSDigestContext_StartMultiple, but
  *  only one algorithm.
  */
-extern NSSCMSDigestContext *
+__attribute__ ((visibility ("default"))) extern NSSCMSDigestContext *
 NSS_CMSDigestContext_StartSingle(SECAlgorithmID *digestalg);
 
 /*
  * NSS_CMSDigestContext_Update - feed more data into the digest machine
  */
-extern void
+__attribute__ ((visibility ("default"))) extern void
 NSS_CMSDigestContext_Update(NSSCMSDigestContext *cmsdigcx, const unsigned char *data, int len);
 
 /*
  * NSS_CMSDigestContext_Cancel - cancel digesting operation
  */
-extern void
+__attribute__ ((visibility ("default"))) extern void
 NSS_CMSDigestContext_Cancel(NSSCMSDigestContext *cmsdigcx);
 
 /*
  * NSS_CMSDigestContext_FinishMultiple - finish the digests and put them
  *  into an array of SECItems (allocated on poolp)
  */
-extern SECStatus
+__attribute__ ((visibility ("default"))) extern SECStatus
 NSS_CMSDigestContext_FinishMultiple(NSSCMSDigestContext *cmsdigcx, PLArenaPool *poolp,
 			    SECItem ***digestsp);
 
@@ -1082,7 +1082,7 @@ NSS_CMSDigestContext_FinishMultiple(NSSCMSDigestContext *cmsdigcx, PLArenaPool *
  * NSS_CMSDigestContext_FinishSingle - same as NSS_CMSDigestContext_FinishMultiple,
  *  but for one digest.
  */
-extern SECStatus
+__attribute__ ((visibility ("default"))) extern SECStatus
 NSS_CMSDigestContext_FinishSingle(NSSCMSDigestContext *cmsdigcx, PLArenaPool *poolp,
 			    SECItem *digest);
 
@@ -1097,7 +1097,7 @@ NSS_CMSDigestContext_FinishSingle(NSSCMSDigestContext *cmsdigcx, PLArenaPool *po
  *                    the plaintext message and derOut being the output,
  *                    stored in arena's pool.
  */
-extern SECStatus
+__attribute__ ((visibility ("default"))) extern SECStatus
 NSS_CMSDEREncode(NSSCMSMessage *cmsg, SECItem *input, SECItem *derOut, 
                  PLArenaPool *arena);
 
@@ -1136,7 +1136,7 @@ NSS_CMSDEREncode(NSSCMSMessage *cmsg, SECItem *input, SECItem *derOut,
  *  structure from the content info. Your ASN1Template will be evaluated 
  *  against that data structure.
  */
-SECStatus NSS_CMSType_RegisterContentType(SECOidTag type,
+__attribute__ ((visibility ("default"))) SECStatus NSS_CMSType_RegisterContentType(SECOidTag type,
                           SEC_ASN1Template *asn1Template, size_t size,
                           NSSCMSGenericWrapperDataDestroy  destroy,
                           NSSCMSGenericWrapperDataCallback decode_before,

@@ -18,23 +18,23 @@ SEC_BEGIN_PROTOS
 ** Return an PORT_Alloc'd ascii string which is the base64 encoded
 ** version of the input string.
 */
-extern char *BTOA_DataToAscii(const unsigned char *data, unsigned int len);
+__attribute__ ((visibility ("default"))) extern char *BTOA_DataToAscii(const unsigned char *data, unsigned int len);
 
 /*
 ** Return an PORT_Alloc'd string which is the base64 decoded version
 ** of the input string; set *lenp to the length of the returned data.
 */
-extern unsigned char *ATOB_AsciiToData(const char *string, unsigned int *lenp);
+__attribute__ ((visibility ("default"))) extern unsigned char *ATOB_AsciiToData(const char *string, unsigned int *lenp);
  
 /*
 ** Convert from ascii to binary encoding of an item.
 */
-extern SECStatus ATOB_ConvertAsciiToItem(SECItem *binary_item, const char *ascii);
+__attribute__ ((visibility ("default"))) extern SECStatus ATOB_ConvertAsciiToItem(SECItem *binary_item, const char *ascii);
 
 /*
 ** Convert from binary encoding of an item to ascii.
 */
-extern char *BTOA_ConvertItemToAscii(SECItem *binary_item);
+__attribute__ ((visibility ("default"))) extern char *BTOA_ConvertItemToAscii(SECItem *binary_item);
 
 SEC_END_PROTOS
 

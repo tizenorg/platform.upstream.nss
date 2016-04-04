@@ -27,7 +27,7 @@ typedef SECItem * (* SEC_PKCS12GetPassword)(void *arg);
  * If the process is successful, a SECSuccess is returned, otherwise
  * a failure occurred.
  */ 
-SECStatus
+__attribute__ ((visibility ("default"))) SECStatus
 SEC_PKCS12PutPFX(SECItem *der_pfx, SECItem *pwitem,
 		 SEC_PKCS12NicknameCollisionCallback ncCall,
 		 PK11SlotInfo *slot, void *wincx);
@@ -35,7 +35,7 @@ SEC_PKCS12PutPFX(SECItem *der_pfx, SECItem *pwitem,
 /* check the first two bytes of a file to make sure that it matches
  * the desired header for a PKCS 12 file
  */
-PRBool SEC_PKCS12ValidData(char *buf, int bufLen, long int totalLength);
+__attribute__ ((visibility ("default"))) PRBool SEC_PKCS12ValidData(char *buf, int bufLen, long int totalLength);
 
 SEC_END_PROTOS
 

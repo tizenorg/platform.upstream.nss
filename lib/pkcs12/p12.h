@@ -85,39 +85,39 @@ SEC_PKCS12CreatePubKeyEncryptedSafe(SEC_PKCS12ExportContext *p12ctxt,
 				    CERTCertificate **recipients,
 				    SECOidTag algorithm, int keysize);
 
-extern SEC_PKCS12SafeInfo *
+__attribute__ ((visibility ("default"))) extern SEC_PKCS12SafeInfo *
 SEC_PKCS12CreatePasswordPrivSafe(SEC_PKCS12ExportContext *p12ctxt, 
 				 SECItem *pwitem, SECOidTag privAlg);
 
-extern SEC_PKCS12SafeInfo *
+__attribute__ ((visibility ("default"))) extern SEC_PKCS12SafeInfo *
 SEC_PKCS12CreateUnencryptedSafe(SEC_PKCS12ExportContext *p12ctxt);
 
-extern SECStatus
+__attribute__ ((visibility ("default"))) extern SECStatus
 SEC_PKCS12AddPasswordIntegrity(SEC_PKCS12ExportContext *p12ctxt,
 			       SECItem *pwitem, SECOidTag integAlg);
-extern SECStatus
+__attribute__ ((visibility ("default"))) extern SECStatus
 SEC_PKCS12AddPublicKeyIntegrity(SEC_PKCS12ExportContext *p12ctxt,
 				CERTCertificate *cert, CERTCertDBHandle *certDb,
 				SECOidTag algorithm, int keySize);
 
-extern SEC_PKCS12ExportContext *
+__attribute__ ((visibility ("default"))) extern SEC_PKCS12ExportContext *
 SEC_PKCS12CreateExportContext(SECKEYGetPasswordKey pwfn, void *pwfnarg,  
 			      PK11SlotInfo *slot, void *wincx);
 
-extern SECStatus
+__attribute__ ((visibility ("default"))) extern SECStatus
 SEC_PKCS12AddCert(SEC_PKCS12ExportContext *p12ctxt, 
 		  SEC_PKCS12SafeInfo *safe, void *nestedDest,
 		  CERTCertificate *cert, CERTCertDBHandle *certDb,
 		  SECItem *keyId, PRBool includeCertChain);
 
-extern SECStatus
+__attribute__ ((visibility ("default"))) extern SECStatus
 SEC_PKCS12AddKeyForCert(SEC_PKCS12ExportContext *p12ctxt, 
 			SEC_PKCS12SafeInfo *safe, 
 			void *nestedDest, CERTCertificate *cert,
 			PRBool shroudKey, SECOidTag algorithm, SECItem *pwitem,
 			SECItem *keyId, SECItem *nickName);
 
-extern SECStatus
+__attribute__ ((visibility ("default"))) extern SECStatus
 SEC_PKCS12AddCertOrChainAndKey(SEC_PKCS12ExportContext *p12ctxt, 
 			void *certSafe, void *certNestedDest, 
 			CERTCertificate *cert, CERTCertDBHandle *certDb,
@@ -126,57 +126,57 @@ SEC_PKCS12AddCertOrChainAndKey(SEC_PKCS12ExportContext *p12ctxt,
 			PRBool includeCertChain);
 
 
-extern SECStatus
+__attribute__ ((visibility ("default"))) extern SECStatus
 SEC_PKCS12AddCertAndKey(SEC_PKCS12ExportContext *p12ctxt, 
 			void *certSafe, void *certNestedDest, 
 			CERTCertificate *cert, CERTCertDBHandle *certDb,
 			void *keySafe, void *keyNestedDest, 
 			PRBool shroudKey, SECItem *pwitem, SECOidTag algorithm);
 
-extern void *
+__attribute__ ((visibility ("default"))) extern void *
 SEC_PKCS12CreateNestedSafeContents(SEC_PKCS12ExportContext *p12ctxt,
 				   void *baseSafe, void *nestedDest);
 
-extern SECStatus
+__attribute__ ((visibility ("default"))) extern SECStatus
 SEC_PKCS12Encode(SEC_PKCS12ExportContext *p12exp, 
 		 SEC_PKCS12EncoderOutputCallback output, void *outputarg);
 
-extern void
+__attribute__ ((visibility ("default"))) extern void
 SEC_PKCS12DestroyExportContext(SEC_PKCS12ExportContext *p12exp);
 
-extern SEC_PKCS12DecoderContext *
+__attribute__ ((visibility ("default"))) extern SEC_PKCS12DecoderContext *
 SEC_PKCS12DecoderStart(SECItem *pwitem, PK11SlotInfo *slot, void *wincx,
 		       digestOpenFn dOpen, digestCloseFn dClose,
 		       digestIOFn dRead, digestIOFn dWrite, void *dArg);
 
-extern SECStatus
+__attribute__ ((visibility ("default"))) extern SECStatus
 SEC_PKCS12DecoderSetTargetTokenCAs(SEC_PKCS12DecoderContext *p12dcx,
                 		   SECPKCS12TargetTokenCAs tokenCAs);
 
-extern SECStatus
+__attribute__ ((visibility ("default"))) extern SECStatus
 SEC_PKCS12DecoderUpdate(SEC_PKCS12DecoderContext *p12dcx, unsigned char *data,
 			unsigned long len);
 
-extern void
+__attribute__ ((visibility ("default"))) extern void
 SEC_PKCS12DecoderFinish(SEC_PKCS12DecoderContext *p12dcx);
 
-extern SECStatus
+__attribute__ ((visibility ("default"))) extern SECStatus
 SEC_PKCS12DecoderVerify(SEC_PKCS12DecoderContext *p12dcx);
 
-extern SECStatus
+__attribute__ ((visibility ("default"))) extern SECStatus
 SEC_PKCS12DecoderValidateBags(SEC_PKCS12DecoderContext *p12dcx,
 			      SEC_PKCS12NicknameCollisionCallback nicknameCb);
 
-extern SECStatus
+__attribute__ ((visibility ("default"))) extern SECStatus
 SEC_PKCS12DecoderImportBags(SEC_PKCS12DecoderContext *p12dcx);
 
-CERTCertList *
+__attribute__ ((visibility ("default"))) CERTCertList *
 SEC_PKCS12DecoderGetCerts(SEC_PKCS12DecoderContext *p12dcx);
 
-SECStatus
+__attribute__ ((visibility ("default"))) SECStatus
 SEC_PKCS12DecoderIterateInit(SEC_PKCS12DecoderContext *p12dcx);
 
-SECStatus
+__attribute__ ((visibility ("default"))) SECStatus
 SEC_PKCS12DecoderIterateNext(SEC_PKCS12DecoderContext *p12dcx,
                              const SEC_PKCS12DecoderItem **ipp);
 

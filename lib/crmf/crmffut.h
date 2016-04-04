@@ -183,7 +183,7 @@ extern SECStatus CRMF_GetSignKeyInputSender(CRMFPOPOSigningKeyInput *keyInput,
  *    of challenges was successful.  Any other return value indicates an error
  *    while trying to generate the challenge.
  */
-extern SECStatus
+__attribute__ ((visibility ("default"))) extern SECStatus
 CMMF_POPODecKeyChallContentSetNextChallenge
                                    (CMMFPOPODecKeyChallContent *inDecKeyChall,
 				    long                        inRandom,
@@ -199,7 +199,7 @@ CMMF_POPODecKeyChallContentSetNextChallenge
  *    This function returns the number of CMMFChallenges are contained in 
  *    the CMMFPOPODecKeyChallContent structure.
  */
-extern int CMMF_POPODecKeyChallContentGetNumChallenges
+__attribute__ ((visibility ("default"))) extern int CMMF_POPODecKeyChallContentGetNumChallenges
                                   (CMMFPOPODecKeyChallContent *inKeyChallCont);
 
 /*
@@ -299,7 +299,7 @@ extern SECStatus CMMF_DestroyChallenge (CMMFChallenge *inChallenge);
  *    CMMFPOPODecKeyRespContent structure is successful.  Any other
  *    return value indicates an error while freeing the memory.
  */
-extern SECStatus
+__attribute__ ((visibility ("default"))) extern SECStatus
      CMMF_DestroyPOPODecKeyRespContent(CMMFPOPODecKeyRespContent *inDecKeyResp);
 
 /*
@@ -356,6 +356,6 @@ extern PRBool CMMF_ChallengeIsDecrypted(CMMFChallenge *inChallenge);
  *    indicates an error while freeing the memory.
  *
  */
-extern SECStatus 
+__attribute__ ((visibility ("default"))) extern SECStatus 
  CMMF_DestroyPOPODecKeyChallContent (CMMFPOPODecKeyChallContent *inDecKeyCont);
 

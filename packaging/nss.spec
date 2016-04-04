@@ -122,6 +122,9 @@ Mozilla project.
 cp %{SOURCE1001} .
 
 %build
+export CFLAGS+=" -fvisibility=hidden"
+  export CXXFLAGS+=" -fvisibility=hidden"
+  
 #modified="$(sed -n '/^----/n;s/ - .*$//;p;q' "%{_sourcedir}/%{name}.changes")"
 #DATE="\"$(date -d "${modified}" "+%%b %%e %%Y")\""
 #TIME="\"$(date -d "${modified}" "+%%R")\""

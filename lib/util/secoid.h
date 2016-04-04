@@ -19,18 +19,18 @@
 
 SEC_BEGIN_PROTOS
 
-extern const SEC_ASN1Template SECOID_AlgorithmIDTemplate[];
+__attribute__ ((visibility ("default"))) extern const SEC_ASN1Template SECOID_AlgorithmIDTemplate[];
 
 /* This functions simply returns the address of the above-declared template. */
-SEC_ASN1_CHOOSER_DECLARE(SECOID_AlgorithmIDTemplate)
+__attribute__ ((visibility ("default"))) SEC_ASN1_CHOOSER_DECLARE(SECOID_AlgorithmIDTemplate)
 
 /*
  * OID handling routines
  */
-extern SECOidData *SECOID_FindOID( const SECItem *oid);
-extern SECOidTag SECOID_FindOIDTag(const SECItem *oid);
-extern SECOidData *SECOID_FindOIDByTag(SECOidTag tagnum);
-extern SECOidData *SECOID_FindOIDByMechanism(unsigned long mechanism);
+__attribute__ ((visibility ("default"))) extern SECOidData *SECOID_FindOID( const SECItem *oid);
+__attribute__ ((visibility ("default"))) extern SECOidTag SECOID_FindOIDTag(const SECItem *oid);
+__attribute__ ((visibility ("default"))) extern SECOidData *SECOID_FindOIDByTag(SECOidTag tagnum);
+__attribute__ ((visibility ("default"))) extern SECOidData *SECOID_FindOIDByMechanism(unsigned long mechanism);
 
 /****************************************/
 /*
@@ -44,7 +44,7 @@ extern SECOidData *SECOID_FindOIDByMechanism(unsigned long mechanism);
 **	"tag" the tag number defining the algorithm 
 **	"params" if not NULL, the parameters to go with the algorithm
 */
-extern SECStatus SECOID_SetAlgorithmID(PLArenaPool *arena, SECAlgorithmID *aid,
+__attribute__ ((visibility ("default"))) extern SECStatus SECOID_SetAlgorithmID(PLArenaPool *arena, SECAlgorithmID *aid,
 				   SECOidTag tag, SECItem *params);
 
 /*
@@ -53,49 +53,49 @@ extern SECStatus SECOID_SetAlgorithmID(PLArenaPool *arena, SECAlgorithmID *aid,
 ** before memory is allocated (use SECOID_DestroyAlgorithmID(dest, PR_FALSE)
 ** to do that).
 */
-extern SECStatus SECOID_CopyAlgorithmID(PLArenaPool *arena, SECAlgorithmID *dest,
+__attribute__ ((visibility ("default"))) extern SECStatus SECOID_CopyAlgorithmID(PLArenaPool *arena, SECAlgorithmID *dest,
 				        const SECAlgorithmID *src);
 
 /*
 ** Get the tag number for the given algorithm-id object.
 */
-extern SECOidTag SECOID_GetAlgorithmTag(const SECAlgorithmID *aid);
+__attribute__ ((visibility ("default"))) extern SECOidTag SECOID_GetAlgorithmTag(const SECAlgorithmID *aid);
 
 /*
 ** Destroy an algorithm-id object.
 **	"aid" the certificate-request to destroy
 **	"freeit" if PR_TRUE then free the object as well as its sub-objects
 */
-extern void SECOID_DestroyAlgorithmID(SECAlgorithmID *aid, PRBool freeit);
+__attribute__ ((visibility ("default"))) extern void SECOID_DestroyAlgorithmID(SECAlgorithmID *aid, PRBool freeit);
 
 /*
 ** Compare two algorithm-id objects, returning the difference between
 ** them.
 */
-extern SECComparison SECOID_CompareAlgorithmID(SECAlgorithmID *a,
+__attribute__ ((visibility ("default"))) extern SECComparison SECOID_CompareAlgorithmID(SECAlgorithmID *a,
 					   SECAlgorithmID *b);
 
-extern PRBool SECOID_KnownCertExtenOID (SECItem *extenOid);
+__attribute__ ((visibility ("default"))) extern PRBool SECOID_KnownCertExtenOID (SECItem *extenOid);
 
 /* Given a tag number, return a string describing it.
  */
-extern const char *SECOID_FindOIDTagDescription(SECOidTag tagnum);
+__attribute__ ((visibility ("default"))) extern const char *SECOID_FindOIDTagDescription(SECOidTag tagnum);
 
 /* Add a dynamic SECOidData to the dynamic OID table.
 ** Routine copies the src entry, and returns the new SECOidTag.
 ** Returns SEC_OID_INVALID if failed to add for some reason.
 */
-extern SECOidTag SECOID_AddEntry(const SECOidData * src);
+__attribute__ ((visibility ("default"))) extern SECOidTag SECOID_AddEntry(const SECOidData * src);
 
 /*
  * initialize the oid data structures.
  */
-extern SECStatus SECOID_Init(void);
+__attribute__ ((visibility ("default"))) extern SECStatus SECOID_Init(void);
 
 /*
  * free up the oid data structures.
  */
-extern SECStatus SECOID_Shutdown(void);
+__attribute__ ((visibility ("default"))) extern SECStatus SECOID_Shutdown(void);
 
 /* if to->data is not NULL, and to->len is large enough to hold the result,
  * then the resultant OID will be copyed into to->data, and to->len will be
@@ -110,10 +110,10 @@ extern SECStatus SECOID_Shutdown(void);
  * len will be computed as strlen(from), meaning it must be NUL terminated.
  * It is an error if from == NULL, or if *from == '\0'.
  */
-extern SECStatus SEC_StringToOID(PLArenaPool *pool, SECItem *to, 
+__attribute__ ((visibility ("default"))) extern SECStatus SEC_StringToOID(PLArenaPool *pool, SECItem *to, 
                                  const char *from, PRUint32 len);
 
-extern void UTIL_SetForkState(PRBool forked);
+__attribute__ ((visibility ("default"))) extern void UTIL_SetForkState(PRBool forked);
 
 /*
  * Accessor functions for new opaque extended SECOID table.
@@ -126,13 +126,13 @@ extern void UTIL_SetForkState(PRBool forked);
  * Default value for any algorithm is 0xffffffff (enabled for all purposes).
  * No value is output if function returns SECFailure.
  */
-extern SECStatus NSS_GetAlgorithmPolicy(SECOidTag tag, PRUint32 *pValue);
+__attribute__ ((visibility ("default"))) extern SECStatus NSS_GetAlgorithmPolicy(SECOidTag tag, PRUint32 *pValue);
 
 /* The Set function modifies the stored value according to the following
  * algorithm:
  *   policy[tag] = (policy[tag] & ~clearBits) | setBits;
  */
-extern SECStatus
+__attribute__ ((visibility ("default"))) extern SECStatus
 NSS_SetAlgorithmPolicy(SECOidTag tag, PRUint32 setBits, PRUint32 clearBits);
 
 

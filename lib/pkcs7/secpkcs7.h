@@ -17,7 +17,7 @@
 #include "hasht.h"
 #include "pkcs7t.h"
 
-extern const SEC_ASN1Template sec_PKCS7ContentInfoTemplate[];
+__attribute__ ((visibility ("default"))) extern const SEC_ASN1Template sec_PKCS7ContentInfoTemplate[];
 
 /************************************************************************/
 SEC_BEGIN_PROTOS
@@ -34,25 +34,25 @@ extern SECOidTag SEC_PKCS7ContentType (SEC_PKCS7ContentInfo *cinfo);
 /*
  * Destroy a PKCS7 contentInfo and all of its sub-pieces.
  */
-extern void SEC_PKCS7DestroyContentInfo(SEC_PKCS7ContentInfo *contentInfo);
+__attribute__ ((visibility ("default"))) extern void SEC_PKCS7DestroyContentInfo(SEC_PKCS7ContentInfo *contentInfo);
 
 /*
  * Copy a PKCS7 contentInfo.  A Destroy is needed on *each* copy.
  */
-extern SEC_PKCS7ContentInfo *
+__attribute__ ((visibility ("default"))) extern SEC_PKCS7ContentInfo *
 SEC_PKCS7CopyContentInfo(SEC_PKCS7ContentInfo *contentInfo);
 
 /*
  * Return a pointer to the actual content.  In the case of those types
  * which are encrypted, this returns the *plain* content.
  */
-extern SECItem *SEC_PKCS7GetContent(SEC_PKCS7ContentInfo *cinfo);
+__attribute__ ((visibility ("default"))) extern SECItem *SEC_PKCS7GetContent(SEC_PKCS7ContentInfo *cinfo);
 
 /************************************************************************
  *	PKCS7 Decoding, Verification, etc..
  ************************************************************************/
 
-extern SEC_PKCS7DecoderContext *
+__attribute__ ((visibility ("default"))) extern SEC_PKCS7DecoderContext *
 SEC_PKCS7DecoderStart(SEC_PKCS7DecoderContentCallback callback,
 		      void *callback_arg,
 		      SECKEYGetPasswordKey pwfn, void *pwfn_arg,
@@ -60,18 +60,18 @@ SEC_PKCS7DecoderStart(SEC_PKCS7DecoderContentCallback callback,
 		      void *decrypt_key_cb_arg,
 		      SEC_PKCS7DecryptionAllowedCallback decrypt_allowed_cb);
 
-extern SECStatus
+__attribute__ ((visibility ("default"))) extern SECStatus
 SEC_PKCS7DecoderUpdate(SEC_PKCS7DecoderContext *p7dcx,
 		       const char *buf, unsigned long len);
 
-extern SEC_PKCS7ContentInfo *
+__attribute__ ((visibility ("default"))) extern SEC_PKCS7ContentInfo *
 SEC_PKCS7DecoderFinish(SEC_PKCS7DecoderContext *p7dcx);
 
 
 /*  Abort the underlying ASN.1 stream & set an error  */
-void SEC_PKCS7DecoderAbort(SEC_PKCS7DecoderContext *p7dcx, int error);
+__attribute__ ((visibility ("default"))) void SEC_PKCS7DecoderAbort(SEC_PKCS7DecoderContext *p7dcx, int error);
 
-extern SEC_PKCS7ContentInfo *
+__attribute__ ((visibility ("default"))) extern SEC_PKCS7ContentInfo *
 SEC_PKCS7DecodeItem(SECItem *p7item,
 		    SEC_PKCS7DecoderContentCallback cb, void *cb_arg,
 		    SECKEYGetPasswordKey pwfn, void *pwfn_arg,
@@ -79,7 +79,7 @@ SEC_PKCS7DecodeItem(SECItem *p7item,
 		    void *decrypt_key_cb_arg,
 		    SEC_PKCS7DecryptionAllowedCallback decrypt_allowed_cb);
 
-extern PRBool SEC_PKCS7ContainsCertsOrCrls(SEC_PKCS7ContentInfo *cinfo);
+__attribute__ ((visibility ("default"))) extern PRBool SEC_PKCS7ContainsCertsOrCrls(SEC_PKCS7ContentInfo *cinfo);
 
 /* checks to see if the contents of the content info is
  * empty.  it so, PR_TRUE is returned.  PR_FALSE, otherwise.
@@ -87,10 +87,10 @@ extern PRBool SEC_PKCS7ContainsCertsOrCrls(SEC_PKCS7ContentInfo *cinfo);
  * minLen is used to specify a minimum size.  if content size <= minLen,
  * content is assumed empty.
  */
-extern PRBool 
+__attribute__ ((visibility ("default"))) extern PRBool 
 SEC_PKCS7IsContentEmpty(SEC_PKCS7ContentInfo *cinfo, unsigned int minLen); 
 
-extern PRBool SEC_PKCS7ContentIsEncrypted(SEC_PKCS7ContentInfo *cinfo);
+__attribute__ ((visibility ("default"))) extern PRBool SEC_PKCS7ContentIsEncrypted(SEC_PKCS7ContentInfo *cinfo);
 
 /*
  * If the PKCS7 content has a signature (not just *could* have a signature)
@@ -100,7 +100,7 @@ extern PRBool SEC_PKCS7ContentIsEncrypted(SEC_PKCS7ContentInfo *cinfo);
  * Note that the content itself can be empty (detached content was sent
  * another way); it is the presence of the signature that matters.
  */
-extern PRBool SEC_PKCS7ContentIsSigned(SEC_PKCS7ContentInfo *cinfo);
+__attribute__ ((visibility ("default"))) extern PRBool SEC_PKCS7ContentIsSigned(SEC_PKCS7ContentInfo *cinfo);
 
 /*
  * SEC_PKCS7VerifySignature
@@ -111,7 +111,7 @@ extern PRBool SEC_PKCS7ContentIsSigned(SEC_PKCS7ContentInfo *cinfo);
  *	In addition, if "keepcerts" is true, add any new certificates found
  *	into our local database.
  */
-extern PRBool SEC_PKCS7VerifySignature(SEC_PKCS7ContentInfo *cinfo,
+__attribute__ ((visibility ("default"))) extern PRBool SEC_PKCS7VerifySignature(SEC_PKCS7ContentInfo *cinfo,
 				       SECCertUsage certusage,
 				       PRBool keepcerts);
 
@@ -125,7 +125,7 @@ extern PRBool SEC_PKCS7VerifySignature(SEC_PKCS7ContentInfo *cinfo,
  *	In addition, if "keepcerts" is true, add any new certificates found
  *	into our local database.
  */
-extern PRBool SEC_PKCS7VerifyDetachedSignature(SEC_PKCS7ContentInfo *cinfo,
+__attribute__ ((visibility ("default"))) extern PRBool SEC_PKCS7VerifyDetachedSignature(SEC_PKCS7ContentInfo *cinfo,
 					       SECCertUsage certusage,
 					       const SECItem *detached_digest,
 					       HASH_HashType digest_type,
@@ -141,7 +141,7 @@ extern PRBool SEC_PKCS7VerifyDetachedSignature(SEC_PKCS7ContentInfo *cinfo,
  *	In addition, if "keepcerts" is true, add any new certificates found
  *	into our local database.
  */
-extern PRBool
+__attribute__ ((visibility ("default"))) extern PRBool
 SEC_PKCS7VerifyDetachedSignatureAtTime(SEC_PKCS7ContentInfo *cinfo,
 				       SECCertUsage certusage,
 				       const SECItem *detached_digest,
@@ -157,13 +157,13 @@ SEC_PKCS7VerifyDetachedSignatureAtTime(SEC_PKCS7ContentInfo *cinfo,
  *      Returns a pointer to allocated memory, which must be freed.
  *      A NULL return value is an error.
  */
-extern char *SEC_PKCS7GetSignerCommonName(SEC_PKCS7ContentInfo *cinfo);
-extern char *SEC_PKCS7GetSignerEmailAddress(SEC_PKCS7ContentInfo *cinfo);
+__attribute__ ((visibility ("default"))) extern char *SEC_PKCS7GetSignerCommonName(SEC_PKCS7ContentInfo *cinfo);
+__attribute__ ((visibility ("default"))) extern char *SEC_PKCS7GetSignerEmailAddress(SEC_PKCS7ContentInfo *cinfo);
 
 /*
  * Return the the signing time, in UTCTime format, of a PKCS7 contentInfo.
  */
-extern SECItem *SEC_PKCS7GetSigningTime(SEC_PKCS7ContentInfo *cinfo);
+__attribute__ ((visibility ("default"))) extern SECItem *SEC_PKCS7GetSigningTime(SEC_PKCS7ContentInfo *cinfo);
 
 
 /************************************************************************
@@ -198,7 +198,7 @@ extern SECItem *SEC_PKCS7GetSigningTime(SEC_PKCS7ContentInfo *cinfo);
  * An error results in a return value of NULL and an error set.
  * (Retrieve specific errors via PORT_GetError()/XP_GetError().)
  */
-extern SEC_PKCS7ContentInfo *
+__attribute__ ((visibility ("default"))) extern SEC_PKCS7ContentInfo *
 SEC_PKCS7CreateSignedData (CERTCertificate *cert,
 			   SECCertUsage certusage,
 			   CERTCertDBHandle *certdb,
@@ -223,7 +223,7 @@ SEC_PKCS7CreateSignedData (CERTCertificate *cert,
  * An error results in a return value of NULL and an error set.
  * (Retrieve specific errors via PORT_GetError()/XP_GetError().)
  */
-extern SEC_PKCS7ContentInfo *
+__attribute__ ((visibility ("default"))) extern SEC_PKCS7ContentInfo *
 SEC_PKCS7CreateCertsOnly (CERTCertificate *cert,
 			  PRBool include_chain,
 			  CERTCertDBHandle *certdb);
@@ -254,7 +254,7 @@ SEC_PKCS7CreateCertsOnly (CERTCertificate *cert,
  * An error results in a return value of NULL and an error set.
  * (Retrieve specific errors via PORT_GetError()/XP_GetError().)
  */
-extern SEC_PKCS7ContentInfo *
+__attribute__ ((visibility ("default"))) extern SEC_PKCS7ContentInfo *
 SEC_PKCS7CreateEnvelopedData (CERTCertificate *cert,
 			      SECCertUsage certusage,
 			      CERTCertDBHandle *certdb,
@@ -274,7 +274,7 @@ SEC_PKCS7CreateEnvelopedData (CERTCertificate *cert,
  * An error results in a return value of NULL and an error set.
  * (Retrieve specific errors via PORT_GetError()/XP_GetError().)
  */
-extern SEC_PKCS7ContentInfo *SEC_PKCS7CreateData (void);
+__attribute__ ((visibility ("default"))) extern SEC_PKCS7ContentInfo *SEC_PKCS7CreateData (void);
 
 /*
  * Create an empty PKCS7 encrypted content info.
@@ -284,7 +284,7 @@ extern SEC_PKCS7ContentInfo *SEC_PKCS7CreateData (void);
  * An error results in a return value of NULL and an error set.
  * (Retrieve specific errors via PORT_GetError()/XP_GetError().)
  */
-extern SEC_PKCS7ContentInfo *
+__attribute__ ((visibility ("default"))) extern SEC_PKCS7ContentInfo *
 SEC_PKCS7CreateEncryptedData (SECOidTag algorithm, int keysize,
 			      SECKEYGetPasswordKey pwfn, void *pwfn_arg);
 
@@ -312,7 +312,7 @@ SEC_PKCS7CreateEncryptedData (SECOidTag algorithm, int keysize,
  * that is allowed authenticated attributes); SECFailure will be returned
  * if it is not.
  */
-extern SECStatus SEC_PKCS7AddSignedAttribute (SEC_PKCS7ContentInfo *cinfo,
+__attribute__ ((visibility ("default"))) extern SECStatus SEC_PKCS7AddSignedAttribute (SEC_PKCS7ContentInfo *cinfo,
 					      SECOidTag oidtag,
 					      SECItem *value);
 
@@ -325,7 +325,7 @@ extern SECStatus SEC_PKCS7AddSignedAttribute (SEC_PKCS7ContentInfo *cinfo,
  * "cinfo" should be of type signedData or signedAndEnvelopedData;
  * SECFailure will be returned if it is not.
  */
-extern SECStatus SEC_PKCS7AddCertChain (SEC_PKCS7ContentInfo *cinfo,
+__attribute__ ((visibility ("default"))) extern SECStatus SEC_PKCS7AddCertChain (SEC_PKCS7ContentInfo *cinfo,
 					CERTCertificate *cert,
 					CERTCertDBHandle *certdb);
 
@@ -335,7 +335,7 @@ extern SECStatus SEC_PKCS7AddCertChain (SEC_PKCS7ContentInfo *cinfo,
  * "cinfo" should be of type signedData or signedAndEnvelopedData;
  * SECFailure will be returned if it is not.
  */
-extern SECStatus SEC_PKCS7AddCertificate (SEC_PKCS7ContentInfo *cinfo,
+__attribute__ ((visibility ("default"))) extern SECStatus SEC_PKCS7AddCertificate (SEC_PKCS7ContentInfo *cinfo,
 					  CERTCertificate *cert);
 
 /*
@@ -355,7 +355,7 @@ extern SECStatus SEC_PKCS7AddCertificate (SEC_PKCS7ContentInfo *cinfo,
  * "certdb" is the cert database to use for verifying the cert.
  * It can be NULL if a default database is available (like in the client).
  */
-extern SECStatus SEC_PKCS7AddRecipient (SEC_PKCS7ContentInfo *cinfo,
+__attribute__ ((visibility ("default"))) extern SECStatus SEC_PKCS7AddRecipient (SEC_PKCS7ContentInfo *cinfo,
 					CERTCertificate *cert,
 					SECCertUsage certusage,
 					CERTCertDBHandle *certdb);
@@ -376,7 +376,7 @@ extern SECStatus SEC_PKCS7AddRecipient (SEC_PKCS7ContentInfo *cinfo,
  * that is allowed authenticated attributes); SECFailure will be returned
  * if it is not.
  */
-extern SECStatus SEC_PKCS7AddSigningTime (SEC_PKCS7ContentInfo *cinfo);
+__attribute__ ((visibility ("default"))) extern SECStatus SEC_PKCS7AddSigningTime (SEC_PKCS7ContentInfo *cinfo);
 
 /*
  * Add the signer's symmetric capabilities to the authenticated
@@ -388,7 +388,7 @@ extern SECStatus SEC_PKCS7AddSigningTime (SEC_PKCS7ContentInfo *cinfo);
  * "cinfo" should be of type signedData or signedAndEnvelopedData;
  * SECFailure will be returned if it is not.
  */
-extern SECStatus SEC_PKCS7AddSymmetricCapabilities(SEC_PKCS7ContentInfo *cinfo);
+__attribute__ ((visibility ("default"))) extern SECStatus SEC_PKCS7AddSymmetricCapabilities(SEC_PKCS7ContentInfo *cinfo);
 
 /*
  * Mark that the signer's certificate and its issuing chain should
@@ -401,7 +401,7 @@ extern SECStatus SEC_PKCS7AddSymmetricCapabilities(SEC_PKCS7ContentInfo *cinfo);
  * "cinfo" should be of type signedData or signedAndEnvelopedData;
  * SECFailure will be returned if it is not.
  */
-extern SECStatus SEC_PKCS7IncludeCertChain (SEC_PKCS7ContentInfo *cinfo,
+__attribute__ ((visibility ("default"))) extern SECStatus SEC_PKCS7IncludeCertChain (SEC_PKCS7ContentInfo *cinfo,
 					    CERTCertDBHandle *certdb);
 
 
@@ -413,7 +413,7 @@ extern SECStatus SEC_PKCS7IncludeCertChain (SEC_PKCS7ContentInfo *cinfo,
  *
  * "buf" points to data of length "len"; it will be copied.
  */
-extern SECStatus SEC_PKCS7SetContent (SEC_PKCS7ContentInfo *cinfo,
+__attribute__ ((visibility ("default"))) extern SECStatus SEC_PKCS7SetContent (SEC_PKCS7ContentInfo *cinfo,
 				      const char *buf, unsigned long len);
 
 /*
@@ -439,7 +439,7 @@ extern SECStatus SEC_PKCS7SetContent (SEC_PKCS7ContentInfo *cinfo,
  *
  * "pwfnarg" is an opaque argument to the above callback.
  */
-extern SECStatus SEC_PKCS7Encode (SEC_PKCS7ContentInfo *cinfo,
+__attribute__ ((visibility ("default"))) extern SECStatus SEC_PKCS7Encode (SEC_PKCS7ContentInfo *cinfo,
 				  SEC_PKCS7EncoderOutputCallback outputfn,
 				  void *outputarg,
 				  PK11SymKey *bulkkey,
@@ -473,7 +473,7 @@ extern SECStatus SEC_PKCS7Encode (SEC_PKCS7ContentInfo *cinfo,
  *
  * "pwfnarg" is an opaque argument to the above callback.
  */
-extern SECItem *SEC_PKCS7EncodeItem (PLArenaPool *pool,
+__attribute__ ((visibility ("default"))) extern SECItem *SEC_PKCS7EncodeItem (PLArenaPool *pool,
 				     SECItem *dest,
 				     SEC_PKCS7ContentInfo *cinfo,
 				     PK11SymKey *bulkkey,
@@ -486,7 +486,7 @@ extern SECItem *SEC_PKCS7EncodeItem (PLArenaPool *pool,
  * following function can be used -- after it is called, the entire
  * PKCS7 contentInfo is ready to be encoded.
  */
-extern SECStatus SEC_PKCS7PrepareForEncode (SEC_PKCS7ContentInfo *cinfo,
+__attribute__ ((visibility ("default"))) extern SECStatus SEC_PKCS7PrepareForEncode (SEC_PKCS7ContentInfo *cinfo,
 					    PK11SymKey *bulkkey,
 					    SECKEYGetPasswordKey pwfn,
 					    void *pwfnarg);
@@ -511,7 +511,7 @@ extern SECStatus SEC_PKCS7PrepareForEncode (SEC_PKCS7ContentInfo *cinfo,
  *
  * Returns an object to be passed to EncoderUpdate and EncoderFinish.
  */
-extern SEC_PKCS7EncoderContext *
+__attribute__ ((visibility ("default"))) extern SEC_PKCS7EncoderContext *
 SEC_PKCS7EncoderStart (SEC_PKCS7ContentInfo *cinfo,
 		       SEC_PKCS7EncoderOutputCallback outputfn,
 		       void *outputarg,
@@ -520,7 +520,7 @@ SEC_PKCS7EncoderStart (SEC_PKCS7ContentInfo *cinfo,
 /*
  * Encode more contents, hashing and/or encrypting along the way.
  */
-extern SECStatus SEC_PKCS7EncoderUpdate (SEC_PKCS7EncoderContext *p7ecx,
+__attribute__ ((visibility ("default"))) extern SECStatus SEC_PKCS7EncoderUpdate (SEC_PKCS7EncoderContext *p7ecx,
 					 const char *buf,
 					 unsigned long len);
 
@@ -534,19 +534,19 @@ extern SECStatus SEC_PKCS7EncoderUpdate (SEC_PKCS7EncoderContext *p7ecx,
  *
  * "pwfnarg" is an opaque argument to the above callback.
  */
-extern SECStatus SEC_PKCS7EncoderFinish (SEC_PKCS7EncoderContext *p7ecx,
+__attribute__ ((visibility ("default"))) extern SECStatus SEC_PKCS7EncoderFinish (SEC_PKCS7EncoderContext *p7ecx,
 					 SECKEYGetPasswordKey pwfn,
 					 void *pwfnarg);
 
 /*  Abort the underlying ASN.1 stream & set an error  */
-void SEC_PKCS7EncoderAbort(SEC_PKCS7EncoderContext *p7dcx, int error);
+__attribute__ ((visibility ("default"))) void SEC_PKCS7EncoderAbort(SEC_PKCS7EncoderContext *p7dcx, int error);
 
 /* retrieve the algorithm ID used to encrypt the content info
  * for encrypted and enveloped data.  The SECAlgorithmID pointer
  * returned needs to be freed as it is a copy of the algorithm
  * id in the content info.
  */ 
-extern SECAlgorithmID *
+__attribute__ ((visibility ("default"))) extern SECAlgorithmID *
 SEC_PKCS7GetEncryptionAlgorithm(SEC_PKCS7ContentInfo *cinfo); 
 
 /* the content of an encrypted data content info is encrypted.
@@ -563,7 +563,7 @@ SEC_PKCS7GetEncryptionAlgorithm(SEC_PKCS7ContentInfo *cinfo);
  * in the event of an error, SECFailure is returned.  SECSuccess
  * indicates a success.
  */
-extern SECStatus 
+__attribute__ ((visibility ("default"))) extern SECStatus 
 SEC_PKCS7EncryptContents(PLArenaPool *poolp,
 			 SEC_PKCS7ContentInfo *cinfo, 
 			 SECItem *key,
@@ -583,7 +583,7 @@ SEC_PKCS7EncryptContents(PLArenaPool *poolp,
  * in the event of an error, SECFailure is returned.  SECSuccess
  * indicates a success.
  */
-extern SECStatus 
+__attribute__ ((visibility ("default"))) extern SECStatus 
 SEC_PKCS7DecryptContents(PLArenaPool *poolp,
 			 SEC_PKCS7ContentInfo *cinfo, 
 			 SECItem *key,
@@ -594,13 +594,13 @@ SEC_PKCS7DecryptContents(PLArenaPool *poolp,
  * be deleted or freed in any way short of calling 
  * SEC_PKCS7DestroyContentInfo
  */
-extern SECItem **
+__attribute__ ((visibility ("default"))) extern SECItem **
 SEC_PKCS7GetCertificateList(SEC_PKCS7ContentInfo *cinfo);
 
 /* Returns the key length (in bits) of the algorithm used to encrypt
    this object.  Returns 0 if it's not encrypted, or the key length is
    irrelevant. */
-extern int 
+__attribute__ ((visibility ("default"))) extern int 
 SEC_PKCS7GetKeyLength(SEC_PKCS7ContentInfo *cinfo);
  
 

@@ -31,7 +31,7 @@ SEC_BEGIN_PROTOS
  * functions convert between formats.
  */
 extern SECStatus DSAU_EncodeDerSig(SECItem *dest, SECItem *src);
-extern SECItem *DSAU_DecodeDerSig(const SECItem *item);
+__attribute__ ((visibility ("default"))) extern SECItem *DSAU_DecodeDerSig(const SECItem *item);
 
 /*
  * Unlike DSA1, raw DSA2 and ECDSA signatures do not have a fixed length.
@@ -45,9 +45,9 @@ extern SECItem *DSAU_DecodeDerSig(const SECItem *item);
  * For decoding, we need to pass the length of the desired
  * raw signature (twice the key size) explicitly.
  */
-extern SECStatus DSAU_EncodeDerSigWithLen(SECItem *dest, SECItem *src, 
+__attribute__ ((visibility ("default"))) extern SECStatus DSAU_EncodeDerSigWithLen(SECItem *dest, SECItem *src, 
 					  unsigned int len);
-extern SECItem *DSAU_DecodeDerSigToLen(const SECItem *item, unsigned int len);
+__attribute__ ((visibility ("default"))) extern SECItem *DSAU_DecodeDerSigToLen(const SECItem *item, unsigned int len);
 
 /****************************************/
 /*
@@ -59,20 +59,20 @@ extern SECItem *DSAU_DecodeDerSigToLen(const SECItem *item, unsigned int len);
 **      "alg" the signature algorithm to use (e.g. SEC_OID_PKCS1_MD5_WITH_RSA_ENCRYPTION)
 **	"privKey" the private key to use
 */
-extern SGNContext *SGN_NewContext(SECOidTag alg, SECKEYPrivateKey *privKey);
+__attribute__ ((visibility ("default"))) extern SGNContext *SGN_NewContext(SECOidTag alg, SECKEYPrivateKey *privKey);
 
 /*
 ** Destroy a signature-context object
 **	"cx" the object
 **	"freeit" if PR_TRUE then free the object as well as its sub-objects
 */
-extern void SGN_DestroyContext(SGNContext *cx, PRBool freeit);
+__attribute__ ((visibility ("default"))) extern void SGN_DestroyContext(SGNContext *cx, PRBool freeit);
 
 /*
 ** Reset the signing context "cx" to its initial state, preparing it for
 ** another stream of data.
 */
-extern SECStatus SGN_Begin(SGNContext *cx);
+__attribute__ ((visibility ("default"))) extern SECStatus SGN_Begin(SGNContext *cx);
 
 /*
 ** Update the signing context with more data to sign.
@@ -80,7 +80,7 @@ extern SECStatus SGN_Begin(SGNContext *cx);
 **	"input" the input data to sign
 **	"inputLen" the length of the input data
 */
-extern SECStatus SGN_Update(SGNContext *cx, const unsigned char *input,
+__attribute__ ((visibility ("default"))) extern SECStatus SGN_Update(SGNContext *cx, const unsigned char *input,
 			   unsigned int inputLen);
 
 /*
@@ -91,7 +91,7 @@ extern SECStatus SGN_Update(SGNContext *cx, const unsigned char *input,
 **	"cx" the context
 **	"result" the final signature data (memory is allocated)
 */
-extern SECStatus SGN_End(SGNContext *cx, SECItem *result);
+__attribute__ ((visibility ("default"))) extern SECStatus SGN_End(SGNContext *cx, SECItem *result);
 
 /*
 ** Sign a single block of data using private key encryption and given
@@ -103,7 +103,7 @@ extern SECStatus SGN_End(SGNContext *cx, SECItem *result);
 **	"algid" the signature/hash algorithm to sign with 
 **		(must be compatible with the key type).
 */
-extern SECStatus SEC_SignData(SECItem *result,
+__attribute__ ((visibility ("default"))) extern SECStatus SEC_SignData(SECItem *result,
 			     const unsigned char *buf, int len,
 			     SECKEYPrivateKey *pk, SECOidTag algid);
 
@@ -115,7 +115,7 @@ extern SECStatus SEC_SignData(SECItem *result,
 **	"privKey" the private key to encrypt with
 **	"algtag" The algorithm tag to encode (need for RSA only)
 */
-extern SECStatus SGN_Digest(SECKEYPrivateKey *privKey,
+__attribute__ ((visibility ("default"))) extern SECStatus SGN_Digest(SECKEYPrivateKey *privKey,
                 SECOidTag algtag, SECItem *result, SECItem *digest);
 
 /*
@@ -129,7 +129,7 @@ extern SECStatus SGN_Digest(SECKEYPrivateKey *privKey,
 ** 	"len" the amount of data to sign
 ** 	"pk" the private key to encrypt with
 */
-extern SECStatus SEC_DerSignData(PLArenaPool *arena, SECItem *result,
+__attribute__ ((visibility ("default"))) extern SECStatus SEC_DerSignData(PLArenaPool *arena, SECItem *result,
 				const unsigned char *buf, int len,
 				SECKEYPrivateKey *pk, SECOidTag algid);
 
@@ -138,14 +138,14 @@ extern SECStatus SEC_DerSignData(PLArenaPool *arena, SECItem *result,
 **	"sd" the object
 **	"freeit" if PR_TRUE then free the object as well as its sub-objects
 */
-extern void SEC_DestroySignedData(CERTSignedData *sd, PRBool freeit);
+__attribute__ ((visibility ("default"))) extern void SEC_DestroySignedData(CERTSignedData *sd, PRBool freeit);
 
 /*
 ** Get the signature algorithm tag number for the given key type and hash
 ** algorithm tag. Returns SEC_OID_UNKNOWN if key type and hash algorithm
 ** do not match or are not supported.
 */
-extern SECOidTag SEC_GetSignatureAlgorithmOidTag(KeyType keyType,
+__attribute__ ((visibility ("default"))) extern SECOidTag SEC_GetSignatureAlgorithmOidTag(KeyType keyType,
                                                  SECOidTag hashAlgTag);
 
 /****************************************/
@@ -165,7 +165,7 @@ extern SECOidTag SEC_GetSignatureAlgorithmOidTag(KeyType keyType,
 **         hash algorthim).  This must match the key type.
 **	"wincx" void pointer to the window context
 */
-extern VFYContext *VFY_CreateContext(SECKEYPublicKey *key, SECItem *sig,
+__attribute__ ((visibility ("default"))) extern VFYContext *VFY_CreateContext(SECKEYPublicKey *key, SECItem *sig,
 				     SECOidTag sigAlg, void *wincx);
 /*
 ** Create a signature verification context.
@@ -185,7 +185,7 @@ extern VFYContext *VFY_CreateContext(SECKEYPublicKey *key, SECItem *sig,
 **         If this value is NULL no, hash oid is returned.
 **	"wincx" void pointer to the window context
 */
-extern VFYContext *VFY_CreateContextDirect(const SECKEYPublicKey *key,
+__attribute__ ((visibility ("default"))) extern VFYContext *VFY_CreateContextDirect(const SECKEYPublicKey *key,
 					   const SECItem *sig,
 	     				   SECOidTag pubkAlg, 
 					   SECOidTag hashAlg, 
@@ -202,7 +202,7 @@ extern VFYContext *VFY_CreateContextDirect(const SECKEYPublicKey *key,
 **         the signature. If this value is NULL no, hash oid is returned.
 **	"wincx" void pointer to the window context
 */
-extern VFYContext *VFY_CreateContextWithAlgorithmID(const SECKEYPublicKey *key, 
+__attribute__ ((visibility ("default"))) extern VFYContext *VFY_CreateContextWithAlgorithmID(const SECKEYPublicKey *key, 
 				     const SECItem *sig,
 				     const SECAlgorithmID *algid, 
 				     SECOidTag *hash,
@@ -213,9 +213,9 @@ extern VFYContext *VFY_CreateContextWithAlgorithmID(const SECKEYPublicKey *key,
 **	"cx" the context to destroy
 **	"freeit" if PR_TRUE then free the object as well as its sub-objects
 */
-extern void VFY_DestroyContext(VFYContext *cx, PRBool freeit);
+__attribute__ ((visibility ("default"))) extern void VFY_DestroyContext(VFYContext *cx, PRBool freeit);
 
-extern SECStatus VFY_Begin(VFYContext *cx);
+__attribute__ ((visibility ("default"))) extern SECStatus VFY_Begin(VFYContext *cx);
 
 /*
 ** Update a verification context with more input data. The input data
@@ -225,7 +225,7 @@ extern SECStatus VFY_Begin(VFYContext *cx);
 **	"input" the input data
 **	"inputLen" the amount of input data
 */
-extern SECStatus VFY_Update(VFYContext *cx, const unsigned char *input,
+__attribute__ ((visibility ("default"))) extern SECStatus VFY_Update(VFYContext *cx, const unsigned char *input,
 			    unsigned int inputLen);
 
 /*
@@ -235,7 +235,7 @@ extern SECStatus VFY_Update(VFYContext *cx, const unsigned char *input,
 ** using PORT_GetError() indicates what failure occurred.
 ** 	"cx" the context
 */
-extern SECStatus VFY_End(VFYContext *cx);
+__attribute__ ((visibility ("default"))) extern SECStatus VFY_End(VFYContext *cx);
 
 /*
 ** Finish the verification process. The return value is a status which
@@ -248,7 +248,7 @@ extern SECStatus VFY_End(VFYContext *cx);
 ** 	"cx" the context
 ** 	"sig" the encrypted signature data
 */
-extern SECStatus VFY_EndWithSignature(VFYContext *cx, SECItem *sig);
+__attribute__ ((visibility ("default"))) extern SECStatus VFY_EndWithSignature(VFYContext *cx, SECItem *sig);
 
 
 /*
@@ -264,7 +264,7 @@ extern SECStatus VFY_EndWithSignature(VFYContext *cx, SECItem *sig);
 **	    the key type.
 **	"wincx" void pointer to the window context
 **/
-extern SECStatus VFY_VerifyDigest(SECItem *dig, SECKEYPublicKey *key,
+__attribute__ ((visibility ("default"))) extern SECStatus VFY_VerifyDigest(SECItem *dig, SECKEYPublicKey *key,
 				  SECItem *sig, SECOidTag sigAlg, void *wincx);
 /*
 ** Verify the signature on a block of data for which we already have
@@ -279,7 +279,7 @@ extern SECStatus VFY_VerifyDigest(SECItem *dig, SECKEYPublicKey *key,
 **	"hashAlg" specifies the hashing algorithm used.
 **	"wincx" void pointer to the window context
 **/
-extern SECStatus VFY_VerifyDigestDirect(const SECItem *dig, 
+__attribute__ ((visibility ("default"))) extern SECStatus VFY_VerifyDigestDirect(const SECItem *dig, 
 					const SECKEYPublicKey *key,
 					const SECItem *sig, SECOidTag pubkAlg, 
 					SECOidTag hashAlg, void *wincx);
@@ -297,7 +297,7 @@ extern SECStatus VFY_VerifyDigestDirect(const SECItem *dig,
 **         not set to SEC_OID_UNKNOWN, it must match the hash of the signature.
 **	"wincx" void pointer to the window context
 */
-extern SECStatus VFY_VerifyDigestWithAlgorithmID(const SECItem *dig, 
+__attribute__ ((visibility ("default"))) extern SECStatus VFY_VerifyDigestWithAlgorithmID(const SECItem *dig, 
 				const SECKEYPublicKey *key, const SECItem *sig,
 				const SECAlgorithmID *algid, SECOidTag hash,
 				void *wincx);
@@ -315,7 +315,7 @@ extern SECStatus VFY_VerifyDigestWithAlgorithmID(const SECItem *dig,
 **	    the key type.
 **	"wincx" void pointer to the window context
 */
-extern SECStatus VFY_VerifyData(const unsigned char *buf, int len,
+__attribute__ ((visibility ("default"))) extern SECStatus VFY_VerifyData(const unsigned char *buf, int len,
 				const SECKEYPublicKey *key, const SECItem *sig,
 				SECOidTag sigAlg, void *wincx);
 /*
@@ -337,7 +337,7 @@ extern SECStatus VFY_VerifyData(const unsigned char *buf, int len,
 **         If this value is NULL no, hash oid is returned.
 **	"wincx" void pointer to the window context
 */
-extern SECStatus VFY_VerifyDataDirect(const unsigned char *buf, int len,
+__attribute__ ((visibility ("default"))) extern SECStatus VFY_VerifyDataDirect(const unsigned char *buf, int len,
 				      const SECKEYPublicKey *key, 
 				      const SECItem *sig,
 				      SECOidTag pubkAlg, SECOidTag hashAlg, 
@@ -356,7 +356,7 @@ extern SECStatus VFY_VerifyDataDirect(const unsigned char *buf, int len,
 **         the signature. If this value is NULL no, hash oid is returned.
 **	"wincx" void pointer to the window context
 */
-extern SECStatus VFY_VerifyDataWithAlgorithmID(const unsigned char *buf, 
+__attribute__ ((visibility ("default"))) extern SECStatus VFY_VerifyDataWithAlgorithmID(const unsigned char *buf, 
 				int len, const SECKEYPublicKey *key,
 				const SECItem *sig,
 				const SECAlgorithmID *algid, SECOidTag *hash,

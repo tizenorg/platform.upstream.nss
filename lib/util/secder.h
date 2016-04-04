@@ -31,10 +31,10 @@ SEC_BEGIN_PROTOS
 **	   stored data
 **	"src" is a pointer to the structure that will be encoded
 */
-extern SECStatus DER_Encode(PLArenaPool *arena, SECItem *dest, DERTemplate *t,
+__attribute__ ((visibility ("default"))) extern SECStatus DER_Encode(PLArenaPool *arena, SECItem *dest, DERTemplate *t,
 			   void *src);
 
-extern SECStatus DER_Lengths(SECItem *item, int *header_len_p,
+__attribute__ ((visibility ("default"))) extern SECStatus DER_Lengths(SECItem *item, int *header_len_p,
                              PRUint32 *contents_len_p);
 
 /*
@@ -46,39 +46,39 @@ extern SECStatus DER_Lengths(SECItem *item, int *header_len_p,
 **	"encodingLen" is the number of bytes of data that will follow
 **	   the header
 */
-extern unsigned char *DER_StoreHeader(unsigned char *to, unsigned int code,
+__attribute__ ((visibility ("default"))) extern unsigned char *DER_StoreHeader(unsigned char *to, unsigned int code,
 				      PRUint32 encodingLen);
 
 /*
 ** Return the number of bytes it will take to hold a der encoded length.
 */
-extern int DER_LengthLength(PRUint32 len);
+__attribute__ ((visibility ("default"))) extern int DER_LengthLength(PRUint32 len);
 
 /*
 ** Store a der encoded *signed* integer (whose value is "src") into "dst".
 ** XXX This should really be enhanced to take a long.
 */
-extern SECStatus DER_SetInteger(PLArenaPool *arena, SECItem *dst, PRInt32 src);
+__attribute__ ((visibility ("default"))) extern SECStatus DER_SetInteger(PLArenaPool *arena, SECItem *dst, PRInt32 src);
 
 /*
 ** Store a der encoded *unsigned* integer (whose value is "src") into "dst".
 ** XXX This should really be enhanced to take an unsigned long.
 */
-extern SECStatus DER_SetUInteger(PLArenaPool *arena, SECItem *dst, PRUint32 src);
+__attribute__ ((visibility ("default"))) extern SECStatus DER_SetUInteger(PLArenaPool *arena, SECItem *dst, PRUint32 src);
 
 /*
 ** Decode a der encoded *signed* integer that is stored in "src".
 ** If "-1" is returned, then the caller should check the error in
 ** XP_GetError() to see if an overflow occurred (SEC_ERROR_BAD_DER).
 */
-extern long DER_GetInteger(const SECItem *src);
+__attribute__ ((visibility ("default"))) extern long DER_GetInteger(const SECItem *src);
 
 /*
 ** Decode a der encoded *unsigned* integer that is stored in "src".
 ** If the ULONG_MAX is returned, then the caller should check the error
 ** in XP_GetError() to see if an overflow occurred (SEC_ERROR_BAD_DER).
 */
-extern unsigned long DER_GetUInteger(SECItem *src);
+__attribute__ ((visibility ("default"))) extern unsigned long DER_GetUInteger(SECItem *src);
 
 /*
 ** Convert an NSPR time value to a der encoded time value.
@@ -89,8 +89,8 @@ extern unsigned long DER_GetUInteger(SECItem *src);
 ** The caller is responsible for freeing up the buffer which
 ** result->data points to upon a successful operation.
 */
-extern SECStatus DER_TimeToUTCTime(SECItem *result, PRTime time);
-extern SECStatus DER_TimeToUTCTimeArena(PLArenaPool* arenaOpt,
+__attribute__ ((visibility ("default"))) extern SECStatus DER_TimeToUTCTime(SECItem *result, PRTime time);
+__attribute__ ((visibility ("default"))) extern SECStatus DER_TimeToUTCTimeArena(PLArenaPool* arenaOpt,
                                         SECItem *dst, PRTime gmttime);
 
 
@@ -100,19 +100,19 @@ extern SECStatus DER_TimeToUTCTimeArena(PLArenaPool* arenaOpt,
 **	"result" the resulting NSPR time
 **	"string" the der notation ascii value to decode
 */
-extern SECStatus DER_AsciiToTime(PRTime *result, const char *string);
+__attribute__ ((visibility ("default"))) extern SECStatus DER_AsciiToTime(PRTime *result, const char *string);
 
 /*
 ** Same as DER_AsciiToTime except takes an SECItem instead of a string
 */
-extern SECStatus DER_UTCTimeToTime(PRTime *result, const SECItem *time);
+__attribute__ ((visibility ("default"))) extern SECStatus DER_UTCTimeToTime(PRTime *result, const SECItem *time);
 
 /*
 ** Convert a DER encoded UTC time to an ascii time representation
 ** "utctime" is the DER encoded UTC time to be converted. The
 ** caller is responsible for deallocating the returned buffer.
 */
-extern char *DER_UTCTimeToAscii(SECItem *utcTime);
+__attribute__ ((visibility ("default"))) extern char *DER_UTCTimeToAscii(SECItem *utcTime);
 
 /*
 ** Convert a DER encoded UTC time to an ascii time representation, but only
@@ -120,19 +120,19 @@ extern char *DER_UTCTimeToAscii(SECItem *utcTime);
 **	"utctime" is the DER encoded UTC time to be converted.
 ** The caller is responsible for deallocating the returned buffer.
 */
-extern char *DER_UTCDayToAscii(SECItem *utctime);
+__attribute__ ((visibility ("default"))) extern char *DER_UTCDayToAscii(SECItem *utctime);
 /* same thing for DER encoded GeneralizedTime */
-extern char *DER_GeneralizedDayToAscii(SECItem *gentime);
+__attribute__ ((visibility ("default"))) extern char *DER_GeneralizedDayToAscii(SECItem *gentime);
 /* same thing for either DER UTCTime or GeneralizedTime */
-extern char *DER_TimeChoiceDayToAscii(SECItem *timechoice);
+__attribute__ ((visibility ("default"))) extern char *DER_TimeChoiceDayToAscii(SECItem *timechoice);
 
 /*
 ** Convert a PRTime to a DER encoded Generalized time
 ** gmttime must be on or after January 1, year 1 and
 ** before January 1, 10000.
 */
-extern SECStatus DER_TimeToGeneralizedTime(SECItem *dst, PRTime gmttime);
-extern SECStatus DER_TimeToGeneralizedTimeArena(PLArenaPool* arenaOpt,
+__attribute__ ((visibility ("default"))) extern SECStatus DER_TimeToGeneralizedTime(SECItem *dst, PRTime gmttime);
+__attribute__ ((visibility ("default"))) extern SECStatus DER_TimeToGeneralizedTimeArena(PLArenaPool* arenaOpt,
                                                 SECItem *dst, PRTime gmttime);
 
 /*
@@ -140,32 +140,32 @@ extern SECStatus DER_TimeToGeneralizedTimeArena(PLArenaPool* arenaOpt,
 **	"dst" the resulting NSPR time
 **	"string" the der notation ascii value to decode
 */
-extern SECStatus DER_GeneralizedTimeToTime(PRTime *dst, const SECItem *time);
+__attribute__ ((visibility ("default"))) extern SECStatus DER_GeneralizedTimeToTime(PRTime *dst, const SECItem *time);
 
 /*
 ** Convert from a PRTime UTC time value to a formatted ascii value. The
 ** caller is responsible for deallocating the returned buffer.
 */
-extern char *CERT_UTCTime2FormattedAscii (PRTime utcTime, char *format);
+__attribute__ ((visibility ("default"))) extern char *CERT_UTCTime2FormattedAscii (PRTime utcTime, char *format);
 #define CERT_GeneralizedTime2FormattedAscii CERT_UTCTime2FormattedAscii
 
 /*
 ** Convert from a PRTime Generalized time value to a formatted ascii value. The
 ** caller is responsible for deallocating the returned buffer.
 */
-extern char *CERT_GenTime2FormattedAscii (PRTime genTime, char *format);
+__attribute__ ((visibility ("default"))) extern char *CERT_GenTime2FormattedAscii (PRTime genTime, char *format);
 
 /*
 ** decode a SECItem containing either a SEC_ASN1_GENERALIZED_TIME 
 ** or a SEC_ASN1_UTC_TIME
 */
 
-extern SECStatus DER_DecodeTimeChoice(PRTime* output, const SECItem* input);
+__attribute__ ((visibility ("default"))) extern SECStatus DER_DecodeTimeChoice(PRTime* output, const SECItem* input);
 
 /* encode a PRTime to an ASN.1 DER SECItem containing either a
    SEC_ASN1_GENERALIZED_TIME or a SEC_ASN1_UTC_TIME */
 
-extern SECStatus DER_EncodeTimeChoice(PLArenaPool* arena, SECItem* output,
+__attribute__ ((visibility ("default"))) extern SECStatus DER_EncodeTimeChoice(PLArenaPool* arena, SECItem* output,
                                        PRTime input);
 
 SEC_END_PROTOS

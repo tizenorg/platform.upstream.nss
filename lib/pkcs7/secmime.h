@@ -43,7 +43,7 @@ SEC_BEGIN_PROTOS
  *	SEC_ERROR_XXX (function is being called more times than there
  *		are known/expected ciphers)
  */
-extern SECStatus SECMIME_EnableCipher(long which, int on);
+__attribute__ ((visibility ("default"))) extern SECStatus SECMIME_EnableCipher(long which, int on);
 
 /*
  * Initialize the local recording of the S/MIME policy.
@@ -71,13 +71,13 @@ extern SECStatus SECMIME_EnableCipher(long which, int on);
  *	SEC_ERROR_XXX ("which" exceeds expected maximum cipher; this is
  *		really an internal error)
  */
-extern SECStatus SECMIME_SetPolicy(long which, int on);
+__attribute__ ((visibility ("default"))) extern SECStatus SECMIME_SetPolicy(long which, int on);
 
 /*
  * Does the current policy allow S/MIME decryption of this particular
  * algorithm and keysize?
  */
-extern PRBool SECMIME_DecryptionAllowed(SECAlgorithmID *algid, PK11SymKey *key);
+__attribute__ ((visibility ("default"))) extern PRBool SECMIME_DecryptionAllowed(SECAlgorithmID *algid, PK11SymKey *key);
 
 /*
  * Does the current policy allow *any* S/MIME encryption (or decryption)?
@@ -97,7 +97,7 @@ extern PRBool SECMIME_DecryptionAllowed(SECAlgorithmID *algid, PK11SymKey *key);
  *
  * There are no errors from this routine.
  */
-extern PRBool SECMIME_EncryptionPossible(void);
+__attribute__ ((visibility ("default"))) extern PRBool SECMIME_EncryptionPossible(void);
 
 /*
  * Start an S/MIME encrypting context.
@@ -116,7 +116,7 @@ extern PRBool SECMIME_EncryptionPossible(void);
  * An error results in a return value of NULL and an error set.
  * (Retrieve specific errors via PORT_GetError()/XP_GetError().)
  */
-extern SEC_PKCS7ContentInfo *SECMIME_CreateEncrypted(CERTCertificate *scert,
+__attribute__ ((visibility ("default"))) extern SEC_PKCS7ContentInfo *SECMIME_CreateEncrypted(CERTCertificate *scert,
 						     CERTCertificate **rcerts,
 						     CERTCertDBHandle *certdb,
 						     SECKEYGetPasswordKey pwfn,
@@ -147,7 +147,7 @@ extern SEC_PKCS7ContentInfo *SECMIME_CreateEncrypted(CERTCertificate *scert,
  * An error results in a return value of NULL and an error set.
  * (Retrieve specific errors via PORT_GetError()/XP_GetError().)
  */
-extern SEC_PKCS7ContentInfo *SECMIME_CreateSigned(CERTCertificate *scert,
+__attribute__ ((visibility ("default"))) extern SEC_PKCS7ContentInfo *SECMIME_CreateSigned(CERTCertificate *scert,
 						  CERTCertificate *ecert,
 						  CERTCertDBHandle *certdb,
 						  SECOidTag digestalg,

@@ -84,7 +84,7 @@ nssCKFWInstance_Create
  * nssCKFWInstance_Destroy
  *
  */
-NSS_EXTERN CK_RV
+__attribute__ ((visibility ("default"))) NSS_EXTERN CK_RV
 nssCKFWInstance_Destroy
 (
   NSSCKFWInstance *fwInstance
@@ -225,7 +225,7 @@ nssCKFWInstance_ResolveObjectHandle
  * nssCKFWInstance_ReassignObjectHandle
  *
  */
-NSS_EXTERN CK_RV
+__attribute__ ((visibility ("default"))) NSS_EXTERN CK_RV
 nssCKFWInstance_ReassignObjectHandle
 (
   NSSCKFWInstance *fwInstance,
@@ -280,7 +280,7 @@ nssCKFWInstance_GetCryptokiVersion
  * nssCKFWInstance_GetManufacturerID
  *
  */
-NSS_EXTERN CK_RV
+__attribute__ ((visibility ("default"))) NSS_EXTERN CK_RV
 nssCKFWInstance_GetManufacturerID
 (
   NSSCKFWInstance *fwInstance,
@@ -301,7 +301,7 @@ nssCKFWInstance_GetFlags
  * nssCKFWInstance_GetLibraryDescription
  *
  */
-NSS_EXTERN CK_RV
+__attribute__ ((visibility ("default"))) NSS_EXTERN CK_RV
 nssCKFWInstance_GetLibraryDescription
 (
   NSSCKFWInstance *fwInstance,
@@ -355,7 +355,7 @@ nssCKFWInstance_WaitForSlotEvent
  * nssCKFWInstance_verifyPointer
  *
  */
-NSS_EXTERN CK_RV
+__attribute__ ((visibility ("default"))) NSS_EXTERN CK_RV
 nssCKFWInstance_verifyPointer
 (
   const NSSCKFWInstance *fwInstance
@@ -405,7 +405,7 @@ nssCKFWSlot_Create
  * nssCKFWSlot_Destroy
  *
  */
-NSS_EXTERN CK_RV
+__attribute__ ((visibility ("default"))) NSS_EXTERN CK_RV
 nssCKFWSlot_Destroy
 (
   NSSCKFWSlot *fwSlot
@@ -457,7 +457,7 @@ nssCKFWSlot_GetSlotID
  * nssCKFWSlot_GetSlotDescription
  *
  */
-NSS_EXTERN CK_RV
+__attribute__ ((visibility ("default"))) NSS_EXTERN CK_RV
 nssCKFWSlot_GetSlotDescription
 (
   NSSCKFWSlot *fwSlot,
@@ -468,7 +468,7 @@ nssCKFWSlot_GetSlotDescription
  * nssCKFWSlot_GetManufacturerID
  *
  */
-NSS_EXTERN CK_RV
+__attribute__ ((visibility ("default"))) NSS_EXTERN CK_RV
 nssCKFWSlot_GetManufacturerID
 (
   NSSCKFWSlot *fwSlot,
@@ -617,7 +617,7 @@ nssCKFWToken_Create
  * nssCKFWToken_Destroy
  *
  */
-NSS_EXTERN CK_RV
+__attribute__ ((visibility ("default"))) NSS_EXTERN CK_RV
 nssCKFWToken_Destroy
 (
   NSSCKFWToken *fwToken
@@ -678,7 +678,7 @@ nssCKFWToken_GetSessionState
  * nssCKFWToken_InitToken
  *
  */
-NSS_EXTERN CK_RV
+__attribute__ ((visibility ("default"))) NSS_EXTERN CK_RV
 nssCKFWToken_InitToken
 (
   NSSCKFWToken *fwToken,
@@ -690,7 +690,7 @@ nssCKFWToken_InitToken
  * nssCKFWToken_GetLabel
  *
  */
-NSS_EXTERN CK_RV
+__attribute__ ((visibility ("default"))) NSS_EXTERN CK_RV
 nssCKFWToken_GetLabel
 (
   NSSCKFWToken *fwToken,
@@ -701,7 +701,7 @@ nssCKFWToken_GetLabel
  * nssCKFWToken_GetManufacturerID
  *
  */
-NSS_EXTERN CK_RV
+__attribute__ ((visibility ("default"))) NSS_EXTERN CK_RV
 nssCKFWToken_GetManufacturerID
 (
   NSSCKFWToken *fwToken,
@@ -712,7 +712,7 @@ nssCKFWToken_GetManufacturerID
  * nssCKFWToken_GetModel
  *
  */
-NSS_EXTERN CK_RV
+__attribute__ ((visibility ("default"))) NSS_EXTERN CK_RV
 nssCKFWToken_GetModel
 (
   NSSCKFWToken *fwToken,
@@ -723,7 +723,7 @@ nssCKFWToken_GetModel
  * nssCKFWToken_GetSerialNumber
  *
  */
-NSS_EXTERN CK_RV
+__attribute__ ((visibility ("default"))) NSS_EXTERN CK_RV
 nssCKFWToken_GetSerialNumber
 (
   NSSCKFWToken *fwToken,
@@ -914,7 +914,7 @@ nssCKFWToken_GetFirmwareVersion
  * nssCKFWToken_GetUTCTime
  *
  */
-NSS_EXTERN CK_RV
+__attribute__ ((visibility ("default"))) NSS_EXTERN CK_RV
 nssCKFWToken_GetUTCTime
 (
   NSSCKFWToken *fwToken,
@@ -949,7 +949,7 @@ nssCKFWToken_GetMechanismCount
  * nssCKFWToken_GetMechanismTypes
  *
  */
-NSS_EXTERN CK_RV
+__attribute__ ((visibility ("default"))) NSS_EXTERN CK_RV
 nssCKFWToken_GetMechanismTypes
 (
   NSSCKFWToken *fwToken,
@@ -972,7 +972,7 @@ nssCKFWToken_GetMechanism
  * nssCKFWToken_SetSessionState
  *
  */
-NSS_EXTERN CK_RV
+__attribute__ ((visibility ("default"))) NSS_EXTERN CK_RV
 nssCKFWToken_SetSessionState
 (
   NSSCKFWToken *fwToken,
@@ -983,7 +983,7 @@ nssCKFWToken_SetSessionState
  * nssCKFWToken_RemoveSession
  *
  */
-NSS_EXTERN CK_RV
+__attribute__ ((visibility ("default"))) NSS_EXTERN CK_RV
 nssCKFWToken_RemoveSession
 (
   NSSCKFWToken *fwToken,
@@ -994,7 +994,7 @@ nssCKFWToken_RemoveSession
  * nssCKFWToken_CloseAllSessions
  *
  */
-NSS_EXTERN CK_RV
+__attribute__ ((visibility ("default"))) NSS_EXTERN CK_RV
 nssCKFWToken_CloseAllSessions
 (
   NSSCKFWToken *fwToken
@@ -1309,7 +1309,7 @@ nssCKFWMechanism_GetCanDerive
 /*
  *  nssCKFWMechanism_EncryptInit
  */
-NSS_EXTERN CK_RV
+__attribute__ ((visibility ("default"))) NSS_EXTERN CK_RV
 nssCKFWMechanism_EncryptInit
 (
   NSSCKFWMechanism *fwMechanism,
@@ -1321,7 +1321,7 @@ nssCKFWMechanism_EncryptInit
 /*
  *  nssCKFWMechanism_DecryptInit
  */
-NSS_EXTERN CK_RV
+__attribute__ ((visibility ("default"))) NSS_EXTERN CK_RV
 nssCKFWMechanism_DecryptInit
 (
   NSSCKFWMechanism *fwMechanism,
@@ -1333,7 +1333,7 @@ nssCKFWMechanism_DecryptInit
 /*
  *  nssCKFWMechanism_DigestInit
  */
-NSS_EXTERN CK_RV
+__attribute__ ((visibility ("default"))) NSS_EXTERN CK_RV
 nssCKFWMechanism_DigestInit
 (
   NSSCKFWMechanism *fwMechanism,
@@ -1344,7 +1344,7 @@ nssCKFWMechanism_DigestInit
 /*
  *  nssCKFWMechanism_SignInit
  */
-NSS_EXTERN CK_RV
+__attribute__ ((visibility ("default"))) NSS_EXTERN CK_RV
 nssCKFWMechanism_SignInit
 (
   NSSCKFWMechanism *fwMechanism,
@@ -1356,7 +1356,7 @@ nssCKFWMechanism_SignInit
 /*
  *  nssCKFWMechanism_SignRecoverInit
  */
-NSS_EXTERN CK_RV
+__attribute__ ((visibility ("default"))) NSS_EXTERN CK_RV
 nssCKFWMechanism_SignRecoverInit
 (
   NSSCKFWMechanism *fwMechanism,
@@ -1368,7 +1368,7 @@ nssCKFWMechanism_SignRecoverInit
 /*
  *  nssCKFWMechanism_VerifyInit
  */
-NSS_EXTERN CK_RV
+__attribute__ ((visibility ("default"))) NSS_EXTERN CK_RV
 nssCKFWMechanism_VerifyInit
 (
   NSSCKFWMechanism *fwMechanism,
@@ -1380,7 +1380,7 @@ nssCKFWMechanism_VerifyInit
 /*
  *  nssCKFWMechanism_VerifyRecoverInit
  */
-NSS_EXTERN CK_RV
+__attribute__ ((visibility ("default"))) NSS_EXTERN CK_RV
 nssCKFWMechanism_VerifyRecoverInit
 (
   NSSCKFWMechanism *fwMechanism,
@@ -1406,7 +1406,7 @@ nssCKFWMechanism_GenerateKey
 /*
  * nssCKFWMechanism_GenerateKeyPair
  */
-NSS_EXTERN CK_RV
+__attribute__ ((visibility ("default"))) NSS_EXTERN CK_RV
 nssCKFWMechanism_GenerateKeyPair
 (
   NSSCKFWMechanism *fwMechanism,
@@ -1437,7 +1437,7 @@ nssCKFWMechanism_GetWrapKeyLength
 /*
  * nssCKFWMechanism_WrapKey
  */
-NSS_EXTERN CK_RV
+__attribute__ ((visibility ("default"))) NSS_EXTERN CK_RV
 nssCKFWMechanism_WrapKey
 (
   NSSCKFWMechanism *fwMechanism,
@@ -1570,7 +1570,7 @@ nssCKFWCryptoOperation_GetOperationLength
 /*
  * nssCKFWCryptoOperation_Final
  */
-NSS_EXTERN CK_RV
+__attribute__ ((visibility ("default"))) NSS_EXTERN CK_RV
 nssCKFWCryptoOperation_Final
 (
   NSSCKFWCryptoOperation *fwOperation,
@@ -1580,7 +1580,7 @@ nssCKFWCryptoOperation_Final
 /*
  * nssCKFWCryptoOperation_Update
  */
-NSS_EXTERN CK_RV
+__attribute__ ((visibility ("default"))) NSS_EXTERN CK_RV
 nssCKFWCryptoOperation_Update
 (
   NSSCKFWCryptoOperation *fwOperation,
@@ -1591,7 +1591,7 @@ nssCKFWCryptoOperation_Update
 /*
  * nssCKFWCryptoOperation_DigestUpdate
  */
-NSS_EXTERN CK_RV
+__attribute__ ((visibility ("default"))) NSS_EXTERN CK_RV
 nssCKFWCryptoOperation_DigestUpdate
 (
   NSSCKFWCryptoOperation *fwOperation,
@@ -1601,7 +1601,7 @@ nssCKFWCryptoOperation_DigestUpdate
 /*
  * nssCKFWCryptoOperation_DigestKey
  */
-NSS_EXTERN CK_RV
+__attribute__ ((visibility ("default"))) NSS_EXTERN CK_RV
 nssCKFWCryptoOperation_DigestKey
 (
   NSSCKFWCryptoOperation *fwOperation,
@@ -1611,7 +1611,7 @@ nssCKFWCryptoOperation_DigestKey
 /*
  * nssCKFWCryptoOperation_UpdateFinal
  */
-NSS_EXTERN CK_RV
+__attribute__ ((visibility ("default"))) NSS_EXTERN CK_RV
 nssCKFWCryptoOperation_UpdateFinal
 (
   NSSCKFWCryptoOperation *fwOperation,
@@ -1622,7 +1622,7 @@ nssCKFWCryptoOperation_UpdateFinal
 /*
  * nssCKFWCryptoOperation_UpdateCombo
  */
-NSS_EXTERN CK_RV
+__attribute__ ((visibility ("default"))) NSS_EXTERN CK_RV
 nssCKFWCryptoOperation_UpdateCombo
 (
   NSSCKFWCryptoOperation *fwOperation,
@@ -1698,7 +1698,7 @@ nssCKFWSession_Create
  * nssCKFWSession_Destroy
  *
  */
-NSS_EXTERN CK_RV
+__attribute__ ((visibility ("default"))) NSS_EXTERN CK_RV
 nssCKFWSession_Destroy
 (
   NSSCKFWSession *fwSession,
@@ -1730,7 +1730,7 @@ nssCKFWSession_GetArena
  * nssCKFWSession_CallNotification
  *
  */
-NSS_EXTERN CK_RV
+__attribute__ ((visibility ("default"))) NSS_EXTERN CK_RV
 nssCKFWSession_CallNotification
 (
   NSSCKFWSession *fwSession,
@@ -1781,7 +1781,7 @@ nssCKFWSession_GetSessionState
  * nssCKFWSession_SetFWFindObjects
  *
  */
-NSS_EXTERN CK_RV
+__attribute__ ((visibility ("default"))) NSS_EXTERN CK_RV
 nssCKFWSession_SetFWFindObjects
 (
   NSSCKFWSession *fwSession,
@@ -1803,7 +1803,7 @@ nssCKFWSession_GetFWFindObjects
  * nssCKFWSession_SetMDSession
  *
  */
-NSS_EXTERN CK_RV
+__attribute__ ((visibility ("default"))) NSS_EXTERN CK_RV
 nssCKFWSession_SetMDSession
 (
   NSSCKFWSession *fwSession,
@@ -1814,7 +1814,7 @@ nssCKFWSession_SetMDSession
  * nssCKFWSession_SetHandle
  *
  */
-NSS_EXTERN CK_RV
+__attribute__ ((visibility ("default"))) NSS_EXTERN CK_RV
 nssCKFWSession_SetHandle
 (
   NSSCKFWSession *fwSession,
@@ -1835,7 +1835,7 @@ nssCKFWSession_GetHandle
  * nssCKFWSession_RegisterSessionObject
  *
  */
-NSS_EXTERN CK_RV
+__attribute__ ((visibility ("default"))) NSS_EXTERN CK_RV
 nssCKFWSession_RegisterSessionObject
 (
   NSSCKFWSession *fwSession,
@@ -1846,7 +1846,7 @@ nssCKFWSession_RegisterSessionObject
  * nssCKFWSession_DeregisterSessionObject
  *
  */
-NSS_EXTERN CK_RV
+__attribute__ ((visibility ("default"))) NSS_EXTERN CK_RV
 nssCKFWSession_DeregisterSessionObject
 (
   NSSCKFWSession *fwSession,
@@ -1867,7 +1867,7 @@ nssCKFWSession_GetDeviceError
  * nssCKFWSession_Login
  *
  */
-NSS_EXTERN CK_RV
+__attribute__ ((visibility ("default"))) NSS_EXTERN CK_RV
 nssCKFWSession_Login
 (
   NSSCKFWSession *fwSession,
@@ -1879,7 +1879,7 @@ nssCKFWSession_Login
  * nssCKFWSession_Logout
  *
  */
-NSS_EXTERN CK_RV
+__attribute__ ((visibility ("default"))) NSS_EXTERN CK_RV
 nssCKFWSession_Logout
 (
   NSSCKFWSession *fwSession
@@ -1889,7 +1889,7 @@ nssCKFWSession_Logout
  * nssCKFWSession_InitPIN
  *
  */
-NSS_EXTERN CK_RV
+__attribute__ ((visibility ("default"))) NSS_EXTERN CK_RV
 nssCKFWSession_InitPIN
 (
   NSSCKFWSession *fwSession,
@@ -1900,7 +1900,7 @@ nssCKFWSession_InitPIN
  * nssCKFWSession_SetPIN
  *
  */
-NSS_EXTERN CK_RV
+__attribute__ ((visibility ("default"))) NSS_EXTERN CK_RV
 nssCKFWSession_SetPIN
 (
   NSSCKFWSession *fwSession,
@@ -1923,7 +1923,7 @@ nssCKFWSession_GetOperationStateLen
  * nssCKFWSession_GetOperationState
  *
  */
-NSS_EXTERN CK_RV
+__attribute__ ((visibility ("default"))) NSS_EXTERN CK_RV
 nssCKFWSession_GetOperationState
 (
   NSSCKFWSession *fwSession,
@@ -1934,7 +1934,7 @@ nssCKFWSession_GetOperationState
  * nssCKFWSession_SetOperationState
  *
  */
-NSS_EXTERN CK_RV
+__attribute__ ((visibility ("default"))) NSS_EXTERN CK_RV
 nssCKFWSession_SetOperationState
 (
   NSSCKFWSession *fwSession,
@@ -2008,7 +2008,7 @@ nssCKFWSession_GetCurrentCryptoOperation
  * nssCKFWSession_Final
  * (terminate a cryptographic operation and get the result)
  */
-NSS_IMPLEMENT CK_RV
+__attribute__ ((visibility ("default"))) NSS_IMPLEMENT CK_RV
 nssCKFWSession_Final
 (
   NSSCKFWSession *fwSession,
@@ -2022,7 +2022,7 @@ nssCKFWSession_Final
  * nssCKFWSession_Update
  * (get the next step of an encrypt/decrypt operation)
  */
-NSS_IMPLEMENT CK_RV
+__attribute__ ((visibility ("default"))) NSS_IMPLEMENT CK_RV
 nssCKFWSession_Update
 (
   NSSCKFWSession *fwSession,
@@ -2038,7 +2038,7 @@ nssCKFWSession_Update
  * nssCKFWSession_DigestUpdate
  * (do the next step of an digest/sign/verify operation)
  */
-NSS_IMPLEMENT CK_RV
+__attribute__ ((visibility ("default"))) NSS_IMPLEMENT CK_RV
 nssCKFWSession_DigestUpdate
 (
   NSSCKFWSession *fwSession,
@@ -2052,7 +2052,7 @@ nssCKFWSession_DigestUpdate
  * nssCKFWSession_DigestKey
  * (do the next step of an digest/sign/verify operation)
  */
-NSS_IMPLEMENT CK_RV
+__attribute__ ((visibility ("default"))) NSS_IMPLEMENT CK_RV
 nssCKFWSession_DigestKey
 (
   NSSCKFWSession *fwSession,
@@ -2063,7 +2063,7 @@ nssCKFWSession_DigestKey
  * nssCKFWSession_UpdateFinal
  * (do a single-step of a cryptographic operation and get the result)
  */
-NSS_IMPLEMENT CK_RV
+__attribute__ ((visibility ("default"))) NSS_IMPLEMENT CK_RV
 nssCKFWSession_UpdateFinal
 (
   NSSCKFWSession *fwSession,
@@ -2079,7 +2079,7 @@ nssCKFWSession_UpdateFinal
  * nssCKFWSession_UpdateCombo
  * (do a combination encrypt/decrypt and sign/digest/verify operation)
  */
-NSS_IMPLEMENT CK_RV
+__attribute__ ((visibility ("default"))) NSS_IMPLEMENT CK_RV
 nssCKFWSession_UpdateCombo
 (
   NSSCKFWSession *fwSession,
@@ -2096,7 +2096,7 @@ nssCKFWSession_UpdateCombo
  * nssCKFWSession_SeedRandom
  *
  */
-NSS_EXTERN CK_RV
+__attribute__ ((visibility ("default"))) NSS_EXTERN CK_RV
 nssCKFWSession_SeedRandom
 (
   NSSCKFWSession *fwSession,
@@ -2107,7 +2107,7 @@ nssCKFWSession_SeedRandom
  * nssCKFWSession_GetRandom
  *
  */
-NSS_EXTERN CK_RV
+__attribute__ ((visibility ("default"))) NSS_EXTERN CK_RV
 nssCKFWSession_GetRandom
 (
   NSSCKFWSession *fwSession,
@@ -2201,7 +2201,7 @@ nssCKFWObject_GetArena
  * nssCKFWObject_SetHandle
  *
  */
-NSS_EXTERN CK_RV
+__attribute__ ((visibility ("default"))) NSS_EXTERN CK_RV
 nssCKFWObject_SetHandle
 (
   NSSCKFWObject *fwObject,
@@ -2243,7 +2243,7 @@ nssCKFWObject_GetAttributeCount
  * nssCKFWObject_GetAttributeTypes
  *
  */
-NSS_EXTERN CK_RV
+__attribute__ ((visibility ("default"))) NSS_EXTERN CK_RV
 nssCKFWObject_GetAttributeTypes
 (
   NSSCKFWObject *fwObject,
@@ -2287,7 +2287,7 @@ nssCKFWObject_GetAttribute
  * nssCKFWObject_SetAttribute
  *
  */
-NSS_EXTERN CK_RV
+__attribute__ ((visibility ("default"))) NSS_EXTERN CK_RV
 nssCKFWObject_SetAttribute
 (
   NSSCKFWObject *fwObject,
@@ -2397,7 +2397,7 @@ nssCKFWMutex_Create
  * nssCKFWMutex_Destroy
  *
  */
-NSS_EXTERN CK_RV
+__attribute__ ((visibility ("default"))) NSS_EXTERN CK_RV
 nssCKFWMutex_Destroy
 (
   NSSCKFWMutex *mutex
@@ -2407,7 +2407,7 @@ nssCKFWMutex_Destroy
  * nssCKFWMutex_Lock
  *
  */
-NSS_EXTERN CK_RV
+__attribute__ ((visibility ("default"))) NSS_EXTERN CK_RV
 nssCKFWMutex_Lock
 (
   NSSCKFWMutex *mutex
@@ -2417,7 +2417,7 @@ nssCKFWMutex_Lock
  * nssCKFWMutex_Unlock
  *
  */
-NSS_EXTERN CK_RV
+__attribute__ ((visibility ("default"))) NSS_EXTERN CK_RV
 nssCKFWMutex_Unlock
 (
   NSSCKFWMutex *mutex

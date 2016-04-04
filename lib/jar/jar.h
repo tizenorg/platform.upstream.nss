@@ -195,15 +195,15 @@ typedef enum {
 
 /* Function declarations */
 
-extern JAR *JAR_new (void);
+__attribute__ ((visibility ("default"))) extern JAR *JAR_new (void);
 
-extern void PR_CALLBACK JAR_destroy (JAR *jar);
+__attribute__ ((visibility ("default"))) extern void PR_CALLBACK JAR_destroy (JAR *jar);
 
-extern char *JAR_get_error (int status);
+__attribute__ ((visibility ("default"))) extern char *JAR_get_error (int status);
 
-extern int JAR_set_callback(int type, JAR *jar, jar_settable_callback_fn *fn);
+__attribute__ ((visibility ("default"))) extern int JAR_set_callback(int type, JAR *jar, jar_settable_callback_fn *fn);
 
-extern void 
+__attribute__ ((visibility ("default"))) extern void 
 JAR_init_callbacks(char *(*string_cb)(int), 
                    void *(*find_cx)(void), 
 		   void *(*init_cx)(void) );
@@ -220,7 +220,7 @@ JAR_init_callbacks(char *(*string_cb)(int),
  *  and one will be chosen for you.
  *
  */
-int JAR_set_context (JAR *jar, void /*MWContext*/ *mw);
+__attribute__ ((visibility ("default"))) int JAR_set_context (JAR *jar, void /*MWContext*/ *mw);
 
 /*
  *  Iterative operations
@@ -242,11 +242,11 @@ int JAR_set_context (JAR *jar, void /*MWContext*/ *mw);
 
 /* Replacement functions with an external context */
 
-extern JAR_Context *JAR_find (JAR *jar, char *pattern, jarType type);
+__attribute__ ((visibility ("default"))) extern JAR_Context *JAR_find (JAR *jar, char *pattern, jarType type);
 
-extern int JAR_find_next (JAR_Context *ctx, JAR_Item **it);
+__attribute__ ((visibility ("default"))) extern int JAR_find_next (JAR_Context *ctx, JAR_Item **it);
 
-extern void JAR_find_end (JAR_Context *ctx);
+__attribute__ ((visibility ("default"))) extern void JAR_find_end (JAR_Context *ctx);
 
 /*
  *  Function to parse manifest file:
@@ -273,7 +273,7 @@ extern void JAR_find_end (JAR_Context *ctx);
  *
  */
 
-extern int 
+__attribute__ ((visibility ("default"))) extern int 
 JAR_parse_manifest(JAR *jar, char *raw_manifest, long length, const char *path,
                    const char *url);
 
@@ -283,13 +283,13 @@ JAR_parse_manifest(JAR *jar, char *raw_manifest, long length, const char *path,
  *
  */
 
-extern JAR_Digest * PR_CALLBACK 
+__attribute__ ((visibility ("default"))) extern JAR_Digest * PR_CALLBACK 
 JAR_calculate_digest(void *data, long length);
 
-extern int PR_CALLBACK 
+__attribute__ ((visibility ("default"))) extern int PR_CALLBACK 
 JAR_verify_digest(JAR *jar, const char *name, JAR_Digest *dig);
 
-extern int 
+__attribute__ ((visibility ("default"))) extern int 
 JAR_digest_file(char *filename, JAR_Digest *dig);
 
 /*
@@ -309,23 +309,23 @@ JAR_digest_file(char *filename, JAR_Digest *dig);
  *
  */
 
-extern int 
+__attribute__ ((visibility ("default"))) extern int 
 JAR_get_metainfo(JAR *jar, char *name, char *header, void **info, 
                  unsigned long *length);
 
-extern char *JAR_get_filename (JAR *jar);
+__attribute__ ((visibility ("default"))) extern char *JAR_get_filename (JAR *jar);
 
-extern char *JAR_get_url (JAR *jar);
+__attribute__ ((visibility ("default"))) extern char *JAR_get_url (JAR *jar);
 
 /* save the certificate with this fingerprint in persistent
    storage, somewhere, for retrieval in a future session when there
    is no corresponding JAR structure. */
-extern int PR_CALLBACK 
+__attribute__ ((visibility ("default"))) extern int PR_CALLBACK 
 JAR_stash_cert(JAR *jar, long keylen, void *key);
 
 /* retrieve a certificate presumably stashed with the above
    function, but may be any certificate. Type is &CERTCertificate */
-CERTCertificate *
+__attribute__ ((visibility ("default"))) CERTCertificate *
 JAR_fetch_cert(long length, void *key);
 
 /*
@@ -341,13 +341,13 @@ JAR_fetch_cert(long length, void *key);
  *  a list of filenames and certificates from traversing the linked list.
  *
  */
-extern int 
+__attribute__ ((visibility ("default"))) extern int 
 JAR_pass_archive(JAR *jar, jarArch format, char *filename, const char *url);
 
 /*
  * Same thing, but don't check signatures
  */
-extern int 
+__attribute__ ((visibility ("default"))) extern int 
 JAR_pass_archive_unverified(JAR *jar, jarArch format, char *filename, 
                             const char *url);
 
@@ -359,7 +359,7 @@ JAR_pass_archive_unverified(JAR *jar, jarArch format, char *filename,
  *  open between multiple calls to JAR_verify_extract.
  *
  */
-extern int 
+__attribute__ ((visibility ("default"))) extern int 
 JAR_verified_extract(JAR *jar, char *path, char *outpath);
 
 /*
@@ -367,7 +367,7 @@ JAR_verified_extract(JAR *jar, char *path, char *outpath);
  *  need to extract a manifest file or signature, etc.
  *
  */
-extern int 
+__attribute__ ((visibility ("default"))) extern int 
 JAR_extract(JAR *jar, char *path, char *outpath);
 
 #endif /* __JAR_h_ */

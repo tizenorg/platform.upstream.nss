@@ -37,45 +37,45 @@ typedef unsigned int __CERTDB_VALID_PEER __attribute__((deprecated
 #define CERTDB_VALID_PEER  CERTDB_TERMINAL_RECORD 
 #endif
 
-SEC_BEGIN_PROTOS
+__attribute__ ((visibility ("default"))) SEC_BEGIN_PROTOS
 
 CERTSignedCrl *
 SEC_FindCrlByKey(CERTCertDBHandle *handle, SECItem *crlKey, int type);
 
-CERTSignedCrl *
+__attribute__ ((visibility ("default"))) CERTSignedCrl *
 SEC_FindCrlByName(CERTCertDBHandle *handle, SECItem *crlKey, int type);
 
-CERTSignedCrl *
+__attribute__ ((visibility ("default"))) CERTSignedCrl *
 SEC_FindCrlByDERCert(CERTCertDBHandle *handle, SECItem *derCrl, int type);
 
-PRBool
+__attribute__ ((visibility ("default"))) PRBool
 SEC_CertNicknameConflict(const char *nickname, const SECItem *derSubject,
 			 CERTCertDBHandle *handle);
-CERTSignedCrl *
+__attribute__ ((visibility ("default"))) CERTSignedCrl *
 SEC_NewCrl(CERTCertDBHandle *handle, char *url, SECItem *derCrl, int type);
 
-SECStatus
+__attribute__ ((visibility ("default"))) SECStatus
 SEC_DeletePermCRL(CERTSignedCrl *crl);
 
 
-SECStatus
+__attribute__ ((visibility ("default"))) SECStatus
 SEC_LookupCrls(CERTCertDBHandle *handle, CERTCrlHeadNode **nodes, int type);
 
-SECStatus 
+__attribute__ ((visibility ("default"))) SECStatus 
 SEC_DestroyCrl(CERTSignedCrl *crl);
 
-CERTSignedCrl* SEC_DupCrl(CERTSignedCrl* acrl);
+__attribute__ ((visibility ("default"))) CERTSignedCrl* SEC_DupCrl(CERTSignedCrl* acrl);
 
-SECStatus
+__attribute__ ((visibility ("default"))) SECStatus
 CERT_AddTempCertToPerm(CERTCertificate *cert, char *nickname,
 		       CERTCertTrust *trust);
 
-SECStatus SEC_DeletePermCertificate(CERTCertificate *cert);
+__attribute__ ((visibility ("default"))) SECStatus SEC_DeletePermCertificate(CERTCertificate *cert);
 
-PRBool
+__attribute__ ((visibility ("default"))) PRBool
 SEC_CrlIsNewer(CERTCrl *inNew, CERTCrl *old);
 
-SECCertTimeValidity
+__attribute__ ((visibility ("default"))) SECCertTimeValidity
 SEC_CheckCrlTimes(CERTCrl *crl, PRTime t);
 
 SEC_END_PROTOS

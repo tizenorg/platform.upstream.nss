@@ -44,13 +44,13 @@ PR_BEGIN_EXTERN_C
  *  A pointer to an NSSArena upon success
  */
 
-NSS_EXTERN NSSArena *
+__attribute__ ((visibility ("default"))) NSS_EXTERN NSSArena *
 NSSArena_Create
 (
   void
 );
 
-extern const NSSError NSS_ERROR_NO_MEMORY;
+__attribute__ ((visibility ("default"))) extern const NSSError NSS_ERROR_NO_MEMORY;
 
 /*
  * NSSArena_Destroy
@@ -68,13 +68,13 @@ extern const NSSError NSS_ERROR_NO_MEMORY;
  *  PR_FAILURE upon failure
  */
 
-NSS_EXTERN PRStatus
+__attribute__ ((visibility ("default"))) NSS_EXTERN PRStatus
 NSSArena_Destroy
 (
   NSSArena *arena
 );
 
-extern const NSSError NSS_ERROR_INVALID_ARENA;
+__attribute__ ((visibility ("default"))) extern const NSSError NSS_ERROR_INVALID_ARENA;
 
 /*
  * The error stack
@@ -100,13 +100,13 @@ extern const NSSError NSS_ERROR_INVALID_ARENA;
  *  A nonzero error number
  */
 
-NSS_EXTERN NSSError
+__attribute__ ((visibility ("default"))) NSS_EXTERN NSSError
 NSS_GetError
 (
   void
 );
 
-extern const NSSError NSS_ERROR_NO_ERROR;
+__attribute__ ((visibility ("default"))) extern const NSSError NSS_ERROR_NO_ERROR;
 
 /*
  * NSS_GetErrorStack
@@ -126,7 +126,7 @@ extern const NSSError NSS_ERROR_NO_ERROR;
  *  A NON-caller-owned pointer to an array of NSSError values
  */
 
-NSS_EXTERN NSSError *
+__attribute__ ((visibility ("default"))) NSS_EXTERN NSSError *
 NSS_GetErrorStack
 (
   void
@@ -202,7 +202,7 @@ NSS_GetErrorStack
  *  A pointer to the new segment of zeroed memory
  */
 
-NSS_EXTERN void *
+__attribute__ ((visibility ("default"))) NSS_EXTERN void *
 NSS_ZAlloc
 (
   NSSArena *arenaOpt,
@@ -229,7 +229,7 @@ NSS_ZAlloc
  *  A pointer to the replacement segment of memory
  */
 
-NSS_EXTERN void *
+__attribute__ ((visibility ("default"))) NSS_EXTERN void *
 NSS_ZRealloc
 (
   void *pointer,
@@ -255,7 +255,7 @@ NSS_ZRealloc
  *  PR_FAILURE
  */
 
-NSS_EXTERN PRStatus
+__attribute__ ((visibility ("default"))) NSS_EXTERN PRStatus
 NSS_ZFreeIf
 (
   void *pointer

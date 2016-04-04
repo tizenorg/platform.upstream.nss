@@ -22,7 +22,7 @@
  * If unsafeAllowMissingParameters is true (not recommended), then a DigestInfo
  * without the mandatory ASN.1 NULL parameter will also be accepted.
  */
-SECStatus _SGN_VerifyPKCS1DigestInfo(SECOidTag digestAlg,
+__attribute__ ((visibility ("default"))) SECStatus _SGN_VerifyPKCS1DigestInfo(SECOidTag digestAlg,
                                      const SECItem* digest,
                                      const SECItem* dataRecoveredFromSignature,
                                      PRBool unsafeAllowMissingParameters);

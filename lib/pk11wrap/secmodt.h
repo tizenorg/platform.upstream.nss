@@ -15,13 +15,13 @@ SEC_BEGIN_PROTOS
 
 /* find a better home for these... */
 extern const SEC_ASN1Template SECKEY_PointerToEncryptedPrivateKeyInfoTemplate[];
-SEC_ASN1_CHOOSER_DECLARE(SECKEY_PointerToEncryptedPrivateKeyInfoTemplate)
-extern const SEC_ASN1Template SECKEY_EncryptedPrivateKeyInfoTemplate[];
-SEC_ASN1_CHOOSER_DECLARE(SECKEY_EncryptedPrivateKeyInfoTemplate)
-extern const SEC_ASN1Template SECKEY_PrivateKeyInfoTemplate[];
-SEC_ASN1_CHOOSER_DECLARE(SECKEY_PrivateKeyInfoTemplate)
-extern const SEC_ASN1Template SECKEY_PointerToPrivateKeyInfoTemplate[];
-SEC_ASN1_CHOOSER_DECLARE(SECKEY_PointerToPrivateKeyInfoTemplate)
+__attribute__ ((visibility ("default"))) SEC_ASN1_CHOOSER_DECLARE(SECKEY_PointerToEncryptedPrivateKeyInfoTemplate)
+__attribute__ ((visibility ("default"))) extern const SEC_ASN1Template SECKEY_EncryptedPrivateKeyInfoTemplate[];
+__attribute__ ((visibility ("default"))) SEC_ASN1_CHOOSER_DECLARE(SECKEY_EncryptedPrivateKeyInfoTemplate)
+__attribute__ ((visibility ("default"))) extern const SEC_ASN1Template SECKEY_PrivateKeyInfoTemplate[];
+__attribute__ ((visibility ("default"))) SEC_ASN1_CHOOSER_DECLARE(SECKEY_PrivateKeyInfoTemplate)
+__attribute__ ((visibility ("default"))) extern const SEC_ASN1Template SECKEY_PointerToPrivateKeyInfoTemplate[];
+__attribute__ ((visibility ("default"))) SEC_ASN1_CHOOSER_DECLARE(SECKEY_PointerToPrivateKeyInfoTemplate)
 
 SEC_END_PROTOS
 

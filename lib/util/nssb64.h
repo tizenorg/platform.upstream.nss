@@ -18,12 +18,12 @@ SEC_BEGIN_PROTOS
  * Functions to start a base64 decoding/encoding context.
  */
 
-extern NSSBase64Decoder *
+__attribute__ ((visibility ("default"))) extern NSSBase64Decoder *
 NSSBase64Decoder_Create (PRInt32 (*output_fn) (void *, const unsigned char *,
 					       PRInt32),
 			 void *output_arg);
 
-extern NSSBase64Encoder *
+__attribute__ ((visibility ("default"))) extern NSSBase64Encoder *
 NSSBase64Encoder_Create (PRInt32 (*output_fn) (void *, const char *, PRInt32),
 			 void *output_arg);
 
@@ -32,11 +32,11 @@ NSSBase64Encoder_Create (PRInt32 (*output_fn) (void *, const char *, PRInt32),
  * to Create) to be called with the decoded/encoded data.
  */
 
-extern SECStatus
+__attribute__ ((visibility ("default"))) extern SECStatus
 NSSBase64Decoder_Update (NSSBase64Decoder *data, const char *buffer,
 			 PRUint32 size);
 
-extern SECStatus
+__attribute__ ((visibility ("default"))) extern SECStatus
 NSSBase64Encoder_Update (NSSBase64Encoder *data, const unsigned char *buffer,
 			 PRUint32 size);
 
@@ -46,10 +46,10 @@ NSSBase64Encoder_Update (NSSBase64Encoder *data, const unsigned char *buffer,
  * to be called one last time (as the last buffered data is flushed out).
  */
 
-extern SECStatus
+__attribute__ ((visibility ("default"))) extern SECStatus
 NSSBase64Decoder_Destroy (NSSBase64Decoder *data, PRBool abort_p);
 
-extern SECStatus
+__attribute__ ((visibility ("default"))) extern SECStatus
 NSSBase64Encoder_Destroy (NSSBase64Encoder *data, PRBool abort_p);
 
 /*
@@ -65,7 +65,7 @@ NSSBase64Encoder_Destroy (NSSBase64Encoder *data, PRBool abort_p);
  *
  * Return value is NULL on error, the Item (allocated or provided) otherwise.
  */
-extern SECItem *
+__attribute__ ((visibility ("default"))) extern SECItem *
 NSSBase64_DecodeBuffer (PLArenaPool *arenaOpt, SECItem *outItemOpt,
 			const char *inStr, unsigned int inLen);
 
@@ -85,7 +85,7 @@ NSSBase64_DecodeBuffer (PLArenaPool *arenaOpt, SECItem *outItemOpt,
  * Return value is NULL on error, the output buffer (allocated or provided)
  * otherwise.
  */
-extern char *
+__attribute__ ((visibility ("default"))) extern char *
 NSSBase64_EncodeItem (PLArenaPool *arenaOpt, char *outStrOpt,
 		      unsigned int maxOutLen, SECItem *inItem);
 

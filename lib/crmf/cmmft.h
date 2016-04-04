@@ -67,7 +67,7 @@ typedef struct CMMFCertRepContentStr         CMMFCertRepContent;
  * write callbacks that are passed in to the high level encode function
  * for CMMFCertRepContent.
  */
-extern const SEC_ASN1Template CMMFCertRepContentTemplate[];
-extern const SEC_ASN1Template CMMFPOPODecKeyChallContentTemplate[];
+__attribute__ ((visibility ("default"))) extern const SEC_ASN1Template CMMFCertRepContentTemplate[];
+__attribute__ ((visibility ("default"))) extern const SEC_ASN1Template CMMFPOPODecKeyChallContentTemplate[];
 
 #endif /*_CMMFT_H_*/

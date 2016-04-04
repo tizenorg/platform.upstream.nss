@@ -134,7 +134,7 @@ extern PRBool NSS_VersionCheck(const char *importedVersion);
 /*
  * Returns a const string of the NSS library version.
  */
-extern const char *NSS_GetVersion(void);
+__attribute__ ((visibility ("default"))) extern const char *NSS_GetVersion(void);
 
 /*
  * Open the Cert, Key, and Security Module databases, read only.
@@ -142,12 +142,12 @@ extern const char *NSS_GetVersion(void);
  * Does not initialize the cipher policies or enables.
  * Default policy settings disallow all ciphers.
  */
-extern SECStatus NSS_Init(const char *configdir);
+__attribute__ ((visibility ("default"))) extern SECStatus NSS_Init(const char *configdir);
 
 /*
  * Returns whether NSS has already been initialized or not.
  */
-extern PRBool NSS_IsInitialized(void);
+__attribute__ ((visibility ("default"))) extern PRBool NSS_IsInitialized(void);
 
 /*
  * Open the Cert, Key, and Security Module databases, read/write.
@@ -155,7 +155,7 @@ extern PRBool NSS_IsInitialized(void);
  * Does not initialize the cipher policies or enables.
  * Default policy settings disallow all ciphers.
  */
-extern SECStatus NSS_InitReadWrite(const char *configdir);
+__attribute__ ((visibility ("default"))) extern SECStatus NSS_InitReadWrite(const char *configdir);
 
 /*
  * Open the Cert, Key, and Security Module databases, read/write.
@@ -239,15 +239,15 @@ extern SECStatus NSS_InitReadWrite(const char *configdir);
 typedef struct NSSInitContextStr NSSInitContext;
 
 
-extern SECStatus NSS_Initialize(const char *configdir, 
+__attribute__ ((visibility ("default"))) extern SECStatus NSS_Initialize(const char *configdir, 
 	const char *certPrefix, const char *keyPrefix, 
 	const char *secmodName, PRUint32 flags);
 
-extern NSSInitContext *NSS_InitContext(const char *configdir, 
+__attribute__ ((visibility ("default"))) extern NSSInitContext *NSS_InitContext(const char *configdir, 
 	const char *certPrefix, const char *keyPrefix, 
 	const char *secmodName, NSSInitParameters *initParams, PRUint32 flags);
 
-extern SECStatus NSS_ShutdownContext(NSSInitContext *);
+__attribute__ ((visibility ("default"))) extern SECStatus NSS_ShutdownContext(NSSInitContext *);
 
 /*
  * same as NSS_Init, but checks to see if we need to merge an
@@ -259,7 +259,7 @@ extern SECStatus NSS_ShutdownContext(NSSInitContext *);
  *      the specific database.
  *   updatName is the name the user will be prompted for when
  *      asking to authenticate to the old database  */
-extern SECStatus NSS_InitWithMerge(const char *configdir, 
+__attribute__ ((visibility ("default"))) extern SECStatus NSS_InitWithMerge(const char *configdir, 
 	const char *certPrefix, const char *keyPrefix, const char *secmodName,
 	const char *updatedir,  const char *updCertPrefix, 
 	const char *updKeyPrefix, const char *updateID, 
@@ -267,7 +267,7 @@ extern SECStatus NSS_InitWithMerge(const char *configdir,
 /*
  * initialize NSS without a creating cert db's, key db's, or secmod db's.
  */
-SECStatus NSS_NoDB_Init(const char *configdir);
+__attribute__ ((visibility ("default"))) SECStatus NSS_NoDB_Init(const char *configdir);
 
 /*
  * Allow applications and libraries to register with NSS so that they are called
@@ -286,23 +286,23 @@ typedef SECStatus (*NSS_ShutdownFunc)(void *appData, void *nssData);
 /*
  * Register a shutdown function.
  */
-SECStatus NSS_RegisterShutdown(NSS_ShutdownFunc sFunc, void *appData);
+__attribute__ ((visibility ("default"))) SECStatus NSS_RegisterShutdown(NSS_ShutdownFunc sFunc, void *appData);
 
 /*
  * Remove an existing shutdown function (you may do this if your library is
  * complete and going away, but NSS is still running).
  */
-SECStatus NSS_UnregisterShutdown(NSS_ShutdownFunc sFunc, void *appData);
+__attribute__ ((visibility ("default"))) SECStatus NSS_UnregisterShutdown(NSS_ShutdownFunc sFunc, void *appData);
 
 /* 
  * Close the Cert, Key databases.
  */
-extern SECStatus NSS_Shutdown(void);
+__attribute__ ((visibility ("default"))) extern SECStatus NSS_Shutdown(void);
 
 /*
  * set the PKCS #11 strings for the internal token.
  */
-void PK11_ConfigurePKCS11(const char *man, const char *libdesc, 
+__attribute__ ((visibility ("default"))) void PK11_ConfigurePKCS11(const char *man, const char *libdesc, 
 	const char *tokdesc, const char *ptokdesc, const char *slotdesc, 
 	const char *pslotdesc, const char *fslotdesc, const char *fpslotdesc,
         int minPwd, int pwRequired);
@@ -311,7 +311,7 @@ void PK11_ConfigurePKCS11(const char *man, const char *libdesc,
  * Dump the contents of the certificate cache and the temporary cert store.
  * Use to detect leaked references of certs at shutdown time.
  */
-void nss_DumpCertificateCacheInfo(void);
+__attribute__ ((visibility ("default"))) void nss_DumpCertificateCacheInfo(void);
 
 SEC_END_PROTOS
 

@@ -18,9 +18,9 @@
 SEC_BEGIN_PROTOS
 
 
-extern const SEC_ASN1Template sgn_DigestInfoTemplate[];
+__attribute__ ((visibility ("default"))) extern const SEC_ASN1Template sgn_DigestInfoTemplate[];
 
-SEC_ASN1_CHOOSER_DECLARE(sgn_DigestInfoTemplate)
+__attribute__ ((visibility ("default"))) SEC_ASN1_CHOOSER_DECLARE(sgn_DigestInfoTemplate)
 
 /****************************************/
 /*
@@ -39,14 +39,14 @@ SEC_ASN1_CHOOSER_DECLARE(sgn_DigestInfoTemplate)
 ** XXX It might be nice to combine the create and encode functions.
 ** I think that is all anybody ever wants to do anyway.
 */
-extern SGNDigestInfo *SGN_CreateDigestInfo(SECOidTag algorithm,
+__attribute__ ((visibility ("default"))) extern SGNDigestInfo *SGN_CreateDigestInfo(SECOidTag algorithm,
 					   const unsigned char *sig,
 					   unsigned int sigLen);
 
 /*
 ** Destroy a digest-info object
 */
-extern void SGN_DestroyDigestInfo(SGNDigestInfo *info);
+__attribute__ ((visibility ("default"))) extern void SGN_DestroyDigestInfo(SGNDigestInfo *info);
 
 /*
 ** Encode a digest-info object
@@ -61,7 +61,7 @@ extern void SGN_DestroyDigestInfo(SGNDigestInfo *info);
 ** XXX It might be nice to combine the create and encode functions.
 ** I think that is all anybody ever wants to do anyway.
 */
-extern SECItem *SGN_EncodeDigestInfo(PLArenaPool *poolp, SECItem *dest,
+__attribute__ ((visibility ("default"))) extern SECItem *SGN_EncodeDigestInfo(PLArenaPool *poolp, SECItem *dest,
 				     SGNDigestInfo *diginfo);
 
 /*
@@ -72,7 +72,7 @@ extern SECItem *SGN_EncodeDigestInfo(PLArenaPool *poolp, SECItem *dest,
 ** pool is returned.  The digest info should be deleted
 ** by later calling SGN_DestroyDigestInfo.
 */
-extern SGNDigestInfo *SGN_DecodeDigestInfo(SECItem *didata);
+__attribute__ ((visibility ("default"))) extern SGNDigestInfo *SGN_DecodeDigestInfo(SECItem *didata);
 
 
 /*
@@ -87,7 +87,7 @@ extern SGNDigestInfo *SGN_DecodeDigestInfo(SECItem *didata);
 ** A return value of SECFailure indicates an error.  A return
 ** of SECSuccess indicates no error occurred.
 */
-extern SECStatus  SGN_CopyDigestInfo(PLArenaPool *poolp,
+__attribute__ ((visibility ("default"))) extern SECStatus  SGN_CopyDigestInfo(PLArenaPool *poolp,
 					SGNDigestInfo *a, 
 					SGNDigestInfo *b);
 
@@ -95,7 +95,7 @@ extern SECStatus  SGN_CopyDigestInfo(PLArenaPool *poolp,
 ** Compare two digest-info objects, returning the difference between
 ** them.
 */
-extern SECComparison SGN_CompareDigestInfo(SGNDigestInfo *a, SGNDigestInfo *b);
+__attribute__ ((visibility ("default"))) extern SECComparison SGN_CompareDigestInfo(SGNDigestInfo *a, SGNDigestInfo *b);
 
 
 SEC_END_PROTOS

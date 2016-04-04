@@ -1303,35 +1303,35 @@ typedef char * (*CERT_StringFromCertFcn)(CERTCertificate *cert);
 SEC_BEGIN_PROTOS
 
 extern const SEC_ASN1Template CERT_CertificateRequestTemplate[];
-extern const SEC_ASN1Template CERT_CertificateTemplate[];
-extern const SEC_ASN1Template SEC_SignedCertificateTemplate[];
-extern const SEC_ASN1Template CERT_CertExtensionTemplate[];
-extern const SEC_ASN1Template CERT_SequenceOfCertExtensionTemplate[];
-extern const SEC_ASN1Template SECKEY_PublicKeyTemplate[];
-extern const SEC_ASN1Template CERT_SubjectPublicKeyInfoTemplate[];
-extern const SEC_ASN1Template CERT_TimeChoiceTemplate[];
-extern const SEC_ASN1Template CERT_ValidityTemplate[];
-extern const SEC_ASN1Template CERT_PublicKeyAndChallengeTemplate[];
-extern const SEC_ASN1Template SEC_CertSequenceTemplate[];
+__attribute__ ((visibility ("default"))) extern const SEC_ASN1Template CERT_CertificateTemplate[];
+__attribute__ ((visibility ("default"))) extern const SEC_ASN1Template SEC_SignedCertificateTemplate[];
+__attribute__ ((visibility ("default"))) extern const SEC_ASN1Template CERT_CertExtensionTemplate[];
+__attribute__ ((visibility ("default"))) extern const SEC_ASN1Template CERT_SequenceOfCertExtensionTemplate[];
+__attribute__ ((visibility ("default"))) extern const SEC_ASN1Template SECKEY_PublicKeyTemplate[];
+__attribute__ ((visibility ("default"))) extern const SEC_ASN1Template CERT_SubjectPublicKeyInfoTemplate[];
+__attribute__ ((visibility ("default"))) extern const SEC_ASN1Template CERT_TimeChoiceTemplate[];
+__attribute__ ((visibility ("default"))) extern const SEC_ASN1Template CERT_ValidityTemplate[];
+__attribute__ ((visibility ("default"))) extern const SEC_ASN1Template CERT_PublicKeyAndChallengeTemplate[];
+__attribute__ ((visibility ("default"))) extern const SEC_ASN1Template SEC_CertSequenceTemplate[];
 
-extern const SEC_ASN1Template CERT_IssuerAndSNTemplate[];
-extern const SEC_ASN1Template CERT_NameTemplate[];
-extern const SEC_ASN1Template CERT_SetOfSignedCrlTemplate[];
-extern const SEC_ASN1Template CERT_RDNTemplate[];
-extern const SEC_ASN1Template CERT_SignedDataTemplate[];
-extern const SEC_ASN1Template CERT_CrlTemplate[];
-extern const SEC_ASN1Template CERT_SignedCrlTemplate[];
+__attribute__ ((visibility ("default"))) extern const SEC_ASN1Template CERT_IssuerAndSNTemplate[];
+__attribute__ ((visibility ("default"))) extern const SEC_ASN1Template CERT_NameTemplate[];
+__attribute__ ((visibility ("default"))) extern const SEC_ASN1Template CERT_SetOfSignedCrlTemplate[];
+__attribute__ ((visibility ("default"))) extern const SEC_ASN1Template CERT_RDNTemplate[];
+__attribute__ ((visibility ("default"))) extern const SEC_ASN1Template CERT_SignedDataTemplate[];
+__attribute__ ((visibility ("default"))) extern const SEC_ASN1Template CERT_CrlTemplate[];
+__attribute__ ((visibility ("default"))) extern const SEC_ASN1Template CERT_SignedCrlTemplate[];
 
 /*
 ** XXX should the attribute stuff be centralized for all of ns/security?
 */
-extern const SEC_ASN1Template CERT_AttributeTemplate[];
-extern const SEC_ASN1Template CERT_SetOfAttributeTemplate[];
+__attribute__ ((visibility ("default"))) extern const SEC_ASN1Template CERT_AttributeTemplate[];
+__attribute__ ((visibility ("default"))) extern const SEC_ASN1Template CERT_SetOfAttributeTemplate[];
 
 /* These functions simply return the address of the above-declared templates.
 ** This is necessary for Windows DLLs.  Sigh.
 */
-SEC_ASN1_CHOOSER_DECLARE(CERT_CertificateRequestTemplate)
+__attribute__ ((visibility ("default"))) SEC_ASN1_CHOOSER_DECLARE(CERT_CertificateRequestTemplate)
 SEC_ASN1_CHOOSER_DECLARE(CERT_CertificateTemplate)
 SEC_ASN1_CHOOSER_DECLARE(CERT_CrlTemplate)
 SEC_ASN1_CHOOSER_DECLARE(CERT_IssuerAndSNTemplate)

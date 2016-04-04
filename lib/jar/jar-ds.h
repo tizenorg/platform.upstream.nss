@@ -62,16 +62,16 @@ struct ZZListStr {
     (lnk)->prev = 0; \
 }
 
-extern ZZLink *
+__attribute__ ((visibility ("default"))) extern ZZLink *
 ZZ_NewLink(JAR_Item *thing);
 
-extern void 
+__attribute__ ((visibility ("default"))) extern void 
 ZZ_DestroyLink(ZZLink *link);
 
-extern ZZList *
+__attribute__ ((visibility ("default"))) extern ZZList *
 ZZ_NewList(void);
 
-extern void 
+__attribute__ ((visibility ("default"))) extern void 
 ZZ_DestroyList(ZZList *list);
 
 

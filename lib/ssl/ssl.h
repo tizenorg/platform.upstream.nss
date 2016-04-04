@@ -29,13 +29,13 @@ SEC_BEGIN_PROTOS
 SSL_IMPORT const PRUint16 SSL_ImplementedCiphers[];
 
 /* the same as the above, but is a function */
-SSL_IMPORT const PRUint16 *SSL_GetImplementedCiphers(void);
+__attribute__ ((visibility ("default"))) SSL_IMPORT const PRUint16 *SSL_GetImplementedCiphers(void);
 
 /* number of entries in the above table. */
-SSL_IMPORT const PRUint16 SSL_NumImplementedCiphers;
+__attribute__ ((visibility ("default"))) SSL_IMPORT const PRUint16 SSL_NumImplementedCiphers;
 
 /* the same as the above, but is a function */
-SSL_IMPORT PRUint16 SSL_GetNumImplementedCiphers(void);
+__attribute__ ((visibility ("default"))) SSL_IMPORT PRUint16 SSL_GetNumImplementedCiphers(void);
 
 /* Macro to tell which ciphers in table are SSL2 vs SSL3/TLS. */
 #define SSL_IS_SSL2_CIPHER(which) (((which) & 0xfff0) == 0xff00)
@@ -44,13 +44,13 @@ SSL_IMPORT PRUint16 SSL_GetNumImplementedCiphers(void);
 ** Imports fd into SSL, returning a new socket.  Copies SSL configuration
 ** from model.
 */
-SSL_IMPORT PRFileDesc *SSL_ImportFD(PRFileDesc *model, PRFileDesc *fd);
+__attribute__ ((visibility ("default"))) SSL_IMPORT PRFileDesc *SSL_ImportFD(PRFileDesc *model, PRFileDesc *fd);
 
 /*
 ** Imports fd into DTLS, returning a new socket.  Copies DTLS configuration
 ** from model.
 */
-SSL_IMPORT PRFileDesc *DTLS_ImportFD(PRFileDesc *model, PRFileDesc *fd);
+__attribute__ ((visibility ("default"))) SSL_IMPORT PRFileDesc *DTLS_ImportFD(PRFileDesc *model, PRFileDesc *fd);
 
 /*
 ** Enable/disable an ssl mode
@@ -198,11 +198,11 @@ SSL_IMPORT SECStatus SSL_EnableDefault(int option, PRBool on);
 #endif
 
 /* New function names */
-SSL_IMPORT SECStatus SSL_OptionSet(PRFileDesc *fd, PRInt32 option, PRBool on);
-SSL_IMPORT SECStatus SSL_OptionGet(PRFileDesc *fd, PRInt32 option, PRBool *on);
-SSL_IMPORT SECStatus SSL_OptionSetDefault(PRInt32 option, PRBool on);
-SSL_IMPORT SECStatus SSL_OptionGetDefault(PRInt32 option, PRBool *on);
-SSL_IMPORT SECStatus SSL_CertDBHandleSet(PRFileDesc *fd, CERTCertDBHandle *dbHandle);
+__attribute__ ((visibility ("default"))) SSL_IMPORT SECStatus SSL_OptionSet(PRFileDesc *fd, PRInt32 option, PRBool on);
+__attribute__ ((visibility ("default"))) SSL_IMPORT SECStatus SSL_OptionGet(PRFileDesc *fd, PRInt32 option, PRBool *on);
+__attribute__ ((visibility ("default"))) SSL_IMPORT SECStatus SSL_OptionSetDefault(PRInt32 option, PRBool on);
+__attribute__ ((visibility ("default"))) SSL_IMPORT SECStatus SSL_OptionGetDefault(PRInt32 option, PRBool *on);
+__attribute__ ((visibility ("default"))) SSL_IMPORT SECStatus SSL_CertDBHandleSet(PRFileDesc *fd, CERTCertDBHandle *dbHandle);
 
 /* SSLNextProtoCallback is called during the handshake for the client, when a
  * Next Protocol Negotiation (NPN) extension has been received from the server.
@@ -225,7 +225,7 @@ typedef SECStatus (PR_CALLBACK *SSLNextProtoCallback)(
 
 /* SSL_SetNextProtoCallback sets a callback function to handle Next Protocol
  * Negotiation. It causes a client to advertise NPN. */
-SSL_IMPORT SECStatus SSL_SetNextProtoCallback(PRFileDesc *fd,
+__attribute__ ((visibility ("default"))) SSL_IMPORT SECStatus SSL_SetNextProtoCallback(PRFileDesc *fd,
                                               SSLNextProtoCallback callback,
                                               void *arg);
 
@@ -247,7 +247,7 @@ SSL_IMPORT SECStatus SSL_SetNextProtoCallback(PRFileDesc *fd,
  *
  * The supported protocols are specified in |data| in wire-format (8-bit
  * length-prefixed). For example: "\010http/1.1\006spdy/2". */
-SSL_IMPORT SECStatus SSL_SetNextProtoNego(PRFileDesc *fd,
+__attribute__ ((visibility ("default"))) SSL_IMPORT SECStatus SSL_SetNextProtoNego(PRFileDesc *fd,
 					  const unsigned char *data,
 					  unsigned int length);
 
@@ -265,7 +265,7 @@ typedef enum SSLNextProtoState {
  * If the negotiated protocol is longer than bufLenMax, then SECFailure is
  * returned. Otherwise, the negotiated protocol, if any, is written into buf,
  * and SECSuccess is returned. */
-SSL_IMPORT SECStatus SSL_GetNextProto(PRFileDesc *fd,
+__attribute__ ((visibility ("default"))) SSL_IMPORT SECStatus SSL_GetNextProto(PRFileDesc *fd,
 				      SSLNextProtoState *state,
 				      unsigned char *buf,
 				      unsigned int *bufLen,
@@ -285,12 +285,12 @@ SSL_IMPORT SECStatus SSL_SetPolicy(long which, int policy);
 #endif
 
 /* New function names */
-SSL_IMPORT SECStatus SSL_CipherPrefSet(PRFileDesc *fd, PRInt32 cipher, PRBool enabled);
-SSL_IMPORT SECStatus SSL_CipherPrefGet(PRFileDesc *fd, PRInt32 cipher, PRBool *enabled);
-SSL_IMPORT SECStatus SSL_CipherPrefSetDefault(PRInt32 cipher, PRBool enabled);
-SSL_IMPORT SECStatus SSL_CipherPrefGetDefault(PRInt32 cipher, PRBool *enabled);
-SSL_IMPORT SECStatus SSL_CipherPolicySet(PRInt32 cipher, PRInt32 policy);
-SSL_IMPORT SECStatus SSL_CipherPolicyGet(PRInt32 cipher, PRInt32 *policy);
+__attribute__ ((visibility ("default"))) SSL_IMPORT SECStatus SSL_CipherPrefSet(PRFileDesc *fd, PRInt32 cipher, PRBool enabled);
+__attribute__ ((visibility ("default"))) SSL_IMPORT SECStatus SSL_CipherPrefGet(PRFileDesc *fd, PRInt32 cipher, PRBool *enabled);
+__attribute__ ((visibility ("default"))) SSL_IMPORT SECStatus SSL_CipherPrefSetDefault(PRInt32 cipher, PRBool enabled);
+__attribute__ ((visibility ("default"))) SSL_IMPORT SECStatus SSL_CipherPrefGetDefault(PRInt32 cipher, PRBool *enabled);
+__attribute__ ((visibility ("default"))) SSL_IMPORT SECStatus SSL_CipherPolicySet(PRInt32 cipher, PRInt32 policy);
+__attribute__ ((visibility ("default"))) SSL_IMPORT SECStatus SSL_CipherPolicyGet(PRInt32 cipher, PRInt32 *policy);
 
 /* SSL Version Range API
 **
@@ -339,27 +339,27 @@ SSL_IMPORT SECStatus SSL_CipherPolicyGet(PRInt32 cipher, PRInt32 *policy);
 /* Returns, in |*vrange|, the range of SSL3/TLS versions supported for the
 ** given protocol variant by the version of libssl linked-to at runtime.
 */
-SSL_IMPORT SECStatus SSL_VersionRangeGetSupported(
+__attribute__ ((visibility ("default"))) SSL_IMPORT SECStatus SSL_VersionRangeGetSupported(
     SSLProtocolVariant protocolVariant, SSLVersionRange *vrange);
 
 /* Returns, in |*vrange|, the range of SSL3/TLS versions enabled by default
 ** for the given protocol variant.
 */
-SSL_IMPORT SECStatus SSL_VersionRangeGetDefault(
+__attribute__ ((visibility ("default"))) SSL_IMPORT SECStatus SSL_VersionRangeGetDefault(
     SSLProtocolVariant protocolVariant, SSLVersionRange *vrange);
 
 /* Sets the range of enabled-by-default SSL3/TLS versions for the given
 ** protocol variant to |*vrange|.
 */
-SSL_IMPORT SECStatus SSL_VersionRangeSetDefault(
+__attribute__ ((visibility ("default"))) SSL_IMPORT SECStatus SSL_VersionRangeSetDefault(
     SSLProtocolVariant protocolVariant, const SSLVersionRange *vrange);
 
 /* Returns, in |*vrange|, the range of enabled SSL3/TLS versions for |fd|. */
-SSL_IMPORT SECStatus SSL_VersionRangeGet(PRFileDesc *fd,
+__attribute__ ((visibility ("default"))) SSL_IMPORT SECStatus SSL_VersionRangeGet(PRFileDesc *fd,
 					 SSLVersionRange *vrange);
 
 /* Sets the range of enabled SSL3/TLS versions for |fd| to |*vrange|. */
-SSL_IMPORT SECStatus SSL_VersionRangeSet(PRFileDesc *fd,
+__attribute__ ((visibility ("default"))) SSL_IMPORT SECStatus SSL_VersionRangeSet(PRFileDesc *fd,
 					 const SSLVersionRange *vrange);
 
 
@@ -395,18 +395,18 @@ SSL_IMPORT SECStatus SSL_VersionRangeSet(PRFileDesc *fd,
 ** handshake protocol execute from the ground up on the next i/o
 ** operation.
 */
-SSL_IMPORT SECStatus SSL_ResetHandshake(PRFileDesc *fd, PRBool asServer);
+__attribute__ ((visibility ("default"))) SSL_IMPORT SECStatus SSL_ResetHandshake(PRFileDesc *fd, PRBool asServer);
 
 /*
 ** Force the handshake for fd to complete immediately.  This blocks until
 ** the complete SSL handshake protocol is finished.
 */
-SSL_IMPORT SECStatus SSL_ForceHandshake(PRFileDesc *fd);
+__attribute__ ((visibility ("default"))) SSL_IMPORT SECStatus SSL_ForceHandshake(PRFileDesc *fd);
 
 /*
 ** Same as above, but with an I/O timeout.
  */
-SSL_IMPORT SECStatus SSL_ForceHandshakeWithTimeout(PRFileDesc *fd,
+__attribute__ ((visibility ("default"))) SSL_IMPORT SECStatus SSL_ForceHandshakeWithTimeout(PRFileDesc *fd,
                                                    PRIntervalTime timeout);
 
 /*
@@ -420,7 +420,7 @@ SSL_IMPORT SECStatus SSL_ForceHandshakeWithTimeout(PRFileDesc *fd,
 ** data is not needed.  All strings returned by this function are owned
 ** by the caller, and need to be freed with PORT_Free.
 */
-SSL_IMPORT SECStatus SSL_SecurityStatus(PRFileDesc *fd, int *on, char **cipher,
+__attribute__ ((visibility ("default"))) SSL_IMPORT SECStatus SSL_SecurityStatus(PRFileDesc *fd, int *on, char **cipher,
 			                int *keySize, int *secretKeySize,
 			                char **issuer, char **subject);
 
@@ -438,7 +438,7 @@ SSL_IMPORT SECStatus SSL_SecurityStatus(PRFileDesc *fd, int *on, char **cipher,
 ** if the client had no certificate when asked.
 **	"fd" the socket "file" descriptor
 */
-SSL_IMPORT CERTCertificate *SSL_PeerCertificate(PRFileDesc *fd);
+__attribute__ ((visibility ("default"))) SSL_IMPORT CERTCertificate *SSL_PeerCertificate(PRFileDesc *fd);
 
 /*
 ** Return the certificates presented by the SSL peer. If the SSL peer
@@ -447,7 +447,7 @@ SSL_IMPORT CERTCertificate *SSL_PeerCertificate(PRFileDesc *fd);
 ** code other than SSL_ERROR_NO_CERTIFICATE.
 **	"fd" the socket "file" descriptor
 */
-SSL_IMPORT CERTCertList *SSL_PeerCertificateChain(PRFileDesc *fd);
+__attribute__ ((visibility ("default"))) SSL_IMPORT CERTCertList *SSL_PeerCertificateChain(PRFileDesc *fd);
 
 /* SSL_PeerStapledOCSPResponses returns the OCSP responses that were provided
  * by the TLS server. The return value is a pointer to an internal SECItemArray
@@ -465,7 +465,7 @@ SSL_IMPORT CERTCertList *SSL_PeerCertificateChain(PRFileDesc *fd);
  * authenticate certificate hook, SSL_AuthCertificate, does not implement
  * any OCSP stapling funtionality, but this may change in future versions.
  */
-SSL_IMPORT const SECItemArray * SSL_PeerStapledOCSPResponses(PRFileDesc *fd);
+__attribute__ ((visibility ("default"))) SSL_IMPORT const SECItemArray * SSL_PeerStapledOCSPResponses(PRFileDesc *fd);
 
 /* SSL_SetStapledOCSPResponses stores an array of one or multiple OCSP responses
  * in the fd's data, which may be sent as part of a server side cert_status
@@ -473,7 +473,7 @@ SSL_IMPORT const SECItemArray * SSL_PeerStapledOCSPResponses(PRFileDesc *fd);
  * the key exchange type |kea|.
  * The function will duplicate the responses array.
  */
-SSL_IMPORT SECStatus
+__attribute__ ((visibility ("default"))) SSL_IMPORT SECStatus
 SSL_SetStapledOCSPResponses(PRFileDesc *fd, const SECItemArray *responses,
 			    SSLKEAType kea);
 
@@ -512,12 +512,12 @@ typedef SECStatus (PR_CALLBACK *SSLAuthCertificate)(void *arg, PRFileDesc *fd,
                                                     PRBool checkSig,
                                                     PRBool isServer);
 
-SSL_IMPORT SECStatus SSL_AuthCertificateHook(PRFileDesc *fd, 
+__attribute__ ((visibility ("default"))) SSL_IMPORT SECStatus SSL_AuthCertificateHook(PRFileDesc *fd, 
 					     SSLAuthCertificate f,
 				             void *arg);
 
 /* An implementation of the certificate authentication hook */
-SSL_IMPORT SECStatus SSL_AuthCertificate(void *arg, PRFileDesc *fd, 
+__attribute__ ((visibility ("default"))) SSL_IMPORT SECStatus SSL_AuthCertificate(void *arg, PRFileDesc *fd, 
 					 PRBool checkSig, PRBool isServer);
 
 /*
@@ -540,7 +540,7 @@ typedef SECStatus (PR_CALLBACK *SSLGetClientAuthData)(void *arg,
  *	f - the application's callback that delivers the key and cert
  *	a - application specific data
  */
-SSL_IMPORT SECStatus SSL_GetClientAuthDataHook(PRFileDesc *fd, 
+__attribute__ ((visibility ("default"))) SSL_IMPORT SECStatus SSL_GetClientAuthDataHook(PRFileDesc *fd, 
 			                       SSLGetClientAuthData f, void *a);
 
 
@@ -588,7 +588,7 @@ typedef PRInt32 (PR_CALLBACK *SSLSNISocketConfig)(PRFileDesc *fd,
 /*
 ** Set application implemented SNISocketConfig callback.
 */
-SSL_IMPORT SECStatus SSL_SNISocketConfigHook(PRFileDesc *fd, 
+__attribute__ ((visibility ("default"))) SSL_IMPORT SECStatus SSL_SNISocketConfigHook(PRFileDesc *fd, 
                                              SSLSNISocketConfig f,
                                              void *arg);
 
@@ -597,14 +597,14 @@ SSL_IMPORT SECStatus SSL_SNISocketConfigHook(PRFileDesc *fd,
 ** server certs and keys, list of trust anchor, socket options
 ** and all SSL socket call backs and parameters.
 */
-SSL_IMPORT PRFileDesc *SSL_ReconfigFD(PRFileDesc *model, PRFileDesc *fd);
+__attribute__ ((visibility ("default"))) SSL_IMPORT PRFileDesc *SSL_ReconfigFD(PRFileDesc *model, PRFileDesc *fd);
 
 /*
  * Set the client side argument for SSL to retrieve PKCS #11 pin.
  *	fd - the file descriptor for the connection in question
  *	a - pkcs11 application specific data
  */
-SSL_IMPORT SECStatus SSL_SetPKCS11PinArg(PRFileDesc *fd, void *a);
+__attribute__ ((visibility ("default"))) SSL_IMPORT SECStatus SSL_SetPKCS11PinArg(PRFileDesc *fd, void *a);
 
 /*
 ** This is a callback for dealing with server certs that are not authenticated
@@ -622,7 +622,7 @@ SSL_IMPORT SECStatus SSL_SetPKCS11PinArg(PRFileDesc *fd, void *a);
 ** SECWouldBlock.
 */
 typedef SECStatus (PR_CALLBACK *SSLBadCertHandler)(void *arg, PRFileDesc *fd);
-SSL_IMPORT SECStatus SSL_BadCertHook(PRFileDesc *fd, SSLBadCertHandler f, 
+__attribute__ ((visibility ("default"))) SSL_IMPORT SECStatus SSL_BadCertHook(PRFileDesc *fd, SSLBadCertHandler f, 
 				     void *arg);
 
 /*
@@ -630,7 +630,7 @@ SSL_IMPORT SECStatus SSL_BadCertHook(PRFileDesc *fd, SSLBadCertHandler f,
 ** certificate for the server and the servers private key. The arguments
 ** are copied.
 */
-SSL_IMPORT SECStatus SSL_ConfigSecureServer(
+__attribute__ ((visibility ("default"))) SSL_IMPORT SECStatus SSL_ConfigSecureServer(
 				PRFileDesc *fd, CERTCertificate *cert,
 				SECKEYPrivateKey *key, SSLKEAType kea);
 
@@ -638,7 +638,7 @@ SSL_IMPORT SECStatus SSL_ConfigSecureServer(
 ** Allows SSL socket configuration with caller-supplied certificate chain.
 ** If certChainOpt is NULL, tries to find one.
 */
-SSL_IMPORT SECStatus
+__attribute__ ((visibility ("default"))) SSL_IMPORT SECStatus
 SSL_ConfigSecureServerWithCertChain(PRFileDesc *fd, CERTCertificate *cert,
                                     const CERTCertificateList *certChainOpt,
                                     SECKEYPrivateKey *key, SSLKEAType kea);
@@ -651,14 +651,14 @@ SSL_ConfigSecureServerWithCertChain(PRFileDesc *fd, CERTCertificate *cert,
 ** This version of the function is for use in applications that have only one 
 ** process that uses the cache (even if that process has multiple threads).
 */
-SSL_IMPORT SECStatus SSL_ConfigServerSessionIDCache(int      maxCacheEntries,
+__attribute__ ((visibility ("default"))) SSL_IMPORT SECStatus SSL_ConfigServerSessionIDCache(int      maxCacheEntries,
 					            PRUint32 timeout,
 					            PRUint32 ssl3_timeout,
 				              const char *   directory);
 
 /* Configure a secure server's session-id cache. Depends on value of
  * enableMPCache, configures malti-proc or single proc cache. */
-SSL_IMPORT SECStatus SSL_ConfigServerSessionIDCacheWithOpt(
+__attribute__ ((visibility ("default"))) SSL_IMPORT SECStatus SSL_ConfigServerSessionIDCacheWithOpt(
                                                            PRUint32 timeout,
                                                        PRUint32 ssl3_timeout,
                                                      const char *   directory,
@@ -676,7 +676,7 @@ SSL_IMPORT SECStatus SSL_ConfigServerSessionIDCacheWithOpt(
 ** This function sets up a Server Session ID (SID) cache that is safe for
 ** access by multiple processes on the same system.
 */
-SSL_IMPORT SECStatus SSL_ConfigMPServerSIDCache(int      maxCacheEntries, 
+__attribute__ ((visibility ("default"))) SSL_IMPORT SECStatus SSL_ConfigMPServerSIDCache(int      maxCacheEntries, 
 				                PRUint32 timeout,
 			       	                PRUint32 ssl3_timeout, 
 		                          const char *   directory);
@@ -689,8 +689,8 @@ SSL_IMPORT SECStatus SSL_ConfigMPServerSIDCache(int      maxCacheEntries,
 ** An attempt to set a too-low maximum will return an error and the 
 ** configured value will not be changed.
 */
-SSL_IMPORT PRUint32  SSL_GetMaxServerCacheLocks(void);
-SSL_IMPORT SECStatus SSL_SetMaxServerCacheLocks(PRUint32 maxLocks);
+__attribute__ ((visibility ("default"))) SSL_IMPORT PRUint32  SSL_GetMaxServerCacheLocks(void);
+__attribute__ ((visibility ("default"))) SSL_IMPORT SECStatus SSL_SetMaxServerCacheLocks(PRUint32 maxLocks);
 
 /* environment variable set by SSL_ConfigMPServerSIDCache, and queried by
  * SSL_InheritMPServerSIDCache when envString is NULL.
@@ -702,7 +702,7 @@ SSL_IMPORT SECStatus SSL_SetMaxServerCacheLocks(PRUint32 maxLocks);
  * variable "SSL_INHERITANCE", otherwise the string value passed in will be 
  * used.
  */
-SSL_IMPORT SECStatus SSL_InheritMPServerSIDCache(const char * envString);
+__attribute__ ((visibility ("default"))) SSL_IMPORT SECStatus SSL_InheritMPServerSIDCache(const char * envString);
 
 /*
 ** Set the callback that gets called when a TLS handshake is complete. The
@@ -716,7 +716,7 @@ SSL_IMPORT SECStatus SSL_InheritMPServerSIDCache(const char * envString);
 */
 typedef void (PR_CALLBACK *SSLHandshakeCallback)(PRFileDesc *fd,
                                                  void *client_data);
-SSL_IMPORT SECStatus SSL_HandshakeCallback(PRFileDesc *fd, 
+__attribute__ ((visibility ("default"))) SSL_IMPORT SECStatus SSL_HandshakeCallback(PRFileDesc *fd, 
 			          SSLHandshakeCallback cb, void *client_data);
 
 /* Applications that wish to enable TLS false start must set this callback
@@ -733,7 +733,7 @@ SSL_IMPORT SECStatus SSL_HandshakeCallback(PRFileDesc *fd,
 typedef SECStatus (PR_CALLBACK *SSLCanFalseStartCallback)(
     PRFileDesc *fd, void *arg, PRBool *canFalseStart);
 
-SSL_IMPORT SECStatus SSL_SetCanFalseStartCallback(
+__attribute__ ((visibility ("default"))) SSL_IMPORT SECStatus SSL_SetCanFalseStartCallback(
     PRFileDesc *fd, SSLCanFalseStartCallback callback, void *arg);
 
 /* This function sets *canFalseStart according to the recommended criteria for
@@ -741,7 +741,7 @@ SSL_IMPORT SECStatus SSL_SetCanFalseStartCallback(
 ** on which handshake features have been negotiated and/or properties of the
 ** certifciates/keys used on the connection.
 */
-SSL_IMPORT SECStatus SSL_RecommendedCanFalseStart(PRFileDesc *fd,
+__attribute__ ((visibility ("default"))) SSL_IMPORT SECStatus SSL_RecommendedCanFalseStart(PRFileDesc *fd,
                                                   PRBool *canFalseStart);
 
 /*
@@ -752,12 +752,12 @@ SSL_IMPORT SECStatus SSL_RecommendedCanFalseStart(PRFileDesc *fd,
 ** do the much faster session restart handshake.  This will change the 
 ** session keys without doing another private key operation.
 */
-SSL_IMPORT SECStatus SSL_ReHandshake(PRFileDesc *fd, PRBool flushCache);
+__attribute__ ((visibility ("default"))) SSL_IMPORT SECStatus SSL_ReHandshake(PRFileDesc *fd, PRBool flushCache);
 
 /*
 ** Same as above, but with an I/O timeout.
  */
-SSL_IMPORT SECStatus SSL_ReHandshakeWithTimeout(PRFileDesc *fd,
+__attribute__ ((visibility ("default"))) SSL_IMPORT SECStatus SSL_ReHandshakeWithTimeout(PRFileDesc *fd,
                                                 PRBool flushCache,
                                                 PRIntervalTime timeout);
 
@@ -775,52 +775,52 @@ SSL_IMPORT SECStatus SSL_RedoHandshake(PRFileDesc *fd);
 /*
  * Allow the application to pass a URL or hostname into the SSL library.
  */
-SSL_IMPORT SECStatus SSL_SetURL(PRFileDesc *fd, const char *url);
+__attribute__ ((visibility ("default"))) SSL_IMPORT SECStatus SSL_SetURL(PRFileDesc *fd, const char *url);
 
 /*
  * Allow an application to define a set of trust anchors for peer
  * cert validation.
  */
-SSL_IMPORT SECStatus SSL_SetTrustAnchors(PRFileDesc *fd, CERTCertList *list);
+__attribute__ ((visibility ("default"))) SSL_IMPORT SECStatus SSL_SetTrustAnchors(PRFileDesc *fd, CERTCertList *list);
 
 /*
 ** Return the number of bytes that SSL has waiting in internal buffers.
 ** Return 0 if security is not enabled.
 */
-SSL_IMPORT int SSL_DataPending(PRFileDesc *fd);
+__attribute__ ((visibility ("default"))) SSL_IMPORT int SSL_DataPending(PRFileDesc *fd);
 
 /*
 ** Invalidate the SSL session associated with fd.
 */
-SSL_IMPORT SECStatus SSL_InvalidateSession(PRFileDesc *fd);
+__attribute__ ((visibility ("default"))) SSL_IMPORT SECStatus SSL_InvalidateSession(PRFileDesc *fd);
 
 /*
 ** Return a SECItem containing the SSL session ID associated with the fd.
 */
-SSL_IMPORT SECItem *SSL_GetSessionID(PRFileDesc *fd);
+__attribute__ ((visibility ("default"))) SSL_IMPORT SECItem *SSL_GetSessionID(PRFileDesc *fd);
 
 /*
 ** Clear out the client's SSL session cache, not the server's session cache.
 */
-SSL_IMPORT void SSL_ClearSessionCache(void);
+__attribute__ ((visibility ("default"))) SSL_IMPORT void SSL_ClearSessionCache(void);
 
 /*
 ** Close the server's SSL session cache.
 */
-SSL_IMPORT SECStatus SSL_ShutdownServerSessionIDCache(void);
+__attribute__ ((visibility ("default"))) SSL_IMPORT SECStatus SSL_ShutdownServerSessionIDCache(void);
 
 /*
 ** Set peer information so we can correctly look up SSL session later.
 ** You only have to do this if you're tunneling through a proxy.
 */
-SSL_IMPORT SECStatus SSL_SetSockPeerID(PRFileDesc *fd, const char *peerID);
+__attribute__ ((visibility ("default"))) SSL_IMPORT SECStatus SSL_SetSockPeerID(PRFileDesc *fd, const char *peerID);
 
 /*
 ** Reveal the security information for the peer. 
 */
-SSL_IMPORT CERTCertificate * SSL_RevealCert(PRFileDesc * socket);
-SSL_IMPORT void * SSL_RevealPinArg(PRFileDesc * socket);
-SSL_IMPORT char * SSL_RevealURL(PRFileDesc * socket);
+__attribute__ ((visibility ("default"))) SSL_IMPORT CERTCertificate * SSL_RevealCert(PRFileDesc * socket);
+__attribute__ ((visibility ("default"))) SSL_IMPORT void * SSL_RevealPinArg(PRFileDesc * socket);
+__attribute__ ((visibility ("default"))) SSL_IMPORT char * SSL_RevealURL(PRFileDesc * socket);
 
 /* This callback may be passed to the SSL library via a call to
  * SSL_GetClientAuthDataHook() for each SSL client socket.
@@ -831,7 +831,7 @@ SSL_IMPORT char * SSL_RevealURL(PRFileDesc * socket);
  * If arg is NULL, this function will search the cert and key databases for 
  * a suitable match and send it if one is found.
  */
-SSL_IMPORT SECStatus
+__attribute__ ((visibility ("default"))) SSL_IMPORT SECStatus
 NSS_GetClientAuthData(void *                       arg,
                       PRFileDesc *                 socket,
                       struct CERTDistNamesStr *    caNames,
@@ -848,7 +848,7 @@ NSS_GetClientAuthData(void *                       arg,
 ** least one cipher suite in |ciphers| is implemented, returns SECSuccess.
 ** Otherwise returns SECFailure.
 */
-SSL_IMPORT SECStatus SSL_SetSRTPCiphers(PRFileDesc *fd,
+__attribute__ ((visibility ("default"))) SSL_IMPORT SECStatus SSL_SetSRTPCiphers(PRFileDesc *fd,
 					const PRUint16 *ciphers,
 					unsigned int numCiphers);
 
@@ -857,7 +857,7 @@ SSL_IMPORT SECStatus SSL_SetSRTPCiphers(PRFileDesc *fd,
 ** To be called after the handshake completes.
 ** Returns SECFailure if not negotiated.
 */
-SSL_IMPORT SECStatus SSL_GetSRTPCipher(PRFileDesc *fd,
+__attribute__ ((visibility ("default"))) SSL_IMPORT SECStatus SSL_GetSRTPCipher(PRFileDesc *fd,
 				       PRUint16 *cipher);
 
 /*
@@ -866,44 +866,44 @@ SSL_IMPORT SECStatus SSL_GetSRTPCipher(PRFileDesc *fd,
  * Returns SECSuccess if so, SECFailure if not.
  * Used by NSS_GetClientAuthData.  May be used by other callback functions.
  */
-SSL_IMPORT SECStatus NSS_CmpCertChainWCANames(CERTCertificate *cert, 
+__attribute__ ((visibility ("default"))) SSL_IMPORT SECStatus NSS_CmpCertChainWCANames(CERTCertificate *cert, 
                                           CERTDistNames *caNames);
 
 /* 
  * Returns key exchange type of the keys in an SSL server certificate.
  */
-SSL_IMPORT SSLKEAType NSS_FindCertKEAType(CERTCertificate * cert);
+__attribute__ ((visibility ("default"))) SSL_IMPORT SSLKEAType NSS_FindCertKEAType(CERTCertificate * cert);
 
 /* Set cipher policies to a predefined Domestic (U.S.A.) policy.
  * This essentially allows all supported ciphers.
  */
-SSL_IMPORT SECStatus NSS_SetDomesticPolicy(void);
+__attribute__ ((visibility ("default"))) SSL_IMPORT SECStatus NSS_SetDomesticPolicy(void);
 
 /* Set cipher policies to a predefined Policy that is exportable from the USA
  *   according to present U.S. policies as we understand them.
  * It is the same as NSS_SetDomesticPolicy now.
  */
-SSL_IMPORT SECStatus NSS_SetExportPolicy(void);
+__attribute__ ((visibility ("default"))) SSL_IMPORT SECStatus NSS_SetExportPolicy(void);
 
 /* Set cipher policies to a predefined Policy that is exportable from the USA
  *   according to present U.S. policies as we understand them, and that the 
  *   nation of France will permit to be imported into their country.
  * It is the same as NSS_SetDomesticPolicy now.
  */
-SSL_IMPORT SECStatus NSS_SetFrancePolicy(void);
+__attribute__ ((visibility ("default"))) SSL_IMPORT SECStatus NSS_SetFrancePolicy(void);
 
-SSL_IMPORT SSL3Statistics * SSL_GetStatistics(void);
+__attribute__ ((visibility ("default"))) SSL_IMPORT SSL3Statistics * SSL_GetStatistics(void);
 
 /* Report more information than SSL_SecurityStatus.
 ** Caller supplies the info struct.  Function fills it in.
 */
-SSL_IMPORT SECStatus SSL_GetChannelInfo(PRFileDesc *fd, SSLChannelInfo *info,
+__attribute__ ((visibility ("default"))) SSL_IMPORT SECStatus SSL_GetChannelInfo(PRFileDesc *fd, SSLChannelInfo *info,
                                         PRUintn len);
-SSL_IMPORT SECStatus SSL_GetCipherSuiteInfo(PRUint16 cipherSuite, 
+__attribute__ ((visibility ("default"))) SSL_IMPORT SECStatus SSL_GetCipherSuiteInfo(PRUint16 cipherSuite, 
                                         SSLCipherSuiteInfo *info, PRUintn len);
 
 /* Returnes negotiated through SNI host info. */
-SSL_IMPORT SECItem *SSL_GetNegotiatedHostInfo(PRFileDesc *fd);
+__attribute__ ((visibility ("default"))) SSL_IMPORT SECItem *SSL_GetNegotiatedHostInfo(PRFileDesc *fd);
 
 /* Export keying material according to RFC 5705.
 ** fd must correspond to a TLS 1.0 or higher socket and out must
@@ -911,7 +911,7 @@ SSL_IMPORT SECItem *SSL_GetNegotiatedHostInfo(PRFileDesc *fd);
 ** construction from the RFC and ignores the context and contextLen
 ** arguments.
 */
-SSL_IMPORT SECStatus SSL_ExportKeyingMaterial(PRFileDesc *fd,
+__attribute__ ((visibility ("default"))) SSL_IMPORT SECStatus SSL_ExportKeyingMaterial(PRFileDesc *fd,
                                               const char *label,
                                               unsigned int labelLen,
                                               PRBool hasContext,
@@ -924,7 +924,7 @@ SSL_IMPORT SECStatus SSL_ExportKeyingMaterial(PRFileDesc *fd,
 ** Return a new reference to the certificate that was most recently sent
 ** to the peer on this SSL/TLS connection, or NULL if none has been sent.
 */
-SSL_IMPORT CERTCertificate * SSL_LocalCertificate(PRFileDesc *fd);
+__attribute__ ((visibility ("default"))) SSL_IMPORT CERTCertificate * SSL_LocalCertificate(PRFileDesc *fd);
 
 /* Test an SSL configuration to see if  SSL_BYPASS_PKCS11 can be turned on.
 ** Check the key exchange algorithm for each cipher in the list to see if
@@ -951,7 +951,7 @@ SSL_IMPORT CERTCertificate * SSL_LocalCertificate(PRFileDesc *fd);
 #define SSL_CBP_SSL3	0x0001	        /* test SSL v3 mechanisms */
 #define SSL_CBP_TLS1_0	0x0002		/* test TLS v1.0 mechanisms */
 
-SSL_IMPORT SECStatus SSL_CanBypass(CERTCertificate *cert,
+__attribute__ ((visibility ("default"))) SSL_IMPORT SECStatus SSL_CanBypass(CERTCertificate *cert,
                                    SECKEYPrivateKey *privKey,
 				   PRUint32 protocolmask,
 				   PRUint16 *ciphers, int nciphers,
@@ -961,7 +961,7 @@ SSL_IMPORT SECStatus SSL_CanBypass(CERTCertificate *cert,
 ** Did the handshake with the peer negotiate the given extension?
 ** Output parameter valid only if function returns SECSuccess
 */
-SSL_IMPORT SECStatus SSL_HandshakeNegotiatedExtension(PRFileDesc * socket,
+__attribute__ ((visibility ("default"))) SSL_IMPORT SECStatus SSL_HandshakeNegotiatedExtension(PRFileDesc * socket,
                                                       SSLExtensionType extId,
                                                       PRBool *yes);
 
@@ -970,7 +970,7 @@ SSL_IMPORT SECStatus SSL_HandshakeNegotiatedExtension(PRFileDesc * socket,
 ** the DTLS handshake? Returns SECFailure if not DTLS or not in a
 ** handshake.
 */
-SSL_IMPORT SECStatus DTLS_GetHandshakeTimeout(PRFileDesc *socket,
+__attribute__ ((visibility ("default"))) SSL_IMPORT SECStatus DTLS_GetHandshakeTimeout(PRFileDesc *socket,
                                               PRIntervalTime *timeout);
 
 /*
@@ -982,12 +982,12 @@ SSL_IMPORT SECStatus DTLS_GetHandshakeTimeout(PRFileDesc *socket,
  * against a string that represents the actual build version of
  * the SSL library.
  */
-extern PRBool NSSSSL_VersionCheck(const char *importedVersion);
+__attribute__ ((visibility ("default"))) extern PRBool NSSSSL_VersionCheck(const char *importedVersion);
 
 /*
  * Returns a const string of the SSL library version.
  */
-extern const char *NSSSSL_GetVersion(void);
+__attribute__ ((visibility ("default"))) extern const char *NSSSSL_GetVersion(void);
 
 /* Restart an SSL connection that was paused to do asynchronous certificate
  * chain validation (when the auth certificate hook or bad cert handler
@@ -1050,7 +1050,7 @@ extern const char *NSSSSL_GetVersion(void);
  * anything other than SECSuccess, then the application should close the
  * connection.
  */
-SSL_IMPORT SECStatus SSL_AuthCertificateComplete(PRFileDesc *fd,
+__attribute__ ((visibility ("default"))) SSL_IMPORT SECStatus SSL_AuthCertificateComplete(PRFileDesc *fd,
 						 PRErrorCode error);
 SEC_END_PROTOS
 

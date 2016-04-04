@@ -37,7 +37,7 @@ SEC_RegisterDefaultHttpClient(const SEC_HttpClientFcn *fcnTable);
  * This function obtains the HttpClient which has been registered
  * by an earlier call to SEC_RegisterDefaultHttpClient.
  */
-extern const SEC_HttpClientFcn *
+__attribute__ ((visibility ("default"))) extern const SEC_HttpClientFcn *
 SEC_GetRegisteredHttpClient(void);
 
 /*
@@ -53,7 +53,7 @@ SEC_GetRegisteredHttpClient(void);
  *   to fetch an updated response, even if the OCSP responder expects
  *   that newer information update will not be available yet.
  */
-extern SECStatus
+__attribute__ ((visibility ("default"))) extern SECStatus
 CERT_OCSPCacheSettings(PRInt32 maxCacheEntries,
                        PRUint32 minimumSecondsToNextFetchAttempt,
                        PRUint32 maximumSecondsToNextFetchAttempt);
@@ -62,19 +62,19 @@ CERT_OCSPCacheSettings(PRInt32 maxCacheEntries,
  * Set the desired behaviour on OCSP failures.
  * See definition of ocspFailureMode for allowed choices.
  */
-extern SECStatus
+__attribute__ ((visibility ("default"))) extern SECStatus
 CERT_SetOCSPFailureMode(SEC_OcspFailureMode ocspFailureMode);
 
 /*
  * Configure the maximum time NSS will wait for an OCSP response.
  */
-extern SECStatus
+__attribute__ ((visibility ("default"))) extern SECStatus
 CERT_SetOCSPTimeout(PRUint32 seconds);
 
 /*
  * Removes all items currently stored in the OCSP cache.
  */
-extern SECStatus
+__attribute__ ((visibility ("default"))) extern SECStatus
 CERT_ClearOCSPCache(void);
 
 /*
@@ -87,7 +87,7 @@ CERT_ClearOCSPCache(void);
  *   Returns SECFailure if an error occurred (likely only problem
  *   allocating memory); SECSuccess otherwise.
  */
-extern SECStatus
+__attribute__ ((visibility ("default"))) extern SECStatus
 CERT_EnableOCSPChecking(CERTCertDBHandle *handle);
 
 /*
@@ -105,7 +105,7 @@ CERT_EnableOCSPChecking(CERTCertDBHandle *handle);
  *   checking was not enabled or status contexts were not initialized --
  *   error set will be SEC_ERROR_OCSP_NOT_ENABLED); SECSuccess otherwise.
  */
-extern SECStatus
+__attribute__ ((visibility ("default"))) extern SECStatus
 CERT_DisableOCSPChecking(CERTCertDBHandle *handle);
 
 /*
@@ -132,7 +132,7 @@ CERT_DisableOCSPChecking(CERTCertDBHandle *handle);
  *   (probably SEC_ERROR_UNKNOWN_CERT).  Other errors are low-level (no memory,
  *   bad database, etc.).
  */
-extern SECStatus
+__attribute__ ((visibility ("default"))) extern SECStatus
 CERT_SetOCSPDefaultResponder(CERTCertDBHandle *handle,
 			     const char *url, const char *name);
 
@@ -153,7 +153,7 @@ CERT_SetOCSPDefaultResponder(CERTCertDBHandle *handle,
  *   perform a successful call to SetOCSPDefaultResponder (in which case
  *   the error set will be SEC_ERROR_OCSP_NO_DEFAULT_RESPONDER).
  */
-extern SECStatus
+__attribute__ ((visibility ("default"))) extern SECStatus
 CERT_EnableOCSPDefaultResponder(CERTCertDBHandle *handle);
 
 /*
@@ -168,7 +168,7 @@ CERT_EnableOCSPDefaultResponder(CERTCertDBHandle *handle);
  *   Returns SECFailure if an error occurred; SECSuccess otherwise.
  *   Errors very unlikely (like random memory corruption...).
  */
-extern SECStatus
+__attribute__ ((visibility ("default"))) extern SECStatus
 CERT_DisableOCSPDefaultResponder(CERTCertDBHandle *handle);
 
 /* If forcePost is set, OCSP requests will only be sent using the HTTP POST
@@ -178,7 +178,7 @@ CERT_DisableOCSPDefaultResponder(CERTCertDBHandle *handle);
  *
  * The default is to use GET and fallback to POST.
  */
-extern SECStatus CERT_ForcePostMethodForOCSP(PRBool forcePost);
+__attribute__ ((visibility ("default"))) extern SECStatus CERT_ForcePostMethodForOCSP(PRBool forcePost);
 
 /*
  * -------------------------------------------------------
@@ -220,7 +220,7 @@ extern SECStatus CERT_ForcePostMethodForOCSP(PRBool forcePost);
  *   (The issuer is needed to create a request for the certificate.)
  *   Other errors are low-level problems (no memory, bad database, etc.).
  */
-extern CERTOCSPRequest *
+__attribute__ ((visibility ("default"))) extern CERTOCSPRequest *
 CERT_CreateOCSPRequest(CERTCertList *certList, PRTime time, 
 		       PRBool addServiceLocator,
 		       CERTCertificate *signerCert);
@@ -241,7 +241,7 @@ CERT_CreateOCSPRequest(CERTCertList *certList, PRTime time,
  *   SECSuccess if the extension is added; SECFailure if anything goes wrong.
  *   All errors are internal or low-level problems (e.g. no memory).
  */
-extern SECStatus
+__attribute__ ((visibility ("default"))) extern SECStatus
 CERT_AddOCSPAcceptableResponses(CERTOCSPRequest *request,
 				SECOidTag responseType0, ...);
 
@@ -263,7 +263,7 @@ CERT_AddOCSPAcceptableResponses(CERTOCSPRequest *request,
  *   encoded value otherwise.  Any error is likely to be low-level
  *   (e.g. no memory).
  */
-extern SECItem *
+__attribute__ ((visibility ("default"))) extern SECItem *
 CERT_EncodeOCSPRequest(PLArenaPool *arena, CERTOCSPRequest *request, 
 		       void *pwArg);
 
@@ -278,7 +278,7 @@ CERT_EncodeOCSPRequest(PLArenaPool *arena, CERTOCSPRequest *request,
  *   On error, returns NULL.  Most likely error is trouble decoding
  *   (SEC_ERROR_OCSP_MALFORMED_REQUEST), or low-level problem (no memory).
  */
-extern CERTOCSPRequest *
+__attribute__ ((visibility ("default"))) extern CERTOCSPRequest *
 CERT_DecodeOCSPRequest(const SECItem *src);
 
 /*
@@ -290,7 +290,7 @@ CERT_DecodeOCSPRequest(const SECItem *src);
  * RETURN:
  *   No return value; no errors.
  */
-extern void
+__attribute__ ((visibility ("default"))) extern void
 CERT_DestroyOCSPRequest(CERTOCSPRequest *request);
 
 /*
@@ -306,7 +306,7 @@ CERT_DestroyOCSPRequest(CERTOCSPRequest *request);
  *   it was of an unexpected type (SEC_ERROR_OCSP_UNKNOWN_RESPONSE_TYPE),
  *   or a low-level or internal error occurred).
  */
-extern CERTOCSPResponse *
+__attribute__ ((visibility ("default"))) extern CERTOCSPResponse *
 CERT_DecodeOCSPResponse(const SECItem *src);
 
 /*
@@ -318,7 +318,7 @@ CERT_DecodeOCSPResponse(const SECItem *src);
  * RETURN:
  *   No return value; no errors.
  */
-extern void
+__attribute__ ((visibility ("default"))) extern void
 CERT_DestroyOCSPResponse(CERTOCSPResponse *response);
 
 /*
@@ -367,7 +367,7 @@ CERT_DestroyOCSPResponse(CERTOCSPResponse *response);
  *	SEC_ERROR_OCSP_BAD_HTTP_RESPONSE
  *   Other errors are low-level problems (no memory, bad database, etc.).
  */
-extern SECItem *
+__attribute__ ((visibility ("default"))) extern SECItem *
 CERT_GetEncodedOCSPResponse(PLArenaPool *arena, CERTCertList *certList,
 			    const char *location, PRTime time,
 			    PRBool addServiceLocator,
@@ -405,7 +405,7 @@ CERT_GetEncodedOCSPResponse(PLArenaPool *arena, CERTCertList *certList,
  *   (e.g. SEC_ERROR_REVOKED_CERTIFICATE, SEC_ERROR_UNTRUSTED_ISSUER) when
  *   verifying the signer's cert, or low-level problems (no memory, etc.)
  */
-extern SECStatus
+__attribute__ ((visibility ("default"))) extern SECStatus
 CERT_VerifyOCSPResponseSignature(CERTOCSPResponse *response,	
 				 CERTCertDBHandle *handle, void *pwArg,
 				 CERTCertificate **pSignerCert,
@@ -428,7 +428,7 @@ CERT_VerifyOCSPResponseSignature(CERTOCSPResponse *response,
  *     
  *     This result should be freed (via PORT_Free) when no longer in use.
  */
-extern char *
+__attribute__ ((visibility ("default"))) extern char *
 CERT_GetOCSPAuthorityInfoAccessLocation(const CERTCertificate *cert);
 
 /*
@@ -444,7 +444,7 @@ CERT_GetOCSPAuthorityInfoAccessLocation(const CERTCertificate *cert);
  * RETURN:
  *   SECSuccess or SECFailure (if the library is not yet intialized)
  */
-extern SECStatus
+__attribute__ ((visibility ("default"))) extern SECStatus
 CERT_RegisterAlternateOCSPAIAInfoCallBack(
 			CERT_StringFromCertFcn   newCallback,
 			CERT_StringFromCertFcn * oldCallback);
@@ -469,7 +469,7 @@ CERT_RegisterAlternateOCSPAIAInfoCallBack(
  *   Returns SECSuccess when parsing was successful. Returns SECFailure when
  *   problems were encountered.
  */
-extern SECStatus
+__attribute__ ((visibility ("default"))) extern SECStatus
 CERT_ParseURL(const char *url, char **pHostname, PRUint16 *pPort, char **pPath);
 
 /*
@@ -522,7 +522,7 @@ CERT_ParseURL(const char *url, char **pHostname, PRUint16 *pPort, char **pPath);
  *   verifying the signer's cert, or low-level problems (error allocating
  *   memory, error performing ASN.1 decoding, etc.).
  */    
-extern SECStatus 
+__attribute__ ((visibility ("default"))) extern SECStatus 
 CERT_CheckOCSPStatus(CERTCertDBHandle *handle, CERTCertificate *cert,
 		     PRTime time, void *pwArg);
 
@@ -554,7 +554,7 @@ CERT_CheckOCSPStatus(CERTCertDBHandle *handle, CERTCertificate *cert,
  *   SECSuccess if the cert was found in the cache, or if the OCSP response was
  *   found to be valid and inserted into the cache. SECFailure otherwise.
  */
-extern SECStatus
+__attribute__ ((visibility ("default"))) extern SECStatus
 CERT_CacheOCSPResponseFromSideChannel(CERTCertDBHandle *handle,
 				      CERTCertificate *cert,
 				      PRTime time,
@@ -580,7 +580,7 @@ CERT_CacheOCSPResponseFromSideChannel(CERTCertDBHandle *handle,
  *  RETURN:
  *    Return values are the same as those for CERT_CheckOCSPStatus
  */
-extern SECStatus
+__attribute__ ((visibility ("default"))) extern SECStatus
 CERT_GetOCSPStatusForCertID(CERTCertDBHandle *handle, 
 			    CERTOCSPResponse *response,
 			    CERTOCSPCertID   *certID,
@@ -604,7 +604,7 @@ CERT_GetOCSPStatusForCertID(CERTCertDBHandle *handle,
  *        SEC_ERROR_OCSP_UNAUTHORIZED_REQUEST
  *        SEC_ERROR_OCSP_UNKNOWN_RESPONSE_STATUS
  */
-extern SECStatus
+__attribute__ ((visibility ("default"))) extern SECStatus
 CERT_GetOCSPResponseStatus(CERTOCSPResponse *response);
 
 /*
@@ -622,7 +622,7 @@ CERT_GetOCSPResponseStatus(CERTOCSPResponse *response);
  *    should be freed by calling CERT_DestroyOCSPCertID when the 
  *    certID is no longer necessary.
  */
-extern CERTOCSPCertID*
+__attribute__ ((visibility ("default"))) extern CERTOCSPCertID*
 CERT_CreateOCSPCertID(CERTCertificate *cert, PRTime time);
 
 /*
@@ -637,23 +637,23 @@ CERT_CreateOCSPCertID(CERTCertificate *cert, PRTime time);
  *  SECFailure if the memory passed in was not allocated with
  *  a call to CERT_CreateOCSPCertID.
  */
-extern SECStatus
+__attribute__ ((visibility ("default"))) extern SECStatus
 CERT_DestroyOCSPCertID(CERTOCSPCertID* certID);
 
 
-extern CERTOCSPSingleResponse*
+__attribute__ ((visibility ("default"))) extern CERTOCSPSingleResponse*
 CERT_CreateOCSPSingleResponseGood(PLArenaPool *arena,
                                   CERTOCSPCertID *id,
                                   PRTime thisUpdate,
                                   const PRTime *nextUpdate);
 
-extern CERTOCSPSingleResponse*
+__attribute__ ((visibility ("default"))) extern CERTOCSPSingleResponse*
 CERT_CreateOCSPSingleResponseUnknown(PLArenaPool *arena,
                                      CERTOCSPCertID *id,
                                      PRTime thisUpdate,
                                      const PRTime *nextUpdate);
 
-extern CERTOCSPSingleResponse*
+__attribute__ ((visibility ("default"))) extern CERTOCSPSingleResponse*
 CERT_CreateOCSPSingleResponseRevoked(
     PLArenaPool *arena,
     CERTOCSPCertID *id,
@@ -662,7 +662,7 @@ CERT_CreateOCSPSingleResponseRevoked(
     PRTime revocationTime,
     const CERTCRLEntryReasonCode* revocationReason);
 
-extern SECItem*
+__attribute__ ((visibility ("default"))) extern SECItem*
 CERT_CreateEncodedOCSPSuccessResponse(
     PLArenaPool *arena,
     CERTCertificate *responderCert,
@@ -703,7 +703,7 @@ CERT_CreateEncodedOCSPSuccessResponse(
  *	SEC_ERROR_INVALID_ARGS
  *   Other errors are low-level problems (no memory, bad database, etc.).
  */
-extern SECItem*
+__attribute__ ((visibility ("default"))) extern SECItem*
 CERT_CreateEncodedOCSPErrorResponse(PLArenaPool *arena, int error);
 
 /* Sends an OCSP request using the HTTP POST method to the location addressed
@@ -717,7 +717,7 @@ CERT_CreateEncodedOCSPErrorResponse(PLArenaPool *arena, int error);
  * SEC_RegisterDefaultHttpClient then that client is used. Otherwise, an
  * internal HTTP client is used.
  */
-SECItem* CERT_PostOCSPRequest(PLArenaPool *arena, const char *location,
+__attribute__ ((visibility ("default"))) SECItem* CERT_PostOCSPRequest(PLArenaPool *arena, const char *location,
                               const SECItem *encodedRequest);
 
 /************************************************************************/

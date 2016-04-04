@@ -89,7 +89,7 @@ nssArena_Create
   void
 );
 
-extern const NSSError NSS_ERROR_NO_MEMORY;
+__attribute__ ((visibility ("default"))) extern const NSSError NSS_ERROR_NO_MEMORY;
 
 /*
  * nssArena_Destroy
@@ -113,7 +113,7 @@ nssArena_Destroy
   NSSArena *arena
 );
 
-extern const NSSError NSS_ERROR_INVALID_ARENA;
+__attribute__ ((visibility ("default"))) extern const NSSError NSS_ERROR_INVALID_ARENA;
 
 /*
  * nssArena_Mark
@@ -142,8 +142,8 @@ nssArena_Mark
   NSSArena *arena
 );
 
-extern const NSSError NSS_ERROR_INVALID_ARENA;
-extern const NSSError NSS_ERROR_NO_MEMORY;
+__attribute__ ((visibility ("default"))) extern const NSSError NSS_ERROR_INVALID_ARENA;
+__attribute__ ((visibility ("default"))) extern const NSSError NSS_ERROR_NO_MEMORY;
 extern const NSSError NSS_ERROR_ARENA_MARKED_BY_ANOTHER_THREAD;
 
 /*
@@ -172,7 +172,7 @@ nssArena_Release
   nssArenaMark *arenaMark
 );
 
-extern const NSSError NSS_ERROR_INVALID_ARENA;
+__attribute__ ((visibility ("default"))) extern const NSSError NSS_ERROR_INVALID_ARENA;
 extern const NSSError NSS_ERROR_INVALID_ARENA_MARK;
 
 /*
@@ -204,7 +204,7 @@ nssArena_Unmark
   nssArenaMark *arenaMark
 );
 
-extern const NSSError NSS_ERROR_INVALID_ARENA;
+__attribute__ ((visibility ("default"))) extern const NSSError NSS_ERROR_INVALID_ARENA;
 extern const NSSError NSS_ERROR_INVALID_ARENA_MARK;
 extern const NSSError NSS_ERROR_ARENA_MARKED_BY_ANOTHER_THREAD;
 
@@ -310,8 +310,8 @@ nss_ZAlloc
   PRUint32 size
 );
 
-extern const NSSError NSS_ERROR_INVALID_ARENA;
-extern const NSSError NSS_ERROR_NO_MEMORY;
+__attribute__ ((visibility ("default"))) extern const NSSError NSS_ERROR_INVALID_ARENA;
+__attribute__ ((visibility ("default"))) extern const NSSError NSS_ERROR_NO_MEMORY;
 extern const NSSError NSS_ERROR_ARENA_MARKED_BY_ANOTHER_THREAD;
 
 /*
@@ -368,7 +368,7 @@ nss_ZRealloc
 );
 
 extern const NSSError NSS_ERROR_INVALID_POINTER;
-extern const NSSError NSS_ERROR_NO_MEMORY;
+__attribute__ ((visibility ("default"))) extern const NSSError NSS_ERROR_NO_MEMORY;
 extern const NSSError NSS_ERROR_ARENA_MARKED_BY_ANOTHER_THREAD;
 
 /*
@@ -763,7 +763,7 @@ nssUTF8_Create
 );
 
 extern const NSSError NSS_ERROR_INVALID_POINTER;
-extern const NSSError NSS_ERROR_NO_MEMORY;
+__attribute__ ((visibility ("default"))) extern const NSSError NSS_ERROR_NO_MEMORY;
 extern const NSSError NSS_ERROR_UNSUPPORTED_TYPE;
 
 NSS_EXTERN NSSItem *

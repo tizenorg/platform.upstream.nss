@@ -109,7 +109,7 @@
 
 #include "nssilckt.h"
 
-PR_BEGIN_EXTERN_C
+__attribute__ ((visibility ("default"))) PR_BEGIN_EXTERN_C
 
 #if defined(NEED_NSS_ILOCK)
 

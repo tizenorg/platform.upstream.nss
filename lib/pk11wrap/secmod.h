@@ -57,12 +57,12 @@ SEC_BEGIN_PROTOS
 extern SECMODModule *SECMOD_LoadModule(char *moduleSpec,SECMODModule *parent,
 							PRBool recurse);
 
-extern SECMODModule *SECMOD_LoadUserModule(char *moduleSpec,SECMODModule *parent,
+__attribute__ ((visibility ("default"))) extern SECMODModule *SECMOD_LoadUserModule(char *moduleSpec,SECMODModule *parent,
 							PRBool recurse);
 
-SECStatus SECMOD_UnloadUserModule(SECMODModule *mod);
+__attribute__ ((visibility ("default"))) SECStatus SECMOD_UnloadUserModule(SECMODModule *mod);
 
-SECMODModule * SECMOD_CreateModule(const char *lib, const char *name,
+__attribute__ ((visibility ("default"))) SECMODModule * SECMOD_CreateModule(const char *lib, const char *name,
 					const char *param, const char *nss);
 /*
  * After a fork(), PKCS #11 says we need to call C_Initialize again in
@@ -75,45 +75,45 @@ SECMODModule * SECMOD_CreateModule(const char *lib, const char *name,
  * PKCS #11 module does not seem to need it. This allows software modules 
  * which ignore fork to preserve their keys across the fork().
  */
-SECStatus SECMOD_RestartModules(PRBool force);
+__attribute__ ((visibility ("default"))) SECStatus SECMOD_RestartModules(PRBool force);
 
 
 /* Module Management */
-char **SECMOD_GetModuleSpecList(SECMODModule *module);
-SECStatus SECMOD_FreeModuleSpecList(SECMODModule *module,char **moduleSpecList);
+__attribute__ ((visibility ("default"))) char **SECMOD_GetModuleSpecList(SECMODModule *module);
+__attribute__ ((visibility ("default"))) SECStatus SECMOD_FreeModuleSpecList(SECMODModule *module,char **moduleSpecList);
 
  
 /* protoypes */
 /* Get a list of active PKCS #11 modules */
-extern SECMODModuleList *SECMOD_GetDefaultModuleList(void); 
+__attribute__ ((visibility ("default"))) extern SECMODModuleList *SECMOD_GetDefaultModuleList(void); 
 /* Get a list of defined but not loaded PKCS #11 modules */
-extern SECMODModuleList *SECMOD_GetDeadModuleList(void);
+__attribute__ ((visibility ("default"))) extern SECMODModuleList *SECMOD_GetDeadModuleList(void);
 /* Get a list of Modules which define PKCS #11 modules to load */
-extern SECMODModuleList *SECMOD_GetDBModuleList(void);
+__attribute__ ((visibility ("default"))) extern SECMODModuleList *SECMOD_GetDBModuleList(void);
 
 /* lock to protect all three module lists above */
-extern SECMODListLock *SECMOD_GetDefaultModuleListLock(void);
+__attribute__ ((visibility ("default"))) extern SECMODListLock *SECMOD_GetDefaultModuleListLock(void);
 
-extern SECStatus SECMOD_UpdateModule(SECMODModule *module);
+__attribute__ ((visibility ("default"))) extern SECStatus SECMOD_UpdateModule(SECMODModule *module);
 
 /* lock management */
-extern void SECMOD_GetReadLock(SECMODListLock *);
-extern void SECMOD_ReleaseReadLock(SECMODListLock *);
+__attribute__ ((visibility ("default"))) extern void SECMOD_GetReadLock(SECMODListLock *);
+__attribute__ ((visibility ("default"))) extern void SECMOD_ReleaseReadLock(SECMODListLock *);
 
 /* Operate on modules by name */
-extern SECMODModule *SECMOD_FindModule(const char *name);
-extern SECStatus SECMOD_DeleteModule(const char *name, int *type);
-extern SECStatus SECMOD_DeleteModuleEx(const char * name, 
+__attribute__ ((visibility ("default"))) extern SECMODModule *SECMOD_FindModule(const char *name);
+__attribute__ ((visibility ("default"))) extern SECStatus SECMOD_DeleteModule(const char *name, int *type);
+__attribute__ ((visibility ("default"))) extern SECStatus SECMOD_DeleteModuleEx(const char * name, 
                                        SECMODModule *mod, 
                                        int *type, 
                                        PRBool permdb);
-extern SECStatus SECMOD_DeleteInternalModule(const char *name);
-extern PRBool SECMOD_CanDeleteInternalModule(void);
-extern SECStatus SECMOD_AddNewModule(const char* moduleName, 
+__attribute__ ((visibility ("default"))) extern SECStatus SECMOD_DeleteInternalModule(const char *name);
+__attribute__ ((visibility ("default"))) extern PRBool SECMOD_CanDeleteInternalModule(void);
+__attribute__ ((visibility ("default"))) extern SECStatus SECMOD_AddNewModule(const char* moduleName, 
 			      const char* dllPath,
                               unsigned long defaultMechanismFlags,
                               unsigned long cipherEnableFlags);
-extern SECStatus SECMOD_AddNewModuleEx(const char* moduleName,
+__attribute__ ((visibility ("default"))) extern SECStatus SECMOD_AddNewModuleEx(const char* moduleName,
 			      const char* dllPath,
                               unsigned long defaultMechanismFlags,
                               unsigned long cipherEnableFlags,
@@ -121,29 +121,29 @@ extern SECStatus SECMOD_AddNewModuleEx(const char* moduleName,
                               char* nssparms);
 
 /* database/memory management */
-extern SECMODModule *SECMOD_GetInternalModule(void);
-extern SECMODModule *SECMOD_ReferenceModule(SECMODModule *module);
-extern void SECMOD_DestroyModule(SECMODModule *module);
-extern PK11SlotInfo *SECMOD_LookupSlot(SECMODModuleID module,
+__attribute__ ((visibility ("default"))) extern SECMODModule *SECMOD_GetInternalModule(void);
+__attribute__ ((visibility ("default"))) extern SECMODModule *SECMOD_ReferenceModule(SECMODModule *module);
+__attribute__ ((visibility ("default"))) extern void SECMOD_DestroyModule(SECMODModule *module);
+__attribute__ ((visibility ("default"))) extern PK11SlotInfo *SECMOD_LookupSlot(SECMODModuleID module,
 							unsigned long slotID);
-extern PK11SlotInfo *SECMOD_FindSlot(SECMODModule *module,const char *name);
+__attribute__ ((visibility ("default"))) extern PK11SlotInfo *SECMOD_FindSlot(SECMODModule *module,const char *name);
 
 /* Funtion reports true if at least one of the modules */
 /* of modType has been installed */
-PRBool SECMOD_IsModulePresent( unsigned long int pubCipherEnableFlags );
+__attribute__ ((visibility ("default"))) PRBool SECMOD_IsModulePresent( unsigned long int pubCipherEnableFlags );
 
 /* accessors */
-PRBool SECMOD_GetSkipFirstFlag(SECMODModule *mod);
-PRBool SECMOD_GetDefaultModDBFlag(SECMODModule *mod);
+__attribute__ ((visibility ("default"))) PRBool SECMOD_GetSkipFirstFlag(SECMODModule *mod);
+__attribute__ ((visibility ("default"))) PRBool SECMOD_GetDefaultModDBFlag(SECMODModule *mod);
 
 /* Functions used to convert between internal & public representation
  * of Mechanism Flags and Cipher Enable Flags */
-extern unsigned long SECMOD_PubMechFlagstoInternal(unsigned long publicFlags);
-extern unsigned long SECMOD_InternaltoPubMechFlags(unsigned long internalFlags);
-extern unsigned long SECMOD_PubCipherFlagstoInternal(unsigned long publicFlags);
+__attribute__ ((visibility ("default"))) extern unsigned long SECMOD_PubMechFlagstoInternal(unsigned long publicFlags);
+__attribute__ ((visibility ("default"))) extern unsigned long SECMOD_InternaltoPubMechFlags(unsigned long internalFlags);
+__attribute__ ((visibility ("default"))) extern unsigned long SECMOD_PubCipherFlagstoInternal(unsigned long publicFlags);
 
-PRBool SECMOD_HasRemovableSlots(SECMODModule *mod);
-PK11SlotInfo *SECMOD_WaitForAnyTokenEvent(SECMODModule *mod, 
+__attribute__ ((visibility ("default"))) PRBool SECMOD_HasRemovableSlots(SECMODModule *mod);
+__attribute__ ((visibility ("default"))) PK11SlotInfo *SECMOD_WaitForAnyTokenEvent(SECMODModule *mod, 
 				unsigned long flags, PRIntervalTime latency);
 /*
  * Warning: the SECMOD_CancelWait function is highly destructive, potentially 
@@ -151,7 +151,7 @@ PK11SlotInfo *SECMOD_WaitForAnyTokenEvent(SECMODModule *mod,
  * and session key material to disappear). It should only be called when 
  * shutting down  the module. 
  */
-SECStatus SECMOD_CancelWait(SECMODModule *mod);
+__attribute__ ((visibility ("default"))) SECStatus SECMOD_CancelWait(SECMODModule *mod);
 /*
  * check to see if the module has added new slots. PKCS 11 v2.20 allows for
  * modules to add new slots, but never remove them. Slots not be added between 
@@ -160,7 +160,7 @@ SECStatus SECMOD_CancelWait(SECMODModule *mod);
  * grow on the caller. It is permissible for the slots to increase between
  * corresponding calls with NULL to get the size.
  */
-SECStatus SECMOD_UpdateSlotList(SECMODModule *mod);
+__attribute__ ((visibility ("default"))) SECStatus SECMOD_UpdateSlotList(SECMODModule *mod);
 SEC_END_PROTOS
 
 #endif

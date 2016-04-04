@@ -181,8 +181,8 @@ struct CRMFCertExtCreationInfoStr {
 /*
  * Some ASN1 Templates that may be needed.
  */
-extern const SEC_ASN1Template CRMFCertReqMessagesTemplate[];
-extern const SEC_ASN1Template CRMFCertRequestTemplate[];
+__attribute__ ((visibility ("default"))) extern const SEC_ASN1Template CRMFCertReqMessagesTemplate[];
+__attribute__ ((visibility ("default"))) extern const SEC_ASN1Template CRMFCertRequestTemplate[];
 
 
 #endif /*_CRMFT_H_*/

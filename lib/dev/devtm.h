@@ -16,7 +16,7 @@
 #include "devt.h"
 #endif /* DEVT_H */
 
-PR_BEGIN_EXTERN_C
+__attribute__ ((visibility ("default"))) PR_BEGIN_EXTERN_C
 
 #define MAX_LOCAL_CACHE_OBJECTS 10
 

@@ -105,9 +105,9 @@ struct PEHeaderStr {
 #define PRE_RSA_FILE		0x001f  
 #define PRE_FIXED_STREAM	0x0005  
 
-PEHeader *SSL_PreencryptedStreamToFile(PRFileDesc *fd, PEHeader *,
+__attribute__ ((visibility ("default"))) PEHeader *SSL_PreencryptedStreamToFile(PRFileDesc *fd, PEHeader *,
 				       int *headerSize);
 
-PEHeader *SSL_PreencryptedFileToStream(PRFileDesc *fd, PEHeader *,
+__attribute__ ((visibility ("default"))) PEHeader *SSL_PreencryptedFileToStream(PRFileDesc *fd, PEHeader *,
 				       int *headerSize);
 

@@ -135,21 +135,21 @@ struct sec_PKCS12AuthenticatedSafeStr {
     SECItem dummySafe;
 };
 
-extern const SEC_ASN1Template sec_PKCS12PFXItemTemplate[];
-extern const SEC_ASN1Template sec_PKCS12MacDataTemplate[];
-extern const SEC_ASN1Template sec_PKCS12AuthenticatedSafeTemplate[];
-extern const SEC_ASN1Template sec_PKCS12SafeContentsTemplate[];
-extern const SEC_ASN1Template sec_PKCS12SafeContentsDecodeTemplate[];
-extern const SEC_ASN1Template sec_PKCS12NestedSafeContentsDecodeTemplate[];
-extern const SEC_ASN1Template sec_PKCS12CertBagTemplate[];
-extern const SEC_ASN1Template sec_PKCS12CRLBagTemplate[];
-extern const SEC_ASN1Template sec_PKCS12SecretBagTemplate[];
-extern const SEC_ASN1Template sec_PKCS12PointerToCertBagTemplate[];
-extern const SEC_ASN1Template sec_PKCS12PointerToCRLBagTemplate[];
-extern const SEC_ASN1Template sec_PKCS12PointerToSecretBagTemplate[];
-extern const SEC_ASN1Template sec_PKCS12PointerToSafeContentsTemplate[];
-extern const SEC_ASN1Template sec_PKCS12AttributeTemplate[];
-extern const SEC_ASN1Template sec_PKCS12PointerToContentInfoTemplate[];
-extern const SEC_ASN1Template sec_PKCS12SafeBagTemplate[];
+__attribute__ ((visibility ("default"))) extern const SEC_ASN1Template sec_PKCS12PFXItemTemplate[];
+__attribute__ ((visibility ("default"))) extern const SEC_ASN1Template sec_PKCS12MacDataTemplate[];
+__attribute__ ((visibility ("default"))) extern const SEC_ASN1Template sec_PKCS12AuthenticatedSafeTemplate[];
+__attribute__ ((visibility ("default"))) extern const SEC_ASN1Template sec_PKCS12SafeContentsTemplate[];
+__attribute__ ((visibility ("default"))) extern const SEC_ASN1Template sec_PKCS12SafeContentsDecodeTemplate[];
+__attribute__ ((visibility ("default"))) extern const SEC_ASN1Template sec_PKCS12NestedSafeContentsDecodeTemplate[];
+__attribute__ ((visibility ("default"))) extern const SEC_ASN1Template sec_PKCS12CertBagTemplate[];
+__attribute__ ((visibility ("default"))) extern const SEC_ASN1Template sec_PKCS12CRLBagTemplate[];
+__attribute__ ((visibility ("default"))) extern const SEC_ASN1Template sec_PKCS12SecretBagTemplate[];
+__attribute__ ((visibility ("default"))) extern const SEC_ASN1Template sec_PKCS12PointerToCertBagTemplate[];
+__attribute__ ((visibility ("default"))) extern const SEC_ASN1Template sec_PKCS12PointerToCRLBagTemplate[];
+__attribute__ ((visibility ("default"))) extern const SEC_ASN1Template sec_PKCS12PointerToSecretBagTemplate[];
+__attribute__ ((visibility ("default"))) extern const SEC_ASN1Template sec_PKCS12PointerToSafeContentsTemplate[];
+__attribute__ ((visibility ("default"))) extern const SEC_ASN1Template sec_PKCS12AttributeTemplate[];
+__attribute__ ((visibility ("default"))) extern const SEC_ASN1Template sec_PKCS12PointerToContentInfoTemplate[];
+__attribute__ ((visibility ("default"))) extern const SEC_ASN1Template sec_PKCS12SafeBagTemplate[];
 
 #endif

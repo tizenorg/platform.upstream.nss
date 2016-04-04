@@ -43,7 +43,7 @@ SEC_BEGIN_PROTOS
  *	SEC_ERROR_XXX (function is being called more times than there
  *		are known/expected ciphers)
  */
-extern SECStatus NSS_SMIMEUtil_EnableCipher(long which, int on);
+__attribute__ ((visibility ("default"))) extern SECStatus NSS_SMIMEUtil_EnableCipher(long which, int on);
 
 /*
  * Initialize the local recording of the S/MIME policy.
@@ -58,13 +58,13 @@ extern SECStatus NSS_SMIMEUtil_EnableCipher(long which, int on);
  *  - If "on" is non-zero then the named cipher is enabled, otherwise
  *    it is disabled.
  */
-extern SECStatus NSS_SMIMEUtils_AllowCipher(long which, int on);
+__attribute__ ((visibility ("default"))) extern SECStatus NSS_SMIMEUtils_AllowCipher(long which, int on);
 
 /*
  * Does the current policy allow S/MIME decryption of this particular
  * algorithm and keysize?
  */
-extern PRBool NSS_SMIMEUtil_DecryptionAllowed(SECAlgorithmID *algid, PK11SymKey *key);
+__attribute__ ((visibility ("default"))) extern PRBool NSS_SMIMEUtil_DecryptionAllowed(SECAlgorithmID *algid, PK11SymKey *key);
 
 /*
  * Does the current policy allow *any* S/MIME encryption (or decryption)?
@@ -84,7 +84,7 @@ extern PRBool NSS_SMIMEUtil_DecryptionAllowed(SECAlgorithmID *algid, PK11SymKey 
  *
  * There are no errors from this routine.
  */
-extern PRBool NSS_SMIMEUtil_EncryptionPossible(void);
+__attribute__ ((visibility ("default"))) extern PRBool NSS_SMIMEUtil_EncryptionPossible(void);
 
 /*
  * NSS_SMIMEUtil_CreateSMIMECapabilities - get S/MIME capabilities attr value
@@ -92,28 +92,28 @@ extern PRBool NSS_SMIMEUtil_EncryptionPossible(void);
  * scans the list of allowed and enabled ciphers and construct a PKCS9-compliant
  * S/MIME capabilities attribute value.
  */
-extern SECStatus NSS_SMIMEUtil_CreateSMIMECapabilities(PLArenaPool *poolp, SECItem *dest);
+__attribute__ ((visibility ("default"))) extern SECStatus NSS_SMIMEUtil_CreateSMIMECapabilities(PLArenaPool *poolp, SECItem *dest);
 
 /*
  * NSS_SMIMEUtil_CreateSMIMEEncKeyPrefs - create S/MIME encryption key preferences attr value
  */
-extern SECStatus NSS_SMIMEUtil_CreateSMIMEEncKeyPrefs(PLArenaPool *poolp, SECItem *dest, CERTCertificate *cert);
+__attribute__ ((visibility ("default"))) extern SECStatus NSS_SMIMEUtil_CreateSMIMEEncKeyPrefs(PLArenaPool *poolp, SECItem *dest, CERTCertificate *cert);
 
 /*
  * NSS_SMIMEUtil_CreateMSSMIMEEncKeyPrefs - create S/MIME encryption key preferences attr value using MS oid
  */
-extern SECStatus NSS_SMIMEUtil_CreateMSSMIMEEncKeyPrefs(PLArenaPool *poolp, SECItem *dest, CERTCertificate *cert);
+__attribute__ ((visibility ("default"))) extern SECStatus NSS_SMIMEUtil_CreateMSSMIMEEncKeyPrefs(PLArenaPool *poolp, SECItem *dest, CERTCertificate *cert);
 
 /*
  * NSS_SMIMEUtil_GetCertFromEncryptionKeyPreference - find cert marked by EncryptionKeyPreference
  *          attribute
  */
-extern CERTCertificate *NSS_SMIMEUtil_GetCertFromEncryptionKeyPreference(CERTCertDBHandle *certdb, SECItem *DERekp);
+__attribute__ ((visibility ("default"))) extern CERTCertificate *NSS_SMIMEUtil_GetCertFromEncryptionKeyPreference(CERTCertDBHandle *certdb, SECItem *DERekp);
 
 /*
  * NSS_SMIMEUtil_FindBulkAlgForRecipients - find bulk algorithm suitable for all recipients
  */
-extern SECStatus
+__attribute__ ((visibility ("default"))) extern SECStatus
 NSS_SMIMEUtil_FindBulkAlgForRecipients(CERTCertificate **rcerts, SECOidTag *bulkalgtag, int *keysize);
 
 /*
@@ -125,12 +125,12 @@ NSS_SMIMEUtil_FindBulkAlgForRecipients(CERTCertificate **rcerts, SECOidTag *bulk
  * against a string that represents the actual build version of
  * the S/MIME library.
  */
-extern PRBool NSSSMIME_VersionCheck(const char *importedVersion);
+__attribute__ ((visibility ("default"))) extern PRBool NSSSMIME_VersionCheck(const char *importedVersion);
 
 /*
  * Returns a const string of the S/MIME library version.
  */
-extern const char *NSSSMIME_GetVersion(void);
+__attribute__ ((visibility ("default"))) extern const char *NSSSMIME_GetVersion(void);
 
 /************************************************************************/
 SEC_END_PROTOS

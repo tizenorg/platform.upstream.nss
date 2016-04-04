@@ -152,7 +152,7 @@ nss_dbm_db_get_format_version
   nss_dbm_db_t *db
 );
 
-NSS_EXTERN CK_RV
+__attribute__ ((visibility ("default"))) NSS_EXTERN CK_RV
 nss_dbm_db_set_label
 (
   nss_dbm_db_t *db,
@@ -167,7 +167,7 @@ nss_dbm_db_get_label
   CK_RV *pError
 );
 
-NSS_EXTERN CK_RV
+__attribute__ ((visibility ("default"))) NSS_EXTERN CK_RV
 nss_dbm_db_delete_object
 (
   nss_dbm_dbt_t *dbt
@@ -184,7 +184,7 @@ nss_dbm_db_create_object
   CK_ULONG *pdbrv
 );
 
-NSS_EXTERN CK_RV
+__attribute__ ((visibility ("default"))) NSS_EXTERN CK_RV
 nss_dbm_db_find_objects
 (
   nss_dbm_find_t *find,
@@ -208,7 +208,7 @@ nss_dbm_db_get_object_attribute_count
   CK_ULONG *pdbrv
 );
 
-NSS_EXTERN CK_RV
+__attribute__ ((visibility ("default"))) NSS_EXTERN CK_RV
 nss_dbm_db_get_object_attribute_types
 (
   nss_dbm_dbt_t *dbt,
@@ -236,7 +236,7 @@ nss_dbm_db_get_object_attribute
   CK_ULONG *pdbrv
 );
 
-NSS_EXTERN CK_RV
+__attribute__ ((visibility ("default"))) NSS_EXTERN CK_RV
 nss_dbm_db_set_object_attribute
 (
   nss_dbm_dbt_t *dbt,

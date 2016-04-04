@@ -38,7 +38,7 @@ SEC_BEGIN_PROTOS
  *    A pointer to the CMMFCertRepContent.  A NULL return value indicates 
  *    an error in allocating memory or failure to initialize the structure.
  */
-extern CMMFCertRepContent* CMMF_CreateCertRepContent(void);
+__attribute__ ((visibility ("default"))) extern CMMFCertRepContent* CMMF_CreateCertRepContent(void);
 
 /*
  * FUNCTION: CMMF_CreateCertRepContentFromDER
@@ -60,7 +60,7 @@ extern CMMFCertRepContent* CMMF_CreateCertRepContent(void);
  *    A pointer to the CMMFCertRepContent structure.  A NULL return
  *    value indicates the library was unable to parse the DER.
  */
-extern CMMFCertRepContent* 
+__attribute__ ((visibility ("default"))) extern CMMFCertRepContent* 
        CMMF_CreateCertRepContentFromDER(CERTCertDBHandle *db, 
 					const char       *buf, 
 					long              len);
@@ -83,7 +83,7 @@ extern CMMFCertRepContent*
  *    passed in.  A NULL return value indicates an error while trying to 
  *    create the CMMFCertResponse.
  */
-extern CMMFCertResponse* CMMF_CreateCertResponse(long inCertReqId);
+__attribute__ ((visibility ("default"))) extern CMMFCertResponse* CMMF_CreateCertResponse(long inCertReqId);
 
 /*
  * FUNCTION: CMMF_CreateKeyRecRepContent
@@ -105,7 +105,7 @@ extern CMMFCertResponse* CMMF_CreateCertResponse(long inCertReqId);
  *    A pointer to the empty CMMFKeyRecRepContent.  A return value of NULL
  *    indicates an error in allocating memory or initializing the structure.
  */
-extern CMMFKeyRecRepContent *CMMF_CreateKeyRecRepContent(void);
+__attribute__ ((visibility ("default"))) extern CMMFKeyRecRepContent *CMMF_CreateKeyRecRepContent(void);
 
 /*
  * FUNCTION: CMMF_CreateKeyRecRepContentFromDER
@@ -127,7 +127,7 @@ extern CMMFKeyRecRepContent *CMMF_CreateKeyRecRepContent(void);
  *    A pointer to the CMMFKeyRecRepContent structure.  A NULL return
  *    value indicates the library was unable to parse the DER.
  */
-extern CMMFKeyRecRepContent* 
+__attribute__ ((visibility ("default"))) extern CMMFKeyRecRepContent* 
        CMMF_CreateKeyRecRepContentFromDER(CERTCertDBHandle *db,
 					  const char       *buf,
 					  long              len);
@@ -149,7 +149,7 @@ extern CMMFKeyRecRepContent*
  *    return value of NULL indicates an error while creating the 
  *    CMMFPOPODecKeyChallContent structure.
  */
-extern CMMFPOPODecKeyChallContent*
+__attribute__ ((visibility ("default"))) extern CMMFPOPODecKeyChallContent*
        CMMF_CreatePOPODecKeyChallContent(void);
 
 /*
@@ -167,7 +167,7 @@ extern CMMFPOPODecKeyChallContent*
  *    A pointer to the CMMFPOPODecKeyChallContent structure.  A NULL return
  *    value indicates the library was unable to parse the DER.
  */
-extern CMMFPOPODecKeyChallContent*
+__attribute__ ((visibility ("default"))) extern CMMFPOPODecKeyChallContent*
        CMMF_CreatePOPODecKeyChallContentFromDER(const char *buf, long len);
 
 /*
@@ -185,7 +185,7 @@ extern CMMFPOPODecKeyChallContent*
  *    A pointer to the CMMFPOPODecKeyRespContent structure.  A NULL return
  *    value indicates the library was unable to parse the DER.
  */
-extern CMMFPOPODecKeyRespContent*
+__attribute__ ((visibility ("default"))) extern CMMFPOPODecKeyRespContent*
        CMMF_CreatePOPODecKeyRespContentFromDER(const char *buf, long len);
 
 /************************** Set Functions *************************/
@@ -213,7 +213,7 @@ extern CMMFPOPODecKeyRespContent*
  *    structure was successful.  Any other return value indicates an error
  *    while trying to add the CMMFCertResponses.
  */
-extern SECStatus 
+__attribute__ ((visibility ("default"))) extern SECStatus 
       CMMF_CertRepContentSetCertResponses(CMMFCertRepContent *inCertRepContent,
 					  CMMFCertResponse  **inCertResponses,
 					  int                 inNumResponses);
@@ -238,7 +238,7 @@ extern SECStatus
  *    CMMFCertRepContent structure.
  * 
  */
-extern SECStatus 
+__attribute__ ((visibility ("default"))) extern SECStatus 
        CMMF_CertRepContentSetCAPubs (CMMFCertRepContent  *inCertRepContent,
 				     CERTCertList        *inCAPubs);
 
@@ -260,7 +260,7 @@ extern SECStatus
  *    SECSuccess if setting the field with the passed in value was successful.
  *    Any other return value indicates an error while trying to set the field.
  */
-extern SECStatus 
+__attribute__ ((visibility ("default"))) extern SECStatus 
      CMMF_CertResponseSetPKIStatusInfoStatus (CMMFCertResponse *inCertResp,
 					      CMMFPKIStatus     inPKIStatus);
 
@@ -282,7 +282,7 @@ extern SECStatus
  *    Any other return value indicates an error in adding the certificate to
  *    the CertResponse.
  */
-extern SECStatus 
+__attribute__ ((visibility ("default"))) extern SECStatus 
        CMMF_CertResponseSetCertificate (CMMFCertResponse *inCertResp,
 					CERTCertificate  *inCertificate);
 
@@ -304,7 +304,7 @@ extern SECStatus
  *    SECSuccess if setting the PKIStatusInfo.status field was successful.
  *    Any other return value indicates an error in setting the field.
  */
-extern SECStatus 
+__attribute__ ((visibility ("default"))) extern SECStatus 
 CMMF_KeyRecRepContentSetPKIStatusInfoStatus(CMMFKeyRecRepContent *inKeyRecRep,
 					    CMMFPKIStatus         inPKIStatus);
 
@@ -324,7 +324,7 @@ CMMF_KeyRecRepContentSetPKIStatusInfoStatus(CMMFKeyRecRepContent *inKeyRecRep,
  *    return value indicates an error occurred while trying to add the
  *    new signing certificate.
  */
-extern SECStatus 
+__attribute__ ((visibility ("default"))) extern SECStatus 
        CMMF_KeyRecRepContentSetNewSignCert(CMMFKeyRecRepContent *inKeyRecRep,
 					   CERTCertificate     *inNewSignCert);
 
@@ -346,7 +346,7 @@ extern SECStatus
  *    SECSuccess if adding the caCerts was successful.  Any other return value
  *    indicates an error while tring to add the caCerts.
  */
-extern SECStatus 
+__attribute__ ((visibility ("default"))) extern SECStatus 
        CMMF_KeyRecRepContentSetCACerts(CMMFKeyRecRepContent *inKeyRecRep,
 				       CERTCertList         *inCACerts);
 
@@ -372,7 +372,7 @@ extern SECStatus
  *    return value indicates an error in adding certified key pair to 
  *    CMMFKeyRecRepContent structure.
  */
-extern SECStatus 
+__attribute__ ((visibility ("default"))) extern SECStatus 
     CMMF_KeyRecRepContentSetCertifiedKeyPair(CMMFKeyRecRepContent *inKeyRecRep,
 					     CERTCertificate      *inCert,
 					     SECKEYPrivateKey     *inPrivKey,
@@ -408,7 +408,7 @@ extern SECStatus
  *    of challenges was successful.  Any other return value indicates an error
  *    while trying to generate the challenge.
  */
-extern SECStatus
+__attribute__ ((visibility ("default"))) extern SECStatus
 CMMF_POPODecKeyChallContentSetNextChallenge
                                    (CMMFPOPODecKeyChallContent *inDecKeyChall,
 				    long                        inRandom,
@@ -445,7 +445,7 @@ CMMF_POPODecKeyChallContentSetNextChallenge
  *    SECSuccess if encoding the CMMFCertRepContent was successful.  Any 
  *    other return value indicates an error while decoding the structure.
  */
-extern SECStatus 
+__attribute__ ((visibility ("default"))) extern SECStatus 
        CMMF_EncodeCertRepContent (CMMFCertRepContent        *inCertRepContent,
 				  CRMFEncoderOutputCallback  inCallback,
 				  void                      *inArg);
@@ -476,7 +476,7 @@ extern SECStatus
  *    SECSuccess if encoding the CMMFKeyRecRepContent was successful.  Any 
  *    other return value indicates an error while decoding the structure.
  */
-extern SECStatus
+__attribute__ ((visibility ("default"))) extern SECStatus
        CMMF_EncodeKeyRecRepContent(CMMFKeyRecRepContent      *inKeyRecRep,
 				   CRMFEncoderOutputCallback  inCallback,
 				   void                      *inArg);
@@ -509,7 +509,7 @@ extern SECStatus
  *    SECSuccess if encoding was successful.  Any other return value indicates
  *    an error in trying to encode the Challenges.
  */
-extern SECStatus 
+__attribute__ ((visibility ("default"))) extern SECStatus 
 CMMF_EncodePOPODecKeyChallContent(CMMFPOPODecKeyChallContent *inDecKeyChall,
 				  CRMFEncoderOutputCallback inCallback,
 				  void                     *inArg);
@@ -544,7 +544,7 @@ CMMF_EncodePOPODecKeyChallContent(CMMFPOPODecKeyChallContent *inDecKeyChall,
  *    SECSuccess if encoding was successful.  Any other return value indicates
  *    an error in trying to encode the Challenges.
  */
-extern SECStatus 
+__attribute__ ((visibility ("default"))) extern SECStatus 
       CMMF_EncodePOPODecKeyRespContent(long                     *inDecodedRand,
 				       int                       inNumRand,
 				       CRMFEncoderOutputCallback inCallback,
@@ -578,7 +578,7 @@ extern SECStatus
  *    with the issued cert.  A NULL return value indicates  that no CA Pubs
  *    were available in the CMMFCertRepContent structure. 
  */
-extern CERTCertList* 
+__attribute__ ((visibility ("default"))) extern CERTCertList* 
        CMMF_CertRepContentGetCAPubs (CMMFCertRepContent *inCertRepContent);
 
 
@@ -594,7 +594,7 @@ extern CERTCertList*
  * RETURN:
  *    The number of CMMFCertResponses contained in the structure passed in.
  */
-extern int 
+__attribute__ ((visibility ("default"))) extern int 
  CMMF_CertRepContentGetNumResponses (CMMFCertRepContent *inCertRepContent);
 
 /*
@@ -616,7 +616,7 @@ extern int
  *    'inIndex'.  A return value of NULL indicates an error in copying 
  *    the CMMFCertResponse.
  */
-extern CMMFCertResponse*
+__attribute__ ((visibility ("default"))) extern CMMFCertResponse*
 CMMF_CertRepContentGetResponseAtIndex (CMMFCertRepContent *inCertRepContent,
 				       int                 inIndex);
 
@@ -634,7 +634,7 @@ CMMF_CertRepContentGetResponseAtIndex (CMMFCertRepContent *inCertRepContent,
  *    CMMFCertResponse corresponds to.  A return value of -1 indicates an
  *    error in extracting the value of the integer.
  */
-extern long CMMF_CertResponseGetCertReqId(CMMFCertResponse *inCertResp);
+__attribute__ ((visibility ("default"))) extern long CMMF_CertResponseGetCertReqId(CMMFCertResponse *inCertResp);
 
 /*
  * FUNCTION: CMMF_CertResponseGetPKIStatusInfoStatus
@@ -650,7 +650,7 @@ extern long CMMF_CertResponseGetCertReqId(CMMFCertResponse *inCertResp);
  *    draft.  See the CMMF draft for the definition of PKIStatus.  See crmft.h
  *    for the definition of CMMFPKIStatus.
  */
-extern CMMFPKIStatus 
+__attribute__ ((visibility ("default"))) extern CMMFPKIStatus 
        CMMF_CertResponseGetPKIStatusInfoStatus(CMMFCertResponse *inCertResp);
 
 /*
@@ -673,7 +673,7 @@ extern CMMFPKIStatus
  *    CMMFCertResponse.  A return value of NULL indicates an error while trying
  *    to make a copy of the certificate.
  */
-extern CERTCertificate*
+__attribute__ ((visibility ("default"))) extern CERTCertificate*
        CMMF_CertResponseGetCertificate(CMMFCertResponse *inCertResp,
                                        CERTCertDBHandle *inCertdb);
 
@@ -689,7 +689,7 @@ extern CERTCertificate*
  *    The CMMFPKIStatus corresponding to the value held in the 
  *    CMMFKeyRecRepContent structure.
  */
-extern CMMFPKIStatus 
+__attribute__ ((visibility ("default"))) extern CMMFPKIStatus 
 CMMF_KeyRecRepContentGetPKIStatusInfoStatus(CMMFKeyRecRepContent *inKeyRecRep);
 
 /*
@@ -706,7 +706,7 @@ CMMF_KeyRecRepContentGetPKIStatusInfoStatus(CMMFKeyRecRepContent *inKeyRecRep);
  *    user determines is the proper destination.  A return value of NULL
  *    indicates the newSigCert field was not present.
  */
-extern CERTCertificate*
+__attribute__ ((visibility ("default"))) extern CERTCertificate*
        CMMF_KeyRecRepContentGetNewSignCert(CMMFKeyRecRepContent *inKeyRecRep);
 
 /*
@@ -729,7 +729,7 @@ extern CERTCertificate*
  *    CMMF_KeyRecRepContentHasCACerts to find out if there are any caCerts 
  *    included in 'inKeyRecRep'.
  */
-extern CERTCertList*
+__attribute__ ((visibility ("default"))) extern CERTCertList*
        CMMF_KeyRecRepContentGetCACerts(CMMFKeyRecRepContent *inKeyRecRep);
 
 /*
@@ -741,7 +741,7 @@ extern CERTCertList*
  *    This function returns the number of CMMFCertifiedKeyPair structures that
  *    that are stored in the KeyRecRepContent structure.
  */
-extern int 
+__attribute__ ((visibility ("default"))) extern int 
        CMMF_KeyRecRepContentGetNumKeyPairs(CMMFKeyRecRepContent *inKeyRecRep);
 
 /*
@@ -761,7 +761,7 @@ extern int
  *    of NULL indicates an error in extracting the Certified Key Pair at the 
  *    desired index.
  */
-extern CMMFCertifiedKeyPair*
+__attribute__ ((visibility ("default"))) extern CMMFCertifiedKeyPair*
       CMMF_KeyRecRepContentGetCertKeyAtIndex(CMMFKeyRecRepContent *inKeyRecRep,
 					     int                   inIndex);
 
@@ -786,7 +786,7 @@ extern CMMFCertifiedKeyPair*
  *    A return value of NULL indicates an error in creating the copy of the 
  *    certificate.
  */
-extern CERTCertificate*
+__attribute__ ((visibility ("default"))) extern CERTCertificate*
       CMMF_CertifiedKeyPairGetCertificate(CMMFCertifiedKeyPair *inCertKeyPair,
 					  CERTCertDBHandle     *inCertdb);
 
@@ -799,7 +799,7 @@ extern CERTCertificate*
  *    This function returns the number of CMMFChallenges are contained in 
  *    the CMMFPOPODecKeyChallContent structure.
  */
-extern int CMMF_POPODecKeyChallContentGetNumChallenges
+__attribute__ ((visibility ("default"))) extern int CMMF_POPODecKeyChallContentGetNumChallenges
                                   (CMMFPOPODecKeyChallContent *inKeyChallCont);
 
 /*
@@ -820,7 +820,7 @@ extern int CMMF_POPODecKeyChallContentGetNumChallenges
  * SECITEM_FreeItem on the return value when the value is no longer necessary.
  * A return value of NULL indicates an error while retrieving the public value.
  */
-extern SECItem* CMMF_POPODecKeyChallContentGetPublicValue
+__attribute__ ((visibility ("default"))) extern SECItem* CMMF_POPODecKeyChallContentGetPublicValue
                                    (CMMFPOPODecKeyChallContent *inKeyChallCont,
 				    int                         inIndex);
 
@@ -850,7 +850,7 @@ extern SECItem* CMMF_POPODecKeyChallContentGetPublicValue
  *    Any other return value indicates an error and that the value at *inDest
  *    is not a valid value.
  */
-extern SECStatus CMMF_POPODecKeyChallContentGetRandomNumber
+__attribute__ ((visibility ("default"))) extern SECStatus CMMF_POPODecKeyChallContentGetRandomNumber
                                       (CMMFPOPODecKeyChallContent *inKeyChallCont,
 				       int                          inIndex,
 				       long                        *inDest);
@@ -863,7 +863,7 @@ extern SECStatus CMMF_POPODecKeyChallContentGetRandomNumber
  * RETURN:
  * This function returns the number of responses contained in inRespContent.
  */
-extern int 
+__attribute__ ((visibility ("default"))) extern int 
  CMMF_POPODecKeyRespContentGetNumResponses(CMMFPOPODecKeyRespContent *inRespCont);
 
 /*
@@ -888,7 +888,7 @@ extern int
  * SECSuccess if getting the response at the desired index was successful.  Any
  * other return value indicates an errror.
  */
-extern SECStatus
+__attribute__ ((visibility ("default"))) extern SECStatus
      CMMF_POPODecKeyRespContentGetResponse (CMMFPOPODecKeyRespContent *inRespCont,
 					    int                        inIndex,
 					    long                      *inDest);
@@ -907,7 +907,7 @@ extern SECStatus
  *    SECSuccess if freeing the memory was successful.  Any other return value
  *    indicates an error while freeing the memory.
  */
-extern SECStatus CMMF_DestroyCertResponse(CMMFCertResponse *inCertResp);
+__attribute__ ((visibility ("default"))) extern SECStatus CMMF_DestroyCertResponse(CMMFCertResponse *inCertResp);
 
 /*
  * FUNCTION: CMMF_DestroyCertRepContent
@@ -922,7 +922,7 @@ extern SECStatus CMMF_DestroyCertResponse(CMMFCertResponse *inCertResp);
  *    CMMFCertRepContent passed in is successful.  Any other return value 
  *    indicates an error while freeing the memory.
  */
-extern SECStatus 
+__attribute__ ((visibility ("default"))) extern SECStatus 
        CMMF_DestroyCertRepContent (CMMFCertRepContent *inCertRepContent);
 
 /*
@@ -938,7 +938,7 @@ extern SECStatus
  *    SECSuccess if freeing all the memory is successful.  Any other return 
  *    value indicates an error in freeing the memory.
  */
-extern SECStatus 
+__attribute__ ((visibility ("default"))) extern SECStatus 
        CMMF_DestroyKeyRecRepContent(CMMFKeyRecRepContent *inKeyRecRep);
 
 /*
@@ -954,7 +954,7 @@ extern SECStatus
  *    is successful.  Any other return value indicates an error while trying
  *    to free the memory.
  */
-extern SECStatus 
+__attribute__ ((visibility ("default"))) extern SECStatus 
        CMMF_DestroyCertifiedKeyPair(CMMFCertifiedKeyPair *inCertKeyPair);
 
 /*
@@ -971,7 +971,7 @@ extern SECStatus
  *    CMMFPOPODecKeyRespContent structure is successful.  Any other
  *    return value indicates an error while freeing the memory.
  */
-extern SECStatus
+__attribute__ ((visibility ("default"))) extern SECStatus
        CMMF_DestroyPOPODecKeyRespContent(CMMFPOPODecKeyRespContent *inDecKeyResp);
 
 
@@ -1008,7 +1008,7 @@ extern SECStatus
  *    SECSuccess if unwrapping the private key was successful.  Any other 
  *    return value indicates an error while trying to un-wrap the private key.
  */
-extern SECStatus 
+__attribute__ ((visibility ("default"))) extern SECStatus 
        CMMF_CertifiedKeyPairUnwrapPrivKey(CMMFCertifiedKeyPair *inKeyPair,
 					  SECKEYPrivateKey     *inPrivKey,
 					  SECItem              *inNickName,
@@ -1028,7 +1028,7 @@ extern SECStatus
  *    structure.  The function will return PR_FALSE if there are 0 certificate
  *    in the above mentioned sequence.
  */
-extern PRBool 
+__attribute__ ((visibility ("default"))) extern PRBool 
        CMMF_KeyRecRepContentHasCACerts(CMMFKeyRecRepContent *inKeyRecRep);
 
 /*
@@ -1064,7 +1064,7 @@ extern PRBool
  *    Any other return value indicates the function could not complete the
  *    decryption process.
  */
-extern SECStatus 
+__attribute__ ((visibility ("default"))) extern SECStatus 
   CMMF_POPODecKeyChallContDecryptChallenge(CMMFPOPODecKeyChallContent *inChalCont,
 					   int                         inIndex,
 					   SECKEYPrivateKey           *inPrivKey);
@@ -1083,7 +1083,7 @@ extern SECStatus
  *    indicates an error while freeing the memory.
  *
  */
-extern SECStatus 
+__attribute__ ((visibility ("default"))) extern SECStatus 
  CMMF_DestroyPOPODecKeyChallContent (CMMFPOPODecKeyChallContent *inDecKeyCont);
 
 SEC_END_PROTOS

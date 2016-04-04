@@ -103,7 +103,7 @@
  * NSSCKFWC_Initialize
  *
  */
-NSS_EXTERN CK_RV
+__attribute__ ((visibility ("default"))) NSS_EXTERN CK_RV
 NSSCKFWC_Initialize
 (
   NSSCKFWInstance **pFwInstance,
@@ -115,7 +115,7 @@ NSSCKFWC_Initialize
  * NSSCKFWC_Finalize
  *
  */
-NSS_EXTERN CK_RV
+__attribute__ ((visibility ("default"))) NSS_EXTERN CK_RV
 NSSCKFWC_Finalize
 (
   NSSCKFWInstance **pFwInstance
@@ -125,7 +125,7 @@ NSSCKFWC_Finalize
  * NSSCKFWC_GetInfo
  *
  */
-NSS_EXTERN CK_RV
+__attribute__ ((visibility ("default"))) NSS_EXTERN CK_RV
 NSSCKFWC_GetInfo
 (
   NSSCKFWInstance *fwInstance,
@@ -142,7 +142,7 @@ NSSCKFWC_GetInfo
  * NSSCKFWC_GetSlotList
  *
  */
-NSS_EXTERN CK_RV
+__attribute__ ((visibility ("default"))) NSS_EXTERN CK_RV
 NSSCKFWC_GetSlotList
 (
   NSSCKFWInstance *fwInstance,
@@ -155,7 +155,7 @@ NSSCKFWC_GetSlotList
  * NSSCKFWC_GetSlotInfo
  *
  */
-NSS_EXTERN CK_RV
+__attribute__ ((visibility ("default"))) NSS_EXTERN CK_RV
 NSSCKFWC_GetSlotInfo
 (
   NSSCKFWInstance *fwInstance,
@@ -167,7 +167,7 @@ NSSCKFWC_GetSlotInfo
  * NSSCKFWC_GetTokenInfo
  *
  */
-NSS_EXTERN CK_RV
+__attribute__ ((visibility ("default"))) NSS_EXTERN CK_RV
 NSSCKFWC_GetTokenInfo
 (
   NSSCKFWInstance *fwInstance,
@@ -179,7 +179,7 @@ NSSCKFWC_GetTokenInfo
  * NSSCKFWC_WaitForSlotEvent
  *
  */
-NSS_EXTERN CK_RV
+__attribute__ ((visibility ("default"))) NSS_EXTERN CK_RV
 NSSCKFWC_WaitForSlotEvent
 (
   NSSCKFWInstance *fwInstance,
@@ -192,7 +192,7 @@ NSSCKFWC_WaitForSlotEvent
  * NSSCKFWC_GetMechanismList
  *
  */
-NSS_EXTERN CK_RV
+__attribute__ ((visibility ("default"))) NSS_EXTERN CK_RV
 NSSCKFWC_GetMechanismList
 (
   NSSCKFWInstance *fwInstance,
@@ -205,7 +205,7 @@ NSSCKFWC_GetMechanismList
  * NSSCKFWC_GetMechanismInfo
  *
  */
-NSS_EXTERN CK_RV
+__attribute__ ((visibility ("default"))) NSS_EXTERN CK_RV
 NSSCKFWC_GetMechanismInfo
 (
   NSSCKFWInstance *fwInstance,
@@ -218,7 +218,7 @@ NSSCKFWC_GetMechanismInfo
  * NSSCKFWC_InitToken
  *
  */
-NSS_EXTERN CK_RV
+__attribute__ ((visibility ("default"))) NSS_EXTERN CK_RV
 NSSCKFWC_InitToken
 (
   NSSCKFWInstance *fwInstance,
@@ -232,7 +232,7 @@ NSSCKFWC_InitToken
  * NSSCKFWC_InitPIN
  *
  */
-NSS_EXTERN CK_RV
+__attribute__ ((visibility ("default"))) NSS_EXTERN CK_RV
 NSSCKFWC_InitPIN
 (
   NSSCKFWInstance *fwInstance,
@@ -245,7 +245,7 @@ NSSCKFWC_InitPIN
  * NSSCKFWC_SetPIN
  *
  */
-NSS_EXTERN CK_RV
+__attribute__ ((visibility ("default"))) NSS_EXTERN CK_RV
 NSSCKFWC_SetPIN
 (
   NSSCKFWInstance *fwInstance,
@@ -260,7 +260,7 @@ NSSCKFWC_SetPIN
  * NSSCKFWC_OpenSession
  *
  */
-NSS_EXTERN CK_RV
+__attribute__ ((visibility ("default"))) NSS_EXTERN CK_RV
 NSSCKFWC_OpenSession
 (
   NSSCKFWInstance *fwInstance,
@@ -275,7 +275,7 @@ NSSCKFWC_OpenSession
  * NSSCKFWC_CloseSession
  *
  */
-NSS_EXTERN CK_RV
+__attribute__ ((visibility ("default"))) NSS_EXTERN CK_RV
 NSSCKFWC_CloseSession
 (
   NSSCKFWInstance *fwInstance,
@@ -286,7 +286,7 @@ NSSCKFWC_CloseSession
  * NSSCKFWC_CloseAllSessions
  *
  */
-NSS_EXTERN CK_RV
+__attribute__ ((visibility ("default"))) NSS_EXTERN CK_RV
 NSSCKFWC_CloseAllSessions
 (
   NSSCKFWInstance *fwInstance,
@@ -297,7 +297,7 @@ NSSCKFWC_CloseAllSessions
  * NSSCKFWC_GetSessionInfo
  *
  */
-NSS_EXTERN CK_RV
+__attribute__ ((visibility ("default"))) NSS_EXTERN CK_RV
 NSSCKFWC_GetSessionInfo
 (
   NSSCKFWInstance *fwInstance,
@@ -309,7 +309,7 @@ NSSCKFWC_GetSessionInfo
  * NSSCKFWC_GetOperationState
  *
  */
-NSS_EXTERN CK_RV
+__attribute__ ((visibility ("default"))) NSS_EXTERN CK_RV
 NSSCKFWC_GetOperationState
 (
   NSSCKFWInstance *fwInstance,
@@ -322,7 +322,7 @@ NSSCKFWC_GetOperationState
  * NSSCKFWC_SetOperationState
  *
  */
-NSS_EXTERN CK_RV
+__attribute__ ((visibility ("default"))) NSS_EXTERN CK_RV
 NSSCKFWC_SetOperationState
 (
   NSSCKFWInstance *fwInstance,
@@ -337,7 +337,7 @@ NSSCKFWC_SetOperationState
  * NSSCKFWC_Login
  *
  */
-NSS_EXTERN CK_RV
+__attribute__ ((visibility ("default"))) NSS_EXTERN CK_RV
 NSSCKFWC_Login
 (
   NSSCKFWInstance *fwInstance,
@@ -351,7 +351,7 @@ NSSCKFWC_Login
  * NSSCKFWC_Logout
  *
  */
-NSS_EXTERN CK_RV
+__attribute__ ((visibility ("default"))) NSS_EXTERN CK_RV
 NSSCKFWC_Logout
 (
   NSSCKFWInstance *fwInstance,
@@ -362,7 +362,7 @@ NSSCKFWC_Logout
  * NSSCKFWC_CreateObject
  *
  */
-NSS_EXTERN CK_RV
+__attribute__ ((visibility ("default"))) NSS_EXTERN CK_RV
 NSSCKFWC_CreateObject
 (
   NSSCKFWInstance *fwInstance,
@@ -376,7 +376,7 @@ NSSCKFWC_CreateObject
  * NSSCKFWC_CopyObject
  *
  */
-NSS_EXTERN CK_RV
+__attribute__ ((visibility ("default"))) NSS_EXTERN CK_RV
 NSSCKFWC_CopyObject
 (
   NSSCKFWInstance *fwInstance,
@@ -391,7 +391,7 @@ NSSCKFWC_CopyObject
  * NSSCKFWC_DestroyObject
  *
  */
-NSS_EXTERN CK_RV
+__attribute__ ((visibility ("default"))) NSS_EXTERN CK_RV
 NSSCKFWC_DestroyObject
 (
   NSSCKFWInstance *fwInstance,
@@ -403,7 +403,7 @@ NSSCKFWC_DestroyObject
  * NSSCKFWC_GetObjectSize
  *
  */
-NSS_EXTERN CK_RV
+__attribute__ ((visibility ("default"))) NSS_EXTERN CK_RV
 NSSCKFWC_GetObjectSize
 (
   NSSCKFWInstance *fwInstance,
@@ -416,7 +416,7 @@ NSSCKFWC_GetObjectSize
  * NSSCKFWC_GetAttributeValue
  *
  */
-NSS_EXTERN CK_RV
+__attribute__ ((visibility ("default"))) NSS_EXTERN CK_RV
 NSSCKFWC_GetAttributeValue
 (
   NSSCKFWInstance *fwInstance,
@@ -430,7 +430,7 @@ NSSCKFWC_GetAttributeValue
  * NSSCKFWC_SetAttributeValue
  *
  */
-NSS_EXTERN CK_RV
+__attribute__ ((visibility ("default"))) NSS_EXTERN CK_RV
 NSSCKFWC_SetAttributeValue
 (
   NSSCKFWInstance *fwInstance,
@@ -444,7 +444,7 @@ NSSCKFWC_SetAttributeValue
  * NSSCKFWC_FindObjectsInit
  *
  */
-NSS_EXTERN CK_RV
+__attribute__ ((visibility ("default"))) NSS_EXTERN CK_RV
 NSSCKFWC_FindObjectsInit
 (
   NSSCKFWInstance *fwInstance,
@@ -457,7 +457,7 @@ NSSCKFWC_FindObjectsInit
  * NSSCKFWC_FindObjects
  *
  */
-NSS_EXTERN CK_RV
+__attribute__ ((visibility ("default"))) NSS_EXTERN CK_RV
 NSSCKFWC_FindObjects
 (
   NSSCKFWInstance *fwInstance,
@@ -471,7 +471,7 @@ NSSCKFWC_FindObjects
  * NSSCKFWC_FindObjectsFinal
  *
  */
-NSS_EXTERN CK_RV
+__attribute__ ((visibility ("default"))) NSS_EXTERN CK_RV
 NSSCKFWC_FindObjectsFinal
 (
   NSSCKFWInstance *fwInstance,
@@ -482,7 +482,7 @@ NSSCKFWC_FindObjectsFinal
  * NSSCKFWC_EncryptInit
  *
  */
-NSS_EXTERN CK_RV
+__attribute__ ((visibility ("default"))) NSS_EXTERN CK_RV
 NSSCKFWC_EncryptInit
 (
   NSSCKFWInstance *fwInstance,
@@ -495,7 +495,7 @@ NSSCKFWC_EncryptInit
  * NSSCKFWC_Encrypt
  *
  */
-NSS_EXTERN CK_RV
+__attribute__ ((visibility ("default"))) NSS_EXTERN CK_RV
 NSSCKFWC_Encrypt
 (
   NSSCKFWInstance *fwInstance,
@@ -510,7 +510,7 @@ NSSCKFWC_Encrypt
  * NSSCKFWC_EncryptUpdate
  *
  */
-NSS_EXTERN CK_RV
+__attribute__ ((visibility ("default"))) NSS_EXTERN CK_RV
 NSSCKFWC_EncryptUpdate
 (
   NSSCKFWInstance *fwInstance,
@@ -525,7 +525,7 @@ NSSCKFWC_EncryptUpdate
  * NSSCKFWC_EncryptFinal
  *
  */
-NSS_EXTERN CK_RV
+__attribute__ ((visibility ("default"))) NSS_EXTERN CK_RV
 NSSCKFWC_EncryptFinal
 (
   NSSCKFWInstance *fwInstance,
@@ -538,7 +538,7 @@ NSSCKFWC_EncryptFinal
  * NSSCKFWC_DecryptInit
  *
  */
-NSS_EXTERN CK_RV
+__attribute__ ((visibility ("default"))) NSS_EXTERN CK_RV
 NSSCKFWC_DecryptInit
 (
   NSSCKFWInstance *fwInstance,
@@ -551,7 +551,7 @@ NSSCKFWC_DecryptInit
  * NSSCKFWC_Decrypt
  *
  */
-NSS_EXTERN CK_RV
+__attribute__ ((visibility ("default"))) NSS_EXTERN CK_RV
 NSSCKFWC_Decrypt
 (
   NSSCKFWInstance *fwInstance,
@@ -566,7 +566,7 @@ NSSCKFWC_Decrypt
  * NSSCKFWC_DecryptUpdate
  *
  */
-NSS_EXTERN CK_RV
+__attribute__ ((visibility ("default"))) NSS_EXTERN CK_RV
 NSSCKFWC_DecryptUpdate
 (
   NSSCKFWInstance *fwInstance,
@@ -581,7 +581,7 @@ NSSCKFWC_DecryptUpdate
  * NSSCKFWC_DecryptFinal
  *
  */
-NSS_EXTERN CK_RV
+__attribute__ ((visibility ("default"))) NSS_EXTERN CK_RV
 NSSCKFWC_DecryptFinal
 (
   NSSCKFWInstance *fwInstance,
@@ -594,7 +594,7 @@ NSSCKFWC_DecryptFinal
  * NSSCKFWC_DigestInit
  *
  */
-NSS_EXTERN CK_RV
+__attribute__ ((visibility ("default"))) NSS_EXTERN CK_RV
 NSSCKFWC_DigestInit
 (
   NSSCKFWInstance *fwInstance,
@@ -606,7 +606,7 @@ NSSCKFWC_DigestInit
  * NSSCKFWC_Digest
  *
  */
-NSS_EXTERN CK_RV
+__attribute__ ((visibility ("default"))) NSS_EXTERN CK_RV
 NSSCKFWC_Digest
 (
   NSSCKFWInstance *fwInstance,
@@ -621,7 +621,7 @@ NSSCKFWC_Digest
  * NSSCKFWC_DigestUpdate
  *
  */
-NSS_EXTERN CK_RV
+__attribute__ ((visibility ("default"))) NSS_EXTERN CK_RV
 NSSCKFWC_DigestUpdate
 (
   NSSCKFWInstance *fwInstance,
@@ -634,7 +634,7 @@ NSSCKFWC_DigestUpdate
  * NSSCKFWC_DigestKey
  *
  */
-NSS_EXTERN CK_RV
+__attribute__ ((visibility ("default"))) NSS_EXTERN CK_RV
 NSSCKFWC_DigestKey
 (
   NSSCKFWInstance *fwInstance,
@@ -646,7 +646,7 @@ NSSCKFWC_DigestKey
  * NSSCKFWC_DigestFinal
  *
  */
-NSS_EXTERN CK_RV
+__attribute__ ((visibility ("default"))) NSS_EXTERN CK_RV
 NSSCKFWC_DigestFinal
 (
   NSSCKFWInstance *fwInstance,
@@ -659,7 +659,7 @@ NSSCKFWC_DigestFinal
  * NSSCKFWC_SignInit
  *
  */
-NSS_EXTERN CK_RV
+__attribute__ ((visibility ("default"))) NSS_EXTERN CK_RV
 NSSCKFWC_SignInit
 (
   NSSCKFWInstance *fwInstance,
@@ -672,7 +672,7 @@ NSSCKFWC_SignInit
  * NSSCKFWC_Sign
  *
  */
-NSS_EXTERN CK_RV
+__attribute__ ((visibility ("default"))) NSS_EXTERN CK_RV
 NSSCKFWC_Sign
 (
   NSSCKFWInstance *fwInstance,
@@ -687,7 +687,7 @@ NSSCKFWC_Sign
  * NSSCKFWC_SignUpdate
  *
  */
-NSS_EXTERN CK_RV
+__attribute__ ((visibility ("default"))) NSS_EXTERN CK_RV
 NSSCKFWC_SignUpdate
 (
   NSSCKFWInstance *fwInstance,
@@ -700,7 +700,7 @@ NSSCKFWC_SignUpdate
  * NSSCKFWC_SignFinal
  *
  */
-NSS_EXTERN CK_RV
+__attribute__ ((visibility ("default"))) NSS_EXTERN CK_RV
 NSSCKFWC_SignFinal
 (
   NSSCKFWInstance *fwInstance,
@@ -713,7 +713,7 @@ NSSCKFWC_SignFinal
  * NSSCKFWC_SignRecoverInit
  *
  */
-NSS_EXTERN CK_RV
+__attribute__ ((visibility ("default"))) NSS_EXTERN CK_RV
 NSSCKFWC_SignRecoverInit
 (
   NSSCKFWInstance *fwInstance,
@@ -726,7 +726,7 @@ NSSCKFWC_SignRecoverInit
  * NSSCKFWC_SignRecover
  *
  */
-NSS_EXTERN CK_RV
+__attribute__ ((visibility ("default"))) NSS_EXTERN CK_RV
 NSSCKFWC_SignRecover
 (
   NSSCKFWInstance *fwInstance,
@@ -741,7 +741,7 @@ NSSCKFWC_SignRecover
  * NSSCKFWC_VerifyInit
  *
  */
-NSS_EXTERN CK_RV
+__attribute__ ((visibility ("default"))) NSS_EXTERN CK_RV
 NSSCKFWC_VerifyInit
 (
   NSSCKFWInstance *fwInstance,
@@ -754,7 +754,7 @@ NSSCKFWC_VerifyInit
  * NSSCKFWC_Verify
  *
  */
-NSS_EXTERN CK_RV
+__attribute__ ((visibility ("default"))) NSS_EXTERN CK_RV
 NSSCKFWC_Verify
 (
   NSSCKFWInstance *fwInstance,
@@ -769,7 +769,7 @@ NSSCKFWC_Verify
  * NSSCKFWC_VerifyUpdate
  *
  */
-NSS_EXTERN CK_RV
+__attribute__ ((visibility ("default"))) NSS_EXTERN CK_RV
 NSSCKFWC_VerifyUpdate
 (
   NSSCKFWInstance *fwInstance,
@@ -782,7 +782,7 @@ NSSCKFWC_VerifyUpdate
  * NSSCKFWC_VerifyFinal
  *
  */
-NSS_EXTERN CK_RV
+__attribute__ ((visibility ("default"))) NSS_EXTERN CK_RV
 NSSCKFWC_VerifyFinal
 (
   NSSCKFWInstance *fwInstance,
@@ -795,7 +795,7 @@ NSSCKFWC_VerifyFinal
  * NSSCKFWC_VerifyRecoverInit
  *
  */
-NSS_EXTERN CK_RV
+__attribute__ ((visibility ("default"))) NSS_EXTERN CK_RV
 NSSCKFWC_VerifyRecoverInit
 (
   NSSCKFWInstance *fwInstance,
@@ -808,7 +808,7 @@ NSSCKFWC_VerifyRecoverInit
  * NSSCKFWC_VerifyRecover
  *
  */
-NSS_EXTERN CK_RV
+__attribute__ ((visibility ("default"))) NSS_EXTERN CK_RV
 NSSCKFWC_VerifyRecover
 (
   NSSCKFWInstance *fwInstance,
@@ -823,7 +823,7 @@ NSSCKFWC_VerifyRecover
  * NSSCKFWC_DigestEncryptUpdate
  *
  */
-NSS_EXTERN CK_RV
+__attribute__ ((visibility ("default"))) NSS_EXTERN CK_RV
 NSSCKFWC_DigestEncryptUpdate
 (
   NSSCKFWInstance *fwInstance,
@@ -838,7 +838,7 @@ NSSCKFWC_DigestEncryptUpdate
  * NSSCKFWC_DecryptDigestUpdate
  *
  */
-NSS_EXTERN CK_RV
+__attribute__ ((visibility ("default"))) NSS_EXTERN CK_RV
 NSSCKFWC_DecryptDigestUpdate
 (
   NSSCKFWInstance *fwInstance,
@@ -853,7 +853,7 @@ NSSCKFWC_DecryptDigestUpdate
  * NSSCKFWC_SignEncryptUpdate
  *
  */
-NSS_EXTERN CK_RV
+__attribute__ ((visibility ("default"))) NSS_EXTERN CK_RV
 NSSCKFWC_SignEncryptUpdate
 (
   NSSCKFWInstance *fwInstance,
@@ -868,7 +868,7 @@ NSSCKFWC_SignEncryptUpdate
  * NSSCKFWC_DecryptVerifyUpdate
  *
  */
-NSS_EXTERN CK_RV
+__attribute__ ((visibility ("default"))) NSS_EXTERN CK_RV
 NSSCKFWC_DecryptVerifyUpdate
 (
   NSSCKFWInstance *fwInstance,
@@ -883,7 +883,7 @@ NSSCKFWC_DecryptVerifyUpdate
  * NSSCKFWC_GenerateKey
  *
  */
-NSS_EXTERN CK_RV
+__attribute__ ((visibility ("default"))) NSS_EXTERN CK_RV
 NSSCKFWC_GenerateKey
 (
   NSSCKFWInstance *fwInstance,
@@ -898,7 +898,7 @@ NSSCKFWC_GenerateKey
  * NSSCKFWC_GenerateKeyPair
  *
  */
-NSS_EXTERN CK_RV
+__attribute__ ((visibility ("default"))) NSS_EXTERN CK_RV
 NSSCKFWC_GenerateKeyPair
 (
   NSSCKFWInstance *fwInstance,
@@ -916,7 +916,7 @@ NSSCKFWC_GenerateKeyPair
  * NSSCKFWC_WrapKey
  *
  */
-NSS_EXTERN CK_RV
+__attribute__ ((visibility ("default"))) NSS_EXTERN CK_RV
 NSSCKFWC_WrapKey
 (
   NSSCKFWInstance *fwInstance,
@@ -932,7 +932,7 @@ NSSCKFWC_WrapKey
  * NSSCKFWC_UnwrapKey
  *
  */
-NSS_EXTERN CK_RV
+__attribute__ ((visibility ("default"))) NSS_EXTERN CK_RV
 NSSCKFWC_UnwrapKey
 (
   NSSCKFWInstance *fwInstance,
@@ -950,7 +950,7 @@ NSSCKFWC_UnwrapKey
  * NSSCKFWC_DeriveKey
  *
  */
-NSS_EXTERN CK_RV
+__attribute__ ((visibility ("default"))) NSS_EXTERN CK_RV
 NSSCKFWC_DeriveKey
 (
   NSSCKFWInstance *fwInstance,
@@ -966,7 +966,7 @@ NSSCKFWC_DeriveKey
  * NSSCKFWC_SeedRandom
  *
  */
-NSS_EXTERN CK_RV
+__attribute__ ((visibility ("default"))) NSS_EXTERN CK_RV
 NSSCKFWC_SeedRandom
 (
   NSSCKFWInstance *fwInstance,
@@ -979,7 +979,7 @@ NSSCKFWC_SeedRandom
  * NSSCKFWC_GenerateRandom
  *
  */
-NSS_EXTERN CK_RV
+__attribute__ ((visibility ("default"))) NSS_EXTERN CK_RV
 NSSCKFWC_GenerateRandom
 (
   NSSCKFWInstance *fwInstance,
@@ -992,7 +992,7 @@ NSSCKFWC_GenerateRandom
  * NSSCKFWC_GetFunctionStatus
  *
  */
-NSS_EXTERN CK_RV
+__attribute__ ((visibility ("default"))) NSS_EXTERN CK_RV
 NSSCKFWC_GetFunctionStatus
 (
   NSSCKFWInstance *fwInstance,
@@ -1003,7 +1003,7 @@ NSSCKFWC_GetFunctionStatus
  * NSSCKFWC_CancelFunction
  *
  */
-NSS_EXTERN CK_RV
+__attribute__ ((visibility ("default"))) NSS_EXTERN CK_RV
 NSSCKFWC_CancelFunction
 (
   NSSCKFWInstance *fwInstance,

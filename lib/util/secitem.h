@@ -32,7 +32,7 @@ SEC_BEGIN_PROTOS
 ** XXX This probably should take a SECItemType, but since that is mostly
 ** unused and our improved APIs (aka Stan) are looming, I left it out.
 */
-extern SECItem *SECITEM_AllocItem(PLArenaPool *arena, SECItem *item,
+__attribute__ ((visibility ("default"))) extern SECItem *SECITEM_AllocItem(PLArenaPool *arena, SECItem *item,
 				  unsigned int len);
 
 /*
@@ -48,7 +48,7 @@ extern SECItem *SECITEM_AllocItem(PLArenaPool *arena, SECItem *item,
 ** SECFailure is returned if it is not.  If the allocation succeeds,
 ** SECSuccess is returned.
 */
-extern SECStatus SECITEM_ReallocItem( /* deprecated function */
+__attribute__ ((visibility ("default"))) extern SECStatus SECITEM_ReallocItem( /* deprecated function */
 				     PLArenaPool *arena, SECItem *item,
 				     unsigned int oldlen, unsigned int newlen);
 
@@ -60,58 +60,58 @@ extern SECStatus SECITEM_ReallocItem( /* deprecated function */
 ** SECFailure is returned if it is not, and the item will remain unchanged.
 ** If the allocation succeeds, the item is updated and SECSuccess is returned.
  */
-extern SECStatus SECITEM_ReallocItemV2(PLArenaPool *arena, SECItem *item,
+__attribute__ ((visibility ("default"))) extern SECStatus SECITEM_ReallocItemV2(PLArenaPool *arena, SECItem *item,
 				       unsigned int newlen);
 
 /*
 ** Compare two items returning the difference between them.
 */
-extern SECComparison SECITEM_CompareItem(const SECItem *a, const SECItem *b);
+__attribute__ ((visibility ("default"))) extern SECComparison SECITEM_CompareItem(const SECItem *a, const SECItem *b);
 
 /*
 ** Compare two items -- if they are the same, return true; otherwise false.
 */
-extern PRBool SECITEM_ItemsAreEqual(const SECItem *a, const SECItem *b);
+__attribute__ ((visibility ("default"))) extern PRBool SECITEM_ItemsAreEqual(const SECItem *a, const SECItem *b);
 
 /*
 ** Copy "from" to "to"
 */
-extern SECStatus SECITEM_CopyItem(PLArenaPool *arena, SECItem *to, 
+__attribute__ ((visibility ("default"))) extern SECStatus SECITEM_CopyItem(PLArenaPool *arena, SECItem *to, 
                                   const SECItem *from);
 
 /*
 ** Allocate an item and copy "from" into it.
 */
-extern SECItem *SECITEM_DupItem(const SECItem *from);
+__attribute__ ((visibility ("default"))) extern SECItem *SECITEM_DupItem(const SECItem *from);
 
 /*
 ** Allocate an item and copy "from" into it.  The item itself and the 
 ** data it points to are both allocated from the arena.  If arena is
 ** NULL, this function is equivalent to SECITEM_DupItem.
 */
-extern SECItem *SECITEM_ArenaDupItem(PLArenaPool *arena, const SECItem *from);
+__attribute__ ((visibility ("default"))) extern SECItem *SECITEM_ArenaDupItem(PLArenaPool *arena, const SECItem *from);
 
 /*
 ** Free "zap". If freeit is PR_TRUE then "zap" itself is freed.
 */
-extern void SECITEM_FreeItem(SECItem *zap, PRBool freeit);
+__attribute__ ((visibility ("default"))) extern void SECITEM_FreeItem(SECItem *zap, PRBool freeit);
 
 /*
 ** Zero and then free "zap". If freeit is PR_TRUE then "zap" itself is freed.
 */
-extern void SECITEM_ZfreeItem(SECItem *zap, PRBool freeit);
+__attribute__ ((visibility ("default"))) extern void SECITEM_ZfreeItem(SECItem *zap, PRBool freeit);
 
-PLHashNumber PR_CALLBACK SECITEM_Hash ( const void *key);
+__attribute__ ((visibility ("default"))) PLHashNumber PR_CALLBACK SECITEM_Hash ( const void *key);
 
-PRIntn PR_CALLBACK SECITEM_HashCompare ( const void *k1, const void *k2);
+__attribute__ ((visibility ("default"))) PRIntn PR_CALLBACK SECITEM_HashCompare ( const void *k1, const void *k2);
 
-extern SECItemArray *SECITEM_AllocArray(PLArenaPool *arena,
+__attribute__ ((visibility ("default"))) extern SECItemArray *SECITEM_AllocArray(PLArenaPool *arena,
                                         SECItemArray *array,
                                         unsigned int len);
-extern SECItemArray *SECITEM_DupArray(PLArenaPool *arena,
+__attribute__ ((visibility ("default"))) extern SECItemArray *SECITEM_DupArray(PLArenaPool *arena,
                                       const SECItemArray *from);
-extern void SECITEM_FreeArray(SECItemArray *array, PRBool freeit);
-extern void SECITEM_ZfreeArray(SECItemArray *array, PRBool freeit);
+__attribute__ ((visibility ("default"))) extern void SECITEM_FreeArray(SECItemArray *array, PRBool freeit);
+__attribute__ ((visibility ("default"))) extern void SECITEM_ZfreeArray(SECItemArray *array, PRBool freeit);
 
 SEC_END_PROTOS
 

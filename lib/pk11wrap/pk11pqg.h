@@ -24,7 +24,7 @@ extern SECStatus PK11_PQG_ParamGen(unsigned int j, PQGParams **pParams,
  * Length of SEED in bytes specified in seedBytes.
  * seedBbytes must be in the range [20..255] or an error will result.
  */
-extern SECStatus PK11_PQG_ParamGenSeedLen( unsigned int j, 
+__attribute__ ((visibility ("default"))) extern SECStatus PK11_PQG_ParamGenSeedLen( unsigned int j, 
 	unsigned int seedBytes, PQGParams **pParams, PQGVerify **pVfy);
 
 
@@ -53,7 +53,7 @@ extern SECStatus PK11_PQG_ParamGenSeedLen( unsigned int j,
  * if L >= 1024
  *   seedBbytes must be in the range [20..L/16].
  */
-extern SECStatus
+__attribute__ ((visibility ("default"))) extern SECStatus
 PK11_PQG_ParamGenV2(unsigned int L, unsigned int N, unsigned int seedBytes,
 		    PQGParams **pParams, PQGVerify **pVfy);
 
@@ -72,17 +72,17 @@ PK11_PQG_ParamGenV2(unsigned int L, unsigned int N, unsigned int seedBytes,
  * PQG_VerifyParams in softoken/freebl will automatically choose the 
  * appropriate test.
  */
-extern SECStatus PK11_PQG_VerifyParams(const PQGParams *params, 
+__attribute__ ((visibility ("default"))) extern SECStatus PK11_PQG_VerifyParams(const PQGParams *params, 
                                     const PQGVerify *vfy, SECStatus *result);
-extern void PK11_PQG_DestroyParams(PQGParams *params);
-extern void PK11_PQG_DestroyVerify(PQGVerify *vfy);
+__attribute__ ((visibility ("default"))) extern void PK11_PQG_DestroyParams(PQGParams *params);
+__attribute__ ((visibility ("default"))) extern void PK11_PQG_DestroyVerify(PQGVerify *vfy);
 
 /**************************************************************************
  *  Return a pointer to a new PQGParams struct that is constructed from   *
  *  copies of the arguments passed in.                                    *
  *  Return NULL on failure.                                               *
  **************************************************************************/
-extern PQGParams * PK11_PQG_NewParams(const SECItem * prime, const 
+__attribute__ ((visibility ("default"))) extern PQGParams * PK11_PQG_NewParams(const SECItem * prime, const 
 				SECItem * subPrime, const SECItem * base);
 
 
@@ -90,7 +90,7 @@ extern PQGParams * PK11_PQG_NewParams(const SECItem * prime, const
  * Fills in caller's "prime" SECItem with the prime value in params.
  * Contents can be freed by calling SECITEM_FreeItem(prime, PR_FALSE);	
  **************************************************************************/
-extern SECStatus PK11_PQG_GetPrimeFromParams(const PQGParams *params, 
+__attribute__ ((visibility ("default"))) extern SECStatus PK11_PQG_GetPrimeFromParams(const PQGParams *params, 
 							SECItem * prime);
 
 
@@ -98,7 +98,7 @@ extern SECStatus PK11_PQG_GetPrimeFromParams(const PQGParams *params,
  * Fills in caller's "subPrime" SECItem with the prime value in params.
  * Contents can be freed by calling SECITEM_FreeItem(subPrime, PR_FALSE);	
  **************************************************************************/
-extern SECStatus PK11_PQG_GetSubPrimeFromParams(const PQGParams *params, 
+__attribute__ ((visibility ("default"))) extern SECStatus PK11_PQG_GetSubPrimeFromParams(const PQGParams *params, 
 							SECItem * subPrime);
 
 
@@ -106,7 +106,7 @@ extern SECStatus PK11_PQG_GetSubPrimeFromParams(const PQGParams *params,
  * Fills in caller's "base" SECItem with the base value in params.
  * Contents can be freed by calling SECITEM_FreeItem(base, PR_FALSE);	
  **************************************************************************/
-extern SECStatus PK11_PQG_GetBaseFromParams(const PQGParams *params, 
+__attribute__ ((visibility ("default"))) extern SECStatus PK11_PQG_GetBaseFromParams(const PQGParams *params, 
 							SECItem *base);
 
 
@@ -115,27 +115,27 @@ extern SECStatus PK11_PQG_GetBaseFromParams(const PQGParams *params,
  *  copies of the arguments passed in.                                    *
  *  Return NULL on failure.                                               *
  **************************************************************************/
-extern PQGVerify * PK11_PQG_NewVerify(unsigned int counter, 
+__attribute__ ((visibility ("default"))) extern PQGVerify * PK11_PQG_NewVerify(unsigned int counter, 
 				const SECItem * seed, const SECItem * h);
 
 
 /**************************************************************************
  * Returns "counter" value from the PQGVerify.
  **************************************************************************/
-extern unsigned int PK11_PQG_GetCounterFromVerify(const PQGVerify *verify);
+__attribute__ ((visibility ("default"))) extern unsigned int PK11_PQG_GetCounterFromVerify(const PQGVerify *verify);
 
 /**************************************************************************
  * Fills in caller's "seed" SECItem with the seed value in verify.
  * Contents can be freed by calling SECITEM_FreeItem(seed, PR_FALSE);	
  **************************************************************************/
-extern SECStatus PK11_PQG_GetSeedFromVerify(const PQGVerify *verify, 
+__attribute__ ((visibility ("default"))) extern SECStatus PK11_PQG_GetSeedFromVerify(const PQGVerify *verify, 
 							SECItem *seed);
 
 /**************************************************************************
  * Fills in caller's "h" SECItem with the h value in verify.
  * Contents can be freed by calling SECITEM_FreeItem(h, PR_FALSE);	
  **************************************************************************/
-extern SECStatus PK11_PQG_GetHFromVerify(const PQGVerify *verify, SECItem * h);
+__attribute__ ((visibility ("default"))) extern SECStatus PK11_PQG_GetHFromVerify(const PQGVerify *verify, SECItem * h);
 
 SEC_END_PROTOS
 

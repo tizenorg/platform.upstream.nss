@@ -281,7 +281,7 @@ NSSCKFWSession_GetArena
  *
  */
 
-NSS_EXTERN CK_RV
+__attribute__ ((visibility ("default"))) NSS_EXTERN CK_RV
 NSSCKFWSession_CallNotification
 (
   NSSCKFWSession *fwSession,
@@ -381,7 +381,7 @@ NSSCKFWObject_GetAttributeCount
  * NSSCKFWObject_GetAttributeTypes
  *
  */
-NSS_EXTERN CK_RV
+__attribute__ ((visibility ("default"))) NSS_EXTERN CK_RV
 NSSCKFWObject_GetAttributeTypes
 (
   NSSCKFWObject *fwObject,
@@ -458,7 +458,7 @@ NSSCKFWFindObjects_GetMDFindObjects
  *
  */
 
-NSS_EXTERN CK_RV
+__attribute__ ((visibility ("default"))) NSS_EXTERN CK_RV
 NSSCKFWMutex_Destroy
 (
   NSSCKFWMutex *mutex
@@ -469,7 +469,7 @@ NSSCKFWMutex_Destroy
  *
  */
 
-NSS_EXTERN CK_RV
+__attribute__ ((visibility ("default"))) NSS_EXTERN CK_RV
 NSSCKFWMutex_Lock
 (
   NSSCKFWMutex *mutex
@@ -480,7 +480,7 @@ NSSCKFWMutex_Lock
  *
  */
 
-NSS_EXTERN CK_RV
+__attribute__ ((visibility ("default"))) NSS_EXTERN CK_RV
 NSSCKFWMutex_Unlock
 (
   NSSCKFWMutex *mutex

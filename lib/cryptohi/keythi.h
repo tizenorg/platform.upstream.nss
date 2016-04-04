@@ -41,15 +41,15 @@ typedef enum {
 
 SEC_BEGIN_PROTOS
 extern const SEC_ASN1Template SECKEY_RSAPublicKeyTemplate[];
-extern const SEC_ASN1Template SECKEY_RSAPSSParamsTemplate[];
-extern const SEC_ASN1Template SECKEY_DSAPublicKeyTemplate[];
-extern const SEC_ASN1Template SECKEY_DHPublicKeyTemplate[];
-extern const SEC_ASN1Template SECKEY_DHParamKeyTemplate[];
-extern const SEC_ASN1Template SECKEY_PQGParamsTemplate[];
-extern const SEC_ASN1Template SECKEY_DSAPrivateKeyExportTemplate[];
+__attribute__ ((visibility ("default"))) extern const SEC_ASN1Template SECKEY_RSAPSSParamsTemplate[];
+__attribute__ ((visibility ("default"))) extern const SEC_ASN1Template SECKEY_DSAPublicKeyTemplate[];
+__attribute__ ((visibility ("default"))) extern const SEC_ASN1Template SECKEY_DHPublicKeyTemplate[];
+__attribute__ ((visibility ("default"))) extern const SEC_ASN1Template SECKEY_DHParamKeyTemplate[];
+__attribute__ ((visibility ("default"))) extern const SEC_ASN1Template SECKEY_PQGParamsTemplate[];
+__attribute__ ((visibility ("default"))) extern const SEC_ASN1Template SECKEY_DSAPrivateKeyExportTemplate[];
 
 /* Windows DLL accessor functions */
-SEC_ASN1_CHOOSER_DECLARE(SECKEY_DSAPublicKeyTemplate)
+__attribute__ ((visibility ("default"))) SEC_ASN1_CHOOSER_DECLARE(SECKEY_DSAPublicKeyTemplate)
 SEC_ASN1_CHOOSER_DECLARE(SECKEY_RSAPublicKeyTemplate)
 SEC_ASN1_CHOOSER_DECLARE(SECKEY_RSAPSSParamsTemplate)
 SEC_END_PROTOS

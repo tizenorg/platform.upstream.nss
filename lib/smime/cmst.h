@@ -81,10 +81,10 @@ typedef SECStatus (*NSSCMSGenericWrapperDataCallback)
 typedef   void    (*NSSCMSGenericWrapperDataDestroy) 
 						(NSSCMSGenericWrapperData *);
 
-extern const SEC_ASN1Template NSSCMSGenericWrapperDataTemplate[];
-extern const SEC_ASN1Template NSS_PointerToCMSGenericWrapperDataTemplate[];
+__attribute__ ((visibility ("default"))) extern const SEC_ASN1Template NSSCMSGenericWrapperDataTemplate[];
+__attribute__ ((visibility ("default"))) extern const SEC_ASN1Template NSS_PointerToCMSGenericWrapperDataTemplate[];
 
-SEC_ASN1_CHOOSER_DECLARE(NSS_PointerToCMSGenericWrapperDataTemplate)
+__attribute__ ((visibility ("default"))) SEC_ASN1_CHOOSER_DECLARE(NSS_PointerToCMSGenericWrapperDataTemplate)
 SEC_ASN1_CHOOSER_DECLARE(NSSCMSGenericWrapperDataTemplate)
 
 

@@ -59,30 +59,30 @@
 
 SEC_BEGIN_PROTOS
 
-extern void *PORT_Alloc(size_t len);
-extern void *PORT_Realloc(void *old, size_t len);
-extern void *PORT_AllocBlock(size_t len);
-extern void *PORT_ReallocBlock(void *old, size_t len);
-extern void PORT_FreeBlock(void *ptr);
-extern void *PORT_ZAlloc(size_t len);
-extern void PORT_Free(void *ptr);
-extern void PORT_ZFree(void *ptr, size_t len);
-extern char *PORT_Strdup(const char *s);
-extern time_t PORT_Time(void);
-extern void PORT_SetError(int value);
-extern int PORT_GetError(void);
+__attribute__ ((visibility ("default"))) extern void *PORT_Alloc(size_t len);
+__attribute__ ((visibility ("default"))) extern void *PORT_Realloc(void *old, size_t len);
+__attribute__ ((visibility ("default"))) extern void *PORT_AllocBlock(size_t len);
+__attribute__ ((visibility ("default"))) extern void *PORT_ReallocBlock(void *old, size_t len);
+__attribute__ ((visibility ("default"))) extern void PORT_FreeBlock(void *ptr);
+__attribute__ ((visibility ("default"))) extern void *PORT_ZAlloc(size_t len);
+__attribute__ ((visibility ("default"))) extern void PORT_Free(void *ptr);
+__attribute__ ((visibility ("default"))) extern void PORT_ZFree(void *ptr, size_t len);
+__attribute__ ((visibility ("default"))) extern char *PORT_Strdup(const char *s);
+__attribute__ ((visibility ("default"))) extern time_t PORT_Time(void);
+__attribute__ ((visibility ("default"))) extern void PORT_SetError(int value);
+__attribute__ ((visibility ("default"))) extern int PORT_GetError(void);
 
-extern PLArenaPool *PORT_NewArena(unsigned long chunksize);
-extern void *PORT_ArenaAlloc(PLArenaPool *arena, size_t size);
-extern void *PORT_ArenaZAlloc(PLArenaPool *arena, size_t size);
-extern void PORT_FreeArena(PLArenaPool *arena, PRBool zero);
-extern void *PORT_ArenaGrow(PLArenaPool *arena, void *ptr,
+__attribute__ ((visibility ("default"))) extern PLArenaPool *PORT_NewArena(unsigned long chunksize);
+__attribute__ ((visibility ("default"))) extern void *PORT_ArenaAlloc(PLArenaPool *arena, size_t size);
+__attribute__ ((visibility ("default"))) extern void *PORT_ArenaZAlloc(PLArenaPool *arena, size_t size);
+__attribute__ ((visibility ("default"))) extern void PORT_FreeArena(PLArenaPool *arena, PRBool zero);
+__attribute__ ((visibility ("default"))) extern void *PORT_ArenaGrow(PLArenaPool *arena, void *ptr,
 			    size_t oldsize, size_t newsize);
-extern void *PORT_ArenaMark(PLArenaPool *arena);
-extern void PORT_ArenaRelease(PLArenaPool *arena, void *mark);
-extern void PORT_ArenaZRelease(PLArenaPool *arena, void *mark);
-extern void PORT_ArenaUnmark(PLArenaPool *arena, void *mark);
-extern char *PORT_ArenaStrdup(PLArenaPool *arena, const char *str);
+__attribute__ ((visibility ("default"))) extern void *PORT_ArenaMark(PLArenaPool *arena);
+__attribute__ ((visibility ("default"))) extern void PORT_ArenaRelease(PLArenaPool *arena, void *mark);
+__attribute__ ((visibility ("default"))) extern void PORT_ArenaZRelease(PLArenaPool *arena, void *mark);
+__attribute__ ((visibility ("default"))) extern void PORT_ArenaUnmark(PLArenaPool *arena, void *mark);
+__attribute__ ((visibility ("default"))) extern char *PORT_ArenaStrdup(PLArenaPool *arena, const char *str);
 
 SEC_END_PROTOS
 
@@ -154,26 +154,26 @@ typedef PRBool (PR_CALLBACK * PORTCharConversionFunc) (PRBool toUnicode,
 
 SEC_BEGIN_PROTOS
 
-void PORT_SetUCS4_UTF8ConversionFunction(PORTCharConversionFunc convFunc);
-void PORT_SetUCS2_ASCIIConversionFunction(PORTCharConversionWSwapFunc convFunc);
-PRBool PORT_UCS4_UTF8Conversion(PRBool toUnicode, unsigned char *inBuf,
+__attribute__ ((visibility ("default"))) void PORT_SetUCS4_UTF8ConversionFunction(PORTCharConversionFunc convFunc);
+__attribute__ ((visibility ("default"))) void PORT_SetUCS2_ASCIIConversionFunction(PORTCharConversionWSwapFunc convFunc);
+__attribute__ ((visibility ("default"))) PRBool PORT_UCS4_UTF8Conversion(PRBool toUnicode, unsigned char *inBuf,
 			unsigned int inBufLen, unsigned char *outBuf,
 			unsigned int maxOutBufLen, unsigned int *outBufLen);
-PRBool PORT_UCS2_ASCIIConversion(PRBool toUnicode, unsigned char *inBuf,
+__attribute__ ((visibility ("default"))) PRBool PORT_UCS2_ASCIIConversion(PRBool toUnicode, unsigned char *inBuf,
 			unsigned int inBufLen, unsigned char *outBuf,
 			unsigned int maxOutBufLen, unsigned int *outBufLen,
 			PRBool swapBytes);
-void PORT_SetUCS2_UTF8ConversionFunction(PORTCharConversionFunc convFunc);
-PRBool PORT_UCS2_UTF8Conversion(PRBool toUnicode, unsigned char *inBuf,
+__attribute__ ((visibility ("default"))) void PORT_SetUCS2_UTF8ConversionFunction(PORTCharConversionFunc convFunc);
+__attribute__ ((visibility ("default"))) PRBool PORT_UCS2_UTF8Conversion(PRBool toUnicode, unsigned char *inBuf,
 			unsigned int inBufLen, unsigned char *outBuf,
 			unsigned int maxOutBufLen, unsigned int *outBufLen);
 
 /* One-way conversion from ISO-8859-1 to UTF-8 */
-PRBool PORT_ISO88591_UTF8Conversion(const unsigned char *inBuf,
+__attribute__ ((visibility ("default"))) PRBool PORT_ISO88591_UTF8Conversion(const unsigned char *inBuf,
 			unsigned int inBufLen, unsigned char *outBuf,
 			unsigned int maxOutBufLen, unsigned int *outBufLen);
 
-extern PRBool
+__attribute__ ((visibility ("default"))) extern PRBool
 sec_port_ucs4_utf8_conversion_function
 (
   PRBool toUnicode,
@@ -184,7 +184,7 @@ sec_port_ucs4_utf8_conversion_function
   unsigned int *outBufLen
 );
 
-extern PRBool
+__attribute__ ((visibility ("default"))) extern PRBool
 sec_port_ucs2_utf8_conversion_function
 (
   PRBool toUnicode,
@@ -196,7 +196,7 @@ sec_port_ucs2_utf8_conversion_function
 );
 
 /* One-way conversion from ISO-8859-1 to UTF-8 */
-extern PRBool
+__attribute__ ((visibility ("default"))) extern PRBool
 sec_port_iso88591_utf8_conversion_function
 (
   const unsigned char *inBuf,
@@ -206,9 +206,9 @@ sec_port_iso88591_utf8_conversion_function
   unsigned int *outBufLen
 );
 
-extern int NSS_PutEnv(const char * envVarName, const char * envValue);
+__attribute__ ((visibility ("default"))) extern int NSS_PutEnv(const char * envVarName, const char * envValue);
 
-extern int NSS_SecureMemcmp(const void *a, const void *b, size_t n);
+__attribute__ ((visibility ("default"))) extern int NSS_SecureMemcmp(const void *a, const void *b, size_t n);
 
 /*
  * Load a shared library called "newShLibName" in the same directory as
@@ -240,7 +240,7 @@ extern int NSS_SecureMemcmp(const void *a, const void *b, size_t n);
  * If the new shared library is not found in the same location as the reference
  * library, it will then be loaded from the normal system library path.
  */
-PRLibrary *
+__attribute__ ((visibility ("default"))) PRLibrary *
 PORT_LoadLibraryFromOrigin(const char* existingShLibName,
                  PRFuncPtr staticShLibFunc,
                  const char *newShLibName);
