@@ -10,6 +10,8 @@
 #ifndef __sslproto_h_
 #define __sslproto_h_
 
+/* clang-format off */
+
 /* All versions less than 3_0 are treated as SSL version 2 */
 #define SSL_LIBRARY_VERSION_2                   0x0002
 #define SSL_LIBRARY_VERSION_3_0                 0x0300
@@ -177,6 +179,7 @@
 #define TLS_RSA_WITH_AES_128_CBC_SHA256         0x003C
 #define TLS_RSA_WITH_AES_256_CBC_SHA256         0x003D
 
+#define TLS_DHE_DSS_WITH_AES_128_CBC_SHA256     0x0040
 #define TLS_RSA_WITH_CAMELLIA_128_CBC_SHA       0x0041
 #define TLS_DH_DSS_WITH_CAMELLIA_128_CBC_SHA    0x0042
 #define TLS_DH_RSA_WITH_CAMELLIA_128_CBC_SHA    0x0043
@@ -191,6 +194,7 @@
 #define TLS_DHE_DSS_EXPORT1024_WITH_RC4_56_SHA  0x0065
 #define TLS_DHE_DSS_WITH_RC4_128_SHA            0x0066
 #define TLS_DHE_RSA_WITH_AES_128_CBC_SHA256     0x0067
+#define TLS_DHE_DSS_WITH_AES_256_CBC_SHA256     0x006A
 #define TLS_DHE_RSA_WITH_AES_256_CBC_SHA256     0x006B
 
 #define TLS_RSA_WITH_CAMELLIA_256_CBC_SHA       0x0084
@@ -258,6 +262,10 @@
 #define TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256   0xC02F
 #define TLS_ECDH_RSA_WITH_AES_128_GCM_SHA256    0xC031
 
+#define TLS_ECDHE_RSA_WITH_CHACHA20_POLY1305_SHA256   0xCCA8
+#define TLS_ECDHE_ECDSA_WITH_CHACHA20_POLY1305_SHA256 0xCCA9
+#define TLS_DHE_RSA_WITH_CHACHA20_POLY1305_SHA256     0xCCAA
+
 /* Netscape "experimental" cipher suites. */
 #define SSL_RSA_OLDFIPS_WITH_3DES_EDE_CBC_SHA   0xffe0
 #define SSL_RSA_OLDFIPS_WITH_DES_CBC_SHA        0xffe1
@@ -272,5 +280,7 @@
 #define SRTP_AES128_CM_HMAC_SHA1_32             0x0002
 #define SRTP_NULL_HMAC_SHA1_80                  0x0005
 #define SRTP_NULL_HMAC_SHA1_32                  0x0006
+
+/* clang-format on */
 
 #endif /* __sslproto_h_ */
