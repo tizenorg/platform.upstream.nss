@@ -6,7 +6,7 @@ BuildRequires:  nspr-devel
 BuildRequires:  pkg-config
 BuildRequires:  zlib-devel
 BuildRequires:  pkgconfig(sqlite3)
-Version:        3.17.2
+Version:        3.23
 Release:        0
 Summary:        Network Security Services
 License:        MPL-2.0 and Zlib
